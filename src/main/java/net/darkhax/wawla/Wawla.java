@@ -1,14 +1,11 @@
 package net.darkhax.wawla;
 
-import java.io.File;
 import java.util.Arrays;
 
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -16,7 +13,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class Wawla {
@@ -33,7 +29,7 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
-        
+
         new ModuleEnchantmentBooks(true);
     }
 
