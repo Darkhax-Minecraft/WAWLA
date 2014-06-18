@@ -1,0 +1,11 @@
+#Enchantment Descriptions
+description.enchantment.aquacultureAppealing=This enchantment gives the plahyer a greater amount of time to catc fish.
+description.enchantment.aquacultureBarbedHook=This enchantment gives the player a better chance of catching the fish.
+description.enchantment.aquacultureDoubleHook=This enchantment allows the player to get more than one fish or loot.
+#description.enchantment.aquacultureFastCast=
+description.enchantment.aquacultureHeavyLine=This enchantment allows the player to catch larger and heavier fish.
+description.enchantment.aquacultureLongCast=This enchantment allows the hook(bobber) of the fishing rod to be casted longer.
+description.enchantment.aquacultureMagnetic=This enchantment gives the player a greater chance to catch fish.
+description.enchantment.aquacultureShortCast=This enchantment allows the hook(bobber) of the fishing rod to be casted shorter.
+
+description.enchantment.protect.fall=This enchantment protects the wearer from fall damage, it also reduces damage taken when using ender pearls. This enchantment is only applicable to boots.
