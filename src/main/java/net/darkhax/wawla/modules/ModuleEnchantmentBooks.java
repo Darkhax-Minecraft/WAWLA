@@ -29,7 +29,7 @@ public class ModuleEnchantmentBooks {
             
             if (!blacklist.contains(ench)) {
 
-                Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 38, false, event.toolTip);
+                Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
             }
         }
     }
