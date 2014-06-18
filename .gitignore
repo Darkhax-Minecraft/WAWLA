@@ -1,4 +1,9 @@
 *.class
+*.iml
+*.ipr
+*.iws
+/out
+/eclipse
 
 #ForgeGradle
 /build
