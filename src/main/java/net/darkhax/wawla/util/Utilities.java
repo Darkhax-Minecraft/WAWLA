@@ -19,7 +19,7 @@ public class Utilities {
      * 
      * @param stack: An instance of an ItemStack to be prepared for nbt work.
      * @return ItemStack: The same instance of ItemStack provided, however with a tag compound added if
-     *         one did not alread exist.
+     *         one did not already exist.
      */
     public static ItemStack prepareStackCompound(ItemStack stack) {
 
@@ -31,7 +31,7 @@ public class Utilities {
 
     /**
      * This method will take a string and break it down into multiple lines based on a provided line
-     * length. The seperate strings are then added to the list provided. This method is useful for adding
+     * length. The separate strings are then added to the list provided. This method is useful for adding
      * a long description to an item tool tip and having it wrap. This method is similar to wrap in
      * Apache WordUtils however it uses a List making it easier to use when working with Minecraft.
      * 
