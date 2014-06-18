@@ -14,7 +14,7 @@ public class ModuleEnchantmentBooks {
 
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
     
-    public ModuleEnchantmentBooks(Boolean enabled) {
+    public ModuleEnchantmentBooks(boolean enabled) {
         
         if (enabled)
             MinecraftForge.EVENT_BUS.register(this);
@@ -22,16 +22,13 @@ public class ModuleEnchantmentBooks {
     
     @SubscribeEvent
     public void onItemTooltip(ItemTooltipEvent event) {
-        
-        System.out.println("1");
+
         if (event.showAdvancedItemTooltips && event.itemStack.getItem() instanceof ItemEnchantedBook) {
             
-            System.out.println("2");
             Enchantment ench = Utilities.getEnchantmentsFromStack(event.itemStack, true)[0];
             
             if (!blacklist.contains(ench)) {
-                
-                System.out.println("3");
+
                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 38, false, event.toolTip);
             }
         }
