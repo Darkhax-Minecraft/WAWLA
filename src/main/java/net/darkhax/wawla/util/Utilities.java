@@ -2,13 +2,12 @@ package net.darkhax.wawla.util;
 
 import java.util.List;
 
-import org.apache.commons.lang3.text.WordUtils;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.StatCollector;
+
+import org.apache.commons.lang3.text.WordUtils;
 
 public class Utilities {
 
