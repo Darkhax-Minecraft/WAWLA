@@ -17,6 +17,8 @@ Credits
 
 [ChickenBones] (https://github.com/Chicken-Bones) - The developer of [NEI](http://www.minecraftforum.net/topic/909223-) and [CCC](http://www.minecraftforum.net/topic/909223-)
 
+[Ghostrec35] (https://github.com/Ghosrec35) - Developer on the project
+
 [Lclc98] (https://github.com/lclc98) - Developer on the project
 
 [Darkhax] (https://github.com/darkhax) - Developer on the project
