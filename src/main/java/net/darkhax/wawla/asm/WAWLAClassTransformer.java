@@ -24,7 +24,7 @@ public class WAWLAClassTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] classBytes) {
 
-        if (name.equals("net.minecraft.util.StringTranslate") || name.equals("dd")) {
+        if ((name.equals("net.minecraft.util.StringTranslate") || name.equals("dd")) && WAWLAConfiguration.TRANSLATION_CLASS_TRANSFORM.getBoolean(true)) {
 
             return injectStrTransHook(classBytes);
         }
