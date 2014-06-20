@@ -24,7 +24,7 @@ public class WAWLAClassTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] classBytes) {
 
-        if (name.equals("net.minecraft.util.StringTranslate")) {
+        if (name.equals("net.minecraft.util.StringTranslate") || name.equals("dd")) {
 
             return injectStrTransHook(classBytes);
         }
@@ -42,7 +42,7 @@ public class WAWLAClassTransformer implements IClassTransformer {
 
         for (MethodNode node : cn.methods) {
 
-            if (node.name.equals("tryTranslateKey") && node.desc.equals("(Ljava/lang/String;)Ljava/lang/String;")) {
+            if ((node.name.equals("tryTranslateKey") || node.name.equals("func_135064_c")) && node.desc.equals("(Ljava/lang/String;)Ljava/lang/String;")) {
 
                 for (int i = 0; i < node.instructions.size(); i++) {
 
