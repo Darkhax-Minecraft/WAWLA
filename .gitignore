@@ -3,7 +3,6 @@
 *.ipr
 *.iws
 /out
-/eclipse
 
 #ForgeGradle
 /build
