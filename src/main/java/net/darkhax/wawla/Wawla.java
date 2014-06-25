@@ -3,7 +3,6 @@ package net.darkhax.wawla;
 import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
-import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
@@ -32,8 +31,6 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
-
-        new ModuleEnchantmentBooks(true);
     }
 
     @EventHandler
