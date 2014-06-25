@@ -13,7 +13,7 @@ public class TranslationHooks {
     /**
      * An array to hold all of the broken or missing strings found by the tryTranslateKey hook method.
      */
-    static ArrayList<String> lines = new ArrayList<String>();
+    public static ArrayList<String> lines = new ArrayList<String>();
 
     /**
      * A hook method created by Ghostrec35, this method is injected into the TranslateKey method and is
@@ -28,52 +28,8 @@ public class TranslationHooks {
     public static void tryTranslateKey(String key, String translation) {
 
         String output = "Key: " + key + ", Translation: " + translation;
+        System.out.println(output);
         if (translation == null && !lines.contains(output))
             lines.add(output);
-    }
-
-    /**
-     * This is a method that when called will print out all the entries stored by the tryTranslateKey
-     * method.
-     * 
-     * @param fileName: This param allows for the location of the file to be changed. By default this
-     *        should be logs/missingStrings.txt
-     * @return: The file being generated.
-     */
-    static File print(String fileName) {
-
-        BufferedWriter writer = null;
-        try {
-
-            File logFile = new File(fileName + " " + Reference.DATE.format(new Date()).toString());
-            writer = new BufferedWriter(new FileWriter(logFile));
-
-            for (int i = 0; i < lines.size(); i++) {
-
-                writer.write(lines.get(i));
-                writer.newLine();
-            }
-
-            return logFile;
-        }
-
-        catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-        finally {
-
-            try {
-
-                writer.close();
-            }
-
-            catch (Exception e) {
-
-            }
-        }
-
-        return null;
     }
 }

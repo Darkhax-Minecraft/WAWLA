@@ -98,8 +98,8 @@ public class Utilities {
 
         ChatComponentText fileLink = new ChatComponentText(file.getName());
         fileLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
-        fileLink.getChatStyle().setUnderlined(Boolean.valueOf(true));
+        fileLink.getChatStyle().setUnderlined(true);
 
-        return new ChatComponentTranslation(translationKey, new Object[] { fileLink });
+        return new ChatComponentTranslation(translationKey, fileLink);
     }
 }

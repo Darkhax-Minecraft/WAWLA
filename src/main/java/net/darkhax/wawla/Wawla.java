@@ -2,10 +2,13 @@ package net.darkhax.wawla;
 
 import java.util.Arrays;
 
+import net.darkhax.wawla.commands.CommandPrint;
+import net.darkhax.wawla.handler.TranslationHooks;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
+import net.minecraft.command.ServerCommandManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -13,6 +16,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class Wawla {
@@ -41,6 +45,14 @@ public class Wawla {
     @EventHandler
     public void messageRecieved(FMLInterModComms.IMCEvent event) {
 
+    }
+    
+    @EventHandler
+    public void onServerStarting(FMLServerStartingEvent event) {
+        
+        ServerCommandManager manager = (ServerCommandManager)event.getServer().getCommandManager();
+        manager.registerCommand(new CommandPrint());
+        
     }
 
     /**
