@@ -18,6 +18,10 @@ public class Config {
         Configuration cfg = new Configuration(cfgFile);
         cfg.load();
 
+        String pluginsClient = "Plugin Settings";
+        pluginEnchantBooks = cfg.get(pluginsClient, "Should enchantment books have information about their enchantments on them?", true).getBoolean(true);
         cfg.save();
     }
+
+    public static boolean pluginEnchantBooks;
 }

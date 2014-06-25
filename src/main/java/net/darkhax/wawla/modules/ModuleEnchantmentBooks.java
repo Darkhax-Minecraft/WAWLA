@@ -12,6 +12,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ModuleEnchantmentBooks {
 
+    /**
+     * A blacklist that enchantments can be added to. Enchantments can be added to this list through IMC.
+     */
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
 
     public ModuleEnchantmentBooks(boolean enabled) {

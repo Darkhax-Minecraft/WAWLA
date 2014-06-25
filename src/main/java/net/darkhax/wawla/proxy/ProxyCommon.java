@@ -1,6 +1,5 @@
 package net.darkhax.wawla.proxy;
 
-import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 
 public class ProxyCommon {
 
@@ -10,6 +9,5 @@ public class ProxyCommon {
      */
     public void registerSidedEvents() {
 
-        new ModuleEnchantmentBooks(true);
     }
 }
