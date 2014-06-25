@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import net.darkhax.wawla.util.Reference;
-import net.minecraft.util.ScreenShotHelper;
 
 public class TranslationHooks {
 
@@ -30,7 +29,7 @@ public class TranslationHooks {
 
         String output = "Key: " + key + ", Translation: " + translation;
         if (translation == null && !lines.contains(output))
-            lines.add("Key: " + key + ", Translation: " + translation);
+            lines.add(output);
     }
 
     /**
@@ -39,6 +38,7 @@ public class TranslationHooks {
      * 
      * @param fileName: This param allows for the location of the file to be changed. By default this
      *        should be logs/missingStrings.txt
+     * @return: The file being generated.
      */
     static File print(String fileName) {
 
@@ -53,7 +53,7 @@ public class TranslationHooks {
                 writer.write(lines.get(i));
                 writer.newLine();
             }
-            
+
             return logFile;
         }
 
@@ -73,7 +73,7 @@ public class TranslationHooks {
 
             }
         }
-        
+
         return null;
     }
 }
