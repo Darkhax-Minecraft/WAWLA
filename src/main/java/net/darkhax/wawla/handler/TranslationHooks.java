@@ -40,7 +40,7 @@ public class TranslationHooks {
      * @param fileName: This param allows for the location of the file to be changed. By default this
      *        should be logs/missingStrings.txt
      */
-    static void print(String fileName) {
+    static File print(String fileName) {
 
         BufferedWriter writer = null;
         try {
@@ -48,12 +48,13 @@ public class TranslationHooks {
             File logFile = new File(fileName + " " + Reference.DATE.format(new Date()).toString());
             writer = new BufferedWriter(new FileWriter(logFile));
 
-            new ScreenShotHelper();
             for (int i = 0; i < lines.size(); i++) {
 
                 writer.write(lines.get(i));
                 writer.newLine();
             }
+            
+            return logFile;
         }
 
         catch (Exception e) {
@@ -72,5 +73,7 @@ public class TranslationHooks {
 
             }
         }
+        
+        return null;
     }
 }
