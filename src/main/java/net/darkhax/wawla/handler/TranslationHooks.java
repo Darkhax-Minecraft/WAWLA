@@ -1,12 +1,6 @@
 package net.darkhax.wawla.handler;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Date;
-
-import net.darkhax.wawla.util.Reference;
 
 public class TranslationHooks {
 

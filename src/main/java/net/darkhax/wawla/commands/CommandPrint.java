@@ -5,24 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang3.exception.ExceptionUtils;
-
-import com.google.gson.JsonParseException;
 
 import net.darkhax.wawla.handler.TranslationHooks;
 import net.darkhax.wawla.util.Reference;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.command.SyntaxErrorException;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.event.ClickEvent;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IChatComponent;
 
 public class CommandPrint extends CommandBase {
 
@@ -44,7 +32,7 @@ public class CommandPrint extends CommandBase {
         String fileName = (!(pars.length > 0)) ? "logs/MissingStrings" : pars[0];
         player.addChatMessage(Utilities.generateClickableMessage("command.print.success", print(fileName)));
     }
-    
+
     /**
      * This is a method that when called will print out all the entries stored by the tryTranslateKey
      * method.

@@ -3,7 +3,6 @@ package net.darkhax.wawla;
 import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
-import net.darkhax.wawla.handler.TranslationHooks;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
@@ -46,13 +45,13 @@ public class Wawla {
     public void messageRecieved(FMLInterModComms.IMCEvent event) {
 
     }
-    
+
     @EventHandler
     public void onServerStarting(FMLServerStartingEvent event) {
-        
-        ServerCommandManager manager = (ServerCommandManager)event.getServer().getCommandManager();
+
+        ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
         manager.registerCommand(new CommandPrint());
-        
+
     }
 
     /**
