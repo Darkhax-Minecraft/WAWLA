@@ -1,11 +1,16 @@
 package net.darkhax.wawla.util;
 
+import java.io.File;
 import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.event.ClickEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.IChatComponent;
 
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -76,5 +81,25 @@ public class Utilities {
             ench[i] = Enchantment.enchantmentsList[list.getCompoundTagAt(i).getShort("id")];
 
         return ench;
+    }
+
+    /**
+     * This method will create a chat component that includes both a string and a clickable link to the
+     * location of a file. This method should be sued when the player saves a file. Works similarly to
+     * the screenshot.
+     * 
+     * @param translationKey: The key to be used for translating the first part of the message. Example:
+     *        command.print.sucess
+     * @param file: The link to the file being linked. This is used to generate the file name and provide
+     *        a link to that file.
+     * @return IChatComponent: A chat component that can be added to any chat message.
+     */
+    public static IChatComponent generateClickableMessage(String translationKey, File file) {
+
+        ChatComponentText fileLink = new ChatComponentText(file.getName());
+        fileLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
+        fileLink.getChatStyle().setUnderlined(Boolean.valueOf(true));
+
+        return new ChatComponentTranslation(translationKey, new Object[] { fileLink });
     }
 }
