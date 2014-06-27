@@ -3,7 +3,10 @@ package net.darkhax.wawla;
 import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
+import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.WailaHandler;
+import net.darkhax.wawla.modules.Module;
+import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
@@ -17,7 +20,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:Waila")
 public class Wawla {
 
     @SidedProxy(serverSide = Reference.SERVER, clientSide = Reference.CLIENT)
@@ -32,7 +35,10 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
+        new ForgeEventHandler();
         new WailaHandler(true); //TODO determine if this is client sided or if it can be made client sided. 
+        new Module();
+        new ModuleEnchantmentBooks();
     }
 
     @EventHandler

@@ -2,6 +2,8 @@ package net.darkhax.wawla.handler;
 
 import java.util.ArrayList;
 
+import net.darkhax.wawla.modules.Module;
+
 public class TranslationHooks {
 
     /**
@@ -21,6 +23,9 @@ public class TranslationHooks {
      */
     public static void tryTranslateKey(String key, String translation) {
 
+        for (Module module: Module.modules)
+            module.onStringTranslation(key, translation);
+        
         String output = "Key: " + key + ", Translation: " + translation;
         System.out.println(output);
         if (translation == null && !lines.contains(output))

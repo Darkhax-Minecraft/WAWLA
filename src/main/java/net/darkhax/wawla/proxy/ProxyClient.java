@@ -11,6 +11,5 @@ public class ProxyClient extends ProxyCommon {
      */
     public void registerSidedEvents() {
 
-        new ModuleEnchantmentBooks(Config.pluginEnchantBooks);
     }
 }
