@@ -35,10 +35,11 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
+        //TODO move event handler into a correct proxy or an alternative class.
         new ForgeEventHandler();
-        new WailaHandler(true); // TODO determine if this is client sided or if it can be made client
-                                // sided.
-        new Module();
+        //TODO same as above. 
+        new WailaHandler(true);
+        //TODO move to a correct class for modules to be instantiated. 
         new ModuleEnchantmentBooks();
     }
 

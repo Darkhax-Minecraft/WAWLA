@@ -4,6 +4,8 @@ import net.darkhax.wawla.modules.Module;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ForgeEventHandler {
 
@@ -13,6 +15,7 @@ public class ForgeEventHandler {
     }
 
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public void onItemTooltip(ItemTooltipEvent event) {
 
         for (Module module : Module.modules)
