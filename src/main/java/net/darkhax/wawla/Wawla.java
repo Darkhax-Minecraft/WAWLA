@@ -3,6 +3,7 @@ package net.darkhax.wawla;
 import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
+import net.darkhax.wawla.handler.WailaHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
@@ -31,6 +32,7 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
+        new WailaHandler(true); //TODO determine if this is client sided or if it can be made client sided. 
     }
 
     @EventHandler
