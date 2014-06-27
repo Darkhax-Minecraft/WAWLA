@@ -1,6 +1,5 @@
 package net.darkhax.wawla.proxy;
 
-
 public class ProxyCommon {
 
     /**

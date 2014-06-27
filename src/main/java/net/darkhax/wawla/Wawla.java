@@ -36,7 +36,8 @@ public class Wawla {
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
         new ForgeEventHandler();
-        new WailaHandler(true); //TODO determine if this is client sided or if it can be made client sided. 
+        new WailaHandler(true); // TODO determine if this is client sided or if it can be made client
+                                // sided.
         new Module();
         new ModuleEnchantmentBooks();
     }

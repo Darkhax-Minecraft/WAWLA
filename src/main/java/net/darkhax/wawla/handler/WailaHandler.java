@@ -2,24 +2,22 @@ package net.darkhax.wawla.handler;
 
 import java.util.List;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 public class WailaHandler implements IWailaDataProvider {
 
     public WailaHandler(boolean enabled) {
-        
+
         if (enabled)
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.handler.WailaHandler.callbackRegister");
     }
-    
+
     @Override
     public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
 

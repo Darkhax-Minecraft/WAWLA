@@ -1,8 +1,5 @@
 package net.darkhax.wawla.proxy;
 
-import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
-import net.darkhax.wawla.util.Config;
-
 public class ProxyClient extends ProxyCommon {
 
     /**

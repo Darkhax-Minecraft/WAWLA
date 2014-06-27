@@ -3,21 +3,21 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import net.minecraft.item.ItemStack;
 
 public class Module {
-    
+
     /**
-     * This is a list of all modules. This list is used to pass calls on to all modules. 
+     * This is a list of all modules. This list is used to pass calls on to all modules.
      */
     public static ArrayList<Module> modules = new ArrayList<Module>();
 
     public Module() {
-        
+
         modules.add(this);
     }
-    
+
     /**
      * This method is called when minecraft renders an item tooltip. This can be used to add information.
      * 
