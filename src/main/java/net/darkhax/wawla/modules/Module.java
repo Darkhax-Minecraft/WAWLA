@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 
 public class Module {
 
-    //TODO add way to configure what modules are loaded
-    
+    // TODO add way to configure what modules are loaded
+
     /**
      * This is a list of all modules. This list is used to pass calls on to all modules.
      */

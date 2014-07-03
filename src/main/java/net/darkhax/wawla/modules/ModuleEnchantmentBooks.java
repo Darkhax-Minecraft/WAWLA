@@ -11,8 +11,8 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleEnchantmentBooks extends Module {
 
-    //TODO Make it possible to add enchantments to blacklist with imc
-    
+    // TODO Make it possible to add enchantments to blacklist with imc
+
     /**
      * A blacklist that enchantments can be added to. Enchantments can be added to this list through IMC.
      */
