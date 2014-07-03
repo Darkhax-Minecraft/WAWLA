@@ -27,3 +27,10 @@ description.enchantment.fishingSpeed=This enchantment decreases the time it take
 #commands
 command.print.usage=
 command.print.success=Saved list of missing strings as %s
+
+#tooltips
+tooltip.heldItem=Held Item
+tooltip.feet=Feet
+tooltip.leggings=Leggings
+tooltip.chestplate=Chestplate
+tooltip.helmet=Helmet

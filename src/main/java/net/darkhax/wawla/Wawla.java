@@ -7,6 +7,7 @@ import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
+import net.darkhax.wawla.modules.ModuleEntityEquipment;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
@@ -15,7 +16,6 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -35,12 +35,13 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
-        
+
         new ForgeEventHandler();
         new WailaBlockHandler();
         new WailaEntityHandler();
-        
+
         new ModuleEnchantmentBooks();
+        new ModuleEntityEquipment();
     }
 
     @EventHandler
