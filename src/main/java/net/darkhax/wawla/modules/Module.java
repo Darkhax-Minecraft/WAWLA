@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaEntityAccessor;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
 public class Module {
@@ -74,13 +76,50 @@ public class Module {
     public void onWailaBlockTail(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
 
     }
-    
+
     /**
-     * A way to access the array of modules. 
-     * @return ArrayList<Module>: Access to the module array. 
+     * This method is called when waila prints the name of an entity into an entity tooltip. This is used
+     * by waila to display the block name. This is the upper most part of the tooltip.
+     * 
+     * @param entity: An instance of the entity that is currently being looked at by the player.
+     * @param tooltip: An list of all the current text being displayed in the top part of the tooltip.
+     * @param accessor: An accessor that can be used to pull information.
+     */
+    public void onWailaEntityName(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+
+    }
+
+    /**
+     * This method is called when waila prints the body of an entity tooltip. This is the middle section
+     * of the tooltip.
+     * 
+     * @param entity: An instance of the entity that is currently being looked at by the player.
+     * @param tooltip: An list of all the current text being displayed in the middle part of the tooltip.
+     * @param accessor: An accessor that can be used to pull information.
+     */
+    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+
+    }
+
+    /**
+     * This method is called when waila prints the end section of a tooltip. This is used by waila to add
+     * the name of the mob that the entity is registered to.
+     * 
+     * @param entity: An instance of the entity that is currently being looked at by the player.
+     * @param tooltip: An list of all the current text being displayed in the bottom part of the tooltip.
+     * @param accessor: An accessor that can be used to pull information.
+     */
+    public void onWailaEntityTail(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+
+    }
+
+    /**
+     * A way to access the array of modules.
+     * 
+     * @return ArrayList<Module>: Access to the module array.
      */
     public static ArrayList<Module> getModules() {
-        
+
         return modules;
     }
 }
