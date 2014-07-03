@@ -35,18 +35,12 @@ public class Wawla {
         setModMeta(event.getModMetadata());
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
-        // TODO move event handler into a correct proxy or an alternative class.
+        
         new ForgeEventHandler();
-        // TODO same as above.
         new WailaBlockHandler();
         new WailaEntityHandler();
-        // TODO move to a correct class for modules to be instantiated.
+        
         new ModuleEnchantmentBooks();
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-
     }
 
     @EventHandler
