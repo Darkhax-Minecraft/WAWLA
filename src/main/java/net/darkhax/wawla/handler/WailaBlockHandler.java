@@ -50,7 +50,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
 
         return currenttip;
     }
-    
+
     public static void callbackRegister(IWailaRegistrar register) {
 
         WailaBlockHandler instance = new WailaBlockHandler();
