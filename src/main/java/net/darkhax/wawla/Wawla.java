@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
 import net.darkhax.wawla.handler.ForgeEventHandler;
-import net.darkhax.wawla.handler.WailaHandler;
+import net.darkhax.wawla.handler.WailaBlockHandler;
+import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.Module;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.proxy.ProxyCommon;
@@ -38,7 +39,8 @@ public class Wawla {
         //TODO move event handler into a correct proxy or an alternative class.
         new ForgeEventHandler();
         //TODO same as above. 
-        new WailaHandler(true);
+        new WailaBlockHandler();
+        new WailaEntityHandler();
         //TODO move to a correct class for modules to be instantiated. 
         new ModuleEnchantmentBooks();
     }

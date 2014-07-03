@@ -11,12 +11,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
-public class WailaHandler implements IWailaDataProvider {
+public class WailaBlockHandler implements IWailaDataProvider {
 
-    public WailaHandler(boolean enabled) {
+    public WailaBlockHandler() {
 
-        if (enabled)
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.handler.WailaHandler.callbackRegister");
+        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.handler.WailaBlockHandler.callbackRegister");
     }
 
     @Override
@@ -30,7 +29,7 @@ public class WailaHandler implements IWailaDataProvider {
 
         for (Module module : Module.getModules())
             module.onWailaBlockName(itemStack, currenttip, accessor);
-        
+
         return currenttip;
     }
 
@@ -39,7 +38,7 @@ public class WailaHandler implements IWailaDataProvider {
 
         for (Module module : Module.getModules())
             module.onWailaBlockDescription(itemStack, currenttip, accessor);
-        
+
         return currenttip;
     }
 
@@ -48,13 +47,13 @@ public class WailaHandler implements IWailaDataProvider {
 
         for (Module module : Module.getModules())
             module.onWailaBlockTail(itemStack, currenttip, accessor);
-        
+
         return currenttip;
     }
-
+    
     public static void callbackRegister(IWailaRegistrar register) {
 
-        WailaHandler instance = new WailaHandler(true);
+        WailaBlockHandler instance = new WailaBlockHandler();
         register.registerBodyProvider(instance, Block.class);
     }
 }
