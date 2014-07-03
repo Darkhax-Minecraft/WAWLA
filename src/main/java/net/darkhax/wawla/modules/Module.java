@@ -11,7 +11,7 @@ public class Module {
     /**
      * This is a list of all modules. This list is used to pass calls on to all modules.
      */
-    public static ArrayList<Module> modules = new ArrayList<Module>();
+    private static ArrayList<Module> modules = new ArrayList<Module>();
 
     public Module() {
 
@@ -21,7 +21,7 @@ public class Module {
     /**
      * This method is called when minecraft renders an item tooltip. This can be used to add information.
      * 
-     * @param stack: An instance of the ItemStack beeing looked at.
+     * @param stack: An instance of the ItemStack being looked at.
      * @param tooltip: A list of strings that are used to create the tooltip.
      * @param advanced: If the player has advanced mode (ctrl+f3+h) this will be true.
      */
@@ -73,5 +73,14 @@ public class Module {
      */
     public void onWailaBlockTail(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
 
+    }
+    
+    /**
+     * A way to access the array of modules. 
+     * @return ArrayList<Module>: Access to the module array. 
+     */
+    public static ArrayList<Module> getModules() {
+        
+        return modules;
     }
 }

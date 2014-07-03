@@ -18,7 +18,7 @@ public class ForgeEventHandler {
     @SideOnly(Side.CLIENT)
     public void onItemTooltip(ItemTooltipEvent event) {
 
-        for (Module module : Module.modules)
+        for (Module module : Module.getModules())
             module.onTooltipDisplayed(event.itemStack, event.toolTip, event.showAdvancedItemTooltips);
     }
 }

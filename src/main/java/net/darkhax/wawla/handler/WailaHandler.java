@@ -28,7 +28,7 @@ public class WailaHandler implements IWailaDataProvider {
     @Override
     public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
-        for (Module module : Module.modules)
+        for (Module module : Module.getModules())
             module.onWailaBlockName(itemStack, currenttip, accessor);
         
         return currenttip;
@@ -37,7 +37,7 @@ public class WailaHandler implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
-        for (Module module : Module.modules)
+        for (Module module : Module.getModules())
             module.onWailaBlockDescription(itemStack, currenttip, accessor);
         
         return currenttip;
@@ -46,7 +46,7 @@ public class WailaHandler implements IWailaDataProvider {
     @Override
     public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
-        for (Module module : Module.modules)
+        for (Module module : Module.getModules())
             module.onWailaBlockTail(itemStack, currenttip, accessor);
         
         return currenttip;

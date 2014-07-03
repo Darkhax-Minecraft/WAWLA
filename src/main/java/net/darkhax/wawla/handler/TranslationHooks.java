@@ -23,11 +23,10 @@ public class TranslationHooks {
      */
     public static void tryTranslateKey(String key, String translation) {
 
-        for (Module module : Module.modules)
+        for (Module module : Module.getModules())
             module.onStringTranslation(key, translation);
 
         String output = "Key: " + key + ", Translation: " + translation;
-        System.out.println(output);
         if (translation == null && !lines.contains(output))
             lines.add(output);
     }
