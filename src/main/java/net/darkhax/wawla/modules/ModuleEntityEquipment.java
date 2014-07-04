@@ -3,8 +3,11 @@ package net.darkhax.wawla.modules;
 import java.util.List;
 
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import net.darkhax.wawla.util.Utilities;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class ModuleEntityEquipment extends Module {
@@ -16,12 +19,39 @@ public class ModuleEntityEquipment extends Module {
 
         if (entity instanceof EntityLiving) {
 
+            String ench = "Enchantments: ";
             EntityLiving living = (EntityLiving) entity;
 
             for (int i = 0; i < 5; i++) {
 
-                if (living.getEquipmentInSlot(i) != null)
-                    tooltip.add(StatCollector.translateToLocal("tooltip." + itemTypes[i]) + ": " + living.getEquipmentInSlot(i).getDisplayName());
+                ItemStack stack = living.getEquipmentInSlot(i);
+                if (stack != null) {
+
+                    tooltip.add(StatCollector.translateToLocal("tooltip." + itemTypes[i]) + ": " + stack.getDisplayName());
+                    Enchantment[] enchantments = Utilities.getEnchantmentsFromStack(stack, false);
+
+                    if (accessor.getPlayer().isSneaking()) {
+
+                        for (int x = 0; x < enchantments.length; x++) {
+
+                            String name = StatCollector.translateToLocal(enchantments[x].getName());
+                            if (!ench.contains(name))
+                                ench = ench + name + ", ";
+                        }
+                    }
+                }
+            }
+
+            if (accessor.getPlayer().isSneaking()) {
+
+                if (ench.equals("Enchantments: "))
+                    tooltip.add("This entity has no enchantments!");
+
+                else {
+
+                    ench = ench.substring(0, ench.length() - 2);
+                    Utilities.wrapStringToList(ench, 50, false, tooltip);
+                }
             }
         }
     }
