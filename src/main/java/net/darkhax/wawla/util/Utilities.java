@@ -1,6 +1,8 @@
 package net.darkhax.wawla.util;
 
 import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
@@ -101,5 +103,19 @@ public class Utilities {
         fileLink.getChatStyle().setUnderlined(true);
 
         return new ChatComponentTranslation(translationKey, fileLink);
+    }
+
+    /**
+     * This method can be used to round a double to a certain amount of places.
+     * 
+     * @param value: The double being round.
+     * @param places: The amount of places to round the double to.
+     * @return double: The double entered however being rounded to the amount of places specified.
+     */
+    public static double round(double value, int places) {
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
