@@ -35,3 +35,6 @@ tooltip.leggings=Leggings
 tooltip.chestplate=Chestplate
 tooltip.helmet=Helmet
 tooltip.item=Item
+tooltip.owner=Owner
+tooltip.jumpStrength=Jump Strength
+tooltip.speed=Speed

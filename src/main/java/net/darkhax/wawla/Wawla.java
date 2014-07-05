@@ -8,6 +8,7 @@ import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.modules.ModuleEntityEquipment;
+import net.darkhax.wawla.modules.ModuleHorses;
 import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
@@ -44,6 +45,7 @@ public class Wawla {
         new ModuleEnchantmentBooks();
         new ModuleEntityEquipment();
         new ModuleItemFrame();
+        new ModuleHorses();
     }
 
     @EventHandler
