@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -117,5 +118,20 @@ public class Utilities {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
+    }
+
+    /**
+     * This method writes an entity to a new NBTTagCompound. This is useful for getting information about
+     * an entity that has been set by vanilla. It is not very optimal however at this time it is the best
+     * way that I could find.
+     * 
+     * @param entity: An instance of an entity that you are looking up.
+     * @return NBTTagCompound: A tag compound containing a lot of information about the entity.
+     */
+    public static NBTTagCompound convertEntityToNbt(Entity entity) {
+
+        NBTTagCompound tag = new NBTTagCompound();
+        entity.writeToNBT(tag);
+        return tag;
     }
 }
