@@ -7,3 +7,4 @@
 #ForgeGradle
 /build
 /.gradle
+/eclipse/assets
