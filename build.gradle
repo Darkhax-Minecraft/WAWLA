@@ -47,7 +47,7 @@ minecraft {
 }
  
 dependencies {
-    compile "mcp.mobius.waila:Waila:${config.waila_version}:dev"
+    compile "mcp.mobius.waila:Waila:1.5.2a"
 }
 
 task buildInfo() {
