@@ -1,7 +1,5 @@
 package net.darkhax.wawla.proxy;
 
-import net.darkhax.wawla.handler.ForgeEventHandler;
-
 public class ProxyCommon {
 
     /**
@@ -10,6 +8,12 @@ public class ProxyCommon {
      */
     public void registerSidedEvents() {
 
-        new ForgeEventHandler();
+    }
+
+    /**
+     * This method is used to register modules on the server.
+     */
+    public void registerSidedModules() {
+
     }
 }
