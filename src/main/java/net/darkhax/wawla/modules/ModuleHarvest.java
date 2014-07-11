@@ -16,6 +16,7 @@ public class ModuleHarvest extends Module {
     @Override
     public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
 
+        //
         MovingObjectPosition pos = access.getPosition();
         Block block = access.getBlock();
         ItemStack item = access.getPlayer().getHeldItem();
