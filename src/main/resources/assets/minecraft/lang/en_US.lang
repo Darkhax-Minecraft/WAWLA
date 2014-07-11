@@ -38,3 +38,7 @@ tooltip.item=Item
 tooltip.owner=Owner
 tooltip.jumpStrength=Jump Strength
 tooltip.speed=Speed
+tooltip.canHarvest=Harvestable
+tooltip.toolType=Correct Tool
+tooltip.yes=§aYes
+tooltip.no=§4No

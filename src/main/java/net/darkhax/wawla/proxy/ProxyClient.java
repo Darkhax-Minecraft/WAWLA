@@ -5,6 +5,7 @@ import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.modules.ModuleEntityEquipment;
+import net.darkhax.wawla.modules.ModuleHarvest;
 import net.darkhax.wawla.modules.ModuleHorses;
 import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
@@ -35,5 +36,6 @@ public class ProxyClient extends ProxyCommon {
         new ModuleItemFrame();
         new ModuleHorses();
         new ModulePets();
+        new ModuleHarvest();
     }
 }
