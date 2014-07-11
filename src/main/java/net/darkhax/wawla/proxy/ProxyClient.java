@@ -9,6 +9,7 @@ import net.darkhax.wawla.modules.ModuleHarvest;
 import net.darkhax.wawla.modules.ModuleHorses;
 import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
+import net.darkhax.wawla.modules.ModulePlayerhead;
 
 public class ProxyClient extends ProxyCommon {
 
@@ -36,5 +37,6 @@ public class ProxyClient extends ProxyCommon {
         new ModuleHorses();
         new ModulePets();
         new ModuleHarvest();
+        new ModulePlayerhead();
     }
 }
