@@ -3,6 +3,7 @@ package net.darkhax.wawla;
 import java.util.Arrays;
 
 import net.darkhax.wawla.commands.CommandPrint;
+import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
@@ -12,6 +13,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
@@ -36,6 +38,8 @@ public class Wawla {
     @EventHandler
     public void messageRecieved(FMLInterModComms.IMCEvent event) {
 
+        for (IMCMessage message : event.getMessages())
+            IMCHandler.readMeassage(message);
     }
 
     @EventHandler

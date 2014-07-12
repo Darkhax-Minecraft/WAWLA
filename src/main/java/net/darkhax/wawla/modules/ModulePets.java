@@ -11,7 +11,6 @@ import net.minecraft.util.StatCollector;
 
 public class ModulePets extends Module {
 
-    // TODO add a way for mod authors to register owner nbt keys.
     public static ArrayList<String> nbtNames = new ArrayList<String>();
 
     public ModulePets() {
