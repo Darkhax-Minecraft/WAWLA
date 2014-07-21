@@ -47,7 +47,6 @@ public class Wawla {
 
         ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
         manager.registerCommand(new CommandPrint());
-
     }
 
     /**

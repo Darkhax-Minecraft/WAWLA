@@ -5,6 +5,7 @@ import java.util.List;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
@@ -18,10 +19,9 @@ public class ModulePlayerhead extends Module {
 
             MovingObjectPosition pos = access.getPosition();
             TileEntitySkull skull = (TileEntitySkull) access.getWorld().getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
-            // func_145907_c is a currently unmapped method that returns field_145909_j. field_145909_j
-            // is an unmapped variable that is equal to the value of the ExtraType tag on the tile
-            // entity.
-            tooltip.add(StatCollector.translateToLocal("tooltip.owner") + ": " + skull.func_145907_c());
+            // This GameProfile stuff is cool but weird. func_1524259_a is a nbt thing for creating a
+            // GameProfile using nbt.
+            tooltip.add(StatCollector.translateToLocal("tooltip.owner") + ": " + NBTUtil.func_152459_a(access.getNBTData().getCompoundTag("Owner")).getName());
         }
     }
 }
