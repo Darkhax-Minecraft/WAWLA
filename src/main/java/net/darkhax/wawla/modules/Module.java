@@ -123,7 +123,7 @@ public class Module {
      * 
      * @param register: An instance of the IWailaRegistrar, provided by the Waila mod.
      */
-    public static void onWailaRegistrar(IWailaRegistrar register) {
+    public void onWailaRegistrar(IWailaRegistrar register) {
 
     }
 
@@ -134,7 +134,7 @@ public class Module {
      * @param stack: The ItemStack being displayed. This can be overridden to display a custom stack.
      * @param accessor: An instance of IWailaDataAccessor containing many goodies for you to use.
      */
-    public static void onBlockOverride(ItemStack stack, IWailaDataAccessor accessor) {
+    public void onBlockOverride(ItemStack stack, IWailaDataAccessor accessor) {
 
     }
 
@@ -146,7 +146,7 @@ public class Module {
      *        Entity.
      * @param accessor: An instance of IWailaEntityAccessor containing many goodies for you to use.
      */
-    public static void onEntityOverride(Entity entity, IWailaEntityAccessor accessor) {
+    public void onEntityOverride(Entity entity, IWailaEntityAccessor accessor) {
 
     }
 

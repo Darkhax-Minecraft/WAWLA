@@ -23,7 +23,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
 
         ItemStack stack = accessor.getStack();
         for (Module module : Module.getModules())
-            Module.onBlockOverride(stack, accessor);
+            module.onBlockOverride(stack, accessor);
 
         return (stack != null) ? stack : null;
     }
