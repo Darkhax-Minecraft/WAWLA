@@ -11,16 +11,20 @@ import net.minecraft.item.ItemStack;
 
 public class Module {
 
-    // TODO add way to configure what modules are loaded
-
     /**
      * This is a list of all modules. This list is used to pass calls on to all modules.
      */
     private static ArrayList<Module> modules = new ArrayList<Module>();
 
-    public Module() {
+    /**
+     * Used to create a new module.
+     * 
+     * @param enabled: If false the module will not be loaded.
+     */
+    public Module(boolean enabled) {
 
-        modules.add(this);
+        if (enabled)
+            modules.add(this);
     }
 
     /**
