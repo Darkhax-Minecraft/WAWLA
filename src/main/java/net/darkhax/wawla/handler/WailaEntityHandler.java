@@ -14,7 +14,7 @@ public class WailaEntityHandler implements IWailaEntityProvider {
 
     public WailaEntityHandler() {
 
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.handler.WailaEntityHandler.callbackRegister");
+        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.handler.WailaEntityHandler.onWailaRegistrar");
     }
 
     @Override
@@ -50,9 +50,12 @@ public class WailaEntityHandler implements IWailaEntityProvider {
         return currenttip;
     }
 
-    public static void callbackRegister(IWailaRegistrar register) {
+    public static void onWailaRegistrar(IWailaRegistrar register) {
 
         WailaEntityHandler instance = new WailaEntityHandler();
         register.registerBodyProvider(instance, Entity.class);
+        
+        for (Module module : Module.getModules())
+        	module.onWailaRegistrar(register);
     }
 }

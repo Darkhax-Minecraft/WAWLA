@@ -5,6 +5,7 @@ import java.util.List;
 
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
@@ -112,6 +113,16 @@ public class Module {
      * @param accessor: An accessor that can be used to pull information.
      */
     public void onWailaEntityTail(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+
+    }
+
+    /**
+     * This method is called when the mod is first registered with Waila. This can be used to add config
+     * options to Waila or to register nbt tags to be synchronized across client and server.
+     * 
+     * @param register: An instance of the IWailaRegistrar, provided by the Waila mod.
+     */
+    public static void onWailaRegistrar(IWailaRegistrar register) {
 
     }
 
