@@ -18,9 +18,13 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     }
 
     @Override
-    public Entity getWailaOverride(IWailaEntityAccessor entity, IWailaConfigHandler currenttip) {
+    public Entity getWailaOverride(IWailaEntityAccessor accessor, IWailaConfigHandler currenttip) {
 
-        return entity.getEntity();
+        Entity entity = accessor.getEntity();
+        for (Module module : Module.getModules())
+            module.onEntityOverride(entity, accessor);
+
+        return (entity != null) ? entity : null;
     }
 
     @Override
@@ -54,8 +58,8 @@ public class WailaEntityHandler implements IWailaEntityProvider {
 
         WailaEntityHandler instance = new WailaEntityHandler();
         register.registerBodyProvider(instance, Entity.class);
-        
+
         for (Module module : Module.getModules())
-        	module.onWailaRegistrar(register);
+            module.onWailaRegistrar(register);
     }
 }

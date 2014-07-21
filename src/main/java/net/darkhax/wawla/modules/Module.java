@@ -117,12 +117,36 @@ public class Module {
     }
 
     /**
-     * This method is called when the mod is first registered with Waila. This can be used to add config
-     * options to Waila or to register nbt tags to be synchronized across client and server.
+     * This method is called when the mod is first registered with Waila, Specifically when the
+     * WailaEntityHandler is registered. This can be used to add config options to Waila or to register
+     * nbt tags to be synchronized across client and server.
      * 
      * @param register: An instance of the IWailaRegistrar, provided by the Waila mod.
      */
     public static void onWailaRegistrar(IWailaRegistrar register) {
+
+    }
+
+    /**
+     * This method is called when Waila displays information on a block. This can be used to override the
+     * block used to generate a waila tooltip with another ItemStack.
+     * 
+     * @param stack: The ItemStack being displayed. This can be overridden to display a custom stack.
+     * @param accessor: An instance of IWailaDataAccessor containing many goodies for you to use.
+     */
+    public static void onBlockOverride(ItemStack stack, IWailaDataAccessor accessor) {
+
+    }
+
+    /**
+     * This method is called when Waila displays information on an Entity. This can be used to override
+     * the Entity being shown.
+     * 
+     * @param entity: The Entity that is being displayed. This can be overridden to display a custom
+     *        Entity.
+     * @param accessor: An instance of IWailaEntityAccessor containing many goodies for you to use.
+     */
+    public static void onEntityOverride(Entity entity, IWailaEntityAccessor accessor) {
 
     }
 
