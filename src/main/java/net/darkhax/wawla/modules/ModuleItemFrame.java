@@ -9,6 +9,11 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleItemFrame extends Module {
 
+    public ModuleItemFrame(boolean enabled) {
+
+        super(enabled);
+    }
+
     public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
 
         if (entity instanceof EntityItemFrame) {
@@ -16,7 +21,7 @@ public class ModuleItemFrame extends Module {
             EntityItemFrame frame = (EntityItemFrame) entity;
 
             if (frame.getDisplayedItem() != null)
-                tooltip.add(StatCollector.translateToLocal("tooltip.item") + ": " + frame.getDisplayedItem().getDisplayName());
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.item") + ": " + frame.getDisplayedItem().getDisplayName());
         }
     }
 }

@@ -13,8 +13,9 @@ public class ModulePets extends Module {
 
     public static ArrayList<String> nbtNames = new ArrayList<String>();
 
-    public ModulePets() {
+    public ModulePets(boolean enabled) {
 
+        super(enabled);
         nbtNames.add("Owner");
         nbtNames.add("OwnerName");
         nbtNames.add("owner");
@@ -29,10 +30,10 @@ public class ModulePets extends Module {
         for (String currentKey : nbtNames) {
 
             if (tag.hasKey(currentKey) && !tag.getString(currentKey).isEmpty())
-                tooltip.add(StatCollector.translateToLocal("tooltip.owner") + ": " + tag.getString(currentKey));
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + tag.getString(currentKey));
 
             if (extTag.hasKey(currentKey) && !extTag.getString(currentKey).isEmpty())
-                tooltip.add(StatCollector.translateToLocal("tooltip.owner") + ": " + extTag.getString(currentKey));
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + extTag.getString(currentKey));
         }
     }
 }

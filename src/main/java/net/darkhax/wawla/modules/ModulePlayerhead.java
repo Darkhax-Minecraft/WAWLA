@@ -12,16 +12,21 @@ import net.minecraft.util.StatCollector;
 
 public class ModulePlayerhead extends Module {
 
+    public ModulePlayerhead(boolean enabled) {
+
+        super(enabled);
+    }
+
     @Override
     public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
 
         if (access.getBlock() instanceof BlockSkull) {
 
             MovingObjectPosition pos = access.getPosition();
-            TileEntitySkull skull = (TileEntitySkull) access.getWorld().getTileEntity(pos.blockX, pos.blockY, pos.blockZ);
+            TileEntitySkull skull = (TileEntitySkull) access.getTileEntity();
             // This GameProfile stuff is cool but weird. func_1524259_a is a nbt thing for creating a
             // GameProfile using nbt.
-            tooltip.add(StatCollector.translateToLocal("tooltip.owner") + ": " + NBTUtil.func_152459_a(access.getNBTData().getCompoundTag("Owner")).getName());
+            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(access.getNBTData().getCompoundTag("Owner")).getName());
         }
     }
 }

@@ -8,6 +8,7 @@ import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.config.Configuration;
 
 public class Module {
 
@@ -151,6 +152,18 @@ public class Module {
      * @param accessor: An instance of IWailaEntityAccessor containing many goodies for you to use.
      */
     public void onEntityOverride(Entity entity, IWailaEntityAccessor accessor) {
+
+    }
+
+    /**
+     * TODO: set this up.
+     * This method is called when the Wawla configuration file is loaded. This method should only be used
+     * when the Waila configuration is not suitable for your needs. Waila configuration is handled by
+     * using the onWailaRegistrar.
+     * 
+     * @param config: Instance of the Configuration File.
+     */
+    public void onWawlaConfig(Configuration config) {
 
     }
 

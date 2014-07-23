@@ -12,6 +12,11 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleEntityEquipment extends Module {
 
+    public ModuleEntityEquipment(Boolean enabled) {
+
+        super(enabled);
+    }
+
     private static String[] itemTypes = { "heldItem", "feet", "leggings", "chestplate", "helmet" };
 
     @Override
@@ -19,7 +24,7 @@ public class ModuleEntityEquipment extends Module {
 
         if (entity instanceof EntityLiving) {
 
-            String ench = "Enchantments: ";
+            String ench = StatCollector.translateToLocal("tooltip.wawla") + ": ";
             EntityLiving living = (EntityLiving) entity;
 
             for (int i = 0; i < 5; i++) {
@@ -27,7 +32,7 @@ public class ModuleEntityEquipment extends Module {
                 ItemStack stack = living.getEquipmentInSlot(i);
                 if (stack != null) {
 
-                    tooltip.add(StatCollector.translateToLocal("tooltip." + itemTypes[i]) + ": " + stack.getDisplayName());
+                    tooltip.add(StatCollector.translateToLocal("tooltip.waila" + itemTypes[i]) + ": " + stack.getDisplayName());
                     Enchantment[] enchantments = Utilities.getEnchantmentsFromStack(stack, false);
 
                     if (accessor.getPlayer().isSneaking()) {
@@ -45,7 +50,7 @@ public class ModuleEntityEquipment extends Module {
             if (accessor.getPlayer().isSneaking()) {
 
                 if (ench.equals("Enchantments: "))
-                    tooltip.add("This entity has no enchantments!");
+                    tooltip.add(StatCollector.translateToLocal("tooltip.wawla.noEnchantment"));
 
                 else {
 

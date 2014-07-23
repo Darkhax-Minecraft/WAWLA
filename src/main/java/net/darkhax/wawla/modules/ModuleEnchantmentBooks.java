@@ -11,6 +11,11 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleEnchantmentBooks extends Module {
 
+    public ModuleEnchantmentBooks(Boolean enabled) {
+
+        super(enabled);
+    }
+
     /**
      * A blacklist that enchantments can be added to. Enchantments can be added to this list through IMC.
      */
@@ -23,10 +28,8 @@ public class ModuleEnchantmentBooks extends Module {
 
             Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
 
-            if (!blacklist.contains(ench)) {
-
+            if (!blacklist.contains(ench))
                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
-            }
         }
     }
 }
