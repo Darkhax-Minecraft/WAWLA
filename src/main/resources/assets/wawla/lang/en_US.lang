@@ -1,0 +1,26 @@
+#Commands
+command.print.usage=
+command.print.success=Saved list of missing strings as %s
+
+#Tool Tips
+tooltip.wawla.heldItem=Held Item
+tooltip.wawla.feet=Feet
+tooltip.wawla.leggings=Leggings
+tooltip.wawla.chestplate=Chestplate
+tooltip.wawla.helmet=Helmet
+tooltip.wawla.item=Item
+tooltip.wawla.owner=Owner
+tooltip.wawla.jumpStrength=Jump Strength
+tooltip.wawla.speed=Speed
+tooltip.wawla.canHarvest=Harvestable
+tooltip.wawla.toolType=Correct Tool
+tooltip.wawla.yes=§aYes
+tooltip.wawla.no=§4No
+tooltip.wawla.burnTime=Burn Time
+tooltip.wawla.seconds=Seconds
+tooltip.wawla.input=Input
+tooltip.wawla.output=Output
+tooltip.wawla.fuel=Fuel
+
+#Fixed/Missing Strings
+tile.null.name=The author of this block was too lazy to set a block name

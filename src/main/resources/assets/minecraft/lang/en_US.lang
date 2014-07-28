@@ -28,7 +28,7 @@ description.enchantment.fishingSpeed=This enchantment decreases the time it take
 command.print.usage=
 command.print.success=Saved list of missing strings as %s
 
-#tooltips
+#Wawla
 tooltip.wawla.heldItem=Held Item
 tooltip.wawla.feet=Feet
 tooltip.wawla.leggings=Leggings
@@ -47,21 +47,3 @@ tooltip.wawla.seconds=Seconds
 tooltip.wawla.input=Input
 tooltip.wawla.output=Output
 tooltip.wawla.fuel=Fuel
-
-#Pixelmon
-tooltip.wawla.pixelmon.male=male
-tooltip.wawla.pixelmon.female=female
-tooltip.wawla.pixelmon.ability=Ability
-tooltip.wawla.pixelmon.happiness=Happiness
-tooltip.wawla.pixelmon.helditem=Held Item
-tooltip.wawla.pixelmon.attack=Attack
-tooltip.wawla.pixelmon.defence=Defence
-tooltip.wawla.pixelmon.health=HP
-tooltip.wawla.pixelmon.spattack=Special Attack
-tooltip.wawla.pixelmon.spdefence=Special Defence
-tooltip.wawla.pixelmon.speed=Speed
-tooltip.wawla.pixelmon.iv=IV
-tooltip.wawla.pixelmon.ev=EV
-
-tooltip.wawla.pixelmon.growth=Growth
-tooltip.wawla.pixelmon.product=Product

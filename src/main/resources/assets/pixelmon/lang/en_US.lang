@@ -1,0 +1,20 @@
+#Tooltips
+tooltip.wawla.pixelmon.male=male
+tooltip.wawla.pixelmon.female=female
+tooltip.wawla.pixelmon.ability=Ability
+tooltip.wawla.pixelmon.happiness=Happiness
+tooltip.wawla.pixelmon.helditem=Held Item
+tooltip.wawla.pixelmon.none=None
+tooltip.wawla.pixelmon.attack=Attack
+tooltip.wawla.pixelmon.defence=Defence
+tooltip.wawla.pixelmon.health=HP
+tooltip.wawla.pixelmon.spattack=Special Attack
+tooltip.wawla.pixelmon.spdefence=Special Defence
+tooltip.wawla.pixelmon.speed=Speed
+tooltip.wawla.pixelmon.iv=IV
+tooltip.wawla.pixelmon.ev=EV
+tooltip.wawla.pixelmon.growth=Growth
+tooltip.wawla.pixelmon.product=Product
+
+#Fixed Strings
+entity.pixelmon.Pixelmon.name=Pixelmon
