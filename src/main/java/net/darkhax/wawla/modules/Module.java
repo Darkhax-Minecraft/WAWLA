@@ -27,20 +27,7 @@ public class Module {
         if (enabled) {
 
             modules.add(this);
-            onModuleLoaded(enabled, this.getClass());
         }
-    }
-
-    /**
-     * This method is called when a module is initialized. This can be used for things such as
-     * establishing class files or other things you would need to do before any features actually come
-     * into place.
-     * 
-     * @param enabled: is the module enabled?
-     * @param moduleClass: The class for the module.
-     */
-    public void onModuleLoaded(boolean enabled, Class moduleClass) {
-
     }
 
     /**
