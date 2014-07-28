@@ -33,6 +33,7 @@ public class Wawla {
         new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
         proxy.registerSidedModules();
+        proxy.registerSidedPlugins();
     }
 
     @EventHandler

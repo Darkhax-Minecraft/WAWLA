@@ -61,5 +61,6 @@ public class WailaBlockHandler implements IWailaDataProvider {
         register.registerHeadProvider(instance, Block.class);
         register.registerBodyProvider(instance, Block.class);
         register.registerTailProvider(instance, Block.class);
+        register.registerStackProvider(instance, Block.class);
     }
 }

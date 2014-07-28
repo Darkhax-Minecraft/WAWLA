@@ -60,6 +60,7 @@ public class WailaEntityHandler implements IWailaEntityProvider {
         register.registerHeadProvider(instance, Entity.class);
         register.registerBodyProvider(instance, Entity.class);
         register.registerTailProvider(instance, Entity.class);
+        register.registerOverrideEntityProvider(instance, Entity.class);
 
         for (Module module : Module.getModules())
             module.onWailaRegistrar(register);

@@ -49,13 +49,10 @@ public class ModuleEntityEquipment extends Module {
 
             if (accessor.getPlayer().isSneaking()) {
 
-                if (ench.equals("Enchantments: "))
-                    tooltip.add(StatCollector.translateToLocal("tooltip.wawla.noEnchantment"));
-
-                else {
+                if (!ench.equals("Enchantments: ")) {
 
                     ench = ench.substring(0, ench.length() - 2);
-                    Utilities.wrapStringToList(ench, 50, false, tooltip);
+                    // Utilities.wrapStringToList(ench, 50, false, tooltip);
                 }
             }
         }
