@@ -12,7 +12,7 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleEntityEquipment extends Module {
 
-    public ModuleEntityEquipment(Boolean enabled) {
+    public ModuleEntityEquipment(boolean enabled) {
 
         super(enabled);
     }

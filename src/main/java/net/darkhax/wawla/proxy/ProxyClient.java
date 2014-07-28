@@ -32,13 +32,13 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedModules() {
 
-        new ModuleEnchantmentBooks(false);
-        new ModuleEntityEquipment(false);
-        new ModuleItemFrame(false);
-        new ModuleHorses(false);
-        new ModulePets(false);
-        new ModuleHarvest(false);
-        new ModulePlayerhead(false);
-        new ModuleFurnace(false);
+        new ModuleEnchantmentBooks(true);
+        new ModuleEntityEquipment(true);
+        new ModuleItemFrame(true);
+        new ModuleHorses(true);
+        new ModulePets(true);
+        new ModuleHarvest(true);
+        new ModulePlayerhead(true);
+        new ModuleFurnace(true);
     }
 }

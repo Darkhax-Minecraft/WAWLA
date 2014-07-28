@@ -11,7 +11,7 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleEnchantmentBooks extends Module {
 
-    public ModuleEnchantmentBooks(Boolean enabled) {
+    public ModuleEnchantmentBooks(boolean enabled) {
 
         super(enabled);
     }
