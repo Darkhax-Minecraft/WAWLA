@@ -11,6 +11,7 @@ import net.darkhax.wawla.modules.ModuleHorses;
 import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
+import net.darkhax.wawla.modules.addons.ModulePixelmon;
 
 public class ProxyClient extends ProxyCommon {
 
@@ -40,5 +41,11 @@ public class ProxyClient extends ProxyCommon {
         new ModuleHarvest(true);
         new ModulePlayerhead(true);
         new ModuleFurnace(true);
+    }
+
+    @Override
+    public void registerSidedPlugins() {
+
+        new ModulePixelmon(true);
     }
 }

@@ -16,4 +16,8 @@ public class ProxyCommon {
     public void registerSidedModules() {
 
     }
+
+    public void registerSidedPlugins() {
+
+    }
 }
