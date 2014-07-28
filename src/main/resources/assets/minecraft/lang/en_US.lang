@@ -29,21 +29,39 @@ command.print.usage=
 command.print.success=Saved list of missing strings as %s
 
 #tooltips
-tooltip.heldItem=Held Item
-tooltip.feet=Feet
-tooltip.leggings=Leggings
-tooltip.chestplate=Chestplate
-tooltip.helmet=Helmet
-tooltip.item=Item
-tooltip.owner=Owner
-tooltip.jumpStrength=Jump Strength
-tooltip.speed=Speed
-tooltip.canHarvest=Harvestable
-tooltip.toolType=Correct Tool
-tooltip.yes=§aYes
-tooltip.no=§4No
-tooltip.burnTime=Burn Time
-tooltip.seconds=Seconds
-tooltip.input=Input
-tooltip.output=Output
-tooltip.fuel=Fuel
+tooltip.wawla.heldItem=Held Item
+tooltip.wawla.feet=Feet
+tooltip.wawla.leggings=Leggings
+tooltip.wawla.chestplate=Chestplate
+tooltip.wawla.helmet=Helmet
+tooltip.wawla.item=Item
+tooltip.wawla.owner=Owner
+tooltip.wawla.jumpStrength=Jump Strength
+tooltip.wawla.speed=Speed
+tooltip.wawla.canHarvest=Harvestable
+tooltip.wawla.toolType=Correct Tool
+tooltip.wawla.yes=§aYes
+tooltip.wawla.no=§4No
+tooltip.wawla.burnTime=Burn Time
+tooltip.wawla.seconds=Seconds
+tooltip.wawla.input=Input
+tooltip.wawla.output=Output
+tooltip.wawla.fuel=Fuel
+
+#Pixelmon
+tooltip.wawla.pixelmon.male=male
+tooltip.wawla.pixelmon.female=female
+tooltip.wawla.pixelmon.ability=Ability
+tooltip.wawla.pixelmon.happiness=Happiness
+tooltip.wawla.pixelmon.helditem=Held Item
+tooltip.wawla.pixelmon.attack=Attack
+tooltip.wawla.pixelmon.defence=Defence
+tooltip.wawla.pixelmon.health=HP
+tooltip.wawla.pixelmon.spattack=Special Attack
+tooltip.wawla.pixelmon.spdefence=Special Defence
+tooltip.wawla.pixelmon.speed=Speed
+tooltip.wawla.pixelmon.iv=IV
+tooltip.wawla.pixelmon.ev=EV
+
+tooltip.wawla.pixelmon.growth=Growth
+tooltip.wawla.pixelmon.product=Product
