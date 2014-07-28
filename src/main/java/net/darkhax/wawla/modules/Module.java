@@ -24,8 +24,23 @@ public class Module {
      */
     public Module(boolean enabled) {
 
-        if (enabled)
+        if (enabled) {
+
             modules.add(this);
+            onModuleLoaded(enabled, this.getClass());
+        }
+    }
+
+    /**
+     * This method is called when a module is initialized. This can be used for things such as
+     * establishing class files or other things you would need to do before any features actually come
+     * into place.
+     * 
+     * @param enabled: is the module enabled?
+     * @param moduleClass: The class for the module.
+     */
+    public void onModuleLoaded(boolean enabled, Class moduleClass) {
+
     }
 
     /**
@@ -156,10 +171,9 @@ public class Module {
     }
 
     /**
-     * TODO: set this up.
-     * This method is called when the Wawla configuration file is loaded. This method should only be used
-     * when the Waila configuration is not suitable for your needs. Waila configuration is handled by
-     * using the onWailaRegistrar.
+     * TODO: set this up. This method is called when the Wawla configuration file is loaded. This method
+     * should only be used when the Waila configuration is not suitable for your needs. Waila
+     * configuration is handled by using the onWailaRegistrar.
      * 
      * @param config: Instance of the Configuration File.
      */
