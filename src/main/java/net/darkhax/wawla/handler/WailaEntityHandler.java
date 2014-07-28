@@ -57,7 +57,9 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     public static void onWailaRegistrar(IWailaRegistrar register) {
 
         WailaEntityHandler instance = new WailaEntityHandler();
+        register.registerHeadProvider(instance, Entity.class);
         register.registerBodyProvider(instance, Entity.class);
+        register.registerTailProvider(instance, Entity.class);
 
         for (Module module : Module.getModules())
             module.onWailaRegistrar(register);

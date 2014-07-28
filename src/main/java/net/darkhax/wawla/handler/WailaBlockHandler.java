@@ -58,6 +58,8 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public static void callbackRegister(IWailaRegistrar register) {
 
         WailaBlockHandler instance = new WailaBlockHandler();
+        register.registerHeadProvider(instance, Block.class);
         register.registerBodyProvider(instance, Block.class);
+        register.registerTailProvider(instance, Block.class);
     }
 }
