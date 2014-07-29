@@ -2,7 +2,9 @@ package net.darkhax.wawla.modules;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTUtil;
@@ -18,7 +20,7 @@ public class ModulePlayerhead extends Module {
     }
 
     @Override
-    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
         if (access.getBlock() instanceof BlockSkull) {
 
@@ -28,5 +30,10 @@ public class ModulePlayerhead extends Module {
             // GameProfile using nbt.
             tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(access.getNBTData().getCompoundTag("Owner")).getName());
         }
+    }
+
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
+        register.addConfig("vanillaMC", "wawla.showHeadName");
     }
 }

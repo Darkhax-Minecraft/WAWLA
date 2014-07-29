@@ -24,3 +24,12 @@ tooltip.wawla.fuel=Fuel
 
 #Fixed/Missing Strings
 tile.null.name=The author of this block was too lazy to set a block name
+
+#Waila Fix
+screen.button.back=Back
+screen.button.yes=Yes
+screen.button.no=No
+screen.button.waila=Waila
+screen.button.modules=Modules
+option.general.showhp=Should mobs show HP?
+option.general.showcrop=Should crops show?

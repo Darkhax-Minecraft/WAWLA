@@ -2,6 +2,7 @@ package net.darkhax.wawla.modules.addons;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
@@ -38,14 +39,14 @@ public class ModulePixelmon extends Module {
     }
 
     @Override
-    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
         createApricornTooltip(access.getTileEntity(), tooltip, access.getBlock());
         createApricornTooltip(access.getWorld().getTileEntity(access.getPosition().blockX, access.getPosition().blockY - 1, access.getPosition().blockZ), tooltip, access.getBlock());
     }
 
     @Override
-    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         if (isPixelmon(entity)) {
 
@@ -130,17 +131,17 @@ public class ModulePixelmon extends Module {
 
         return (curStage / maxStage) * 100;
     }
-    
+
     String generateItemNameFromID(int itemID) {
-        
+
         if (itemID > -1) {
-            
+
             ItemStack stack = new ItemStack(Item.getItemById(itemID));
             if (stack != null)
                 return stack.getDisplayName();
         }
-        
-        return StatCollector.translateToLocal(tooltipKey + "none"); 
+
+        return StatCollector.translateToLocal(tooltipKey + "none");
     }
 
     /**

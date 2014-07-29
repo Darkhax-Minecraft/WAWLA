@@ -23,7 +23,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
 
         ItemStack stack = accessor.getStack();
         for (Module module : Module.getModules())
-            module.onBlockOverride(stack, accessor);
+            module.onBlockOverride(stack, accessor, config);
 
         return (stack != null) ? stack : null;
     }
@@ -32,7 +32,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaBlockName(itemStack, currenttip, accessor);
+            module.onWailaBlockName(itemStack, currenttip, accessor, config);
 
         return currenttip;
     }
@@ -41,7 +41,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaBlockDescription(itemStack, currenttip, accessor);
+            module.onWailaBlockDescription(itemStack, currenttip, accessor, config);
 
         return currenttip;
     }
@@ -50,7 +50,7 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaBlockTail(itemStack, currenttip, accessor);
+            module.onWailaBlockTail(itemStack, currenttip, accessor, config);
 
         return currenttip;
     }

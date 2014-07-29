@@ -18,11 +18,11 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     }
 
     @Override
-    public Entity getWailaOverride(IWailaEntityAccessor accessor, IWailaConfigHandler currenttip) {
+    public Entity getWailaOverride(IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         Entity entity = accessor.getEntity();
         for (Module module : Module.getModules())
-            module.onEntityOverride(entity, accessor);
+            module.onEntityOverride(entity, accessor, config);
 
         return (entity != null) ? entity : null;
     }
@@ -31,7 +31,7 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     public List<String> getWailaHead(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaEntityName(entity, currenttip, accessor);
+            module.onWailaEntityName(entity, currenttip, accessor, config);
 
         return currenttip;
     }
@@ -40,7 +40,7 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     public List<String> getWailaBody(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaEntityDescription(entity, currenttip, accessor);
+            module.onWailaEntityDescription(entity, currenttip, accessor, config);
 
         return currenttip;
     }
@@ -49,7 +49,7 @@ public class WailaEntityHandler implements IWailaEntityProvider {
     public List<String> getWailaTail(Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         for (Module module : Module.getModules())
-            module.onWailaEntityTail(entity, currenttip, accessor);
+            module.onWailaEntityTail(entity, currenttip, accessor, config);
 
         return currenttip;
     }

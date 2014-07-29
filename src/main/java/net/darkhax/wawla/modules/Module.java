@@ -3,12 +3,12 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
 
 public class Module {
 
@@ -58,8 +58,9 @@ public class Module {
      * @param stack: An instance of an ItemStack that contains data about the block being looked at.
      * @param tooltip: A list of all the current text being displayed about the block.
      * @param access: An accessor that can be used to pull a bunch of miscellaneous information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaBlockName(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockName(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
     }
 
@@ -70,8 +71,9 @@ public class Module {
      * @param stack: An instance of an ItemStack that contains data about the block being looked at.
      * @param tooltip: A list of all the current text being displayed about the block.
      * @param access: An accessor that can be used to pull a bunch of miscellaneous information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
     }
 
@@ -82,8 +84,9 @@ public class Module {
      * @param stack: An instance of an ItemStack that contains data about the block being looked at.
      * @param tooltip: A list of all the current text being displayed about the block.
      * @param access: An accessor that can be used to pull a bunch of miscellaneous information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaBlockTail(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockTail(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
     }
 
@@ -94,8 +97,9 @@ public class Module {
      * @param entity: An instance of the entity that is currently being looked at by the player.
      * @param tooltip: An list of all the current text being displayed in the top part of the tooltip.
      * @param accessor: An accessor that can be used to pull information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaEntityName(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+    public void onWailaEntityName(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
     }
 
@@ -106,8 +110,9 @@ public class Module {
      * @param entity: An instance of the entity that is currently being looked at by the player.
      * @param tooltip: An list of all the current text being displayed in the middle part of the tooltip.
      * @param accessor: An accessor that can be used to pull information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
     }
 
@@ -118,8 +123,9 @@ public class Module {
      * @param entity: An instance of the entity that is currently being looked at by the player.
      * @param tooltip: An list of all the current text being displayed in the bottom part of the tooltip.
      * @param accessor: An accessor that can be used to pull information.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onWailaEntityTail(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+    public void onWailaEntityTail(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
     }
 
@@ -140,8 +146,9 @@ public class Module {
      * 
      * @param stack: The ItemStack being displayed. This can be overridden to display a custom stack.
      * @param accessor: An instance of IWailaDataAccessor containing many goodies for you to use.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onBlockOverride(ItemStack stack, IWailaDataAccessor accessor) {
+    public void onBlockOverride(ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
     }
 
@@ -152,19 +159,9 @@ public class Module {
      * @param entity: The Entity that is being displayed. This can be overridden to display a custom
      *        Entity.
      * @param accessor: An instance of IWailaEntityAccessor containing many goodies for you to use.
+     * @param config: Access to the Waila Configuration.
      */
-    public void onEntityOverride(Entity entity, IWailaEntityAccessor accessor) {
-
-    }
-
-    /**
-     * TODO: set this up. This method is called when the Wawla configuration file is loaded. This method
-     * should only be used when the Waila configuration is not suitable for your needs. Waila
-     * configuration is handled by using the onWailaRegistrar.
-     * 
-     * @param config: Instance of the Configuration File.
-     */
-    public void onWawlaConfig(Configuration config) {
+    public void onEntityOverride(Entity entity, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
     }
 

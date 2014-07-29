@@ -2,6 +2,7 @@ package net.darkhax.wawla.modules;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ public class ModuleFurnace extends Module {
     }
 
     @Override
-    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access) {
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
         if (access.getTileEntity() != null && access.getTileEntity() instanceof TileEntityFurnace) {
 

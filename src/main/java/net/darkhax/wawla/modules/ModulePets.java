@@ -3,6 +3,7 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
@@ -23,7 +24,7 @@ public class ModulePets extends Module {
     }
 
     @Override
-    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor) {
+    public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
         NBTTagCompound tag = Utilities.convertEntityToNbt(entity);
         NBTTagCompound extTag = entity.getEntityData();
