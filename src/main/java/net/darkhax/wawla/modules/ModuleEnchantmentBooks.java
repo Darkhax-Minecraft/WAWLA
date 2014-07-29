@@ -3,6 +3,7 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemEnchantedBook;
@@ -31,5 +32,12 @@ public class ModuleEnchantmentBooks extends Module {
             if (!blacklist.contains(ench))
                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
         }
+    }
+    
+    @Override
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
+        //TODO need way to get IWailaConfiguration
+        register.addConfig("Wawla", "wawla.showEnchDesc");
     }
 }

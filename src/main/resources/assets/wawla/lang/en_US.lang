@@ -25,6 +25,8 @@ tooltip.wawla.fuel=Fuel
 #Fixed/Missing Strings
 tile.null.name=The author of this block was too lazy to set a block name
 
+#Module Options
+option.wawla.showhead=Show Player Head Names?
 #Waila Fix
 screen.button.back=Back
 screen.button.yes=Yes

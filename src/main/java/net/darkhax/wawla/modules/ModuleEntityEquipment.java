@@ -4,6 +4,7 @@ import java.util.List;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -23,7 +24,7 @@ public class ModuleEntityEquipment extends Module {
     @Override
     public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
-        if (entity instanceof EntityLiving) {
+        if (entity instanceof EntityLiving && config.getConfig("wawla.showEquipment")) {
 
             String ench = StatCollector.translateToLocal("tooltip.wawla") + ": ";
             EntityLiving living = (EntityLiving) entity;
@@ -57,5 +58,11 @@ public class ModuleEntityEquipment extends Module {
                 }
             }
         }
+    }
+    
+    @Override
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
+        register.addConfig("Wawla", "wawla.showEquipment");
     }
 }
