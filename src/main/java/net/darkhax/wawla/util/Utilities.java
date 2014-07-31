@@ -134,4 +134,23 @@ public class Utilities {
         entity.writeToNBT(tag);
         return tag;
     }
+
+    /**
+     * Generates an array of strings containing elements from an enum class. 
+     * @param enumClass: The enum class. 
+     * @return String[]: An array of strings that represent the names of the elements in an enum. 
+     */
+    public static String[] generateElementArray(Class enumClass) {
+        
+        if (enumClass != null) {
+            Object[] constants = enumClass.getEnumConstants();
+            String[] elements = new String[constants.length];
+            for (int i = 0; i < constants.length; i++) 
+                elements[i] = constants[i].toString();
+            
+            return elements;
+        }
+        
+        return null;
+    }
 }

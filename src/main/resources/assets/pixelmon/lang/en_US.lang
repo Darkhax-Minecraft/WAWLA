@@ -16,6 +16,7 @@ tooltip.wawla.pixelmon.ev=EV
 tooltip.wawla.pixelmon.growth=Growth
 tooltip.wawla.pixelmon.product=Product
 tooltip.wawla.pixelmon.nature=Nature
+tooltip.wawla.pixelmon.size=Size
 
 #Fixed Strings
 entity.pixelmon.Pixelmon.name=Pixelmon
@@ -25,5 +26,6 @@ option.wawla.pixelmon.showFriendship=Show Happiness?
 option.wawla.pixelmon.showApricornProduct=Show Apricorn Type?
 option.wawla.pixelmon.showApricornGrowth=Show Apricorn Growth?
 option.wawla.pixelmon.showAbility=Show Abilities?
-option.wawla.pixelmon.showhelditem=Show Held Item?
+option.wawla.pixelmon.showHeldItem=Show Held Item?
 option.wawla.pixelmon.showNature=Show Natures?
+option.wawla.pixelmon.showSize=Show Size?

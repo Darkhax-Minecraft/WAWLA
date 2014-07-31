@@ -21,17 +21,19 @@ public class ModulePixelmon extends Module {
     public static Class classEntityPixelmon = null;
     public static Class classTileEntityApricornTree = null;
     public static Class enumNature = null;
-    public static Class enumGrown = null;
+    public static Class enumGrowth = null;
     
     private String tooltipKey = "tooltip.wawla.pixelmon.";
     private String showAbility = "wawla.pixelmon.showAbility";
     private String showFriendship = "wawla.pixelmon.showFriendship";
     private String showHeldItem = "wawla.pixelmon.showHeldItem";
     private String showNature = "wawla.pixelmon.showNature";
+    private String showSize = "wawla.pixelmon.showSize";
     private String showApricornGrowth = "wawla.pixelmon.showApricornGrowth";
     private String showApricornProduct = "wawla.pixelmon.showApricornProduct";
     
     private static String[] natureList = null;
+    private static String[] sizeList = null;
 
     public ModulePixelmon(Boolean Enabled) {
 
@@ -42,6 +44,7 @@ public class ModulePixelmon extends Module {
             classEntityPixelmon = Class.forName("com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon");
             classTileEntityApricornTree = Class.forName("com.pixelmonmod.pixelmon.blocks.apricornTrees.TileEntityApricornTree");
             enumNature = Class.forName("com.pixelmonmod.pixelmon.enums.EnumNature");
+            enumGrowth = Class.forName("com.pixelmonmod.pixelmon.enums.EnumGrowth");
         }
 
         catch (ClassNotFoundException e) {
@@ -71,6 +74,9 @@ public class ModulePixelmon extends Module {
                 if (config.getConfig(showAbility))
                     tooltip.add(StatCollector.translateToLocal(tooltipKey + "ability") + ": " + tag.getString("Ability"));
 
+                if (sizeList != null && config.getConfig(showSize))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "size") + ": " + sizeList[tag.getShort("Growth")]);
+                
                 if (config.getConfig(showFriendship))
                     tooltip.add(StatCollector.translateToLocal(tooltipKey + "happiness") + ": " + tag.getInteger("Friendship"));
 
@@ -89,9 +95,11 @@ public class ModulePixelmon extends Module {
         register.addConfig("Pixelmon", showFriendship);
         register.addConfig("Pixelmon", showHeldItem);
         register.addConfig("Pixelmon", showNature);
+        register.addConfig("Pixelmon", showSize);
         register.addConfig("Pixelmon", showApricornGrowth);
         register.addConfig("Pixelmon", showApricornProduct);
-        natureList = generateNatureList();
+        natureList = Utilities.generateElementArray(enumNature);
+        sizeList = Utilities.generateElementArray(enumGrowth);
     }
 
     /**
@@ -199,22 +207,5 @@ public class ModulePixelmon extends Module {
             if (config.getConfig(showApricornProduct))
                 tooltip.add(StatCollector.translateToLocal(tooltipKey + "product") + ": " + product.substring(9, product.length() - 5));
         }
-    }
-    
-    /**
-     * Creates a list of natures by grabbing the elements from EnumNature
-     */
-    static String[] generateNatureList() {
-        
-        if (enumNature != null) {
-            Object[] constants = enumNature.getEnumConstants();
-            String[] natures = new String[constants.length];
-            for (int i = 0; i < constants.length; i++) 
-                natures[i] = constants[i].toString();
-            
-            return natures;
-        }
-        
-        return null;
     }
 }
