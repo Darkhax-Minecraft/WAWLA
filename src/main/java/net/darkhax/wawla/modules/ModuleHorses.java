@@ -4,6 +4,7 @@ import java.util.List;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -23,8 +24,19 @@ public class ModuleHorses extends Module {
         if (entity instanceof EntityHorse) {
 
             EntityHorse horse = (EntityHorse) entity;
-            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.jumpStrength") + ": " + Utilities.round(horse.getHorseJumpStrength(), 4));
-            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
+
+            if (config.getConfig("wawla.horse.showJump"))
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.jumpStrength") + ": " + Utilities.round(horse.getHorseJumpStrength(), 4));
+
+            if (config.getConfig("wawla.horse.showSpeed"))
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
         }
+    }
+
+    @Override
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
+        register.addConfig("Wawla", "wawla.horse.showJump");
+        register.addConfig("Wawla", "wawla.horse.showSpeed");
     }
 }

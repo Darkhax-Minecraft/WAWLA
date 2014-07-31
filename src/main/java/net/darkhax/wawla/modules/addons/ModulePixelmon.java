@@ -20,7 +20,18 @@ public class ModulePixelmon extends Module {
 
     public static Class classEntityPixelmon = null;
     public static Class classTileEntityApricornTree = null;
+    public static Class enumNature = null;
+    public static Class enumGrown = null;
+    
     private String tooltipKey = "tooltip.wawla.pixelmon.";
+    private String showAbility = "wawla.pixelmon.showAbility";
+    private String showFriendship = "wawla.pixelmon.showFriendship";
+    private String showHeldItem = "wawla.pixelmon.showHeldItem";
+    private String showNature = "wawla.pixelmon.showNature";
+    private String showApricornGrowth = "wawla.pixelmon.showApricornGrowth";
+    private String showApricornProduct = "wawla.pixelmon.showApricornProduct";
+    
+    private static String[] natureList = null;
 
     public ModulePixelmon(Boolean Enabled) {
 
@@ -30,6 +41,7 @@ public class ModulePixelmon extends Module {
 
             classEntityPixelmon = Class.forName("com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon");
             classTileEntityApricornTree = Class.forName("com.pixelmonmod.pixelmon.blocks.apricornTrees.TileEntityApricornTree");
+            enumNature = Class.forName("com.pixelmonmod.pixelmon.enums.EnumNature");
         }
 
         catch (ClassNotFoundException e) {
@@ -41,8 +53,8 @@ public class ModulePixelmon extends Module {
     @Override
     public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
-        createApricornTooltip(access.getTileEntity(), tooltip, access.getBlock());
-        createApricornTooltip(access.getWorld().getTileEntity(access.getPosition().blockX, access.getPosition().blockY - 1, access.getPosition().blockZ), tooltip, access.getBlock());
+        createApricornTooltip(access.getTileEntity(), tooltip, access.getBlock(), config);
+        createApricornTooltip(access.getWorld().getTileEntity(access.getPosition().blockX, access.getPosition().blockY - 1, access.getPosition().blockZ), tooltip, access.getBlock(), config);
     }
 
     @Override
@@ -53,9 +65,17 @@ public class ModulePixelmon extends Module {
             NBTTagCompound tag = accessor.getNBTData();
             if (accessor.getPlayer().isSneaking()) {
 
-                tooltip.add(StatCollector.translateToLocal(tooltipKey + "ability") + ": " + tag.getString("Ability"));
-                tooltip.add(StatCollector.translateToLocal(tooltipKey + "happiness") + ": " + tag.getInteger("Friendship"));
-                tooltip.add(StatCollector.translateToLocal(tooltipKey + "helditem") + ": " + generateItemNameFromID(tag.getInteger("HeldItem")));
+                if (natureList != null && config.getConfig(showNature))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "nature") + ": " + natureList[tag.getShort("Nature")]);
+                    
+                if (config.getConfig(showAbility))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "ability") + ": " + tag.getString("Ability"));
+
+                if (config.getConfig(showFriendship))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "happiness") + ": " + tag.getInteger("Friendship"));
+
+                if (config.getConfig(showHeldItem))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "helditem") + ": " + generateItemNameFromID(tag.getInteger("HeldItem")));
             }
         }
     }
@@ -65,6 +85,13 @@ public class ModulePixelmon extends Module {
 
         register.registerSyncedNBTKey("*", classEntityPixelmon);
         register.registerSyncedNBTKey("*", classTileEntityApricornTree);
+        register.addConfig("Pixelmon", showAbility);
+        register.addConfig("Pixelmon", showFriendship);
+        register.addConfig("Pixelmon", showHeldItem);
+        register.addConfig("Pixelmon", showNature);
+        register.addConfig("Pixelmon", showApricornGrowth);
+        register.addConfig("Pixelmon", showApricornProduct);
+        natureList = generateNatureList();
     }
 
     /**
@@ -90,7 +117,7 @@ public class ModulePixelmon extends Module {
     }
 
     /**
-     * Uses a short value to determin the gender of a pokemon. 1=male 2=female 3=none
+     * Uses a short value to determine the gender of a pokemon. 1=male 2=female 3=none
      * 
      * @param gender
      * @return
@@ -132,6 +159,11 @@ public class ModulePixelmon extends Module {
         return (curStage / maxStage) * 100;
     }
 
+    /**
+     * Uses an integer based item id to create an item name. 
+     * @param itemID: item name.
+     * @return String: Name of the item.
+     */
     String generateItemNameFromID(int itemID) {
 
         if (itemID > -1) {
@@ -149,19 +181,40 @@ public class ModulePixelmon extends Module {
      * this method is due to the way apricorn blocks are handled. Apricorns are a double block structures
      * and the top block does not contain the correct information. This corrects for that.
      * 
-     * @param entity: A possible TileEntity related to the apricorn tree. It is alright for this variable
+     * @param entity: A possible TileEntity related to the apricorn tree. It is okay for this variable
      *        to be null.
      * @param tooltip: The list of tool tips.
      * @param block: The name of the block. This is used to generate the name of the product.
      */
-    void createApricornTooltip(TileEntity entity, List<String> tooltip, Block block) {
+    void createApricornTooltip(TileEntity entity, List<String> tooltip, Block block, IWailaConfigHandler config) {
 
         if (entity != null && isApricorn(entity)) {
 
             float meta = entity.getWorldObj().getBlockMetadata(entity.xCoord, entity.yCoord, entity.zCoord);
             String product = Block.blockRegistry.getNameForObject(block);
-            tooltip.add(StatCollector.translateToLocal(tooltipKey + "growth") + ": " + Utilities.round(getGrowth(meta, 5), 0) + "%");
-            tooltip.add(StatCollector.translateToLocal(tooltipKey + "product") + ": " + product.substring(9, product.length() - 5));
+
+            if (config.getConfig(showApricornGrowth))
+                tooltip.add(StatCollector.translateToLocal(tooltipKey + "growth") + ": " + Utilities.round(getGrowth(meta, 5), 0) + "%");
+
+            if (config.getConfig(showApricornProduct))
+                tooltip.add(StatCollector.translateToLocal(tooltipKey + "product") + ": " + product.substring(9, product.length() - 5));
         }
+    }
+    
+    /**
+     * Creates a list of natures by grabbing the elements from EnumNature
+     */
+    static String[] generateNatureList() {
+        
+        if (enumNature != null) {
+            Object[] constants = enumNature.getEnumConstants();
+            String[] natures = new String[constants.length];
+            for (int i = 0; i < constants.length; i++) 
+                natures[i] = constants[i].toString();
+            
+            return natures;
+        }
+        
+        return null;
     }
 }

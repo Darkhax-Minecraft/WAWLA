@@ -59,7 +59,7 @@ public class ModuleEntityEquipment extends Module {
             }
         }
     }
-    
+
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 

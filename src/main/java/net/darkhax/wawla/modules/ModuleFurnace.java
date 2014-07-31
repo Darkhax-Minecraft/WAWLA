@@ -26,20 +26,20 @@ public class ModuleFurnace extends Module {
             TileEntityFurnace furnace = (TileEntityFurnace) access.getTileEntity();
             int burnTime = access.getNBTData().getInteger("BurnTime") / 20;
 
-            if (burnTime > 0)
+            if (burnTime > 0 && config.getConfig("wawla.furnace.burntime"))
                 tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.seconds"));
 
             if (access.getPlayer().isSneaking()) {
 
                 ItemStack[] furnaceStacks = generateStacksForFurnace(access.getNBTData());
 
-                if (furnaceStacks[0] != null)
+                if (furnaceStacks[0] != null && config.getConfig("wawla.furnace.input"))
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
 
-                if (furnaceStacks[1] != null)
+                if (furnaceStacks[1] != null && config.getConfig("wawla.furnace.fuel"))
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
 
-                if (furnaceStacks[2] != null)
+                if (furnaceStacks[2] != null && config.getConfig("wawla.furnace.output"))
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
             }
         }
@@ -49,6 +49,10 @@ public class ModuleFurnace extends Module {
     public void onWailaRegistrar(IWailaRegistrar register) {
 
         register.registerSyncedNBTKey("*", TileEntityFurnace.class);
+        register.addConfig("Wawla", "wawla.furnace.input");
+        register.addConfig("Wawla", "wawla.furnace.fuel");
+        register.addConfig("Wawla", "wawla.furnace.output");
+        register.addConfig("Wawla", "wawla.furnace.burntime");
     }
 
     /**

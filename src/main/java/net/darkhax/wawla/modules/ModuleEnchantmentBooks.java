@@ -33,11 +33,11 @@ public class ModuleEnchantmentBooks extends Module {
                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
         }
     }
-    
+
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        //TODO need way to get IWailaConfiguration
+        // TODO need way to get IWailaConfiguration
         register.addConfig("Wawla", "wawla.showEnchDesc");
     }
 }

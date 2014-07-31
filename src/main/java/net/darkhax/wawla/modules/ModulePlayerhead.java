@@ -8,8 +8,6 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTUtil;
-import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 
 public class ModulePlayerhead extends Module {
