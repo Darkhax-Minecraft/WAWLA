@@ -63,7 +63,7 @@ public class ModulePixelmon extends Module {
     @Override
     public void onWailaEntityDescription(Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
-        if (isPixelmon(entity)) {
+        if (isPixelmon(entity) && accessor.getNBTData() != null) {
 
             NBTTagCompound tag = accessor.getNBTData();
             if (accessor.getPlayer().isSneaking()) {
@@ -80,8 +80,8 @@ public class ModulePixelmon extends Module {
                 if (config.getConfig(showFriendship))
                     tooltip.add(StatCollector.translateToLocal(tooltipKey + "happiness") + ": " + tag.getInteger("Friendship"));
 
-                if (config.getConfig(showHeldItem))
-                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "helditem") + ": " + generateItemNameFromID(tag.getInteger("HeldItem")));
+                if (config.getConfig(showHeldItem) && tag.hasKey("HeldItemStack"))
+                    tooltip.add(StatCollector.translateToLocal(tooltipKey + "helditem") + ": " + ItemStack.loadItemStackFromNBT((NBTTagCompound) tag.getTag("HeldItemStack")).getDisplayName());
             }
         }
     }
