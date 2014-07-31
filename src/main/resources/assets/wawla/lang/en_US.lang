@@ -26,7 +26,20 @@ tooltip.wawla.fuel=Fuel
 tile.null.name=The author of this block was too lazy to set a block name
 
 #Module Options
+option.wawla.showEquipment=Show Entity Equipment?
+option.wawla.furnace.output=Show Furnace Output?
 option.wawla.showhead=Show Player Head Names?
+option.wawla.horse.showJump=Show Horse Jump Power?
+option.wawla.furnace.fuel=Show Furnace Fuel?
+option.wawla.harvest.canharvest=Show Harvestability?
+option.wawla.furnace.input=Show Furnace Input?
+option.wawla.furnace.burntime=Show Furnace Burn Time?
+option.wawla.horse.showSpeed=Show Horse Speed?
+option.wawla.showEnchDesc=Show Enchantment Descriptions?
+option.wawla.harvest.tool=Show Correct Tool
+option.wawla.frame.showItem=Show Frame Contents?
+option.wawla.pet.showOwner=Show Pet Owner?
+
 #Waila Fix
 screen.button.back=Back
 screen.button.yes=Yes
