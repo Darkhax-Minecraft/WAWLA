@@ -1,5 +1,6 @@
 package net.darkhax.wawla.proxy;
 
+import cpw.mods.fml.common.Loader;
 import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
@@ -46,6 +47,6 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedPlugins() {
 
-        new ModulePixelmon(true);
+        new ModulePixelmon(Loader.isModLoaded("Pixelmon"));
     }
 }

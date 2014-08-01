@@ -34,7 +34,7 @@ public class ModuleEntityEquipment extends Module {
                 ItemStack stack = living.getEquipmentInSlot(i);
                 if (stack != null) {
 
-                    tooltip.add(StatCollector.translateToLocal("tooltip.waila" + itemTypes[i]) + ": " + stack.getDisplayName());
+                    tooltip.add(StatCollector.translateToLocal("tooltip.waila." + itemTypes[i]) + ": " + stack.getDisplayName());
                     Enchantment[] enchantments = Utilities.getEnchantmentsFromStack(stack, false);
 
                     if (accessor.getPlayer().isSneaking()) {

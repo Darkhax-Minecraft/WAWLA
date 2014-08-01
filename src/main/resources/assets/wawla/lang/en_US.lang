@@ -39,12 +39,3 @@ option.wawla.showEnchDesc=Show Enchantment Descriptions?
 option.wawla.harvest.tool=Show Correct Tool
 option.wawla.frame.showItem=Show Frame Contents?
 option.wawla.pet.showOwner=Show Pet Owner?
-
-#Waila Fix
-screen.button.back=Back
-screen.button.yes=Yes
-screen.button.no=No
-screen.button.waila=Waila
-screen.button.modules=Modules
-option.general.showhp=Should mobs show HP?
-option.general.showcrop=Should crops show?

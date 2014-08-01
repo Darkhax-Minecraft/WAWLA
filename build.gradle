@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenCentral()
-           mavenLocal()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -16,67 +15,44 @@ buildscript {
     }
 }
 
-repositories {
-    maven { 
-        name "ProfMobius"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven {
-        name = "ChickenBones"
-        url = "http://chickenbones.net/maven"
-    }
-}
-
 apply plugin: 'forge'
 
 version = "1.0"
-group= "net.darkhax.wawla" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Wawla"
+group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
 
-ext.configFile = file "build.properties"
- 
-configFile.withReader {
-    def prop = new Properties()
-    prop.load(it)
-    project.ext.config = new ConfigSlurper().parse prop
-}
- 
 minecraft {
-    version = config.minecraft_version + "-" + config.forge_version
+    version = "1.7.10-10.13.0.1182"
     assetDir = "eclipse/assets"
 }
- 
+
 dependencies {
-    compile "mcp.mobius.waila:Waila:1.5.2a"
+    // you may put jars on which you depend on in ./libs
+    // or you may define them like so..
+    //compile "some.group:artifact:version:classifier"
+    //compile "some.group:artifact:version"
+      
+    // real examples
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // for more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+	    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
 }
 
-task buildInfo() {
-    def cmd = "git rev-parse --short HEAD"
-    def proc = cmd.execute()
-    proc.waitFor()
-    if (proc.exitValue() == 0) {
-        ext.revision = proc.text.trim()
-    } else {
-        ext.revision = "GITBORK"
+repositories {
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
     }
-
-    if (System.getenv().BUILD_NUMBER != null) {
-        ext.buildNum = "${System.getenv().BUILD_NUMBER}"
-    } else {
-        ext.buildNum = "${project.buildInfo.revision}"
+    maven { // the repo from which to get NEI and stuff 
+        name 'CB Repo'
+        url "http://chickenbones.net/maven/"
     }
 }
-
-ext.artifact_version = 'NFG'
-if (System.getenv().ARTIFACT_VERSION == null) {
-    artifact_version = "${config.mod_version}.${project.buildInfo.buildNum}"
-}
-
-if(System.getenv().ARTIFACT_VERSION != null) {
-    artifact_version = "${system.getenv().ARTIFACT_VERSION}"
-}
-
-version = "${config.minecraft_version}-${artifact_version}"
 
 processResources
 {
@@ -95,22 +71,5 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-    }
-}
-
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'deobf'
-}
-
-artifacts {
-    archives deobfJar
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url : "file:///var/www/html/maven")
-        }
     }
 }

@@ -27,7 +27,7 @@ public class ModuleFurnace extends Module {
             int burnTime = access.getNBTData().getInteger("BurnTime") / 20;
 
             if (burnTime > 0 && config.getConfig("wawla.furnace.burntime"))
-                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.seconds"));
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
 
             if (access.getPlayer().isSneaking()) {
 
