@@ -48,11 +48,11 @@ public class ModuleFurnace extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.registerSyncedNBTKey("*", TileEntityFurnace.class);
         register.addConfig("Wawla", "wawla.furnace.input");
         register.addConfig("Wawla", "wawla.furnace.fuel");
         register.addConfig("Wawla", "wawla.furnace.output");
         register.addConfig("Wawla", "wawla.furnace.burntime");
+        register.registerSyncedNBTKey("*", TileEntityFurnace.class);
     }
 
     /**

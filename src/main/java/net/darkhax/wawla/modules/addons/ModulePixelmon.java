@@ -89,8 +89,12 @@ public class ModulePixelmon extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.registerSyncedNBTKey("*", classEntityPixelmon);
-        register.registerSyncedNBTKey("*", classTileEntityApricornTree);
+    	if (classEntityPixelmon != null)
+    		register.registerSyncedNBTKey("*", classEntityPixelmon);
+    	
+    	if (classTileEntityApricornTree != null)
+    		register.registerSyncedNBTKey("*", classTileEntityApricornTree);
+    	
         register.addConfig("Pixelmon", showAbility);
         register.addConfig("Pixelmon", showFriendship);
         register.addConfig("Pixelmon", showHeldItem);
