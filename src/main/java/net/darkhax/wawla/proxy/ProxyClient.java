@@ -13,6 +13,7 @@ import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
 import net.darkhax.wawla.modules.addons.ModulePixelmon;
+import net.darkhax.wawla.plugins.PluginVersionChecker;
 
 public class ProxyClient extends ProxyCommon {
 
@@ -48,5 +49,6 @@ public class ProxyClient extends ProxyCommon {
     public void registerSidedPlugins() {
 
         new ModulePixelmon(Loader.isModLoaded("Pixelmon"));
+        new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
 }
