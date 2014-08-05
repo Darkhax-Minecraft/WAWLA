@@ -20,34 +20,34 @@ import org.objectweb.asm.tree.VarInsnNode;
  **/
 
 public class WAWLAClassTransformer implements IClassTransformer {
-
+    
     @Override
-    public byte[] transform(String name, String transformedName, byte[] classBytes) {
-
+    public byte[] transform (String name, String transformedName, byte[] classBytes) {
+    
         if ((name.equals("net.minecraft.util.StringTranslate") || name.equals("dd")) && WAWLAConfiguration.TRANSLATION_CLASS_TRANSFORM.getBoolean(true)) {
-
+            
             return injectStrTransHook(classBytes);
         }
-
+        
         return classBytes;
     }
-
-    private byte[] injectStrTransHook(byte[] classBytes) {
-
+    
+    private byte[] injectStrTransHook (byte[] classBytes) {
+    
         boolean isInjected = false;
-
+        
         ClassReader cr = new ClassReader(classBytes);
         ClassNode cn = new ClassNode();
         cr.accept(cn, 0);
-
+        
         for (MethodNode node : cn.methods) {
-
+            
             if ((node.name.equals("tryTranslateKey") || node.name.equals("func_135064_c")) && node.desc.equals("(Ljava/lang/String;)Ljava/lang/String;")) {
-
+                
                 for (int i = 0; i < node.instructions.size(); i++) {
-
+                    
                     if (node.instructions.get(i).getOpcode() == Opcodes.IFNONNULL && !isInjected) {
-
+                        
                         AbstractInsnNode location = node.instructions.get(i - 4);
                         InsnList list = new InsnList();
                         LabelNode l0 = new LabelNode();
@@ -62,7 +62,7 @@ public class WAWLAClassTransformer implements IClassTransformer {
                 }
             }
         }
-
+        
         ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES + ClassWriter.COMPUTE_MAXS);
         cn.accept(writer);
         return writer.toByteArray();

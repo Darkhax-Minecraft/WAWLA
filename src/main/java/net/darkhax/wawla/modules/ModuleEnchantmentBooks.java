@@ -11,32 +11,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class ModuleEnchantmentBooks extends Module {
-
+    
     public ModuleEnchantmentBooks(boolean enabled) {
-
+    
         super(enabled);
     }
-
+    
     /**
      * A blacklist that enchantments can be added to. Enchantments can be added to this list through IMC.
      */
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
-
+    
     @Override
-    public void onTooltipDisplayed(ItemStack stack, List<String> toolTip, boolean advanced) {
-
+    public void onTooltipDisplayed (ItemStack stack, List<String> toolTip, boolean advanced) {
+    
         if (advanced && stack.getItem() instanceof ItemEnchantedBook) {
-
+            
             Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
-
+            
             if (!blacklist.contains(ench))
                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
         }
     }
-
+    
     @Override
-    public void onWailaRegistrar(IWailaRegistrar register) {
-
+    public void onWailaRegistrar (IWailaRegistrar register) {
+    
         // TODO need way to get IWailaConfiguration
         register.addConfig("Wawla", "wawla.showEnchDesc");
     }

@@ -8,16 +8,16 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ForgeEventHandler {
-
+    
     public ForgeEventHandler() {
-
+    
         MinecraftForge.EVENT_BUS.register(this);
     }
-
+    
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
-    public void onItemTooltip(ItemTooltipEvent event) {
-
+    public void onItemTooltip (ItemTooltipEvent event) {
+    
         for (Module module : Module.getModules())
             module.onTooltipDisplayed(event.itemStack, event.toolTip, event.showAdvancedItemTooltips);
     }
