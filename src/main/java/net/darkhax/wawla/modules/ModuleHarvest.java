@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 
@@ -33,7 +34,7 @@ public class ModuleHarvest extends Module {
         
         if (item != null && item.getItem().getToolClasses(item).contains(tool) && config.getConfig("tooltip.wawla.canHarvest")) {
             
-            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((blockLevel <= itemLevel) ? StatCollector.translateToLocal("tooltip.wawla.yes") : StatCollector.translateToLocal("tooltip.wawla.no")));
+            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((blockLevel <= itemLevel) ? (EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes")) : (EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"))));
             return;
         }
         
