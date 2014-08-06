@@ -35,9 +35,9 @@ public class ModulePixelmon extends Module {
     private static String[] natureList = null;
     private static String[] sizeList = null;
     
-    public ModulePixelmon(Boolean Enabled) {
+    public ModulePixelmon(Boolean enabled) {
     
-        super(true);
+        super(enabled);
         
         try {
             
