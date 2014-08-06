@@ -39,17 +39,20 @@ public class ModulePixelmon extends Module {
     
         super(enabled);
         
-        try {
+        if (enabled) {
+           
+            try {
+                
+                classEntityPixelmon = Class.forName("com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon");
+                classTileEntityApricornTree = Class.forName("com.pixelmonmod.pixelmon.blocks.apricornTrees.TileEntityApricornTree");
+                enumNature = Class.forName("com.pixelmonmod.pixelmon.enums.EnumNature");
+                enumGrowth = Class.forName("com.pixelmonmod.pixelmon.enums.EnumGrowth");
+            }
             
-            classEntityPixelmon = Class.forName("com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon");
-            classTileEntityApricornTree = Class.forName("com.pixelmonmod.pixelmon.blocks.apricornTrees.TileEntityApricornTree");
-            enumNature = Class.forName("com.pixelmonmod.pixelmon.enums.EnumNature");
-            enumGrowth = Class.forName("com.pixelmonmod.pixelmon.enums.EnumGrowth");
-        }
-        
-        catch (ClassNotFoundException e) {
-            
-            e.printStackTrace();
+            catch (ClassNotFoundException e) {
+                
+                e.printStackTrace();
+            }
         }
     }
     
