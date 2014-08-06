@@ -19,6 +19,6 @@ public class ForgeEventHandler {
     public void onItemTooltip (ItemTooltipEvent event) {
     
         for (Module module : Module.getModules())
-            module.onTooltipDisplayed(event.itemStack, event.toolTip, event.showAdvancedItemTooltips);
+            module.onTooltipDisplayed(event.itemStack, event.entityPlayer, event.toolTip, event.showAdvancedItemTooltips);
     }
 }

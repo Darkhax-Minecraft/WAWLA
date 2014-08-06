@@ -8,6 +8,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 public class Module {
@@ -34,10 +35,11 @@ public class Module {
      * This method is called when minecraft renders an item tooltip. This can be used to add information.
      * 
      * @param stack: An instance of the ItemStack being looked at.
+     * @param player: The instance of the player looking at the item tooltip.
      * @param tooltip: A list of strings that are used to create the tooltip.
      * @param advanced: If the player has advanced mode (ctrl+f3+h) this will be true.
      */
-    public void onTooltipDisplayed (ItemStack stack, List<String> tooltip, boolean advanced) {
+    public void onTooltipDisplayed (ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
     
     }
     
