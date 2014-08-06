@@ -23,30 +23,3 @@ description.enchantment.arrowFire=This enchantment will set cause arrows launche
 description.enchantment.arrowInfinite=This enchantment prevents arrows from being consumed when fired. This effect requires that the player has at least one arrow in their inventory. This enchantment is only for bows.
 description.enchantment.lootBonusFishing=This enchantment increases the players odds of getting treasure when fishing by 1% per level. This enchantment is only for fishing rods.
 description.enchantment.fishingSpeed=This enchantment decreases the time it takes for a fish to bite the hook by 5 seconds per level. This also increases the chance to get junk and treasure by 1% per level.
-
-#commands
-command.print.usage=
-command.print.success=Saved list of missing strings as %s
-
-#Wawla
-tooltip.wawla.heldItem=Held Item
-tooltip.wawla.feet=Feet
-tooltip.wawla.leggings=Leggings
-tooltip.wawla.chestplate=Chestplate
-tooltip.wawla.helmet=Helmet
-tooltip.wawla.item=Item
-tooltip.wawla.owner=Owner
-tooltip.wawla.jumpStrength=Jump Strength
-tooltip.wawla.speed=Speed
-tooltip.wawla.canHarvest=Harvestable
-tooltip.wawla.toolType=Correct Tool
-tooltip.wawla.yes=§aYes
-tooltip.wawla.no=§4No
-tooltip.wawla.burnTime=Burn Time
-tooltip.wawla.seconds=Seconds
-tooltip.wawla.input=Input
-tooltip.wawla.output=Output
-tooltip.wawla.fuel=Fuel
-tooltip.wawla.levels=Levels
-tooltip.wawla.primary=First Effect
-tooltip.wawla.secondary=Second Effect
