@@ -3,8 +3,6 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.enchantment.Enchantment;
@@ -12,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.input.Keyboard;
 
 public class ModuleEnchantmentBooks extends Module {
     
@@ -38,7 +38,7 @@ public class ModuleEnchantmentBooks extends Module {
                     Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
             }
             
-            else 
+            else
                 toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
         }
     }

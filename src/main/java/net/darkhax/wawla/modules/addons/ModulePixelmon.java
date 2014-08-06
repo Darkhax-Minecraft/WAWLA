@@ -40,7 +40,7 @@ public class ModulePixelmon extends Module {
         super(enabled);
         
         if (enabled) {
-           
+            
             try {
                 
                 classEntityPixelmon = Class.forName("com.pixelmonmod.pixelmon.entities.pixelmon.EntityPixelmon");
