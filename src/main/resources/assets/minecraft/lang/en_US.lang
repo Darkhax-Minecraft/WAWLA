@@ -47,3 +47,6 @@ tooltip.wawla.seconds=Seconds
 tooltip.wawla.input=Input
 tooltip.wawla.output=Output
 tooltip.wawla.fuel=Fuel
+tooltip.wawla.levels=Levels
+tooltip.wawla.primary=First Effect
+tooltip.wawla.secondary=Second Effect
