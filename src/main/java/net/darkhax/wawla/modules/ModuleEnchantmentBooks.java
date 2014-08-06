@@ -3,9 +3,12 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
@@ -23,14 +26,20 @@ public class ModuleEnchantmentBooks extends Module {
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
     
     @Override
-    public void onTooltipDisplayed (ItemStack stack, List<String> toolTip, boolean advanced) {
+    public void onTooltipDisplayed (ItemStack stack, EntityPlayer player, List<String> toolTip, boolean advanced) {
     
-        if (advanced && stack.getItem() instanceof ItemEnchantedBook) {
+        if (stack.getItem() instanceof ItemEnchantedBook) {
             
-            Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
+            if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+                
+                Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
+                
+                if (!blacklist.contains(ench))
+                    Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
+            }
             
-            if (!blacklist.contains(ench))
-                Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
+            else 
+                toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
         }
     }
     
