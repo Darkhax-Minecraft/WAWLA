@@ -3,12 +3,13 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.modules.addons.ModuleTinkers;
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
@@ -30,14 +31,25 @@ public class ModuleHarvest extends Module {
         String tool = (block != null) ? block.getHarvestTool(access.getMetadata()) : "";
         int blockLevel = block.getHarvestLevel(access.getMetadata());
         int itemLevel = (item != null) ? item.getItem().getHarvestLevel(item, tool) : 0;
-        ArrayList<ItemStack> list = block.getDrops(access.getWorld(), pos.blockX, pos.blockY, pos.blockZ, access.getMetadata(), EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, item));
         
-        if (item != null && item.getItem().getToolClasses(item).contains(tool) && config.getConfig("tooltip.wawla.canHarvest")) {
+        //Shows if the tool is the right tier.
+        if (item != null && config.getConfig("tooltip.wawla.canHarvest") && (item.getItem().getToolClasses(item).contains(tool) || ModuleTinkers.canHarvest(item, tool))) {
             
-            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((blockLevel <= itemLevel) ? (EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes")) : (EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"))));
+            //When the block is harvestable.
+            if (blockLevel <= itemLevel || blockLevel == 0)
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes"))));
+            
+            //When it's not harvestable.
+            else {
+              
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
+            }
+            
             return;
         }
         
+        //Shows correct tool type.
         if (tool != null && config.getConfig("wawla.harvest.tool"))
             tooltip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
     }

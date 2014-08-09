@@ -4,6 +4,7 @@ import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.ModuleBeacons;
+import net.darkhax.wawla.modules.ModuleDeveloperMode;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.modules.ModuleEntityEquipment;
 import net.darkhax.wawla.modules.ModuleFurnace;
@@ -13,6 +14,7 @@ import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
 import net.darkhax.wawla.modules.addons.ModulePixelmon;
+import net.darkhax.wawla.modules.addons.ModuleTinkers;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
 import cpw.mods.fml.common.Loader;
 
@@ -44,12 +46,15 @@ public class ProxyClient extends ProxyCommon {
         new ModulePlayerhead(true);
         new ModuleFurnace(true);
         new ModuleBeacons(true);
+        
+        new ModuleDeveloperMode(true);
     }
     
     @Override
     public void registerSidedPlugins () {
     
         new ModulePixelmon(Loader.isModLoaded("Pixelmon"));
+        new ModuleTinkers(Loader.isModLoaded("TConstruct"));
         new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
 }
