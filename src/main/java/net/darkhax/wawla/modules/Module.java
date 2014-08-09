@@ -141,8 +141,9 @@ public class Module {
      * @param accessor: An instance of IWailaDataAccessor containing many goodies for you to use.
      * @param config: Access to the Waila Configuration.
      */
-    public void onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
     
+        return stack;
     }
     
     /**
