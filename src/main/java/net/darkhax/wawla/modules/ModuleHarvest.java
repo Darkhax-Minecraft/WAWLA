@@ -17,6 +17,9 @@ import net.minecraft.util.StatCollector;
 
 public class ModuleHarvest extends Module {
     
+    private String showTool = "wawla.harvest.showTool";
+    private String showHarvestable = "wawla.harvest.showHarvest";
+    private String showTier = "wawla.harvest.showTier";
     public ModuleHarvest(boolean enabled) {
     
         super(enabled);
@@ -33,16 +36,18 @@ public class ModuleHarvest extends Module {
         int itemLevel = (item != null) ? item.getItem().getHarvestLevel(item, tool) : 0;
         
         //Shows if the tool is the right tier.
-        if (item != null && config.getConfig("tooltip.wawla.canHarvest") && (item.getItem().getToolClasses(item).contains(tool) || ModuleTinkers.canHarvest(item, tool))) {
+        if (item != null && (item.getItem().getToolClasses(item).contains(tool) || ModuleTinkers.canHarvest(item, tool))) {
             
             //When the block is harvestable.
-            if (blockLevel <= itemLevel || blockLevel == 0)
+            if (config.getConfig(showHarvestable) && (blockLevel <= itemLevel || blockLevel == 0))
                 tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes"))));
             
             //When it's not harvestable.
             else {
-              
+                
                 tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
+                
+                if(config.getConfig(showTier))
                 tooltip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
             }
             
@@ -50,14 +55,15 @@ public class ModuleHarvest extends Module {
         }
         
         //Shows correct tool type.
-        if (tool != null && config.getConfig("wawla.harvest.tool"))
+        if (tool != null && config.getConfig(showTool))
             tooltip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
     }
     
     @Override
     public void onWailaRegistrar (IWailaRegistrar register) {
     
-        register.addConfig("Wawla", "wawla.harvest.tool");
-        register.addConfig("Wawla", "wawla.harvest.canharvest");
+        register.addConfig("Wawla", showTool);
+        register.addConfig("Wawla", showHarvestable);
+        register.addConfig("Wawla", showTier);
     }
 }
