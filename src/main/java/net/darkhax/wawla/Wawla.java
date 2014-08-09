@@ -5,7 +5,6 @@ import java.util.Arrays;
 import net.darkhax.wawla.commands.CommandPrint;
 import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
-import net.darkhax.wawla.util.Config;
 import net.darkhax.wawla.util.Reference;
 import net.minecraft.command.ServerCommandManager;
 import cpw.mods.fml.common.Mod;
@@ -30,7 +29,6 @@ public class Wawla {
     public void preInit (FMLPreInitializationEvent event) {
     
         setModMeta(event.getModMetadata());
-        new Config(event.getSuggestedConfigurationFile());
         proxy.registerSidedEvents();
         proxy.registerSidedModules();
         proxy.registerSidedPlugins();
