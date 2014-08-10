@@ -1,6 +1,5 @@
 package net.darkhax.wawla.modules.addons;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +21,14 @@ public class ModuleTinkers extends Module {
     private String showTankInv = "wawla.tinkers.showTankInv";
     private String showSmelterInv = "wawla.tinkers.showSmelteryInv";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
-   
+    
     public static Class classHarvestTool = null;
     public static Class classDualHarvestTool = null;
     public static Method getHarvestType = null;
     public static Method getSecondHarvestType = null;
     
     public ModuleTinkers(boolean enabled) {
-        
+    
         super(enabled);
         
         if (enabled) {
@@ -45,12 +44,12 @@ public class ModuleTinkers extends Module {
             }
             
             catch (ClassNotFoundException e) {
-
+                
                 e.printStackTrace();
             }
             
             catch (NoSuchMethodException e) {
-
+                
                 e.printStackTrace();
             }
             catch (SecurityException e) {
@@ -62,29 +61,29 @@ public class ModuleTinkers extends Module {
     
     @Override
     public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
-        //hides landmines
+    
+        // hides landmines
         if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
-
+            
             ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
             
             if (cover != null)
                 return cover;
         }
-
+        
         return stack;
     }
     
     @Override
     public void onWailaBlockDescription (ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
-        
+    
         if (access.getTileEntity() != null) {
-           
+            
             TileEntity tile = access.getTileEntity();
             NBTTagCompound tag = access.getNBTData();
             EntityPlayer player = access.getPlayer();
             
-            //Shows smeltery inventory when sneaking
+            // Shows smeltery inventory when sneaking
             if (config.getConfig(showSmelterInv) && tag.getString("id").equalsIgnoreCase("tconstruct.smeltery")) {
                 
                 if (player.isSneaking()) {
@@ -103,10 +102,10 @@ public class ModuleTinkers extends Module {
                 }
             }
             
-            //Adds content of lava tanks
+            // Adds content of lava tanks
             if (config.getConfig(showTankInv) && tag.getString("id").equalsIgnoreCase("tconstruct.lavatank")) {
                 
-                if (tag.getInteger("amount") > 0) 
+                if (tag.getInteger("amount") > 0)
                     tooltip.add(getCorrectFluidName(tag.getString("fluidName")) + ": " + tag.getInteger("amount") + StatCollector.translateToLocal("tooltip.wawla.tinkers.mb"));
             }
         }
@@ -114,28 +113,29 @@ public class ModuleTinkers extends Module {
     
     @Override
     public void onWailaRegistrar (IWailaRegistrar register) {
-        
+    
         register.addConfig("Tinkers", showSmelterInv);
         register.addConfig("Tinkers", showTankInv);
-        register.addConfig("Tinkers", hideLandmine);      
+        register.addConfig("Tinkers", hideLandmine);
     }
     
     /**
      * Checks to see if a tinkers item is the right type to mine a block.
+     * 
      * @param item: The item stack being checked.
-     * @param required: The tool type required for the block. 
+     * @param required: The tool type required for the block.
      * @return true: When the item is the right type.
      * @return false: When the item is not the right type.
      */
-    public static boolean canHarvest(ItemStack item, String required) {
-        
+    public static boolean canHarvest (ItemStack item, String required) {
+    
         List<String> tooltypes = new ArrayList<String>();
         
         if (classDualHarvestTool.isInstance(item.getItem())) {
             
             try {
                 
-                tooltypes.add((String)getSecondHarvestType.invoke(item.getItem()));
+                tooltypes.add((String) getSecondHarvestType.invoke(item.getItem()));
             }
             
             catch (Exception e) {
@@ -143,12 +143,12 @@ public class ModuleTinkers extends Module {
                 e.printStackTrace();
             }
         }
-            
+        
         if (classHarvestTool.isInstance(item.getItem())) {
             
             try {
                 
-                tooltypes.add((String)getHarvestType.invoke(item.getItem()));
+                tooltypes.add((String) getHarvestType.invoke(item.getItem()));
             }
             
             catch (Exception e) {
@@ -160,8 +160,8 @@ public class ModuleTinkers extends Module {
         return (tooltypes.contains(required)) ? true : false;
     }
     
-    public String getCorrectFluidName(String fluid) {
-        
+    public String getCorrectFluidName (String fluid) {
+    
         String base = fluid.split("\\.")[0];
         String result = "";
         

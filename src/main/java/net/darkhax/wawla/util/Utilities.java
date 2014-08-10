@@ -136,8 +136,8 @@ public class Utilities {
         return null;
     }
     
-    public static ItemStack[] getInventoryStacks(NBTTagCompound tag, int invSize) { 
-        
+    public static ItemStack[] getInventoryStacks (NBTTagCompound tag, int invSize) {
+    
         ItemStack[] inventory = null;
         
         if (tag.hasKey("Items")) {
@@ -148,7 +148,7 @@ public class Utilities {
             for (int i = 0; i < list.tagCount(); i++) {
                 
                 NBTTagCompound currentTag = list.getCompoundTagAt(i);
-                inventory[(int)currentTag.getByte("Slot")] = ItemStack.loadItemStackFromNBT(currentTag);
+                inventory[(int) currentTag.getByte("Slot")] = ItemStack.loadItemStackFromNBT(currentTag);
             }
         }
         
