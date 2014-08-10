@@ -47,7 +47,7 @@ public class ProxyClient extends ProxyCommon {
         new ModuleFurnace(true);
         new ModuleBeacons(true);
         
-        new ModuleDeveloperMode(true);
+        //new ModuleDeveloperMode(true);
     }
     
     @Override
