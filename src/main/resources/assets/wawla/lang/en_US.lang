@@ -25,6 +25,7 @@ tooltip.wawla.levels=Levels
 tooltip.wawla.primary=First Effect
 tooltip.wawla.secondary=Second Effect
 tooltip.wawla.shiftEnch=Hold Shift for Enchantment Description
+tooltip.wawla.blockLevel=Required Tier
 
 #Fixed/Missing Strings
 tile.null.name=The author of this block was too lazy to set a block name
@@ -35,12 +36,13 @@ option.wawla.furnace.output=Show Furnace Output?
 option.wawla.showhead=Show Player Head Names?
 option.wawla.horse.showJump=Show Horse Jump Power?
 option.wawla.furnace.fuel=Show Furnace Fuel?
-option.wawla.harvest.canharvest=Show Harvestability?
+option.wawla.harvest.showHarvest=Show Harvestability?
+option.wawla.harvest.tool=Show Correct Tool?
+option.wawla.harvest.tier=Show Correct Tier?
 option.wawla.furnace.input=Show Furnace Input?
 option.wawla.furnace.burntime=Show Furnace Burn Time?
 option.wawla.horse.showSpeed=Show Horse Speed?
 option.wawla.showEnchDesc=Show Enchantment Descriptions?
-option.wawla.harvest.tool=Show Correct Tool
 option.wawla.frame.showItem=Show Frame Contents?
 option.wawla.pet.showOwner=Show Pet Owner?
 option.wawla.beacon.showLevels=Show Becon Level?
