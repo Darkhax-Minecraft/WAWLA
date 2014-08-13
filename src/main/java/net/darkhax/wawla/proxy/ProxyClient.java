@@ -52,7 +52,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedPlugins () {
     
-        new ModulePixelmon(Loader.isModLoaded("Pixelmon"));
+        new ModulePixelmon(Loader.isModLoaded("pixelmon"));
         new ModuleTinkers(Loader.isModLoaded("TConstruct"));
         new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
