@@ -17,6 +17,8 @@ import net.minecraft.util.IChatComponent;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import scala.actors.threadpool.Arrays;
+
 public class Utilities {
     
     /**
@@ -45,10 +47,7 @@ public class Utilities {
     public static List wrapStringToList (String string, int lnLength, boolean wrapLongWords, List list) {
     
         String strings[] = WordUtils.wrap(string, lnLength, null, wrapLongWords).split("\\r\\n");
-        
-        for (int i = 0; i < strings.length; i++)
-            list.add(strings[i]);
-        
+        list.addAll(Arrays.asList(strings));        
         return list;
     }
     
