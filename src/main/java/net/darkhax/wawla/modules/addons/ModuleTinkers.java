@@ -22,6 +22,7 @@ public class ModuleTinkers extends Module {
     private String showSmelterInv = "wawla.tinkers.showSmelteryInv";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
     
+    public static boolean isEnabled = false;
     public static Class classHarvestTool = null;
     public static Class classDualHarvestTool = null;
     public static Method getHarvestType = null;
@@ -32,6 +33,8 @@ public class ModuleTinkers extends Module {
         super(enabled);
         
         if (enabled) {
+            
+            isEnabled = enabled;
             
             try {
                 
@@ -63,7 +66,7 @@ public class ModuleTinkers extends Module {
     public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
     
         // hides landmines
-        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
+        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && accessor.getNBTData() != null && accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
             
             ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
             
@@ -129,35 +132,40 @@ public class ModuleTinkers extends Module {
      */
     public static boolean canHarvest (ItemStack item, String required) {
     
-        List<String> tooltypes = new ArrayList<String>();
-        
-        if (classDualHarvestTool.isInstance(item.getItem())) {
+        if (isEnabled) {
             
-            try {
+            List<String> tooltypes = new ArrayList<String>();
+            
+            if (classDualHarvestTool.isInstance(item.getItem())) {
                 
-                tooltypes.add((String) getSecondHarvestType.invoke(item.getItem()));
+                try {
+                    
+                    tooltypes.add((String) getSecondHarvestType.invoke(item.getItem()));
+                }
+                
+                catch (Exception e) {
+                    
+                    e.printStackTrace();
+                }
             }
             
-            catch (Exception e) {
+            if (classHarvestTool.isInstance(item.getItem())) {
                 
-                e.printStackTrace();
+                try {
+                    
+                    tooltypes.add((String) getHarvestType.invoke(item.getItem()));
+                }
+                
+                catch (Exception e) {
+                    
+                    e.printStackTrace();
+                }
             }
+            
+            return (tooltypes.contains(required)) ? true : false;
         }
         
-        if (classHarvestTool.isInstance(item.getItem())) {
-            
-            try {
-                
-                tooltypes.add((String) getHarvestType.invoke(item.getItem()));
-            }
-            
-            catch (Exception e) {
-                
-                e.printStackTrace();
-            }
-        }
-        
-        return (tooltypes.contains(required)) ? true : false;
+        return false;
     }
     
     public String getCorrectFluidName (String fluid) {

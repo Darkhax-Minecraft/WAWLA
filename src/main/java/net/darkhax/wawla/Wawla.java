@@ -44,8 +44,8 @@ public class Wawla {
     @EventHandler
     public void onServerStarting (FMLServerStartingEvent event) {
     
-        ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
-        manager.registerCommand(new CommandPrint());
+        //ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
+        //manager.registerCommand(new CommandPrint());
     }
     
     /**
