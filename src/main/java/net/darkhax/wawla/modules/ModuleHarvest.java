@@ -7,6 +7,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.addons.ModuleTinkers;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
@@ -32,6 +33,16 @@ public class ModuleHarvest extends Module {
         String tool = (block != null) ? block.getHarvestTool(access.getMetadata()) : "";
         int blockLevel = block.getHarvestLevel(access.getMetadata());
         int itemLevel = (item != null) ? item.getItem().getHarvestLevel(item, tool) : 0;
+        
+        // Corrective check to prevent chisel from breaking the module.
+        if (tool != null && tool.equalsIgnoreCase("chisel")) {
+            
+            if (block == Blocks.stone)
+                tool = "pickaxe";
+            
+            if (block == Blocks.planks)
+                tool = "axe";
+        }
         
         // Shows if the tool is the right tier.
         if (item != null && (item.getItem().getToolClasses(item).contains(tool) || ModuleTinkers.canHarvest(item, tool))) {
