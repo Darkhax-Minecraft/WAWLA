@@ -6,5 +6,4 @@ public class ModuleToolStats extends Module {
     
         super(enabled);
     }
-    
 }
