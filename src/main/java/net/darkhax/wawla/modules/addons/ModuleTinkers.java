@@ -66,16 +66,19 @@ public class ModuleTinkers extends Module {
     public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
     
         // hides landmines
-        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && accessor.getStack().getDisplayName().contains("mine")) {
+        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null) {
             
-            if (accessor.getNBTData() != null) {
+            if (accessor.getStack() != null && accessor.getStack().getDisplayName().contains("mine")) {
                 
-                if (accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
+                if (accessor.getNBTData() != null) {
                     
-                    ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
-                    
-                    if (cover != null)
-                        return cover;
+                    if (accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
+                        
+                        ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
+                        
+                        if (cover != null)
+                            return cover;
+                    }
                 }
             }
         }
