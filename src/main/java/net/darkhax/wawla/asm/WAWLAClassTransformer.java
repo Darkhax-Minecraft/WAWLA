@@ -14,7 +14,8 @@ import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
 /**
- * A simple Class Transformer that allows for the results of a string translation to be captured.
+ * A simple Class Transformer that allows for the results of a string translation to be
+ * captured.
  * 
  * @author Ghostrec35
  **/

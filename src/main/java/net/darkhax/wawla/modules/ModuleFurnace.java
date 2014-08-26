@@ -6,6 +6,8 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.block.BlockFurnace;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -54,6 +56,7 @@ public class ModuleFurnace extends Module {
         register.addConfig("Wawla", "wawla.furnace.output");
         register.addConfig("Wawla", "wawla.furnace.burntime");
         register.registerSyncedNBTKey("*", BlockFurnace.class);
+        ItemStack stack = new ItemStack(Item.getItemFromBlock(Blocks.sandstone_stairs));
     }
     
     /**

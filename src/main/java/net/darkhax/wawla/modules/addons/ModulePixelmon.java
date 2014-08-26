@@ -147,9 +147,11 @@ public class ModulePixelmon extends Module {
     }
     
     /**
-     * Generates a statement containing information about the effort value and internal value of a pokemon.
+     * Generates a statement containing information about the effort value and internal value
+     * of a pokemon.
      * 
-     * @param type: The type, used for tooltip generation. attack, defence, health, spattack, spdefence, speed
+     * @param type: The type, used for tooltip generation. attack, defence, health, spattack,
+     *            spdefence, speed
      * @param key1: The key for the internal value.
      * @param key2: The key for the effort value.
      * @param tag: The NBTTagCompound of the pixelmon.
@@ -161,7 +163,8 @@ public class ModulePixelmon extends Module {
     }
     
     /**
-     * This is a helper method to generate the percentage of growth in a block using meta-data stages.
+     * This is a helper method to generate the percentage of growth in a block using meta-data
+     * stages.
      * 
      * @param curStage: The current stage of the block, should be meta-data.
      * @param maxStage: The stage in meta-data where the block is fully grown.
@@ -191,9 +194,13 @@ public class ModulePixelmon extends Module {
     }
     
     /**
-     * This is a custom method used to display information about an apricorn. The main reason of having this method is due to the way apricorn blocks are handled. Apricorns are a double block structures and the top block does not contain the correct information. This corrects for that.
+     * This is a custom method used to display information about an apricorn. The main reason
+     * of having this method is due to the way apricorn blocks are handled. Apricorns are a
+     * double block structures and the top block does not contain the correct information. This
+     * corrects for that.
      * 
-     * @param entity: A possible TileEntity related to the apricorn tree. It is okay for this variable to be null.
+     * @param entity: A possible TileEntity related to the apricorn tree. It is okay for this
+     *            variable to be null.
      * @param tooltip: The list of tool tips.
      * @param block: The name of the block. This is used to generate the name of the product.
      */

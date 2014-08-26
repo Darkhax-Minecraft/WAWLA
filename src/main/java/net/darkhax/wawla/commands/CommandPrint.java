@@ -34,9 +34,11 @@ public class CommandPrint extends CommandBase {
     }
     
     /**
-     * This is a method that when called will print out all the entries stored by the tryTranslateKey method.
+     * This is a method that when called will print out all the entries stored by the
+     * tryTranslateKey method.
      * 
-     * @param fileName: This param allows for the location of the file to be changed. By default this should be logs/missingStrings.txt
+     * @param fileName: This param allows for the location of the file to be changed. By
+     *            default this should be logs/missingStrings.txt
      * @return: The file being generated.
      */
     static File print (String fileName) {

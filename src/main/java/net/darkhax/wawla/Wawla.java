@@ -2,11 +2,9 @@ package net.darkhax.wawla;
 
 import java.util.Arrays;
 
-import net.darkhax.wawla.commands.CommandPrint;
 import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Reference;
-import net.minecraft.command.ServerCommandManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -44,12 +42,15 @@ public class Wawla {
     @EventHandler
     public void onServerStarting (FMLServerStartingEvent event) {
     
-        //ServerCommandManager manager = (ServerCommandManager) event.getServer().getCommandManager();
-        //manager.registerCommand(new CommandPrint());
+        // ServerCommandManager manager = (ServerCommandManager)
+        // event.getServer().getCommandManager();
+        // manager.registerCommand(new CommandPrint());
     }
     
     /**
-     * Method to set information about the mod. This is an in game alternative to the mcmod.info file and is primarily used by the list of mods in the main menu added by Forge Mod Loader.
+     * Method to set information about the mod. This is an in game alternative to the
+     * mcmod.info file and is primarily used by the list of mods in the main menu added by
+     * Forge Mod Loader.
      * 
      * @param meta: The ModMetadata for the mod. This can be obtained from the preInit event.
      */

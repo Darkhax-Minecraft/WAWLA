@@ -22,7 +22,8 @@ public class ModulePlayerhead extends Module {
     
         if (access.getTileEntity() != null && access.getBlock() instanceof BlockSkull && config.getConfig("wawla.showhead")) {
             
-            // This GameProfile stuff is cool but weird. func_1524259_a is a nbt thing for creating a
+            // This GameProfile stuff is cool but weird. func_1524259_a is a nbt thing for
+            // creating a
             // GameProfile using nbt.
             tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(access.getNBTData().getCompoundTag("Owner")).getName());
         }

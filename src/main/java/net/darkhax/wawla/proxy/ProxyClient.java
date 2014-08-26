@@ -12,6 +12,7 @@ import net.darkhax.wawla.modules.ModuleHorses;
 import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
+import net.darkhax.wawla.modules.ModuleVillagerZombie;
 import net.darkhax.wawla.modules.addons.ModulePixelmon;
 import net.darkhax.wawla.modules.addons.ModuleTinkers;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
@@ -20,7 +21,9 @@ import cpw.mods.fml.common.Loader;
 public class ProxyClient extends ProxyCommon {
     
     /**
-     * The client side alternative to .registerSidedEvents(), this method should only be called from the client side. The purpose of this method is to register events that are unique to the client.
+     * The client side alternative to .registerSidedEvents(), this method should only be called
+     * from the client side. The purpose of this method is to register events that are unique
+     * to the client.
      */
     @Override
     public void registerSidedEvents () {
@@ -45,7 +48,7 @@ public class ProxyClient extends ProxyCommon {
         new ModulePlayerhead(true);
         new ModuleFurnace(true);
         new ModuleBeacons(true);
-        
+        new ModuleVillagerZombie(true);
         // new ModuleDeveloperMode(true);
     }
     

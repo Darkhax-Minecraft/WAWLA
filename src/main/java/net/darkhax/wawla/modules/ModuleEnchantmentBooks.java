@@ -21,7 +21,8 @@ public class ModuleEnchantmentBooks extends Module {
     }
     
     /**
-     * A blacklist that enchantments can be added to. Enchantments can be added to this list through IMC.
+     * A blacklist that enchantments can be added to. Enchantments can be added to this list
+     * through IMC.
      */
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
     

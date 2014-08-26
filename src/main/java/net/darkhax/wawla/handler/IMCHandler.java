@@ -13,7 +13,8 @@ import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
 public class IMCHandler {
     
     /**
-     * Basic method for breaking down an IMCMessage. Once broken down the information is passed along to other helper methods.
+     * Basic method for breaking down an IMCMessage. Once broken down the information is passed
+     * along to other helper methods.
      * 
      * @param message: An IMCMessage to read.
      */
@@ -38,7 +39,8 @@ public class IMCHandler {
     }
     
     /**
-     * Adds a nbtKey to the list of keys to look for when attempting to determine who owns a pet entity.
+     * Adds a nbtKey to the list of keys to look for when attempting to determine who owns a
+     * pet entity.
      * 
      * @param nbtKey: The new nbtKey to add.
      */
@@ -48,9 +50,11 @@ public class IMCHandler {
     }
     
     /**
-     * Registers and enchantment with the blacklist. If an enchantment is on the blacklist its enchantment book will not receive additional information on the tooltip.
+     * Registers and enchantment with the blacklist. If an enchantment is on the blacklist its
+     * enchantment book will not receive additional information on the tooltip.
      * 
-     * @param id: ID of the enchantment being added. Can't wait to change this to strings in 1.8
+     * @param id: ID of the enchantment being added. Can't wait to change this to strings in
+     *            1.8
      * @param modid: The id of the mod. Used in case something goes wrong.
      */
     public static void registerEnchantToBlacklist (int id, String modid) {
@@ -65,11 +69,14 @@ public class IMCHandler {
     }
     
     /**
-     * This method should never be called unless testing the API. The purpose of this method is to allow for testing of all imc messages and to demonstrate how other mod authors can register their information with this mod.
+     * This method should never be called unless testing the API. The purpose of this method is
+     * to allow for testing of all imc messages and to demonstrate how other mod authors can
+     * register their information with this mod.
      */
     public static void exampleMessages () {
     
-        // Single nbtKey to add to the pet key lookup list. Specifically adds "yourEntitiesOwnerKey" to
+        // Single nbtKey to add to the pet key lookup list. Specifically adds
+        // "yourEntitiesOwnerKey" to
         // the list.
         FMLInterModComms.sendMessage("wawla", "wawla-pet", "yourEntitiesOwnerKey");
         
@@ -77,7 +84,8 @@ public class IMCHandler {
         // Efficiency enchantment.
         FMLInterModComms.sendMessage("wawla", "wawla-enchantment-blacklist", String.valueOf(Enchantment.efficiency.effectId));
         
-        // Using a NBTTagCompound to send many entries. Adds "tag1" and "tag2" to the pet key lookup
+        // Using a NBTTagCompound to send many entries. Adds "tag1" and "tag2" to the pet key
+        // lookup
         // list. Adds 4, 3, 2, 1 to the list of blacklist enchantments.
         NBTTagCompound tag = new NBTTagCompound();
         NBTTagList list = new NBTTagList();
