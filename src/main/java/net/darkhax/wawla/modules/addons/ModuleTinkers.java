@@ -8,6 +8,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
+import net.darkhax.wawla.util.Reference;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,7 @@ public class ModuleTinkers extends Module {
     public static boolean isEnabled = false;
     public static Class classHarvestTool = null;
     public static Class classDualHarvestTool = null;
+    public static Class classLandmine = null;
     public static Method getHarvestType = null;
     public static Method getSecondHarvestType = null;
     
@@ -40,6 +42,7 @@ public class ModuleTinkers extends Module {
                 
                 classHarvestTool = Class.forName("tconstruct.library.tools.HarvestTool");
                 classDualHarvestTool = Class.forName("tconstruct.library.tools.DualHarvestTool");
+                classLandmine = Class.forName("tconstruct.blocks.traps.Landmine");
                 getHarvestType = classHarvestTool.getDeclaredMethod("getHarvestType");
                 getSecondHarvestType = classDualHarvestTool.getDeclaredMethod("getSecondHarvestType");
                 getHarvestType.setAccessible(true);
@@ -48,13 +51,14 @@ public class ModuleTinkers extends Module {
             
             catch (ClassNotFoundException e) {
                 
-                e.printStackTrace();
+                Reference.LOG.info("The Tinkers Construct mod can not be detected. Module ignored.");
             }
             
             catch (NoSuchMethodException e) {
                 
-                e.printStackTrace();
+                Reference.LOG.info("There was in issue loading the Tinkers Construct module. It will be ignored.");
             }
+            
             catch (SecurityException e) {
                 
                 e.printStackTrace();
@@ -65,21 +69,15 @@ public class ModuleTinkers extends Module {
     @Override
     public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
     
-        // hides landmines
-        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null) {
+        // Hides landmines
+        if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && Utilities.compareByClass(classLandmine, accessor.getBlock().getClass())) {
             
-            if (accessor.getStack() != null && accessor.getStack().getDisplayName().contains("mine")) {
+            if (accessor.getNBTData() != null) {
                 
-                if (accessor.getNBTData() != null) {
-                    
-                    if (accessor.getNBTData().getString("id").equalsIgnoreCase("landmine")) {
-                        
-                        ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
-                        
-                        if (cover != null)
-                            return cover;
-                    }
-                }
+                ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
+                
+                if (cover != null)
+                    return cover;
             }
         }
         

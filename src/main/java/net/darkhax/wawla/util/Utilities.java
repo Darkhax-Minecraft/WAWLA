@@ -158,6 +158,14 @@ public class Utilities {
         return null;
     }
     
+    /**
+     * Retrieves an inventory of items from an NBTTagCompound, useful for working with
+     * furnaces.
+     * 
+     * @param tag: The NBTTagCompound that contains an "Items" compound.
+     * @param invSize: The size of the new inventory.
+     * @return ItemStack[]: An array of all the items, based on the invSize.
+     */
     public static ItemStack[] getInventoryStacks (NBTTagCompound tag, int invSize) {
     
         ItemStack[] inventory = null;
@@ -175,5 +183,20 @@ public class Utilities {
         }
         
         return inventory;
+    }
+    
+    /**
+     * A way to check if two classes are the same. Includes a null check.
+     * 
+     * @param class1: The first class.
+     * @param class2: The second class.
+     * @return boolean: Are the classes the same?
+     */
+    public static boolean compareByClass (Class class1, Class class2) {
+    
+        if (class1 != null && class2 != null)
+            return (class1.equals(class2));
+        
+        return false;
     }
 }

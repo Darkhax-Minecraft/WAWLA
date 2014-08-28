@@ -7,10 +7,10 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
+import net.darkhax.wawla.util.Reference;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -51,7 +51,7 @@ public class ModulePixelmon extends Module {
             
             catch (ClassNotFoundException e) {
                 
-                e.printStackTrace();
+                Reference.LOG.info("The Pixelmon mod can not be detected. Module ignored.");
             }
         }
     }
@@ -66,7 +66,7 @@ public class ModulePixelmon extends Module {
     @Override
     public void onWailaEntityDescription (Entity entity, List<String> tooltip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
     
-        if (isPixelmon(entity) && accessor.getNBTData() != null) {
+        if (Utilities.compareByClass(classEntityPixelmon, entity.getClass()) && accessor.getNBTData() != null) {
             
             NBTTagCompound tag = accessor.getNBTData();
             if (accessor.getPlayer().isSneaking()) {
@@ -110,59 +110,6 @@ public class ModulePixelmon extends Module {
     }
     
     /**
-     * Checks to see if an entity is a Pixelmon through class comparison.
-     * 
-     * @param entity: The entity being checked.
-     * @return boolean: True if the entity is a Pixelmon, False if it is not.
-     */
-    boolean isPixelmon (Entity entity) {
-    
-        return (classEntityPixelmon != null && entity.getClass().equals(classEntityPixelmon)) ? true : false;
-    }
-    
-    /**
-     * Checks to see if the tile entity is an Appricorn tree using class comparison.
-     * 
-     * @param entity: instance of the TileEntity being checked.
-     * @return boolean: True if the entity is an Apricorn tree, False if it's not.
-     */
-    boolean isApricorn (TileEntity entity) {
-    
-        return (classTileEntityApricornTree != null && entity.getClass().equals(classTileEntityApricornTree)) ? true : false;
-    }
-    
-    /**
-     * Uses a short value to determine the gender of a pokemon. 1=male 2=female 3=none
-     * 
-     * @param gender
-     * @return
-     */
-    String getGender (short gender) {
-    
-        if (gender < 3)
-            return (gender == 1) ? "(Male)" : "(Female)";
-        
-        else
-            return "";
-    }
-    
-    /**
-     * Generates a statement containing information about the effort value and internal value
-     * of a pokemon.
-     * 
-     * @param type: The type, used for tooltip generation. attack, defence, health, spattack,
-     *            spdefence, speed
-     * @param key1: The key for the internal value.
-     * @param key2: The key for the effort value.
-     * @param tag: The NBTTagCompound of the pixelmon.
-     * @return
-     */
-    String generateIVEV (String type, String key1, String key2, NBTTagCompound tag) {
-    
-        return StatCollector.translateToLocal(tooltipKey + type) + ": " + StatCollector.translateToLocal(tooltipKey + "iv") + ": " + tag.getInteger(key1) + ": " + StatCollector.translateToLocal(tooltipKey + "ev") + ": " + tag.getInteger(key2);
-    }
-    
-    /**
      * This is a helper method to generate the percentage of growth in a block using meta-data
      * stages.
      * 
@@ -173,24 +120,6 @@ public class ModulePixelmon extends Module {
     float getGrowth (float curStage, float maxStage) {
     
         return (curStage / maxStage) * 100;
-    }
-    
-    /**
-     * Uses an integer based item id to create an item name.
-     * 
-     * @param itemID: item name.
-     * @return String: Name of the item.
-     */
-    String generateItemNameFromID (int itemID) {
-    
-        if (itemID > -1) {
-            
-            ItemStack stack = new ItemStack(Item.getItemById(itemID));
-            if (stack != null)
-                return stack.getDisplayName();
-        }
-        
-        return StatCollector.translateToLocal(tooltipKey + "none");
     }
     
     /**
@@ -206,7 +135,7 @@ public class ModulePixelmon extends Module {
      */
     void createApricornTooltip (TileEntity entity, List<String> tooltip, Block block, IWailaConfigHandler config) {
     
-        if (entity != null && isApricorn(entity)) {
+        if (entity != null && Utilities.compareByClass(classTileEntityApricornTree, entity.getClass())) {
             
             float meta = entity.getWorldObj().getBlockMetadata(entity.xCoord, entity.yCoord, entity.zCoord);
             String product = Block.blockRegistry.getNameForObject(block);
