@@ -2,7 +2,7 @@ package net.darkhax.wawla.handler;
 
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.modules.ModulePets;
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -65,7 +65,7 @@ public class IMCHandler {
             ModuleEnchantmentBooks.blacklist.add(ench);
         
         else
-            Reference.LOG.info(modid + " has attempted to register an enchantment with the enchantment blacklist however " + id + " is not a valid enchantment id.");
+            Constants.LOG.info(modid + " has attempted to register an enchantment with the enchantment blacklist however " + id + " is not a valid enchantment id.");
     }
     
     /**

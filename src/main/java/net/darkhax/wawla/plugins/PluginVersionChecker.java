@@ -1,6 +1,6 @@
 package net.darkhax.wawla.plugins;
 
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
@@ -15,7 +15,7 @@ public class PluginVersionChecker {
         if (enabled) {
             
             String versionLink = "https://dl.dropboxusercontent.com/u/38575752/files/versions/Wawla%20Version%20Info.txt";
-            FMLInterModComms.sendRuntimeMessage(Reference.MODID, "VersionChecker", "addVersionCheck", versionLink);
+            FMLInterModComms.sendRuntimeMessage(Constants.MODID, "VersionChecker", "addVersionCheck", versionLink);
         }
     }
 }

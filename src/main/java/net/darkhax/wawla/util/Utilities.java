@@ -194,8 +194,11 @@ public class Utilities {
      */
     public static boolean compareByClass (Class class1, Class class2) {
     
-        if (class1 != null && class2 != null)
-            return (class1.equals(class2));
+        if (class1 != null && class2 != null) {
+            
+            System.out.print(class1.getName() + " " + class2.getName() + " " + class1.getName().equalsIgnoreCase(class2.getName()));
+            return (class1.getName().equalsIgnoreCase(class2.getName()));
+        }
         
         return false;
     }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import net.darkhax.wawla.handler.TranslationHooks;
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -47,7 +47,7 @@ public class CommandPrint extends CommandBase {
         BufferedWriter writer = null;
         try {
             
-            File logFile = new File(fileName + " " + Reference.DATE.format(new Date()).toString() + ".txt");
+            File logFile = new File(fileName + " " + Constants.DATE.format(new Date()).toString() + ".txt");
             writer = new BufferedWriter(new FileWriter(logFile));
             
             for (int i = 0; i < lines.size(); i++) {

@@ -8,7 +8,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -42,7 +42,7 @@ public class ModuleTinkers extends Module {
                 
                 classHarvestTool = Class.forName("tconstruct.library.tools.HarvestTool");
                 classDualHarvestTool = Class.forName("tconstruct.library.tools.DualHarvestTool");
-                classLandmine = Class.forName("tconstruct.blocks.traps.Landmine");
+                classLandmine = Class.forName("tconstruct.mechworks.blocks.BlockLandmine");
                 getHarvestType = classHarvestTool.getDeclaredMethod("getHarvestType");
                 getSecondHarvestType = classDualHarvestTool.getDeclaredMethod("getSecondHarvestType");
                 getHarvestType.setAccessible(true);
@@ -51,12 +51,12 @@ public class ModuleTinkers extends Module {
             
             catch (ClassNotFoundException e) {
                 
-                Reference.LOG.info("The Tinkers Construct mod can not be detected. Module ignored.");
+                Constants.LOG.info("The Tinkers Construct mod can not be detected. Module ignored.");
             }
             
             catch (NoSuchMethodException e) {
                 
-                Reference.LOG.info("There was in issue loading the Tinkers Construct module. It will be ignored.");
+                Constants.LOG.info("There was in issue loading the Tinkers Construct module. It will be ignored.");
             }
             
             catch (SecurityException e) {

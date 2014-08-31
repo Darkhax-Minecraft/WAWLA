@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -14,13 +14,13 @@ import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:Waila")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, dependencies = "required-after:Waila")
 public class Wawla {
     
-    @SidedProxy(serverSide = Reference.SERVER, clientSide = Reference.CLIENT)
+    @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
     public static ProxyCommon proxy;
     
-    @Mod.Instance(Reference.MODID)
+    @Mod.Instance(Constants.MODID)
     public static Wawla instance;
     
     @EventHandler

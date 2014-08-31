@@ -7,7 +7,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
-import net.darkhax.wawla.util.Reference;
+import net.darkhax.wawla.util.Constants;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -51,7 +51,7 @@ public class ModulePixelmon extends Module {
             
             catch (ClassNotFoundException e) {
                 
-                Reference.LOG.info("The Pixelmon mod can not be detected. Module ignored.");
+                Constants.LOG.info("The Pixelmon mod can not be detected. Module ignored.");
             }
         }
     }
