@@ -1,0 +1,50 @@
+#Commands
+command.print.usage=
+command.print.success=已将丢失的Strings保存为 %s
+
+#Tool Tips
+tooltip.wawla.heldItem=手持物品
+tooltip.wawla.feet=足具
+tooltip.wawla.leggings=护腿
+tooltip.wawla.chestplate=胸甲
+tooltip.wawla.helmet=头盔
+tooltip.wawla.item=物品
+tooltip.wawla.owner=主人
+tooltip.wawla.jumpStrength=跳跃高度
+tooltip.wawla.speed=速度
+tooltip.wawla.canHarvest=可采掘
+tooltip.wawla.toolType=所需工具
+tooltip.wawla.yes=是
+tooltip.wawla.no=否
+tooltip.wawla.burnTime=燃料持续时间
+tooltip.wawla.seconds=秒
+tooltip.wawla.input=烧制物品
+tooltip.wawla.output=成品
+tooltip.wawla.fuel=燃料
+tooltip.wawla.levels=信标等级
+tooltip.wawla.primary=主增益效果
+tooltip.wawla.secondary=副增益效果
+tooltip.wawla.shiftEnch=按住Shift来查看附魔介绍
+tooltip.wawla.blockLevel=采掘等级
+
+#Fixed/Missing Strings
+tile.null.name=这个方块的作者太懒了, 没有为它取名
+
+#Module Options
+option.wawla.showEquipment=是否显示生物装备信息
+option.wawla.furnace.output=是否显示熔炉成品信息
+option.wawla.showhead=是否显示玩家头颅信息
+option.wawla.horse.showJump=是否显示马的跳跃高度
+option.wawla.furnace.fuel=是否显示熔炉燃料信息
+option.wawla.harvest.showHarvest=是否显示采掘能力
+option.wawla.harvest.tool=是否显示采掘所需工具
+option.wawla.harvest.tier=是否显示采掘等级
+option.wawla.furnace.input=是否显示熔炉烧制物品信息
+option.wawla.furnace.burntime=是否显示熔炉燃料持续时间
+option.wawla.horse.showSpeed=是否显示马的奔跑速度
+option.wawla.showEnchDesc=是否显示附魔介绍
+option.wawla.frame.showItem=是否显示展示框信息
+option.wawla.pet.showOwner=是否显示宠物的主人
+option.wawla.beacon.showLevels=是否显示信标等级
+option.wawla.beacon.showPrimary=是否显示信标主增益效果
+option.wawla.beacon.showSecondary=是否显示信标副增益效果
