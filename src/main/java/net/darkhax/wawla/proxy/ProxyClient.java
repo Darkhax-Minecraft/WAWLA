@@ -9,7 +9,6 @@ import net.darkhax.wawla.modules.ModuleEntityEquipment;
 import net.darkhax.wawla.modules.ModuleFurnace;
 import net.darkhax.wawla.modules.ModuleHarvest;
 import net.darkhax.wawla.modules.ModuleHorses;
-import net.darkhax.wawla.modules.ModuleItemFrame;
 import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
 import net.darkhax.wawla.modules.ModuleVillagerZombie;
@@ -40,7 +39,6 @@ public class ProxyClient extends ProxyCommon {
 
         new ModuleEnchantmentBooks(true);
         new ModuleEntityEquipment(true);
-        new ModuleItemFrame(true);
         new ModuleHorses(true);
         new ModulePets(true);
         new ModuleHarvest(true);
