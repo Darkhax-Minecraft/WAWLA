@@ -11,6 +11,7 @@ import net.minecraft.event.ClickEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
@@ -189,11 +190,16 @@ public class Utilities {
      */
     public static boolean compareByClass(Class class1, Class class2) {
 
-        if (class1 != null && class2 != null) {
-
-            System.out.print(class1.getName() + " " + class2.getName() + " " + class1.getName().equalsIgnoreCase(class2.getName()));
+        if (class1 != null && class2 != null)
             return (class1.getName().equalsIgnoreCase(class2.getName()));
-        }
+
+        return false;
+    }
+
+    public static boolean compareTileEntityByClass(TileEntity entity, Class teClass) {
+
+        if (entity != null && teClass != null)
+            return (compareByClass(entity.getClass(), teClass));
 
         return false;
     }
