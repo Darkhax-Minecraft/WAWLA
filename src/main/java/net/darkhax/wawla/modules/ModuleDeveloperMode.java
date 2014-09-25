@@ -9,20 +9,20 @@ import net.darkhax.wawla.util.Utilities;
 import net.minecraft.item.ItemStack;
 
 public class ModuleDeveloperMode extends Module {
-    
+
     public ModuleDeveloperMode(boolean enabled) {
-    
+
         super(enabled);
     }
-    
-    public void onWailaBlockDescription (ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
-    
+
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
+
         if (access.getTileEntity() != null && config.getConfig("option.wawla.devmode"))
             Utilities.wrapStringToList(access.getNBTData().toString(), 40, true, tooltip);
     }
-    
-    public void onWailaRegistrar (IWailaRegistrar register) {
-    
+
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
         register.addConfig("Wawla", "option.wawla.devmode");
     }
 }

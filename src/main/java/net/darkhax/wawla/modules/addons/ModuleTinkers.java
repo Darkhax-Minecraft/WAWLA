@@ -18,28 +18,28 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 
 public class ModuleTinkers extends Module {
-    
+
     private String showTankInv = "wawla.tinkers.showTankInv";
     private String showSmelterInv = "wawla.tinkers.showSmelteryInv";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
-    
+
     public static boolean isEnabled = false;
     public static Class classHarvestTool = null;
     public static Class classDualHarvestTool = null;
     public static Class classLandmine = null;
     public static Method getHarvestType = null;
     public static Method getSecondHarvestType = null;
-    
+
     public ModuleTinkers(boolean enabled) {
-    
+
         super(enabled);
-        
+
         if (enabled) {
-            
+
             isEnabled = enabled;
-            
+
             try {
-                
+
                 classHarvestTool = Class.forName("tconstruct.library.tools.HarvestTool");
                 classDualHarvestTool = Class.forName("tconstruct.library.tools.DualHarvestTool");
                 classLandmine = Class.forName("tconstruct.mechworks.blocks.BlockLandmine");
@@ -48,87 +48,87 @@ public class ModuleTinkers extends Module {
                 getHarvestType.setAccessible(true);
                 getSecondHarvestType.setAccessible(true);
             }
-            
+
             catch (ClassNotFoundException e) {
-                
+
                 Constants.LOG.info("The Tinkers Construct mod can not be detected. Module ignored.");
             }
-            
+
             catch (NoSuchMethodException e) {
-                
+
                 Constants.LOG.info("There was in issue loading the Tinkers Construct module. It will be ignored.");
             }
-            
+
             catch (SecurityException e) {
-                
+
                 e.printStackTrace();
             }
         }
     }
-    
+
     @Override
-    public ItemStack onBlockOverride (ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-    
+    public ItemStack onBlockOverride(ItemStack stack, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+
         // Hides landmines
         if (config.getConfig(hideLandmine) && accessor.getTileEntity() != null && Utilities.compareByClass(classLandmine, accessor.getBlock().getClass())) {
-            
+
             if (accessor.getNBTData() != null) {
-                
+
                 ItemStack cover = Utilities.getInventoryStacks(accessor.getNBTData(), 4)[3];
-                
+
                 if (cover != null)
                     return cover;
             }
         }
-        
+
         return stack;
     }
-    
+
     @Override
-    public void onWailaBlockDescription (ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
-    
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
+
         if (access.getTileEntity() != null) {
-            
+
             TileEntity tile = access.getTileEntity();
             NBTTagCompound tag = access.getNBTData();
             EntityPlayer player = access.getPlayer();
-            
+
             // Shows smeltery inventory when sneaking
             if (config.getConfig(showSmelterInv) && tag.getString("id").equalsIgnoreCase("tconstruct.smeltery")) {
-                
+
                 if (player.isSneaking()) {
-                    
+
                     NBTTagList fluids = tag.getTagList("Liquids", 10);
-                    
+
                     for (int i = 0; i < fluids.tagCount(); i++) {
-                        
+
                         NBTTagCompound liquid = fluids.getCompoundTagAt(i);
-                        
+
                         if (liquid != null) {
-                            
+
                             tooltip.add(getCorrectFluidName(liquid.getString("FluidName")) + ": " + liquid.getInteger("Amount") + StatCollector.translateToLocal("tooltip.wawla.tinkers.mb"));
                         }
                     }
                 }
             }
-            
+
             // Adds content of lava tanks
             if (config.getConfig(showTankInv) && tag.getString("id").equalsIgnoreCase("tconstruct.lavatank")) {
-                
+
                 if (tag.getInteger("amount") > 0)
                     tooltip.add(getCorrectFluidName(tag.getString("fluidName")) + ": " + tag.getInteger("amount") + StatCollector.translateToLocal("tooltip.wawla.tinkers.mb"));
             }
         }
     }
-    
+
     @Override
-    public void onWailaRegistrar (IWailaRegistrar register) {
-    
+    public void onWailaRegistrar(IWailaRegistrar register) {
+
         register.addConfig("Tinkers", showSmelterInv);
         register.addConfig("Tinkers", showTankInv);
         register.addConfig("Tinkers", hideLandmine);
     }
-    
+
     /**
      * Checks to see if a tinkers item is the right type to mine a block.
      * 
@@ -137,64 +137,64 @@ public class ModuleTinkers extends Module {
      * @return true: When the item is the right type.
      * @return false: When the item is not the right type.
      */
-    public static boolean canHarvest (ItemStack item, String required) {
-    
+    public static boolean canHarvest(ItemStack item, String required) {
+
         if (isEnabled) {
-            
+
             List<String> tooltypes = new ArrayList<String>();
-            
+
             if (classDualHarvestTool.isInstance(item.getItem())) {
-                
+
                 try {
-                    
+
                     tooltypes.add((String) getSecondHarvestType.invoke(item.getItem()));
                 }
-                
+
                 catch (Exception e) {
-                    
+
                     e.printStackTrace();
                 }
             }
-            
+
             if (classHarvestTool.isInstance(item.getItem())) {
-                
+
                 try {
-                    
+
                     tooltypes.add((String) getHarvestType.invoke(item.getItem()));
                 }
-                
+
                 catch (Exception e) {
-                    
+
                     e.printStackTrace();
                 }
             }
-            
+
             return (tooltypes.contains(required)) ? true : false;
         }
-        
+
         return false;
     }
-    
-    public String getCorrectFluidName (String fluid) {
-    
+
+    public String getCorrectFluidName(String fluid) {
+
         String base = fluid.split("\\.")[0];
         String result = "";
-        
+
         if (base != null)
             result = StatCollector.translateToLocal("tile.fluid.molten." + base + ".name");
-        
+
         if (result.contains("tile.fluid.molten"))
             result = StatCollector.translateToLocal("tile.fluid." + base + ".name");
-        
+
         if (result.contains("tile.fluid"))
             result = StatCollector.translateToLocal("tile.liquid." + base + ".name");
-        
+
         if (result.contains("tile.liquid"))
             result = StatCollector.translateToLocal("tile.molten." + base + ".name");
-        
+
         if (result.contains("tile.molten"))
             result = StatCollector.translateToLocal(fluid);
-        
+
         return result;
     }
 }
