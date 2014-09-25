@@ -10,12 +10,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
 import net.darkhax.wawla.util.Constants;
 import net.darkhax.wawla.util.Utilities;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
 
 public class ModuleTinkers extends Module {
 
@@ -85,47 +80,8 @@ public class ModuleTinkers extends Module {
     }
 
     @Override
-    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
-
-        if (access.getTileEntity() != null) {
-
-            TileEntity tile = access.getTileEntity();
-            NBTTagCompound tag = access.getNBTData();
-            EntityPlayer player = access.getPlayer();
-
-            // Shows smeltery inventory when sneaking
-            if (config.getConfig(showSmelterInv) && tag.getString("id").equalsIgnoreCase("tconstruct.smeltery")) {
-
-                if (player.isSneaking()) {
-
-                    NBTTagList fluids = tag.getTagList("Liquids", 10);
-
-                    for (int i = 0; i < fluids.tagCount(); i++) {
-
-                        NBTTagCompound liquid = fluids.getCompoundTagAt(i);
-
-                        if (liquid != null) {
-
-                            tooltip.add(getCorrectFluidName(liquid.getString("FluidName")) + ": " + liquid.getInteger("Amount") + StatCollector.translateToLocal("tooltip.wawla.tinkers.mb"));
-                        }
-                    }
-                }
-            }
-
-            // Adds content of lava tanks
-            if (config.getConfig(showTankInv) && tag.getString("id").equalsIgnoreCase("tconstruct.lavatank")) {
-
-                if (tag.getInteger("amount") > 0)
-                    tooltip.add(getCorrectFluidName(tag.getString("fluidName")) + ": " + tag.getInteger("amount") + StatCollector.translateToLocal("tooltip.wawla.tinkers.mb"));
-            }
-        }
-    }
-
-    @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Tinkers", showSmelterInv);
-        register.addConfig("Tinkers", showTankInv);
         register.addConfig("Tinkers", hideLandmine);
     }
 
@@ -173,28 +129,5 @@ public class ModuleTinkers extends Module {
         }
 
         return false;
-    }
-
-    public String getCorrectFluidName(String fluid) {
-
-        String base = fluid.split("\\.")[0];
-        String result = "";
-
-        if (base != null)
-            result = StatCollector.translateToLocal("tile.fluid.molten." + base + ".name");
-
-        if (result.contains("tile.fluid.molten"))
-            result = StatCollector.translateToLocal("tile.fluid." + base + ".name");
-
-        if (result.contains("tile.fluid"))
-            result = StatCollector.translateToLocal("tile.liquid." + base + ".name");
-
-        if (result.contains("tile.liquid"))
-            result = StatCollector.translateToLocal("tile.molten." + base + ".name");
-
-        if (result.contains("tile.molten"))
-            result = StatCollector.translateToLocal(fluid);
-
-        return result;
     }
 }
