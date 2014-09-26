@@ -11,6 +11,7 @@ import net.darkhax.wawla.modules.Module;
 import net.darkhax.wawla.util.Constants;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ModuleTinkers extends Module {
 
@@ -91,19 +92,41 @@ public class ModuleTinkers extends Module {
             if (Utilities.compareTileEntityByClass(access.getTileEntity(), classDryingRackLogic)) {
 
                 if (config.getConfig(showDryerItem)) {
-                    
+
                     ItemStack item = Utilities.getInventoryStacks(access.getNBTData(), 1)[0];
-                    
+
                     if (item != null)
                         tooltip.add("Item: " + item.getDisplayName());
                 }
-                
+
                 if (config.getConfig(showDryerTime)) {
-                 
+
                     double percent = Utilities.round(Utilities.getProgression(access.getNBTData().getInteger("Time"), access.getNBTData().getInteger("MaxTime")), 2);
 
                     if (percent > 0 && !(percent > 100))
                         tooltip.add("Dryness: " + percent + "%");
+                }
+            }
+
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classFurnaceLogic)) {
+
+                int burnTime = access.getNBTData().getInteger("Fuel") / 20;
+
+                if (burnTime > 0 && config.getConfig("wawla.furnace.burntime"))
+                    tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
+
+                if (access.getPlayer().isSneaking()) {
+
+                    ItemStack[] furnaceStacks = Utilities.getInventoryStacks(access.getNBTData(), 3);
+
+                    if (furnaceStacks[0] != null && config.getConfig("wawla.furnace.input"))
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
+
+                    if (furnaceStacks[1] != null && config.getConfig("wawla.furnace.fuel"))
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
+
+                    if (furnaceStacks[2] != null && config.getConfig("wawla.furnace.output"))
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
                 }
             }
         }
