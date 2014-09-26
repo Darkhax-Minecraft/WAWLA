@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 public class ModuleTinkers extends Module {
 
     private String showDryerTime = "wawla.tinkers.showDryerTime";
+    private String showDryerItem = "wawla.tinkers.showDryerItem";
     private String showFurnaceItem = "wawla.tinkers.showFurnace";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
 
@@ -89,10 +90,21 @@ public class ModuleTinkers extends Module {
 
             if (Utilities.compareTileEntityByClass(access.getTileEntity(), classDryingRackLogic)) {
 
-                double percent = Utilities.round(Utilities.getProgression(access.getNBTData().getInteger("Time"), access.getNBTData().getInteger("MaxTime")), 2);
+                if (config.getConfig(showDryerItem)) {
+                    
+                    ItemStack item = Utilities.getInventoryStacks(access.getNBTData(), 1)[0];
+                    
+                    if (item != null)
+                        tooltip.add("Item: " + item.getDisplayName());
+                }
+                
+                if (config.getConfig(showDryerTime)) {
+                 
+                    double percent = Utilities.round(Utilities.getProgression(access.getNBTData().getInteger("Time"), access.getNBTData().getInteger("MaxTime")), 2);
 
-                if (percent > 0 && !(percent > 100))
-                    tooltip.add("Dryness: " + percent + "%");
+                    if (percent > 0 && !(percent > 100))
+                        tooltip.add("Dryness: " + percent + "%");
+                }
             }
         }
     }
