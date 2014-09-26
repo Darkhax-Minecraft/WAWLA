@@ -5,12 +5,11 @@ import java.util.List;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.StatCollector;
 
@@ -34,7 +33,7 @@ public class ModuleFurnace extends Module {
 
             if (access.getPlayer().isSneaking()) {
 
-                ItemStack[] furnaceStacks = generateStacksForFurnace(access.getNBTData());
+                ItemStack[] furnaceStacks = Utilities.getInventoryStacks(access.getNBTData(), 3);
 
                 if (furnaceStacks[0] != null && config.getConfig("wawla.furnace.input"))
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
@@ -57,27 +56,5 @@ public class ModuleFurnace extends Module {
         register.addConfig("Wawla", "wawla.furnace.burntime");
         register.registerSyncedNBTKey("*", BlockFurnace.class);
         ItemStack stack = new ItemStack(Item.getItemFromBlock(Blocks.sandstone_stairs));
-    }
-
-    /**
-     * This method allows for a list of ItemStacks to be retrieved from a furnace.
-     * 
-     * @param tag: NBTTagCompound containing nbt data for the entity.
-     * @return ItemStack[]: An array of ItemStacks contained within the furnace.
-     */
-    public ItemStack[] generateStacksForFurnace(NBTTagCompound tag) {
-
-        ItemStack[] stacks = new ItemStack[3];
-        NBTTagList list = tag.getTagList("Items", 10);
-        for (int i = 0; i < list.tagCount(); ++i) {
-
-            NBTTagCompound compound = list.getCompoundTagAt(i);
-            byte byt = compound.getByte("Slot");
-
-            if (byt >= 0 && byt < stacks.length)
-                stacks[byt] = ItemStack.loadItemStackFromNBT(compound);
-        }
-
-        return stacks;
     }
 }
