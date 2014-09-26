@@ -14,14 +14,16 @@ import net.minecraft.item.ItemStack;
 
 public class ModuleTinkers extends Module {
 
-    private String showTankInv = "wawla.tinkers.showTankInv";
-    private String showSmelterInv = "wawla.tinkers.showSmelteryInv";
+    private String showDryerTime = "wawla.tinkers.showDryerTime";
+    private String showFurnaceItem = "wawla.tinkers.showFurnace";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
 
     public static boolean isEnabled = false;
     public static Class classHarvestTool = null;
     public static Class classDualHarvestTool = null;
     public static Class classLandmine = null;
+    public static Class classDryingRackLogic = null;
+    public static Class classFurnaceLogic = null;
     public static Method getHarvestType = null;
     public static Method getSecondHarvestType = null;
 
@@ -38,6 +40,8 @@ public class ModuleTinkers extends Module {
                 classHarvestTool = Class.forName("tconstruct.library.tools.HarvestTool");
                 classDualHarvestTool = Class.forName("tconstruct.library.tools.DualHarvestTool");
                 classLandmine = Class.forName("tconstruct.mechworks.blocks.BlockLandmine");
+                classDryingRackLogic = Class.forName("tconstruct.blocks.logic.DryingRackLogic");
+                classFurnaceLogic = Class.forName("tconstruct.tools.logic.FurnaceLogic");
                 getHarvestType = classHarvestTool.getDeclaredMethod("getHarvestType");
                 getSecondHarvestType = classDualHarvestTool.getDeclaredMethod("getSecondHarvestType");
                 getHarvestType.setAccessible(true);
@@ -79,14 +83,37 @@ public class ModuleTinkers extends Module {
         return stack;
     }
 
+    public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
+
+        if (access.getBlock() != null && access.getTileEntity() != null) {
+
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classDryingRackLogic)) {
+
+                double percent = Utilities.round(Utilities.getProgression(access.getNBTData().getInteger("Time"), access.getNBTData().getInteger("MaxTime")), 2);
+
+                if (percent > 0 && !(percent > 100))
+                    tooltip.add("Dryness: " + percent + "%");
+            }
+        }
+    }
+
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
+        if (classDryingRackLogic != null)
+            register.registerSyncedNBTKey("*", classDryingRackLogic);
+
+        if (classFurnaceLogic != null)
+            register.registerSyncedNBTKey("*", classFurnaceLogic);
+
         register.addConfig("Tinkers", hideLandmine);
+        register.addConfig("Tinkers", showDryerTime);
+        register.addConfig("Tinkers", showFurnaceItem);
     }
 
     /**
-     * Checks to see if a tinkers item is the right type to mine a block.
+     * This is a special method added to allow the ModuleHarvest to apply to tinkers construct ools and
+     * ores.
      * 
      * @param item: The item stack being checked.
      * @param required: The tool type required for the block.
