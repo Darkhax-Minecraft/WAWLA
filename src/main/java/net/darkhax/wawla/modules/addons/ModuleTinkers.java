@@ -108,7 +108,7 @@ public class ModuleTinkers extends Module {
                 }
             }
 
-            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classFurnaceLogic)) {
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classFurnaceLogic) && config.getConfig(showFurnaceItem)) {
 
                 int burnTime = access.getNBTData().getInteger("Fuel") / 20;
 
@@ -141,13 +141,14 @@ public class ModuleTinkers extends Module {
         if (classFurnaceLogic != null)
             register.registerSyncedNBTKey("*", classFurnaceLogic);
 
-        register.addConfig("Tinkers", hideLandmine);
-        register.addConfig("Tinkers", showDryerTime);
-        register.addConfig("Tinkers", showFurnaceItem);
+        register.addConfig("Tinkers' Construct", hideLandmine);
+        register.addConfig("Tinkers' Construct", showDryerTime);
+        register.addConfig("Tinkers' Construct", showDryerItem);
+        register.addConfig("Tinkers' Construct", showFurnaceItem);
     }
 
     /**
-     * This is a special method added to allow the ModuleHarvest to apply to tinkers construct ools and
+     * This is a special method added to allow the ModuleHarvest to apply to tinkers construct tools and
      * ores.
      * 
      * @param item: The item stack being checked.
