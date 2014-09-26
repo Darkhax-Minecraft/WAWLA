@@ -7,6 +7,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.Module;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -32,9 +33,9 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         if (accessor.getBlock() != null && accessor.getTileEntity() != null) {
-            // currenttip.add(accessor.getTileEntity().getClass() + "");
-            // currenttip.add(accessor.getBlock().getClass() + "");
-            // Utilities.wrapStringToList(accessor.getNBTData().toString(), 65, false, currenttip);
+             currenttip.add(accessor.getTileEntity().getClass() + "");
+             currenttip.add(accessor.getBlock().getClass() + "");
+            //Utilities.wrapStringToList(accessor.getNBTData().toString(), 45, false, currenttip);
         }
         for (Module module : Module.getModules())
             module.onWailaBlockName(itemStack, currenttip, accessor, config);

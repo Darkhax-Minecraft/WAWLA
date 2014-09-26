@@ -85,6 +85,7 @@ public class ModuleTinkers extends Module {
         return stack;
     }
 
+    @Override
     public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
         if (access.getBlock() != null && access.getTileEntity() != null) {
