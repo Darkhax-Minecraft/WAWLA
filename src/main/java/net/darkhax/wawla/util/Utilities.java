@@ -115,9 +115,14 @@ public class Utilities {
      */
     public static double round(double value, int places) {
 
-        BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+        if (value >= 0 && places > 0) {
+
+            BigDecimal bd = new BigDecimal(value);
+            bd = bd.setScale(places, RoundingMode.HALF_UP);
+            return bd.doubleValue();
+        }
+
+        return value;
     }
 
     /**
@@ -196,11 +201,22 @@ public class Utilities {
         return false;
     }
 
+    /**
+     * 
+     * @param entity
+     * @param teClass
+     * @return
+     */
     public static boolean compareTileEntityByClass(TileEntity entity, Class teClass) {
 
         if (entity != null && teClass != null)
             return (compareByClass(entity.getClass(), teClass));
 
         return false;
+    }
+
+    public static float getProgression(float curStage, float maxStage) {
+
+        return (curStage / maxStage) * 100;
     }
 }
