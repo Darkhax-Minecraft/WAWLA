@@ -13,6 +13,7 @@ import net.darkhax.wawla.modules.ModulePets;
 import net.darkhax.wawla.modules.ModulePlayerhead;
 import net.darkhax.wawla.modules.ModuleVillagerZombie;
 import net.darkhax.wawla.modules.addons.ModulePixelmon;
+import net.darkhax.wawla.modules.addons.ModuleThaumcraft;
 import net.darkhax.wawla.modules.addons.ModuleTinkers;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
 import cpw.mods.fml.common.Loader;
@@ -53,6 +54,7 @@ public class ProxyClient extends ProxyCommon {
 
         new ModulePixelmon(Loader.isModLoaded("pixelmon"));
         new ModuleTinkers(Loader.isModLoaded("TConstruct"));
+        new ModuleThaumcraft(Loader.isModLoaded("Thaumcraft"));
         new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
 }
