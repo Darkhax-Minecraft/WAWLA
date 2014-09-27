@@ -6,6 +6,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.modules.addons.ModuleTinkers;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -65,7 +66,7 @@ public class ModuleHarvest extends Module {
 
         // Shows correct tool type.
         if (tool != null && config.getConfig(showTool))
-            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
+            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + Utilities.upperCase(tool));
     }
 
     @Override
