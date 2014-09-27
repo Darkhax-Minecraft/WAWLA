@@ -202,10 +202,11 @@ public class Utilities {
     }
 
     /**
+     * An alternative to compareByClass that uses a TileEntity and a class.
      * 
-     * @param entity
-     * @param teClass
-     * @return
+     * @param entity: The tile entity you wish to compare.
+     * @param teClass: The class of another tile entity.
+     * @return boolean: True if they are the same.
      */
     public static boolean compareTileEntityByClass(TileEntity entity, Class teClass) {
 
@@ -215,8 +216,28 @@ public class Utilities {
         return false;
     }
 
+    /**
+     * Gets the progression percentage. Uses the current stage and the total maximum stage to make a
+     * percentage.
+     * 
+     * @param curStage: The stage you are current at.
+     * @param maxStage: The maximum possible stage for the event.
+     * @return float: The float as a percentage. This is not rounded.
+     */
     public static float getProgression(float curStage, float maxStage) {
 
         return (curStage / maxStage) * 100;
+    }
+
+    /**
+     * Converts the first char in a string to its upper case form.
+     * 
+     * @param string: The string to use.
+     * @return string: The input string, with the first character being upper cased.
+     */
+    public static String upperCase(String string) {
+
+        String newString = Character.toString(string.charAt(0)).toUpperCase() + string.substring(1);
+        return newString;
     }
 }
