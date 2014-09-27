@@ -33,10 +33,11 @@ public class WailaBlockHandler implements IWailaDataProvider {
     public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         if (accessor.getBlock() != null && accessor.getTileEntity() != null) {
-             currenttip.add(accessor.getTileEntity().getClass() + "");
-             currenttip.add(accessor.getBlock().getClass() + "");
-            //Utilities.wrapStringToList(accessor.getNBTData().toString(), 45, false, currenttip);
+            // currenttip.add(accessor.getTileEntity().getClass() + "");
+            // currenttip.add(accessor.getBlock().getClass() + "");
+            // Utilities.wrapStringToList(accessor.getNBTData().toString(), 35, false, currenttip);
         }
+        
         for (Module module : Module.getModules())
             module.onWailaBlockName(itemStack, currenttip, accessor, config);
 
