@@ -13,6 +13,7 @@ public class ModuleThaumcraft extends Module {
 
     public Class classTileJarFillable = null;
     public Class classTileMirror = null;
+    public Class classTileMirrorEssentia = null;
 
     public ModuleThaumcraft(boolean enabled) {
 
@@ -24,6 +25,7 @@ public class ModuleThaumcraft extends Module {
 
                 classTileJarFillable = Class.forName("thaumcraft.common.tiles.TileJarFillable");
                 classTileMirror = Class.forName("thaumcraft.common.tiles.TileMirror");
+                classTileMirrorEssentia = Class.forName("thaumcraft.common.tiles.TileMirrorEssentia");
             }
 
             catch (ClassNotFoundException e) {
@@ -50,7 +52,8 @@ public class ModuleThaumcraft extends Module {
                     tooltip.add("Amount: " + amount);
             }
             
-            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classTileMirror) && access.getNBTData().getBoolean("linked")) {
+            
+            if ((Utilities.compareTileEntityByClass(access.getTileEntity(), classTileMirror) || Utilities.compareTileEntityByClass(access.getTileEntity(), classTileMirrorEssentia)) && access.getNBTData().getBoolean("linked")) {
                 
                 int x = access.getNBTData().getInteger("linkX");
                 int y = access.getNBTData().getInteger("linkY");
