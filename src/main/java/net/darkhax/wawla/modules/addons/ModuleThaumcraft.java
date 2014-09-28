@@ -14,6 +14,7 @@ public class ModuleThaumcraft extends Module {
     public Class classTileJarFillable = null;
     public Class classTileMirror = null;
     public Class classTileMirrorEssentia = null;
+    public Class classTileJarBrain = null;
 
     public ModuleThaumcraft(boolean enabled) {
 
@@ -26,6 +27,7 @@ public class ModuleThaumcraft extends Module {
                 classTileJarFillable = Class.forName("thaumcraft.common.tiles.TileJarFillable");
                 classTileMirror = Class.forName("thaumcraft.common.tiles.TileMirror");
                 classTileMirrorEssentia = Class.forName("thaumcraft.common.tiles.TileMirrorEssentia");
+                classTileJarBrain = Class.forName("thaumcraft.common.tiles.TileJarBrain");
             }
 
             catch (ClassNotFoundException e) {
@@ -64,6 +66,14 @@ public class ModuleThaumcraft extends Module {
                 
                 if (true) 
                     tooltip.add("Dimension: " + DimensionManager.getProvider(access.getNBTData().getInteger("linkDim")).getDimensionName());
+            }
+            
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classTileJarBrain)) {
+                
+                int exp = access.getNBTData().getInteger("XP");
+                
+                if (true)
+                    tooltip.add("Experience: " + exp);
             }
         }
     }
