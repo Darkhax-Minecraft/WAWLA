@@ -1,22 +1,18 @@
-#Commands
-command.print.usage=
-command.print.success=已将丢失的Strings保存为 %s
-
-#Tool Tips
+#Vanilla Tool Tips
 tooltip.wawla.heldItem=手持物品
-tooltip.wawla.feet=足具
+tooltip.wawla.feet=靴子
 tooltip.wawla.leggings=护腿
 tooltip.wawla.chestplate=胸甲
 tooltip.wawla.helmet=头盔
 tooltip.wawla.item=物品
 tooltip.wawla.owner=主人
-tooltip.wawla.jumpStrength=跳跃高度
+tooltip.wawla.jumpStrength=跳跃力
 tooltip.wawla.speed=速度
-tooltip.wawla.canHarvest=可采掘
+tooltip.wawla.canHarvest=可采集
 tooltip.wawla.toolType=所需工具
 tooltip.wawla.yes=是
 tooltip.wawla.no=否
-tooltip.wawla.burnTime=燃料持续时间
+tooltip.wawla.burnTime=燃烧时间
 tooltip.wawla.seconds=秒
 tooltip.wawla.input=烧制物品
 tooltip.wawla.output=成品
@@ -25,22 +21,23 @@ tooltip.wawla.levels=信标等级
 tooltip.wawla.primary=主增益效果
 tooltip.wawla.secondary=副增益效果
 tooltip.wawla.shiftEnch=按住Shift来查看附魔介绍
-tooltip.wawla.blockLevel=采掘等级
+tooltip.wawla.blockLevel=需求等级
 
 #Fixed/Missing Strings
-tile.null.name=这个方块的作者太懒了, 没有为它取名
+tile.null.name=未命名方块,请报告给作者.
+entity.ItemFrame.name=物品展示框
 
-#Module Options
+#Vanilla Module Options
 option.wawla.showEquipment=是否显示生物装备信息
 option.wawla.furnace.output=是否显示熔炉成品信息
 option.wawla.showhead=是否显示玩家头颅信息
 option.wawla.horse.showJump=是否显示马的跳跃高度
 option.wawla.furnace.fuel=是否显示熔炉燃料信息
-option.wawla.harvest.showHarvest=是否显示采掘能力
-option.wawla.harvest.tool=是否显示采掘所需工具
-option.wawla.harvest.tier=是否显示采掘等级
+option.wawla.harvest.showHarvest=是否显示采集能力
+option.wawla.harvest.tool=是否显示采集所需工具
+option.wawla.harvest.tier=是否显示采集等级
 option.wawla.furnace.input=是否显示熔炉烧制物品信息
-option.wawla.furnace.burntime=是否显示熔炉燃料持续时间
+option.wawla.furnace.burntime=是否显示熔炉燃烧时间
 option.wawla.horse.showSpeed=是否显示马的奔跑速度
 option.wawla.showEnchDesc=是否显示附魔介绍
 option.wawla.frame.showItem=是否显示展示框信息
@@ -49,15 +46,75 @@ option.wawla.beacon.showLevels=是否显示信标等级
 option.wawla.beacon.showPrimary=是否显示信标主增益效果
 option.wawla.beacon.showSecondary=是否显示信标副增益效果
 
-#Tooltips
-tooltip.wawla.tinkers.mb=mB
-tooltip.wawla.tinkers.lava=燃料
+#Vanilla Enchantment Descriptions
+description.enchantment.protect.all=该附魔减少装备者从诸多伤害源获得的伤害.它可以与火焰保护和摔落保护这样的附魔叠加,但它减少的伤害也是有限的. 该附魔能用于所有种类的护甲.
+description.enchantment.protect.fire=该附魔减少装备者从火源获得的伤害,如火,烈焰人和岩浆.也会减少玩家着火的时间.能用于所有种类的护甲.
+description.enchantment.protect.fall=该附魔减少装备者从摔落获得的伤害,也会减少使用末影珍珠时的伤害.仅用于靴子.
+description.enchantment.protect.explosion=该附魔减少装备者从爆炸获得的伤害,如TNT或爬行者.它也会减弱爆炸的冲击效果.能用于所有种类的护甲.
+description.enchantment.protect.projectile=该附魔减少装备者从弹射物获得的伤害,如箭矢和火焰弹.能用于所有种类的护甲.
+description.enchantment.oxygen=该附魔改善了装备者在水下的视野.每级也会额外增加15秒水下呼吸时间.每级也会增加1秒窒息伤害的间隔时间.仅用于头盔.
+description.enchantment.waterWorker=该附魔提升了装备者在水下破坏方块的速度.仅用于头盔.
+description.enchantment.thorns=该附魔每级会增加15%使攻击装备者的怪物受到1.5心到2心反伤的几率.能用于所有种类的护甲.
+description.enchantment.damage.all=该附魔每级增加物品1.25的额外伤害.可用于许多工具,但主要用于剑.
+description.enchantment.damage.undead=该附魔每级增加2.5对亡灵生物造成的伤害,如骷髅射手,僵尸和凋零.可用于许多工具,但主要用于剑.
+description.enchantment.damage.arthropods=该附魔每级增加2.5对以蜘蛛为基础的怪物的伤害,如蜘蛛,洞穴蜘蛛,蠹虫和末影螨.可用于许多工具,但主要用于剑.
+description.enchantment.knockback=该附魔使被击中的生物从玩家面前击退.仅用于剑.
+description.enchantment.fire=该附魔时会引燃被攻击的生物.初始3点火焰伤害,之后每级增加4点.仅用于剑.
+description.enchantment.lootBonus=该附魔使生物掉落更多物品.最多掉落数每级增加1个.稀有物掉落率增加3%,之后每级增加0.5%.仅用于剑.
+description.enchantment.digging=该附魔使方块被破坏的速度增加30%/69%/120%/186%/271%.加速效果只有在采集正确的方块时才有效.可用于镐,铲,斧和剪刀.
+description.enchantment.untouching=该附魔使原本不能获取的方块变得可以获取,如冰,草方块和原矿.可用于镐,铲,斧和剪刀.
+description.enchantment.durability=该附魔会增加工具或护甲的平均耐久.可用于游戏中几乎所有拥有耐久度的物品.如打火石,鱼竿,所有的护甲和工具.
+description.enchantment.lootBonusDigger=该附魔使特定方块有几率成倍掉落物品.成功率会降低而掉落量会增加.成功率33%/25%/20%同时掉落倍数2/3/4.对于掉落多物品的方块,如西瓜,最大掉落量每级增加1.砂砾掉落燧石的几率依次为14%/25/100%.可用于镐,铲和斧.
+description.enchantment.arrowDamage=该附魔每级会提升25%弓箭造成的伤害.数值精度为半颗心.仅对弓有效.
+description.enchantment.arrowKnockback=该附魔会使怪物在被射中时击退一段距离.仅对弓有效.
+description.enchantment.arrowFire=该附魔会在箭发射时点燃它,同时引燃击中的目标.火箭只会影响到生物,玩家和tnt方块.仅对弓有效.
+description.enchantment.arrowInfinite=该附魔使得箭在射出去时不会被消耗.需要玩家身上至少带着一只箭.仅对弓有效.
+description.enchantment.lootBonusFishing=该附魔每级会增加1%玩家获得宝物的几率.该附魔仅对鱼竿有效.
+description.enchantment.fishingSpeed=该附魔每级会减少5秒鱼咬钩的间隔时间.每级也会增加1%钓到垃圾和宝物的几率.
 
-#Fixed Strings
-tile.fluid.molten.pigiron.name=熔融生铁
-tile.fluid.molten.aluminumbrass.name=熔融铝黄铜
+#Tinkers Construct Options
+option.wawla.tinkers.hideLandmine=是否隐藏地雷?
+option.wawla.tinkers.showDryerTime=是否显示晾干过程?
+option.wawla.tinkers.showDryerItem=是否显示晾干架物品?
+option.wawla.tinkers.showFurnace=是否显示半砖熔炉内容物?
 
-#Config
-option.wawla.tinkers.showTankInv=是否显示冶炼槽信息
-option.wawla.tinkers.hideLandmine=是否隐藏地雷显示
-option.wawla.tinkers.showSmelteryInv=是否显示冶炼炉信息
+#AquaCulture Enchantment Descriptions
+description.enchantment.aquacultureAppealing=该附魔给予玩家充足的时间来捕鱼.
+description.enchantment.aquacultureBarbedHook=该附魔会提升玩家捕鱼成功率.
+description.enchantment.aquacultureDoubleHook=该附魔使玩家能一次性获得更多鱼或宝物.
+description.enchantment.aquacultureHeavyLine=该附魔是玩家能捕获更大更重的鱼.
+description.enchantment.aquacultureLongCast=该附魔让鱼钩(浮标)扔得更远.
+description.enchantment.aquacultureMagnetic=该附魔让玩家有更大的几率捕到鱼.
+description.enchantment.aquacultureShortCast=该附魔让鱼钩(浮标)扔得更近.
+
+#Pixelmon Tooltips
+tooltip.wawla.pixelmon.male=雄
+tooltip.wawla.pixelmon.female=雌
+tooltip.wawla.pixelmon.ability=能力
+tooltip.wawla.pixelmon.happiness=心情
+tooltip.wawla.pixelmon.helditem=持有物品
+tooltip.wawla.pixelmon.none=无
+tooltip.wawla.pixelmon.attack=攻击
+tooltip.wawla.pixelmon.defence=防御
+tooltip.wawla.pixelmon.health=HP
+tooltip.wawla.pixelmon.spattack=特殊攻击
+tooltip.wawla.pixelmon.spdefence=特殊防御
+tooltip.wawla.pixelmon.speed=速度
+tooltip.wawla.pixelmon.iv=IV
+tooltip.wawla.pixelmon.ev=EV
+tooltip.wawla.pixelmon.growth=成长
+tooltip.wawla.pixelmon.product=栗子类型
+tooltip.wawla.pixelmon.nature=天性
+tooltip.wawla.pixelmon.size=成长状态
+
+#Pixelmon Fixed Strings
+entity.pixelmon.Pixelmon.name=神奇宝贝
+
+#Pixelmon Options
+option.wawla.pixelmon.showFriendship=是否显示心情?
+option.wawla.pixelmon.showApricornProduct=是否显示栗子类型?
+option.wawla.pixelmon.showApricornGrowth=是否显示栗子成长进度?
+option.wawla.pixelmon.showAbility=是否显示能力?
+option.wawla.pixelmon.showHeldItem=是否显示持有物品?
+option.wawla.pixelmon.showNature=是否显示天性?
+option.wawla.pixelmon.showSize=是否显示成长状态?
