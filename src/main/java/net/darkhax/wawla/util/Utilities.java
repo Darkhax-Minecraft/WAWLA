@@ -178,8 +178,11 @@ public class Utilities {
 
             for (int i = 0; i < list.tagCount(); i++) {
 
-                NBTTagCompound currentTag = list.getCompoundTagAt(i);
-                inventory[(int) currentTag.getByte("Slot")] = ItemStack.loadItemStackFromNBT(currentTag);
+                if (!(i > list.tagCount())) {
+
+                    NBTTagCompound currentTag = list.getCompoundTagAt(i);
+                    inventory[(int) currentTag.getByte("Slot")] = ItemStack.loadItemStackFromNBT(currentTag);
+                }
             }
         }
 
