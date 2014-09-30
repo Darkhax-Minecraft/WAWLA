@@ -5,6 +5,8 @@ import java.util.List;
 
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
@@ -28,18 +30,22 @@ public class ModuleEnchantmentBooks extends Module {
     @Override
     public void onTooltipDisplayed(ItemStack stack, EntityPlayer player, List<String> toolTip, boolean advanced) {
 
-        if (stack.getItem() instanceof ItemEnchantedBook) {
+        if (player.worldObj.isRemote) {
+            
+            if (stack.getItem() instanceof ItemEnchantedBook) {
 
-            if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+                GameSettings settings = Minecraft.getMinecraft().gameSettings;
+                if (settings.isKeyDown(settings.keyBindSneak)) {
 
-                Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
+                    Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
 
-                if (!blacklist.contains(ench))
-                    Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
+                    if (!blacklist.contains(ench))
+                        Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
+                }
+
+                else
+                    toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
             }
-
-            else
-                toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
         }
     }
 
