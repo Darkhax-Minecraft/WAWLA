@@ -1,0 +1,120 @@
+#Vanilla Tool Tips
+tooltip.wawla.heldItem=Держит предмет
+tooltip.wawla.feet=Ботинки
+tooltip.wawla.leggings=Поножи
+tooltip.wawla.chestplate=Кираса
+tooltip.wawla.helmet=Шлем
+tooltip.wawla.item=Предмет
+tooltip.wawla.owner=Владелец
+tooltip.wawla.jumpStrength=Сила прыжка
+tooltip.wawla.speed=Скорость
+tooltip.wawla.canHarvest=Можно добыть
+tooltip.wawla.toolType=Необходимый инструмент
+tooltip.wawla.yes=Да
+tooltip.wawla.no=Нет
+tooltip.wawla.burnTime=Время горения
+tooltip.wawla.seconds=секунд(-ы)
+tooltip.wawla.input=Вход
+tooltip.wawla.output=Выход
+tooltip.wawla.fuel=Топливо
+tooltip.wawla.levels=Уровни
+tooltip.wawla.primary=Первый эффект
+tooltip.wawla.secondary=Второй эффект
+tooltip.wawla.shiftEnch=Зажмите Shift для информации о зачаровании
+tooltip.wawla.blockLevel=Требуемый уровень
+
+#Fixed/Missing Strings
+tile.null.name=Безымянный блок, сообщите автору мода.
+entity.ItemFrame.name=Предметная рамка
+
+#Vanilla Module Options
+option.wawla.showEquipment=Показывать экипировку сущностей?
+option.wawla.furnace.output=Показывать выход печи?
+option.wawla.showhead=Показывать имена голов игроков?
+option.wawla.horse.showJump=Показывать силу прыжка лошади?
+option.wawla.furnace.fuel=Показывать топливо печи?
+option.wawla.harvest.showHarvest=Показывать, можно ли добыть блок?
+option.wawla.harvest.tool=Показывать необходимый инструмент?
+option.wawla.harvest.tier=Показывать необходимый уровень?
+option.wawla.furnace.input=Показывать вход печи?
+option.wawla.furnace.burntime=Показывать время горения в печи?
+option.wawla.horse.showSpeed=Показывать скорость лошади?
+option.wawla.showEnchDesc=Показывать описания зачарований?
+option.wawla.frame.showItem=Показывать содержимое рамок?
+option.wawla.pet.showOwner=Показывать владельца питомца?
+option.wawla.beacon.showLevels=Показывать уровень маяка?
+option.wawla.beacon.showPrimary=Показывать первичный эффект маяка?
+option.wawla.beacon.showSecondary=Показывать вторичный эффект маяка?
+
+#Vanilla Enchantment Descriptions
+description.enchantment.protect.all=Это зачарование уменьшает наносимый урон владельцу от многих источников. Оно сочетается с такими зачарованиями, как Огнестойкость и Лёгкость, однако можно достичь ограничения по снижению урона. Это зачарование применимо ко всем видам брони.
+description.enchantment.protect.fire=Это зачарование уменьшает получаемый урон от источников огня, таких как огонь, ифриты и лава. Это зачарование также уменьшает общее количество времени, во время которого владелец горит. Это зачарование применимо ко всем видам брони.
+description.enchantment.protect.fall=Это зачарование уменьшает получаемый урон от падений, оно также уменьшает получаемый урон от использования жемчуга Края. Это зачарование применимо только к ботинками.
+description.enchantment.protect.explosion=Это зачарование уменьшает получаемый урон от взрывов, таких как динамит и криперы. Это зачарование также уменьшает отдачу от взрывов. Это зачарование применимо ко всем видам брони.
+description.enchantment.protect.projectile=Это зачарование уменьшает получаемый урон от снарядов, таких как стрелы и огненные шары. Это зачарование применимо ко всем видам брони.
+description.enchantment.oxygen=Это зачарование улучшает зрение владельца под водой. Это зачарование также увеличивает общее количество кислорода владельца на 15 секунд за уровень. Время получения урона от удушения также увеличивается на одну секунду за уровень. Это зачарование применимо только к шлемам.
+description.enchantment.waterWorker=Это зачарование увеличивает скорость ломания блоков владельцом, под водой. Это зачарование применимо только к шлемам.
+description.enchantment.thorns=Это зачарование имеет 15% шанс за уровень, нанести урон мобам, которые бьют владельца с уроном в пол сердца до двух сердец. Это зачарование применимо ко всем видам брони.
+description.enchantment.damage.all=Это зачарование увеличивает урон предмета на 1.25 за уровень. Это зачарование применимо ко многим видам инструментов, однако меч основной вид. 
+description.enchantment.damage.undead=Это зачарование увеличивает наносимый урон мёртвым мобам, таким как скелеты, зомби и иссушителю на 2.5 сердца за уровень. Это зачарование применимо ко многим видам инструментов, однако меч основной вид. 
+description.enchantment.damage.arthropods=Это зачарование увеличивает наносимый урон мобам, которые похожи на "паука", таким как пауки, пещерные пауки, чешуйницы и чешуйницы Края на 2.5 сердца за уровень. Это зачарование применимо ко многим видам инструментов, однако меч основной вид. 
+description.enchantment.knockback=Это зачарование отбрасывает мобов от игрока. Это зачарование применимо только к мечам.
+description.enchantment.fire=Это зачарование поджигает мобов. Моб получит 3 сердца урона от огня вместе с дополнительными 4 сердцами урона от огня за уровень. Это зачарование применимо только к мечам. 
+description.enchantment.lootBonus=Это зачарование заставляет мобов ронять больше предметов. Максимальное количество предметов увеличивается на 1 за уровень. Шанс редких предметов увеличивается на 3% плюс дополнительные .5% за уровень потом. Это зачарование применимо только к мечам.
+description.enchantment.digging=Это зачарование позволяет ломать блоки быстрее на 30%/69%/120%/186%/271%. Чтобы эффект применился, инструмент должен быть использован на правильном блоке. Этот эффект применяется на кирки, лопаты, топоры и ножницы.
+description.enchantment.untouching=Это зачарование позволяет получить блоки, которые нельзя получить в обычных условиях. Примеры: лёд, трава и блоки руды. Это зачарование применимо к киркам, лопатам, топорам и ножницам.
+description.enchantment.durability=Это зачарование увеличивает среднюю прочность инструмента или части брони. Этот эффект применим ко всем предметам, у которых есть прочность. Примеры: Огниво, удочки, все виды брони и инструментов.
+description.enchantment.lootBonusDigger=Это зачарование даёт шанс получить двойное количество предметов с некоторых блоков. Каждый уровень увеличивает количество шансов. Шансы того, что шанс удастся уменьшаются, однако модификатор выпадения увеличивается. 33%/25%/20% для 2/3/4 предметов. Для блоков, которые дают несколько предметов, таких как арбузы, максимальное количество предметов, которые могут выпасть, увеличивается на 1 за уровень. Шанс получения кремния из гравия также увеличен. Шансы его получения 14%/25/100%. Это зачарование применимо к киркам, лопатам, топорам и ножницам.
+description.enchantment.arrowDamage=Это зачарование увеличивает наносимый урон луком на 25% умноженное на уровень + 1. Урон округляется до ближайшего пол сердца. Это зачарование применимо только к лукам.
+description.enchantment.arrowKnockback=Это зачарование отбрасывает мобов от игрока, при попадании стрелы. Это зачарование применимо только к лукам.
+description.enchantment.arrowFire=Это зачарование поджигает запущенные стрелы. Попадание в мобов поджигает их. Этот огонь поджигает только мобов, игроков и блоки динамита. Это зачарование применимо только к лукам.
+description.enchantment.arrowInfinite=Это зачарование предотвращает затраты стрел, во время выстрела. Этот эффект требует хотябы одну стрелу в инвентаре игрока. Это зачарование применимо только к лукам.
+description.enchantment.lootBonusFishing=Это зачарование увеличивает шансы игроков получения сокровищ, во время рыбалки на 1% за уровень. Это зачарование применимо только к удочкам.
+description.enchantment.fishingSpeed=Это зачарование уменьшает время на поимку рыбы на 5 секунд за уровень. Оно также увеличивает шанс получения хлама и сокровищ на 1% за уровень.
+
+#Tinkers Construct Options
+option.wawla.tinkers.hideLandmine=Спрятать мины?
+option.wawla.tinkers.showDryerTime=Прогресс вяления?
+option.wawla.tinkers.showDryerItem=Предмет на доске для вяления?
+option.wawla.tinkers.showFurnace=Показывать содержимое печь-плиты?
+
+#AquaCulture Enchantment Descriptions
+description.enchantment.aquacultureAppealing=Это зачарование даёт игроку большее количество времени на то, чтобы поймать рыбу.
+description.enchantment.aquacultureBarbedHook=Это зачарование даёт игроку больший шанс на то, чтобы выловить рыбу.
+description.enchantment.aquacultureDoubleHook=Это зачарование позволяет игроку получить более одной рыбы или добычи.
+description.enchantment.aquacultureHeavyLine=Это зачарование позволяет игроку поймать большую и тяжелую рыбы.
+description.enchantment.aquacultureLongCast=Это зачарование позволяет закинуть крючок(поплавок) удочки дальше.
+description.enchantment.aquacultureMagnetic=Это зачарование даёт игроку больше шансов поймать рыбу.
+description.enchantment.aquacultureShortCast=Это зачарование позволяет закинуть крючок(поплавок) на короткую дистанцию.
+
+#Pixelmon Tooltips
+tooltip.wawla.pixelmon.male=самец
+tooltip.wawla.pixelmon.female=самка
+tooltip.wawla.pixelmon.ability=Способность
+tooltip.wawla.pixelmon.happiness=Дружелюбность
+tooltip.wawla.pixelmon.helditem=Держит предмет
+tooltip.wawla.pixelmon.none=Нет
+tooltip.wawla.pixelmon.attack=Атака
+tooltip.wawla.pixelmon.defence=Защита
+tooltip.wawla.pixelmon.health=Здоровье
+tooltip.wawla.pixelmon.spattack=Специальная атака
+tooltip.wawla.pixelmon.spdefence=Специальная защита
+tooltip.wawla.pixelmon.speed=Скорость
+tooltip.wawla.pixelmon.iv=IV
+tooltip.wawla.pixelmon.ev=EV
+tooltip.wawla.pixelmon.growth=Рост
+tooltip.wawla.pixelmon.product=Продукт
+tooltip.wawla.pixelmon.nature=Характер
+tooltip.wawla.pixelmon.size=Размер
+
+#Pixelmon Fixed Strings
+entity.pixelmon.Pixelmon.name=Pixelmon
+
+#Pixelmon Options
+option.wawla.pixelmon.showFriendship=Показывать дружелюбность?
+option.wawla.pixelmon.showApricornProduct=Показывать вид Apricorn?
+option.wawla.pixelmon.showApricornGrowth=Показывать рост Apricorn?
+option.wawla.pixelmon.showAbility=Показывать способности?
+option.wawla.pixelmon.showHeldItem=Показывать предмет в руке?
+option.wawla.pixelmon.showNature=Показывать характеры?
+option.wawla.pixelmon.showSize=Показывать размер?
