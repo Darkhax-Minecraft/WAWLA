@@ -6,14 +6,11 @@ import java.util.List;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.GameSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import org.lwjgl.input.Keyboard;
 
 public class ModuleEnchantmentBooks extends Module {
 
@@ -31,11 +28,10 @@ public class ModuleEnchantmentBooks extends Module {
     public void onTooltipDisplayed(ItemStack stack, EntityPlayer player, List<String> toolTip, boolean advanced) {
 
         if (player.worldObj.isRemote) {
-            
+
             if (stack.getItem() instanceof ItemEnchantedBook) {
 
-                GameSettings settings = Minecraft.getMinecraft().gameSettings;
-                if (settings.isKeyDown(settings.keyBindSneak)) {
+                if (Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak)) {
 
                     Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
 
