@@ -35,7 +35,7 @@ public class ModuleEnchantmentBooks extends Module {
 
                     Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
 
-                    if (!blacklist.contains(ench))
+                    if (ench != null && !blacklist.contains(ench))
                         Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
                 }
 

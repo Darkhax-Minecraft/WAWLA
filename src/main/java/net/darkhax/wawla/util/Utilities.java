@@ -3,6 +3,7 @@ package net.darkhax.wawla.util;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
@@ -17,8 +18,6 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
 
 import org.apache.commons.lang3.text.WordUtils;
-
-import scala.actors.threadpool.Arrays;
 
 public class Utilities {
 
