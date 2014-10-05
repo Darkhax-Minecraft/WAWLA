@@ -22,29 +22,30 @@ tooltip.wawla.primary=Первый эффект
 tooltip.wawla.secondary=Второй эффект
 tooltip.wawla.shiftEnch=Зажмите Shift для информации о зачаровании
 tooltip.wawla.blockLevel=Требуемый уровень
+tooltip.wawla.amount=Количество
+tooltip.wawla.item=Предмет
 
 #Fixed/Missing Strings
 tile.null.name=Безымянный блок, сообщите автору мода.
 entity.ItemFrame.name=Предметная рамка
 
 #Vanilla Module Options
-option.wawla.showEquipment=Показывать экипировку сущностей?
-option.wawla.furnace.output=Показывать выход печи?
-option.wawla.showhead=Показывать имена голов игроков?
-option.wawla.horse.showJump=Показывать силу прыжка лошади?
-option.wawla.furnace.fuel=Показывать топливо печи?
-option.wawla.harvest.showHarvest=Показывать, можно ли добыть блок?
-option.wawla.harvest.tool=Показывать необходимый инструмент?
-option.wawla.harvest.tier=Показывать необходимый уровень?
-option.wawla.furnace.input=Показывать вход печи?
-option.wawla.furnace.burntime=Показывать время горения в печи?
-option.wawla.horse.showSpeed=Показывать скорость лошади?
-option.wawla.showEnchDesc=Показывать описания зачарований?
-option.wawla.frame.showItem=Показывать содержимое рамок?
-option.wawla.pet.showOwner=Показывать владельца питомца?
-option.wawla.beacon.showLevels=Показывать уровень маяка?
-option.wawla.beacon.showPrimary=Показывать первичный эффект маяка?
-option.wawla.beacon.showSecondary=Показывать вторичный эффект маяка?
+option.wawla.showEquipment=Экипировка сущностей?
+option.wawla.furnace.output=Выход печи?
+option.wawla.showhead=Имена голов игроков?
+option.wawla.horse.showJump=Сила прыжка лошади?
+option.wawla.furnace.fuel=Топливо печи?
+option.wawla.harvest.showHarvest=Можно ли добыть блок?
+option.wawla.harvest.tool=Необходимый инструмент?
+option.wawla.harvest.tier=Необходимый уровень?
+option.wawla.furnace.input=Вход печи?
+option.wawla.furnace.burntime=Время горения в печи?
+option.wawla.horse.showSpeed=Скорость лошади?
+option.wawla.showEnchDesc=Описание зачарований?
+option.wawla.pet.showOwner=Владелец питомца?
+option.wawla.beacon.showLevels=Уровень маяка?
+option.wawla.beacon.showPrimary=Первичный эффект маяка?
+option.wawla.beacon.showSecondary=Вторичный эффект маяка?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=Это зачарование уменьшает наносимый урон владельцу от многих источников. Оно сочетается с такими зачарованиями, как Огнестойкость и Лёгкость, однако можно достичь ограничения по снижению урона. Это зачарование применимо ко всем видам брони.
@@ -72,11 +73,15 @@ description.enchantment.arrowInfinite=Это зачарование предот
 description.enchantment.lootBonusFishing=Это зачарование увеличивает шансы игроков получения сокровищ, во время рыбалки на 1% за уровень. Это зачарование применимо только к удочкам.
 description.enchantment.fishingSpeed=Это зачарование уменьшает время на поимку рыбы на 5 секунд за уровень. Оно также увеличивает шанс получения хлама и сокровищ на 1% за уровень.
 
+#Tinkers Construct Tooltips
+tooltip.wawla.tinkers.dryness=Вяление
+
 #Tinkers Construct Options
 option.wawla.tinkers.hideLandmine=Спрятать мины?
 option.wawla.tinkers.showDryerTime=Прогресс вяления?
 option.wawla.tinkers.showDryerItem=Предмет на доске для вяления?
-option.wawla.tinkers.showFurnace=Показывать содержимое печь-плиты?
+option.wawla.tinkers.showFurnace=Cодержимое печь-плиты?
+option.wawla.tinkers.showBurnTime=Время горения?
 
 #AquaCulture Enchantment Descriptions
 description.enchantment.aquacultureAppealing=Это зачарование даёт игроку большее количество времени на то, чтобы поймать рыбу.
@@ -111,10 +116,27 @@ tooltip.wawla.pixelmon.size=Размер
 entity.pixelmon.Pixelmon.name=Pixelmon
 
 #Pixelmon Options
-option.wawla.pixelmon.showFriendship=Показывать дружелюбность?
-option.wawla.pixelmon.showApricornProduct=Показывать вид Apricorn?
-option.wawla.pixelmon.showApricornGrowth=Показывать рост Apricorn?
-option.wawla.pixelmon.showAbility=Показывать способности?
-option.wawla.pixelmon.showHeldItem=Показывать предмет в руке?
-option.wawla.pixelmon.showNature=Показывать характеры?
-option.wawla.pixelmon.showSize=Показывать размер?
+option.wawla.pixelmon.showFriendship=Дружелюбность?
+option.wawla.pixelmon.showApricornProduct=Вид Apricorn?
+option.wawla.pixelmon.showApricornGrowth=Рост Apricorn?
+option.wawla.pixelmon.showAbility=Способности?
+option.wawla.pixelmon.showHeldItem=Предмет в руке?
+option.wawla.pixelmon.showNature=Характеры?
+option.wawla.pixelmon.showSize=Размер?
+
+#Thaumcraft Tooltips
+tooltip.wawla.thaumcraft.aspect=Аспект
+tooltip.wawla.thaumcraft.linked=Соединено с
+tooltip.wawla.thaumcraft.dimension=Измерение
+tooltip.wawla.thaumcraft.experience=Опыт
+
+#Thaumcraft Options
+option.wawla.thaumcraft.jarAspect=Аспекты в банке?
+option.wawla.thaumcraft.jarAmount=Количество в банке?
+option.wawla.thaumcraft.mirrorLink=Соединение зеркала?
+option.wawla.thaumcraft.mirrorDim=Измерение зеркала?
+option.wawla.thaumcraft.jarEXP=Опыт в банке?
+option.wawla.thaumcraft.wandItem=Recharge Item?
+option.wawla.thaumcraft.wandCharge=Заряд жезла?
+option.wawla.thaumcraft.pedestalItem=Предмет на пьедестале?
+option.wawla.thaumcraft.deconAspect=Расщепляющий аспект?
