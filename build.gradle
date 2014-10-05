@@ -25,14 +25,13 @@ buildProps.withReader {
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = "${config.version.minecraft}-${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}
-
+version = "${config.version.minecraft}-${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}"
 group= "net.darkhax.wawla" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Wawla"
 
 minecraft {
-    "${config.version.minecraft}-${config.version.forge}"
-    assetDir = "eclipse/assets"
+    version = "${config.version.minecraft}-${config.version.forge}"
+    runDir = "run"
     mappings = "snapshot_20140918"
 }
 
@@ -85,7 +84,6 @@ processResources
 }
 
 jar {
-    dependsOn copyBuildXml
     classifier = ''
     destinationDir = file 'output'
 }
