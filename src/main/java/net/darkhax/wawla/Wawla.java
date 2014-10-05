@@ -2,6 +2,7 @@ package net.darkhax.wawla;
 
 import java.util.Arrays;
 
+import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Constants;
@@ -26,6 +27,7 @@ public class Wawla {
     public void preInit(FMLPreInitializationEvent event) {
 
         setModMeta(event.getModMetadata());
+        new ForgeEventHandler();
         proxy.registerSidedEvents();
         proxy.registerSidedModules();
         proxy.registerSidedPlugins();

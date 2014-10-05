@@ -15,7 +15,6 @@ public class ForgeEventHandler {
     }
 
     @SubscribeEvent
-    @SideOnly(Side.CLIENT)
     public void onItemTooltip(ItemTooltipEvent event) {
 
         for (Module module : Module.getModules())

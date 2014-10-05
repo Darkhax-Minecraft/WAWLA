@@ -27,7 +27,6 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedEvents() {
 
-        new ForgeEventHandler();
         new WailaBlockHandler();
         new WailaEntityHandler();
     }
