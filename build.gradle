@@ -17,13 +17,23 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.1"
+ext.buildProps = file "build.properties"
+
+buildProps.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.version.minecraft}-${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}
+
 group= "net.darkhax.wawla" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Wawla"
 
 minecraft {
-    version = "1.7.10-10.13.0.1182"
+    "${config.version.minecraft}-${config.version.forge}"
     assetDir = "eclipse/assets"
+    mappings = "snapshot_20140918"
 }
 
 dependencies {
@@ -40,7 +50,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-	    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
+	    compile "mcp.mobius.waila:Waila:${config.version.waila}"
 }
 
 repositories {
@@ -72,4 +82,10 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+jar {
+    dependsOn copyBuildXml
+    classifier = ''
+    destinationDir = file 'output'
 }
