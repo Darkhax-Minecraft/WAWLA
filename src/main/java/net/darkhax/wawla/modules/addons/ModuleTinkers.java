@@ -18,6 +18,7 @@ public class ModuleTinkers extends Module {
     private String showDryerTime = "wawla.tinkers.showDryerTime";
     private String showDryerItem = "wawla.tinkers.showDryerItem";
     private String showFurnaceItem = "wawla.tinkers.showFurnace";
+    private String showBurnTime = "wawla.tinkers.showBurnTime";
     private String hideLandmine = "wawla.tinkers.hideLandmine";
 
     public static boolean isEnabled = false;
@@ -97,7 +98,7 @@ public class ModuleTinkers extends Module {
                     ItemStack item = Utilities.getInventoryStacks(access.getNBTData(), 1)[0];
 
                     if (item != null)
-                        tooltip.add("Item: " + item.getDisplayName());
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.item") + ": " + item.getDisplayName());
                 }
 
                 if (config.getConfig(showDryerTime)) {
@@ -105,29 +106,35 @@ public class ModuleTinkers extends Module {
                     double percent = Utilities.round(Utilities.getProgression(access.getNBTData().getInteger("Time"), access.getNBTData().getInteger("MaxTime")), 2);
 
                     if (percent > 0 && !(percent > 100))
-                        tooltip.add("Dryness: " + percent + "%");
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.tinkers.dryness") + ": " + percent + "%");
                 }
             }
 
-            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classFurnaceLogic) && config.getConfig(showFurnaceItem)) {
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classFurnaceLogic)) {
 
-                int burnTime = access.getNBTData().getInteger("Fuel") / 20;
+                if (config.getConfig(showBurnTime)) {
 
-                if (burnTime > 0 && config.getConfig("wawla.furnace.burntime"))
-                    tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
+                    int burnTime = access.getNBTData().getInteger("Fuel") / 20;
 
-                if (access.getPlayer().isSneaking()) {
+                    if (burnTime > 0 && config.getConfig("wawla.furnace.burntime"))
+                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
+                }
 
-                    ItemStack[] furnaceStacks = Utilities.getInventoryStacks(access.getNBTData(), 3);
+                if (config.getConfig(showFurnaceItem)) {
 
-                    if (furnaceStacks[0] != null && config.getConfig("wawla.furnace.input"))
-                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
+                    if (access.getPlayer().isSneaking()) {
 
-                    if (furnaceStacks[1] != null && config.getConfig("wawla.furnace.fuel"))
-                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
+                        ItemStack[] furnaceStacks = Utilities.getInventoryStacks(access.getNBTData(), 3);
 
-                    if (furnaceStacks[2] != null && config.getConfig("wawla.furnace.output"))
-                        tooltip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
+                        if (furnaceStacks[0] != null && config.getConfig("wawla.furnace.input"))
+                            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
+
+                        if (furnaceStacks[1] != null && config.getConfig("wawla.furnace.fuel"))
+                            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
+
+                        if (furnaceStacks[2] != null && config.getConfig("wawla.furnace.output"))
+                            tooltip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
+                    }
                 }
             }
         }

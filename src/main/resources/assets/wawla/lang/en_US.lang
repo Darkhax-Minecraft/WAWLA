@@ -22,29 +22,30 @@ tooltip.wawla.primary=First Effect
 tooltip.wawla.secondary=Second Effect
 tooltip.wawla.shiftEnch=Hold Shift for Enchantment Description
 tooltip.wawla.blockLevel=Required Tier
+tooltip.wawla.amount=Amount
+tooltip.wawla.item=Item
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
 entity.ItemFrame.name=Item Frame
 
 #Vanilla Module Options
-option.wawla.showEquipment=Show Entity Equipment?
-option.wawla.furnace.output=Show Furnace Output?
-option.wawla.showhead=Show Player Head Names?
-option.wawla.horse.showJump=Show Horse Jump Power?
-option.wawla.furnace.fuel=Show Furnace Fuel?
-option.wawla.harvest.showHarvest=Show Harvestability?
-option.wawla.harvest.tool=Show Correct Tool?
-option.wawla.harvest.tier=Show Correct Tier?
-option.wawla.furnace.input=Show Furnace Input?
-option.wawla.furnace.burntime=Show Furnace Burn Time?
-option.wawla.horse.showSpeed=Show Horse Speed?
-option.wawla.showEnchDesc=Show Enchantment Descriptions?
-option.wawla.frame.showItem=Show Frame Contents?
-option.wawla.pet.showOwner=Show Pet Owner?
-option.wawla.beacon.showLevels=Show Becon Level?
-option.wawla.beacon.showPrimary=Show Primary Beacon Effect?
-option.wawla.beacon.showSecondary=Show Secondary Beacon Effect?
+option.wawla.showEquipment=Entity Equipment?
+option.wawla.furnace.output=Furnace Output?
+option.wawla.showhead=Player Head Names?
+option.wawla.horse.showJump=Horse Jump Power?
+option.wawla.furnace.fuel=Furnace Fuel?
+option.wawla.harvest.showHarvest=Harvestability?
+option.wawla.harvest.tool=Correct Tool?
+option.wawla.harvest.tier=Correct Tier?
+option.wawla.furnace.input=Furnace Input?
+option.wawla.furnace.burntime=Furnace Burn Time?
+option.wawla.horse.showSpeed=Horse Speed?
+option.wawla.showEnchDesc=Enchantment Descriptions?
+option.wawla.pet.showOwner=Pet Owner?
+option.wawla.beacon.showLevels=Beacon Level?
+option.wawla.beacon.showPrimary=Primary Beacon Effect?
+option.wawla.beacon.showSecondary=Secondary Beacon Effect?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.
@@ -72,11 +73,15 @@ description.enchantment.arrowInfinite=This enchantment prevents arrows from bein
 description.enchantment.lootBonusFishing=This enchantment increases the players odds of getting treasure when fishing by 1% per level. This enchantment is only for fishing rods.
 description.enchantment.fishingSpeed=This enchantment decreases the time it takes for a fish to bite the hook by 5 seconds per level. This also increases the chance to get junk and treasure by 1% per level.
 
+#Tinkers Construct Tooltips
+tooltip.wawla.tinkers.dryness=Dryness
+
 #Tinkers Construct Options
 option.wawla.tinkers.hideLandmine=Hide landmines?
 option.wawla.tinkers.showDryerTime=Drying rack progress?
 option.wawla.tinkers.showDryerItem=Drying rack item?
 option.wawla.tinkers.showFurnace=Slab furnace contents?
+option.wawla.tinkers.showBurnTime=Burn Time?
 
 #AquaCulture Enchantment Descriptions
 description.enchantment.aquacultureAppealing=This enchantment gives the player a greater amount of time to catch fish.
@@ -111,10 +116,27 @@ tooltip.wawla.pixelmon.size=Size
 entity.pixelmon.Pixelmon.name=Pixelmon
 
 #Pixelmon Options
-option.wawla.pixelmon.showFriendship=Show Happiness?
-option.wawla.pixelmon.showApricornProduct=Show Apricorn Type?
-option.wawla.pixelmon.showApricornGrowth=Show Apricorn Growth?
-option.wawla.pixelmon.showAbility=Show Abilities?
-option.wawla.pixelmon.showHeldItem=Show Held Item?
-option.wawla.pixelmon.showNature=Show Natures?
-option.wawla.pixelmon.showSize=Show Size?
+option.wawla.pixelmon.showFriendship=Happiness?
+option.wawla.pixelmon.showApricornProduct=Apricorn Type?
+option.wawla.pixelmon.showApricornGrowth=Apricorn Growth?
+option.wawla.pixelmon.showAbility=Abilities?
+option.wawla.pixelmon.showHeldItem=Held Item?
+option.wawla.pixelmon.showNature=Natures?
+option.wawla.pixelmon.showSize=Size?
+
+#Thaumcraft Tooltips
+tooltip.wawla.thaumcraft.aspect=Aspect
+tooltip.wawla.thaumcraft.linked=Linked
+tooltip.wawla.thaumcraft.dimension=Dimension
+tooltip.wawla.thaumcraft.experience=Experience
+
+#Thaumcraft Options
+option.wawla.thaumcraft.jarAspect=Jar Aspects?
+option.wawla.thaumcraft.jarAmount=Jar Amount?
+option.wawla.thaumcraft.mirrorLink=Mirror Link?
+option.wawla.thaumcraft.mirrorDim=Mirror Dimension?
+option.wawla.thaumcraft.jarEXP=Jar Experience?
+option.wawla.thaumcraft.wandItem=Recharge Item?
+option.wawla.thaumcraft.wandCharge=Wand Charge?
+option.wawla.thaumcraft.pedestalItem=Pedestal Item?
+option.wawla.thaumcraft.deconAspect=Deconstruction Aspect?
