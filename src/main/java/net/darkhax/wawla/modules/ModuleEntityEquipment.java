@@ -63,6 +63,6 @@ public class ModuleEntityEquipment extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", "wawla.showEquipment");
+        register.addConfig("Wawla-Entity", "wawla.showEquipment");
     }
 }

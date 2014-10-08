@@ -44,11 +44,4 @@ public class ModuleEnchantmentBooks extends Module {
             }
         }
     }
-
-    @Override
-    public void onWailaRegistrar(IWailaRegistrar register) {
-
-        // TODO need way to get IWailaConfiguration
-        register.addConfig("Wawla", "wawla.showEnchDesc");
-    }
 }

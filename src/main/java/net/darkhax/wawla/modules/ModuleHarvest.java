@@ -72,8 +72,8 @@ public class ModuleHarvest extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", showTool);
-        register.addConfig("Wawla", showHarvestable);
-        register.addConfig("Wawla", showTier);
+        register.addConfig("Wawla-General", showTool);
+        register.addConfig("Wawla-General", showHarvestable);
+        register.addConfig("Wawla-General", showTier);
     }
 }

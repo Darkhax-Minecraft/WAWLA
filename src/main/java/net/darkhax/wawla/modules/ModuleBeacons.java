@@ -49,8 +49,8 @@ public class ModuleBeacons extends Module {
     public void onWailaRegistrar(IWailaRegistrar register) {
 
         register.registerSyncedNBTKey("*", BlockBeacon.class);
-        register.addConfig("Wawla", showLevels);
-        register.addConfig("Wawla", showPrimary);
-        register.addConfig("Wawla", showSecondary);
+        register.addConfig("Wawla-Blocks", showLevels);
+        register.addConfig("Wawla-Blocks", showPrimary);
+        register.addConfig("Wawla-Blocks", showSecondary);
     }
 }

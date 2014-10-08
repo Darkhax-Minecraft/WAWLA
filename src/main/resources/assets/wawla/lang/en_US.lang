@@ -24,6 +24,7 @@ tooltip.wawla.shiftEnch=Hold Shift for Enchantment Description
 tooltip.wawla.blockLevel=Required Tier
 tooltip.wawla.amount=Amount
 tooltip.wawla.item=Item
+tooltip.wawla.lightLevel=Light Level
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -44,8 +45,12 @@ option.wawla.horse.showSpeed=Horse Speed?
 option.wawla.showEnchDesc=Enchantment Descriptions?
 option.wawla.pet.showOwner=Pet Owner?
 option.wawla.beacon.showLevels=Beacon Level?
-option.wawla.beacon.showPrimary=Primary Beacon Effect?
-option.wawla.beacon.showSecondary=Secondary Beacon Effect?
+option.wawla.beacon.showPrimary=Prime Beacon Effect?
+option.wawla.beacon.showSecondary=Second Beacon Effect?
+option.wawla.light.lightLevel=Light Level?
+option.wawla.light.showDay=Day Light Level?
+option.wawla.light.monsterSpawn=Monster Light Level?
+option.wawla.villagerZombie=Villager Zombie?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.

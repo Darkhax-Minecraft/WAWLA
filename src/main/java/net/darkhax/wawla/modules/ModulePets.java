@@ -45,6 +45,6 @@ public class ModulePets extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", "wawla.pet.showOwner");
+        register.addConfig("Wawla-Entity", "wawla.pet.showOwner");
     }
 }

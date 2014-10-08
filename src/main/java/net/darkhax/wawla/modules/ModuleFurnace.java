@@ -50,11 +50,10 @@ public class ModuleFurnace extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", "wawla.furnace.input");
-        register.addConfig("Wawla", "wawla.furnace.fuel");
-        register.addConfig("Wawla", "wawla.furnace.output");
-        register.addConfig("Wawla", "wawla.furnace.burntime");
+        register.addConfig("Wawla-Blocks", "wawla.furnace.input");
+        register.addConfig("Wawla-Blocks", "wawla.furnace.fuel");
+        register.addConfig("Wawla-Blocks", "wawla.furnace.output");
+        register.addConfig("Wawla-Blocks", "wawla.furnace.burntime");
         register.registerSyncedNBTKey("*", BlockFurnace.class);
-        ItemStack stack = new ItemStack(Item.getItemFromBlock(Blocks.sandstone_stairs));
     }
 }

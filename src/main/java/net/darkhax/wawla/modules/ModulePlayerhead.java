@@ -32,6 +32,6 @@ public class ModulePlayerhead extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", "wawla.showhead");
+        register.addConfig("Wawla-Blocks", "wawla.showhead");
     }
 }

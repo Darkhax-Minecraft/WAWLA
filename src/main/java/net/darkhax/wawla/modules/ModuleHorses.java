@@ -36,7 +36,7 @@ public class ModuleHorses extends Module {
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
-        register.addConfig("Wawla", "wawla.horse.showJump");
-        register.addConfig("Wawla", "wawla.horse.showSpeed");
+        register.addConfig("Wawla-Entity", "wawla.horse.showJump");
+        register.addConfig("Wawla-Entity", "wawla.horse.showSpeed");
     }
 }
