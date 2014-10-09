@@ -3,7 +3,6 @@ package net.darkhax.wawla.modules;
 import java.util.ArrayList;
 import java.util.List;
 
-import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;

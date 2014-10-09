@@ -24,29 +24,26 @@ public class ModuleLightLevel extends Module {
     @Override
     public void onWailaBlockDescription(ItemStack stack, List<String> tooltip, IWailaDataAccessor access, IWailaConfigHandler config) {
 
-        if (access.getBlock() != null && access.getWorld() != null) {
+        if (config.getConfig(showLightLevel) && (!access.getWorld().isBlockNormalCubeDefault(access.getPosition().blockX, access.getPosition().blockY + 1, access.getPosition().blockZ, false) || access.getWorld().isAirBlock(access.getPosition().blockX, access.getPosition().blockY + 1, access.getPosition().blockZ))) {
 
-            if (config.getConfig(showLightLevel) && (!access.getWorld().isBlockNormalCubeDefault(access.getPosition().blockX, access.getPosition().blockY + 1, access.getPosition().blockZ, false) || access.getWorld().isAirBlock(access.getPosition().blockX, access.getPosition().blockY + 1, access.getPosition().blockZ))) {
+            int dayLevel = getBlockLightLevel(access.getWorld(), access.getPosition().blockX, access.getPosition().blockY, access.getPosition().blockZ, true);
+            int nightLevel = getBlockLightLevel(access.getWorld(), access.getPosition().blockX, access.getPosition().blockY, access.getPosition().blockZ, false);
 
-                int dayLevel = getBlockLightLevel(access.getWorld(), access.getPosition().blockX, access.getPosition().blockY, access.getPosition().blockZ, true);
-                int nightLevel = getBlockLightLevel(access.getWorld(), access.getPosition().blockX, access.getPosition().blockY, access.getPosition().blockZ, false);
+            String display = StatCollector.translateToLocal("tooltip.wawla.lightLevel") + ": ";
 
-                String display = StatCollector.translateToLocal("tooltip.wawla.lightLevel") + ": ";
+            if (config.getConfig(showMonsterSpawn)) {
 
-                if (config.getConfig(showMonsterSpawn)) {
+                if (nightLevel <= 7)
+                    display = display + EnumChatFormatting.DARK_RED + "" + nightLevel + " ";
 
-                    if (nightLevel <= 7)
-                        display = display + EnumChatFormatting.DARK_RED + "" + nightLevel + " ";
-
-                    else if (nightLevel > 7)
-                        display = display + EnumChatFormatting.GREEN + "" + nightLevel + " ";
-                }
-
-                if (config.getConfig(showDay))
-                    display = display + EnumChatFormatting.YELLOW + "(" + dayLevel + ")";
-
-                tooltip.add(display);
+                else if (nightLevel > 7)
+                    display = display + EnumChatFormatting.GREEN + "" + nightLevel + " ";
             }
+
+            if (config.getConfig(showDay))
+                display = display + EnumChatFormatting.YELLOW + "(" + dayLevel + ")";
+
+            tooltip.add(display);
         }
     }
 

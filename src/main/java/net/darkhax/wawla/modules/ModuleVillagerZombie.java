@@ -25,7 +25,7 @@ public class ModuleVillagerZombie extends Module {
                 tooltip.add("Zombie Villager");
         }
     }
-    
+
     @Override
     public void onWailaRegistrar(IWailaRegistrar register) {
 
