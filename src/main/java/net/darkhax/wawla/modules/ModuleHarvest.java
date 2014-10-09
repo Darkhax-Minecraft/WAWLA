@@ -55,7 +55,8 @@ public class ModuleHarvest extends Module {
             // When it's not harvestable.
             else {
 
-                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
+                if (config.getConfig(showHarvestable))
+                    tooltip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
 
                 if (config.getConfig(showTier))
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
