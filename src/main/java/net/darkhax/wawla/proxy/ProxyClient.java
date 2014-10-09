@@ -4,6 +4,7 @@ import net.darkhax.wawla.handler.ForgeEventHandler;
 import net.darkhax.wawla.handler.WailaBlockHandler;
 import net.darkhax.wawla.handler.WailaEntityHandler;
 import net.darkhax.wawla.modules.ModuleBeacons;
+import net.darkhax.wawla.modules.ModuleDeveloperMode;
 import net.darkhax.wawla.modules.ModuleEnchantmentBooks;
 import net.darkhax.wawla.modules.ModuleEntityEquipment;
 import net.darkhax.wawla.modules.ModuleFurnace;
@@ -49,6 +50,7 @@ public class ProxyClient extends ProxyCommon {
         new ModuleBeacons(true);
         new ModuleVillagerZombie(true);
         new ModuleLightLevel(true);
+        new ModuleDeveloperMode(true);
     }
 
     @Override
