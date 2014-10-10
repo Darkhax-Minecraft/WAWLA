@@ -147,8 +147,8 @@ option.wawla.thaumcraft.pedestalItem=Pedestal Item?
 option.wawla.thaumcraft.deconAspect=Deconstruction Aspect?
 
 #Thaumcraft Enchantment Descriptions
-description.enchantment.repair=Causes items to repair durability over time. This enchantment has two tiers, the second tier restoring durability at a faster rate. This enchantment can be used on weapons, wand foci and other tools, excluding shears.
-description.enchantment.haste=Grants faster movement speed. This enchantment has three tiers, each increasing the speed boost given. 
-description.enchantment.potency=Increases the strength of a spell. This is a three tier enchantment, each increasing the strength of the casted spell. This enchantment is only applicable for Wand Foci and can have a different effect depending on what foci is being used.
-description.enchantment.frugal=Reduces the amount of vis consumed when a wand foci is used. This is a tier three enchantment, each tier granting a greater reduction. This enchantment is only applicable for Wand Foci.
-description.enchantment.wandfortune=This enchantment is much like the fortune enchantment, allowing blocks which drop items to have a higher yield. This enchantment has three tiers, each increasing the chance for extra yield. this enchantment is only applicable for Wand Foci. 
+description.enchantment.repair=Causes items to repair durability over time. This enchantment has two tiers, the second tier restoring durability at a faster rate. This enchantment can be used on weapons, Wand Foci and other tools, excluding shears.
+description.enchantment.haste=Grants faster movement speed. This enchantment has three tiers, each increasing the speed boost given.
+description.enchantment.potency=Increases the strength of a spell. This is a three tier enchantment, each increasing the strength of the casted spell. This enchantment is only applicable for Wand Foci and can have a different effect depending on what Foci is being used.
+description.enchantment.frugal=Reduces the amount of vis consumed when a Wand Foci is used. This is a tier three enchantment, each tier granting a greater reduction. This enchantment is only applicable for Wand Foci.
+description.enchantment.wandfortune=This enchantment is much like the fortune enchantment, allowing blocks which drop items to have a higher yield. This enchantment has three tiers, each increasing the chance for extra yield. This enchantment is only applicable for Wand Foci.
