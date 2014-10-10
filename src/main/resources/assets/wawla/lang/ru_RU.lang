@@ -20,10 +20,11 @@ tooltip.wawla.fuel=Топливо
 tooltip.wawla.levels=Уровни
 tooltip.wawla.primary=Первый эффект
 tooltip.wawla.secondary=Второй эффект
-tooltip.wawla.shiftEnch=Зажмите Shift для информации о зачаровании
+tooltip.wawla.shiftEnch=Зажмите кнопку приседания, для информации о зачаровании
 tooltip.wawla.blockLevel=Требуемый уровень
 tooltip.wawla.amount=Количество
 tooltip.wawla.item=Предмет
+tooltip.wawla.lightLevel=Уровень освещения
 
 #Fixed/Missing Strings
 tile.null.name=Безымянный блок, сообщите автору мода.
@@ -44,8 +45,12 @@ option.wawla.horse.showSpeed=Скорость лошади?
 option.wawla.showEnchDesc=Описание зачарований?
 option.wawla.pet.showOwner=Владелец питомца?
 option.wawla.beacon.showLevels=Уровень маяка?
-option.wawla.beacon.showPrimary=Первичный эффект маяка?
-option.wawla.beacon.showSecondary=Вторичный эффект маяка?
+option.wawla.beacon.showPrimary=Первый эффект маяка?
+option.wawla.beacon.showSecondary=Второй эффект маяка?
+option.wawla.light.lightLevel=Уровень освещения?
+option.wawla.light.showDay=Дневной уровень освещения?
+option.wawla.light.monsterSpawn=Уровень освещения для монстров?
+option.wawla.villagerZombie=Зомби-житель?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=Это зачарование уменьшает наносимый урон владельцу от многих источников. Оно сочетается с такими зачарованиями, как Огнестойкость и Лёгкость, однако можно достичь ограничения по снижению урона. Это зачарование применимо ко всем видам брони.
@@ -140,3 +145,10 @@ option.wawla.thaumcraft.wandItem=Recharge Item?
 option.wawla.thaumcraft.wandCharge=Заряд жезла?
 option.wawla.thaumcraft.pedestalItem=Предмет на пьедестале?
 option.wawla.thaumcraft.deconAspect=Расщепляющий аспект?
+
+#Thaumcraft Enchantment Descriptions
+description.enchantment.repair=Восстанавливает прочность предметов со временем. Это зачарование имеет два уровня, второй уровень восстанавливает прочность быстрее. Это зачарование можно применить на оружие, набалдашники и на другие инструменты, кроме ножниц.
+description.enchantment.haste=Даёт более быструю скорость передвижения. Это зачарование имеет три уровня, каждый увеличивает скорость.
+description.enchantment.potency=Увеличивает мощь заклинания. Это зачарование имеет три уровня, каждый увеличивает мощь заклинания. Это зачарование применимо только для набалдашников и может иметь разные эффекты в зависимости от набалдашника.
+description.enchantment.frugal=Уменьшает количество потребляемого Вис, когда набалдашник используется. Это зачарование имеет три уровня, каждый даёт большее уменьшение. Это зачарование применимо только для набалдашников.
+description.enchantment.wandfortune=Это зачарование похоже на зачарование удача, оно повышает количество получаемых предметов с блоков. Это зачарование имеет три уровня, каждый увеличивает шанс получения дополнительных предметов. Это зачарование применимо только для набалдашников.
