@@ -31,6 +31,7 @@ public class ModuleThaumcraft extends Module {
     public Class classTileWandPedestal = null;
     public Class classTilePedestal = null;
     public Class classTileDeconstructionTable = null;
+    public Class classEntityGolemBase = null;
 
     public ModuleThaumcraft(boolean enabled) {
 
@@ -47,6 +48,7 @@ public class ModuleThaumcraft extends Module {
                 classTileWandPedestal = Class.forName("thaumcraft.common.tiles.TileWandPedestal");
                 classTilePedestal = Class.forName("thaumcraft.common.tiles.TilePedestal");
                 classTileDeconstructionTable = Class.forName("thaumcraft.common.tiles.TileDeconstructionTable");
+                classEntityGolemBase = Class.forName("thaumcraft.common.entities.golems.EntityGolemBase");
             }
 
             catch (ClassNotFoundException e) {
