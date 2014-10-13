@@ -25,6 +25,7 @@ public class ModuleThaumcraft extends Module {
     private String showDeconstructionAspect = "wawla.thaumcraft.deconAspect";
 
     public Class classTileJarFillable = null;
+    public Class classTileJarFillableVoid = null;
     public Class classTileMirror = null;
     public Class classTileMirrorEssentia = null;
     public Class classTileJarBrain = null;
@@ -42,6 +43,7 @@ public class ModuleThaumcraft extends Module {
             try {
 
                 classTileJarFillable = Class.forName("thaumcraft.common.tiles.TileJarFillable");
+                classTileJarFillableVoid = Class.forName("thaumcraft.common.tiles.TileJarFillableVoid");
                 classTileMirror = Class.forName("thaumcraft.common.tiles.TileMirror");
                 classTileMirrorEssentia = Class.forName("thaumcraft.common.tiles.TileMirrorEssentia");
                 classTileJarBrain = Class.forName("thaumcraft.common.tiles.TileJarBrain");
@@ -63,7 +65,7 @@ public class ModuleThaumcraft extends Module {
 
         if (access.getBlock() != null && access.getTileEntity() != null) {
 
-            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classTileJarFillable)) {
+            if (Utilities.compareTileEntityByClass(access.getTileEntity(), classTileJarFillable) || Utilities.compareTileEntityByClass(access.getTileEntity(), classTileJarFillableVoid)) {
 
                 String aspect = access.getNBTData().getString("Aspect");
                 int amount = access.getNBTData().getShort("Amount");
