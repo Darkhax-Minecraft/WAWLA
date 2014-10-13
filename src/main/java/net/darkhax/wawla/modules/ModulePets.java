@@ -20,7 +20,7 @@ public class ModulePets extends Module {
     private String showPetSitting = "wawla.pets.sitting";
     private String showAge = "wawla.pets.age";
     private String showBirthCooldown = "wawla.pets.cooldown";
-    
+
     public ModulePets(boolean enabled) {
 
         super(enabled);
@@ -46,20 +46,20 @@ public class ModulePets extends Module {
                     tooltip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + extTag.getString(currentKey));
             }
         }
-        
+
         if (entity instanceof EntityAnimal) {
-            
+
             EntityAnimal animal = (EntityAnimal) entity;
-            
+
             if (config.getConfig(showAge) && animal.isChild())
-                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.age") + ": " + ((animal.getGrowingAge() / 20) * -1 ) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
-            
-            else if (config.getConfig(showBirthCooldown) && !animal.isChild()) 
+                tooltip.add(StatCollector.translateToLocal("tooltip.wawla.age") + ": " + ((animal.getGrowingAge() / 20) * -1) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
+
+            else if (config.getConfig(showBirthCooldown) && !animal.isChild())
                 tooltip.add(StatCollector.translateToLocal("tooltip.wawla.birth") + ": " + ((animal.getGrowingAge() / 20)) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
         }
-        
+
         if (entity instanceof EntityTameable && config.getConfig(showPetSitting)) {
-            
+
             EntityTameable pet = (EntityTameable) entity;
             tooltip.add(StatCollector.translateToLocal("tooltip.wawla.sit") + ": " + pet.isSitting());
         }

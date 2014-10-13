@@ -32,7 +32,7 @@ archivesBaseName = "Wawla"
 minecraft {
     version = "${config.version.minecraft}-${config.version.forge}"
     runDir = "run"
-    mappings = "snapshot_20140918"
+    //mappings = "snapshot_20140918"
 }
 
 dependencies {
