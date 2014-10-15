@@ -172,3 +172,19 @@ description.enchantment.haste=Grants faster movement speed. This enchantment has
 description.enchantment.potency=Increases the strength of a spell. This is a three tier enchantment, each increasing the strength of the casted spell. This enchantment is only applicable for Wand Foci and can have a different effect depending on what Foci is being used.
 description.enchantment.frugal=Reduces the amount of vis consumed when a Wand Foci is used. This is a tier three enchantment, each tier granting a greater reduction. This enchantment is only applicable for Wand Foci.
 description.enchantment.wandfortune=This enchantment is much like the fortune enchantment, allowing blocks which drop items to have a higher yield. This enchantment has three tiers, each increasing the chance for extra yield. This enchantment is only applicable for Wand Foci.
+
+#Thaumic Tinkerer Enchantment Descriptions
+description.enchantment.ttinkerer:slowFall=This enchantment will allow the wearer to fall at a slower speed and will also reduce the fall damage, however it will not negate it. This enchantment can be applied to boots. 
+description.enchantment.ttinkerer:ascentBoost=This enchantment allows the wearer to jump considerably higher then normal. This enchantment can be applied on leggings. 
+description.enchantment.ttinkerer:pounce=This enchantment will make the players attacks stronger while they are in the air. This enchantment can only be applied to leggings. 
+description.enchantment.ttinkerer:shockwave=This enchantment will allow you to damage nearby entities when you fall. This effect is weakened by items which reduce your fall damage.
+description.enchantment.ttinkerer:autoSmelt=When applied to a tool, this enchantment will allow the tool to break through wooden blocks easier. This effect will make the tool take double durability against other blocks. 
+description.enchantment.ttinkerer:tunnel=When applied to a tool, this enchantment will increase the digging speed when breaking blocks in a strait line.
+description.enchantment.ttinkerer:shatter=When applied to a tool, this tool will have a greater digging speed when breaking strong blocks. 
+description.enchantment.ttinkerer:desintegrate=When applied to tools, this tool will break basic blocks such as dirt or stone, which the tool is suited against. Blocks which the tool will not normally break will cause double durability damage.
+description.enchantment.ttinkerer:vampirism=This enchantment can only be applied to swords. This effect will cause a portion of damage dealt to be put towards healing the user. 
+description.enchantment.ttinkerer:dispersedStrike=This enchantment can only be applied to swords. This effect will cause a sword strike will have a successive strike. The successive strikes will deal less damage. 
+description.enchantment.ttinkerer:focusedStrike=This effect can only be applied to swords. This effect will cause the damage dealt by an initial strike to be decreased, however successive strikes on the same mob will be increased. 
+description.enchantment.ttinkerer:finalStrike=This enchantment can only be applied to swords. When damage is dealt, this effect gives a chance to triple the damage. 
+description.enchantment.ttinkerer:valiance=This enchantment can only be applied to swords. This effect will increase the damage dealt when the holder has a lower health. 
+description.enchantment.ttinkerer:quickDraw=This enchantment is designed for bows, when applied, the time to fully draw the bow is faster. 
