@@ -17,6 +17,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
 public class Utilities {
@@ -56,7 +57,7 @@ public class Utilities {
      */
     public static List wrapStringToList(String string, int lnLength, boolean wrapLongWords, List list) {
 
-        String strings[] = WordUtils.wrap(string, lnLength, null, wrapLongWords).split("\\r\\n");
+        String strings[] = WordUtils.wrap(string, lnLength, null, wrapLongWords).split(SystemUtils.LINE_SEPARATOR);
         list.addAll(Arrays.asList(strings));
         return list;
     }
