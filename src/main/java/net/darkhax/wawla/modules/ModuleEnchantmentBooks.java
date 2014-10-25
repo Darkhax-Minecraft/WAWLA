@@ -32,8 +32,9 @@ public class ModuleEnchantmentBooks extends Module {
 
                 if (Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak)) {
 
-                    Enchantment ench = Utilities.getEnchantmentsFromStack(stack, true)[0];
-
+                    Enchantment[] enchArr = Utilities.getEnchantmentsFromStack(stack, true);
+                    Enchantment   ench    = enchArr.length > 0 ? enchArr[0] : null;
+                    
                     if (ench != null && !blacklist.contains(ench))
                         Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, toolTip);
                 }
