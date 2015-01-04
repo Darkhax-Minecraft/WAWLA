@@ -18,7 +18,7 @@ public class AddonEnchantments {
      */
     public static ArrayList<Enchantment> blacklist = new ArrayList<Enchantment>();
 
-    public void onTooltipDisplayed(ItemStack stack, EntityPlayer player, List<String> toolTip, boolean advanced) {
+    public static void onTooltipDisplayed(ItemStack stack, EntityPlayer player, List<String> toolTip, boolean advanced) {
 
         if (player.worldObj.isRemote) {
 
