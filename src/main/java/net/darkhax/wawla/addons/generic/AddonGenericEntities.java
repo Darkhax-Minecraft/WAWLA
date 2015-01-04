@@ -128,15 +128,20 @@ public class AddonGenericEntities implements IWailaEntityProvider {
         petTags.add("owner");
         petTags.add("ownerName");
         register.addConfig("Wawla-Entity", showEquippedItems);
+        register.addConfig("Wawla-Entity", showPetOwner);
+        register.addConfig("Wawla-Entity", showPetSitting);
+        register.addConfig("Wawla-Entity", showAge);
+        register.addConfig("Wawla-Entity", showBirthCooldown);
+
         register.registerBodyProvider(dataProvider, Entity.class);
         register.registerNBTProvider(dataProvider, Entity.class);
     }
 
     private static String showEquippedItems = "wawla.showEquipment";
 
-    private String showPetOwner = "wawla.pets.showOwner";
-    private String showPetSitting = "wawla.pets.sitting";
+    private static String showPetOwner = "wawla.pets.showOwner";
+    private static String showPetSitting = "wawla.pets.sitting";
 
-    private String showAge = "wawla.pets.age";
-    private String showBirthCooldown = "wawla.pets.cooldown";
+    private static String showAge = "wawla.pets.age";
+    private static String showBirthCooldown = "wawla.pets.cooldown";
 }
