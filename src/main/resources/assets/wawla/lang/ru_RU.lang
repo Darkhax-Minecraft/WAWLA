@@ -25,6 +25,9 @@ tooltip.wawla.blockLevel=Требуемый уровень
 tooltip.wawla.amount=Количество
 tooltip.wawla.item=Предмет
 tooltip.wawla.lightLevel=Уровень освещения
+tooltip.wawla.tooltype.shovel=лопата
+tooltip.wawla.tooltype.pickaxe=Выберите топор
+tooltip.wawla.tooltype.axe=топор
 
 #Fixed/Missing Strings
 tile.null.name=Безымянный блок, сообщите автору мода.

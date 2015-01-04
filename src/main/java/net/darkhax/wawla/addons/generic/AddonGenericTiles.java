@@ -35,7 +35,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
 
     @Override
     public List<String> getWailaBody(ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-
+        
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
@@ -73,7 +73,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
 
         // Shows correct tool type.
         if (tool != null && cfg.getConfig(showTool))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + Utilities.upperCase(tool));
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool));
 
         // Light level
         if (cfg.getConfig(showLightLevel) && (!data.getWorld().isBlockNormalCubeDefault(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ, false) || data.getWorld().isAirBlock(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ))) {

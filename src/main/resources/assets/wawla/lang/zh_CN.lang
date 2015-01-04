@@ -22,6 +22,9 @@ tooltip.wawla.primary=主增益效果
 tooltip.wawla.secondary=副增益效果
 tooltip.wawla.shiftEnch=按住Shift来查看附魔介绍
 tooltip.wawla.blockLevel=需求等级
+tooltip.wawla.tooltype.shovel=Shovel
+tooltip.wawla.tooltype.pickaxe=Pickaxe
+tooltip.wawla.tooltype.axe=Axe
 
 #Fixed/Missing Strings
 tile.null.name=未命名方块,请报告给作者.

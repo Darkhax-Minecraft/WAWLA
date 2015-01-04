@@ -34,6 +34,9 @@ tooltip.wawla.dev.height=Height
 tooltip.wawla.sit=Sitting
 tooltip.wawla.birth=Cooldown
 tooltip.wawla.age=Adulthood
+tooltip.wawla.tooltype.shovel=Shovel
+tooltip.wawla.tooltype.pickaxe=Pickaxe
+tooltip.wawla.tooltype.axe=Axe
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
