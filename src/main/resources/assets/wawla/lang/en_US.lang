@@ -37,6 +37,8 @@ tooltip.wawla.age=Adulthood
 tooltip.wawla.tooltype.shovel=Shovel
 tooltip.wawla.tooltype.pickaxe=Pickaxe
 tooltip.wawla.tooltype.axe=Axe
+tooltip.wawla.armorprot=Protection
+tooltip.wawla.food=Food Points
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
