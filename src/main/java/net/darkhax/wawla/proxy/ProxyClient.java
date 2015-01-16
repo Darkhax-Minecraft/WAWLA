@@ -1,8 +1,8 @@
 package net.darkhax.wawla.proxy;
 
-import net.darkhax.wawla.addons.vanillamc.AddonEnchantments;
-import net.darkhax.wawla.handler.ForgeEventHandler;
+import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Loader;
 
 public class ProxyClient extends ProxyCommon {
@@ -14,7 +14,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedEvents() {
 
-        new ForgeEventHandler();
+        MinecraftForge.EVENT_BUS.register(new AddonGenericTooltips());
     }
 
     /**
@@ -23,7 +23,7 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedModules() {
 
-        new AddonEnchantments();
+        new AddonGenericTooltips();
         new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
 }
