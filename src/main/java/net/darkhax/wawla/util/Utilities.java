@@ -1,6 +1,7 @@
 package net.darkhax.wawla.util;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
@@ -275,5 +276,41 @@ public class Utilities {
     public static float getGrowth(float curStage, float maxStage) {
 
         return (curStage / maxStage) * 100;
+    }
+
+    /**
+     * Attempts to grab a field based off of the class, and mappings for both obfuscated and non
+     * obfuscated versions.
+     * 
+     * @param clazz: The Class being accessed.
+     * @param mapped: The mapped name of the field.
+     * @param searge: The obfuscated name for the field.
+     */
+    public static Field getPrivateField(Class clazz, String mapped, String obfuscated) {
+
+        String[] possibleFields = { mapped, obfuscated };
+        for (int i = 0; i < possibleFields.length; i++) {
+
+            try {
+
+                Field field = clazz.getDeclaredField(possibleFields[i]);
+
+                if (field != null) {
+
+                    field.setAccessible(true);
+                    return field;
+                }
+            }
+
+            catch (NoSuchFieldException e) {
+
+            }
+
+            catch (SecurityException e) {
+
+            }
+        }
+
+        return null;
     }
 }

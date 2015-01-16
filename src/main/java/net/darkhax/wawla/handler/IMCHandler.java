@@ -1,7 +1,7 @@
 package net.darkhax.wawla.handler;
 
 import net.darkhax.wawla.addons.generic.AddonGenericEntities;
-import net.darkhax.wawla.addons.vanillamc.AddonEnchantments;
+import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
 import net.darkhax.wawla.util.Constants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.nbt.NBTTagCompound;
@@ -60,7 +60,7 @@ public class IMCHandler {
         Enchantment ench = Enchantment.enchantmentsList[id];
 
         if (ench != null)
-            AddonEnchantments.blacklist.add(ench);
+            AddonGenericTooltips.blacklist.add(ench);
 
         else
             Constants.LOG.info(modid + " has attempted to register an enchantment with the enchantment blacklist however " + id + " is not a valid enchantment id.");

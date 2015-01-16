@@ -35,7 +35,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
 
     @Override
     public List<String> getWailaBody(ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-        
+
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
