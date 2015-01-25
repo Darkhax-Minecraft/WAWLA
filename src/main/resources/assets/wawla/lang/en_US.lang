@@ -39,6 +39,8 @@ tooltip.wawla.tooltype.pickaxe=Pickaxe
 tooltip.wawla.tooltype.axe=Axe
 tooltip.wawla.armorprot=Protection
 tooltip.wawla.food=Food Points
+tooltip.wawla.hats=Hats
+tooltip.wawla.armor=Armor Points
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -76,6 +78,8 @@ option.wawla.pets.showOwner=Pet Owner?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Baby Age?
 option.wawla.pets.sitting=Sitting?
+option.wawla.showHat=Show Hat Names?
+option.wawla.showMobArmor=Show Mob Armor Value?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.

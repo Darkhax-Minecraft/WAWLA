@@ -8,12 +8,12 @@ import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
@@ -42,28 +42,18 @@ public class AddonGenericEntities implements IWailaEntityProvider {
         // Equipment
         if (entity instanceof EntityLiving && cfg.getConfig(showEquippedItems)) {
 
-            String ench = StatCollector.translateToLocal("tip.wawla") + ": ";
             EntityLiving living = (EntityLiving) entity;
 
             for (int i = 0; i < 5; i++) {
 
                 ItemStack stack = living.getEquipmentInSlot(i);
-                if (stack != null) {
-
+                if (stack != null && stack.getItem() instanceof ItemArmor && data.getPlayer().isSneaking())
                     tip.add(StatCollector.translateToLocal("tooltip.wawla." + itemTypes[i]) + ": " + stack.getDisplayName());
-                    Enchantment[] enchantments = Utilities.getEnchantmentsFromStack(stack, false);
-
-                    if (data.getPlayer().isSneaking()) {
-
-                        for (int x = 0; x < enchantments.length; x++) {
-
-                            String name = StatCollector.translateToLocal(enchantments[x].getName());
-                            if (!ench.contains(name))
-                                ench = ench + name + ", ";
-                        }
-                    }
-                }
             }
+
+            // Total Armor
+            if (cfg.getConfig(showEntityArmor) && living.getTotalArmorValue() > 0)
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.armor") + ": " + living.getTotalArmorValue());
         }
 
         // shows pet owner
@@ -132,12 +122,14 @@ public class AddonGenericEntities implements IWailaEntityProvider {
         register.addConfig("Wawla-Entity", showPetSitting);
         register.addConfig("Wawla-Entity", showAge);
         register.addConfig("Wawla-Entity", showBirthCooldown);
+        register.addConfig("Wawla-Entity", showEntityArmor);
 
         register.registerBodyProvider(dataProvider, Entity.class);
         register.registerNBTProvider(dataProvider, Entity.class);
     }
 
     private static String showEquippedItems = "wawla.showEquipment";
+    private static String showEntityArmor = "wawla.showMobArmor";
 
     private static String showPetOwner = "wawla.pets.showOwner";
     private static String showPetSitting = "wawla.pets.sitting";
