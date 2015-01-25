@@ -54,14 +54,6 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             if (zombie.isVillager())
                 tip.add("Zombie Villager");
         }
-        
-        else if (entity instanceof EntityPlayer) {
-            
-            EntityPlayer player = (EntityPlayer) entity;
-            
-            if (player.experienceLevel > 0 && cfg.getConfig(showPlayerLevel))
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.playerLevel") + ": " + player.experienceLevel);
-        }
 
         return tip;
     }
@@ -90,17 +82,16 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
 
         register.registerBodyProvider(dataProvider, EntityVillager.class);
         register.registerNBTProvider(dataProvider, EntityVillager.class);
-        
+
         register.addConfig("Wawla-Entity", showHorseJump);
         register.addConfig("Wawla-Entity", showHorseSpeed);
         register.addConfig("Wawla-Entity", showZombieType);
-        register.addConfig("Wawla-Entity", showPlayerLevel);
     }
 
     private static String showHorseJump = "wawla.horse.showJump";
     private static String showHorseSpeed = "wawla.horse.showSpeed";
 
     private static String showZombieType = "wawla.villagerZombie";
-    
+
     private static String showPlayerLevel = "wawla.playerLevel";
 }
