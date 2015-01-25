@@ -21,29 +21,32 @@ public class AddonGenericTooltips {
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
 
-        boolean isShifting = Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak);
+        if (event.entityPlayer != null && event.entityPlayer.worldObj != null) {
 
-        if (event.entityPlayer.worldObj.isRemote) {
+            boolean isShifting = Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak);
 
-            if (event.itemStack.getItem() instanceof ItemEnchantedBook) {
+            if (event.entityPlayer.worldObj.isRemote) {
 
-                if (isShifting) {
+                if (event.itemStack.getItem() instanceof ItemEnchantedBook) {
 
-                    Enchantment[] enchArr = Utilities.getEnchantmentsFromStack(event.itemStack, true);
-                    Enchantment ench = enchArr.length > 0 ? enchArr[0] : null;
+                    if (isShifting) {
 
-                    if (ench != null && !blacklist.contains(ench))
-                        Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
+                        Enchantment[] enchArr = Utilities.getEnchantmentsFromStack(event.itemStack, true);
+                        Enchantment ench = enchArr.length > 0 ? enchArr[0] : null;
+
+                        if (ench != null && !blacklist.contains(ench))
+                            Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
+                    }
+
+                    else
+                        event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
                 }
 
-                else
-                    event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
-            }
+                else if (event.itemStack.getItem() instanceof ItemArmor) {
 
-            else if (event.itemStack.getItem() instanceof ItemArmor) {
-
-                ItemArmor armor = (ItemArmor) event.itemStack.getItem();
-                event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.armorprot") + ": " + armor.damageReduceAmount);
+                    ItemArmor armor = (ItemArmor) event.itemStack.getItem();
+                    event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.armorprot") + ": " + armor.damageReduceAmount);
+                }
             }
         }
     }
