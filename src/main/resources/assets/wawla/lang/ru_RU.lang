@@ -37,6 +37,10 @@ tooltip.wawla.age=Зрелость
 tooltip.wawla.tooltype.shovel=Лопата
 tooltip.wawla.tooltype.pickaxe=Кирка
 tooltip.wawla.tooltype.axe=Топор
+tooltip.wawla.armorprot=Защита
+tooltip.wawla.food=Очки еды
+tooltip.wawla.hats=Шляпы
+tooltip.wawla.armor=Очки брони
 
 #Fixed/Missing Strings
 tile.null.name=Безымянный блок, сообщите автору мода.
@@ -74,6 +78,8 @@ option.wawla.pets.showOwner=Владелец питомца?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Возраст ребёнка?
 option.wawla.pets.sitting=Сидит ли?
+option.wawla.showHat=Показывать названия шляп?
+option.wawla.showMobArmor=Показывать значение брони?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=Это зачарование уменьшает наносимый урон владельцу от многих источников. Оно сочетается с такими зачарованиями, как Огнестойкость и Лёгкость, однако можно достичь ограничения по снижению урона. Это зачарование применимо ко всем видам брони.
