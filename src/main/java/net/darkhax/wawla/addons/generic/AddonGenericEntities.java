@@ -47,7 +47,7 @@ public class AddonGenericEntities implements IWailaEntityProvider {
             for (int i = 0; i < 5; i++) {
 
                 ItemStack stack = living.getEquipmentInSlot(i);
-                if (stack != null && stack.getItem() instanceof ItemArmor && data.getPlayer().isSneaking())
+                if (stack != null && data.getPlayer().isSneaking())
                     tip.add(StatCollector.translateToLocal("tooltip.wawla." + itemTypes[i]) + ": " + stack.getDisplayName());
             }
 
