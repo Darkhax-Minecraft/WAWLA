@@ -80,7 +80,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         register.registerNBTProvider(dataProvider, EntityHorse.class);
 
         register.registerBodyProvider(dataProvider, EntityVillager.class);
-        register.registerBodyProvider(dataProvider, EntityVillager.class);
+        register.registerNBTProvider(dataProvider, EntityVillager.class);
     }
 
     private String showHorseJump = "wawla.horse.showJump";
