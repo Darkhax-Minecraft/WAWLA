@@ -110,9 +110,6 @@ public class AddonGenericTiles implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
 
-        if (te != null)
-            te.writeToNBT(tag);
-
         return tag;
     }
 
@@ -129,7 +126,6 @@ public class AddonGenericTiles implements IWailaDataProvider {
         register.addConfig("Wawla-General", showDay);
 
         register.registerBodyProvider(dataProvider, Block.class);
-        register.registerNBTProvider(dataProvider, Block.class);
     }
 
     private static String showTool = "wawla.harvest.showTool";
