@@ -13,7 +13,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
@@ -39,6 +38,7 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody(Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
 
+        // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true, tip);
         // Equipment
         if (entity instanceof EntityLiving && cfg.getConfig(showEquippedItems)) {
 
