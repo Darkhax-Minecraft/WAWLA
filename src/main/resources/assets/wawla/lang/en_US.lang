@@ -39,7 +39,6 @@ tooltip.wawla.tooltype.pickaxe=Pickaxe
 tooltip.wawla.tooltype.axe=Axe
 tooltip.wawla.armorprot=Protection
 tooltip.wawla.food=Food Points
-tooltip.wawla.hats=Hats
 tooltip.wawla.armor=Armor Points
 
 #Fixed/Missing Strings
@@ -78,7 +77,6 @@ option.wawla.pets.showOwner=Pet Owner?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Baby Age?
 option.wawla.pets.sitting=Sitting?
-option.wawla.showHat=Show Hat Names?
 option.wawla.showMobArmor=Show Mob Armor Value?
 
 #Vanilla Enchantment Descriptions

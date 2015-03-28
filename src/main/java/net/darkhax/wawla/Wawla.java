@@ -51,9 +51,6 @@ public class Wawla {
         if (Loader.isModLoaded("TConstruct"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles.registerAddon");
 
-        if (Loader.isModLoaded("Hats"))
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.hats.AddonHatEntities.registerAddon");
-
         proxy.registerSidedModules();
     }
 
