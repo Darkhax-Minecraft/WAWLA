@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Loader;
@@ -58,8 +59,11 @@ public class AddonPixelmonEntities implements IWailaEntityProvider {
                 if (natureList != null && cfg.getConfig(showNature))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.nature") + ": " + natureList[tag.getShort("Nature")]);
 
-                if (cfg.getConfig(showAbility))
-                    tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.ability") + ": " + tag.getString("Ability"));
+                if (cfg.getConfig(showAbility)) {
+                    
+                    EnumChatFormatting abilityColor = (tag.getInteger("AbilitySlot") == 2) ? EnumChatFormatting.GOLD : EnumChatFormatting.GRAY;
+                    tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.ability") + ": " + abilityColor + tag.getString("Ability"));
+                }
 
                 if (sizeList != null && cfg.getConfig(showSize))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.size") + ": " + sizeList[tag.getShort("Growth")]);
