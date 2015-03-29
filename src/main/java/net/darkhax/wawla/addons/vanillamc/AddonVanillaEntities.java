@@ -18,79 +18,79 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class AddonVanillaEntities implements IWailaEntityProvider {
-
+    
     @Override
-    public Entity getWailaOverride(IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-
+    public Entity getWailaOverride (IWailaEntityAccessor data, IWailaConfigHandler cfg) {
+    
         return data.getEntity();
     }
-
+    
     @Override
-    public List<String> getWailaHead(Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-
+    public List<String> getWailaHead (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
+    
         return tip;
     }
-
+    
     @Override
-    public List<String> getWailaBody(Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-
+    public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
+    
         // Horses
         if (entity instanceof EntityHorse) {
-
+            
             EntityHorse horse = (EntityHorse) entity;
-
+            
             if (cfg.getConfig("wawla.horse.showJump"))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.jumpStrength") + ": " + Utilities.round(horse.getHorseJumpStrength(), 4));
-
+            
             if (cfg.getConfig("wawla.horse.showSpeed"))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
         }
-
+        
         // Villager
         else if (entity instanceof EntityZombie && cfg.getConfig(showZombieType)) {
-
+            
             EntityZombie zombie = (EntityZombie) entity;
             if (zombie.isVillager())
                 tip.add("Zombie Villager");
         }
-
+        
         return tip;
     }
-
+    
     @Override
-    public List<String> getWailaTail(Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-
+    public List<String> getWailaTail (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
+    
         return tip;
     }
-
+    
     @Override
-    public NBTTagCompound getNBTData(EntityPlayerMP player, Entity entity, NBTTagCompound tag, World world) {
-
+    public NBTTagCompound getNBTData (EntityPlayerMP player, Entity entity, NBTTagCompound tag, World world) {
+    
         if (entity != null)
             entity.writeToNBT(tag);
-
+        
         return tag;
     }
-
-    public static void registerAddon(IWailaRegistrar register) {
-
+    
+    public static void registerAddon (IWailaRegistrar register) {
+    
         AddonVanillaEntities dataProvider = new AddonVanillaEntities();
-
+        
         register.registerBodyProvider(dataProvider, EntityHorse.class);
         register.registerNBTProvider(dataProvider, EntityHorse.class);
-
+        
         register.registerBodyProvider(dataProvider, EntityVillager.class);
         register.registerNBTProvider(dataProvider, EntityVillager.class);
-
+        
         register.addConfig("Wawla-Entity", showHorseJump);
         register.addConfig("Wawla-Entity", showHorseSpeed);
         register.addConfig("Wawla-Entity", showZombieType);
     }
-
+    
     private static String showHorseJump = "wawla.horse.showJump";
     private static String showHorseSpeed = "wawla.horse.showSpeed";
-
+    
     private static String showZombieType = "wawla.villagerZombie";
-
+    
     private static String showPlayerLevel = "wawla.playerLevel";
 }
