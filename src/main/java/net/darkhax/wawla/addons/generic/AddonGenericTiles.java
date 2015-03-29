@@ -106,7 +106,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         }
         
         // Block Progression
-        if (true && data.getPlayer().worldObj.isRemote && currentBlockDamage != null) {
+        if (cfg.getConfig(showProgress) && data.getPlayer().worldObj.isRemote && currentBlockDamage != null) {
             
             double progress = Utilities.round(getBlockDamage(), 2);
             
