@@ -75,12 +75,20 @@ public class AddonGenericTiles implements IWailaDataProvider {
                 
                 if (cfg.getConfig(showTier))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
+                
+                // Shows correct tool type.
+                if (tool != null && cfg.getConfig(showTool)) {
+                    
+                    String translation = StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool);
+                    
+                    if (translation.startsWith("tooltip.wawla.tooltype."))
+                        tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
+                    
+                    else
+                        tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + translation);
+                }
             }
         }
-        
-        // Shows correct tool type.
-        if (tool != null && cfg.getConfig(showTool))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool));
         
         // Light level
         if (cfg.getConfig(showLightLevel) && (!data.getWorld().isBlockNormalCubeDefault(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ, false) || data.getWorld().isAirBlock(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ))) {
