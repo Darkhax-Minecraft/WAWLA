@@ -25,12 +25,6 @@ tooltip.wawla.blockLevel=Required Tier
 tooltip.wawla.amount=Amount
 tooltip.wawla.item=Item
 tooltip.wawla.lightLevel=Light Level
-tooltip.wawla.dev.blockID=Block ID
-tooltip.wawla.dev.blockClass=Block
-tooltip.wawla.dev.entityClass=Entity
-tooltip.wawla.dev.teClass=Tile
-tooltip.wawla.dev.width=Width
-tooltip.wawla.dev.height=Height
 tooltip.wawla.sit=Sitting
 tooltip.wawla.birth=Cooldown
 tooltip.wawla.age=Adulthood
@@ -38,8 +32,8 @@ tooltip.wawla.tooltype.shovel=Shovel
 tooltip.wawla.tooltype.pickaxe=Pickaxe
 tooltip.wawla.tooltype.axe=Axe
 tooltip.wawla.armorprot=Protection
-tooltip.wawla.food=Food Points
 tooltip.wawla.armor=Armor Points
+tooltip.wawla.progress=Progress
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -65,19 +59,12 @@ option.wawla.light.lightLevel=Light Level?
 option.wawla.light.showDay=Day Light Level?
 option.wawla.light.monsterSpawn=Monster Light Level?
 option.wawla.villagerZombie=Villager Zombie?
-option.wawla.dev.devOn=Enable Dev Mode?
-option.wawla.dev.blockNBT=Tile Entity NBT?
-option.wawla.dev.blockClass=Block Class?
-option.wawla.dev.teClass=Tile Entity Class?
-option.wawla.dev.entityNBT=Entity NBT?
-option.wawla.dev.blockID=Block Id?
-option.wawla.dev.entityClass=Entity Class?
-option.wawla.dev.entitySize=Entity Size?
 option.wawla.pets.showOwner=Pet Owner?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Baby Age?
 option.wawla.pets.sitting=Sitting?
 option.wawla.showMobArmor=Show Mob Armor Value?
+option.wawla.harvest.showProgress=Show Block Breaking Progression
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.
@@ -155,6 +142,8 @@ option.wawla.pixelmon.showAbility=Abilities?
 option.wawla.pixelmon.showHeldItem=Held Item?
 option.wawla.pixelmon.showNature=Natures?
 option.wawla.pixelmon.showSize=Size?
+option.wawla.pixelmon.showIV=Show IV's?
+option.wawla.pixelmon.showEV=Show EV's?
 
 #Thaumcraft Tooltips
 tooltip.wawla.thaumcraft.aspect=Aspect
