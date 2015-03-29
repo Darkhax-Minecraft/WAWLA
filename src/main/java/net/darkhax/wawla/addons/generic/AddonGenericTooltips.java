@@ -28,6 +28,7 @@ public class AddonGenericTooltips {
             
             if (event.entityPlayer.worldObj.isRemote) {
                 
+                // Enchantments
                 if (event.itemStack.getItem() instanceof ItemEnchantedBook) {
                     
                     if (isShifting) {
@@ -35,14 +36,23 @@ public class AddonGenericTooltips {
                         Enchantment[] enchArr = Utilities.getEnchantmentsFromStack(event.itemStack, true);
                         Enchantment ench = enchArr.length > 0 ? enchArr[0] : null;
                         
-                        if (ench != null && !blacklist.contains(ench))
-                            Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
+                        if (ench != null && !blacklist.contains(ench)) {
+                            
+                            String translation = StatCollector.translateToLocal("description." + ench.getName());
+                            
+                            if (translation.startsWith("description."))
+                                event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.missingEnch"));
+                            
+                            else
+                                Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
+                        }
                     }
                     
                     else
                         event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.shiftEnch"));
                 }
                 
+                // Armor Points
                 else if (event.itemStack.getItem() instanceof ItemArmor) {
                     
                     ItemArmor armor = (ItemArmor) event.itemStack.getItem();

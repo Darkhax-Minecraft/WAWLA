@@ -34,6 +34,7 @@ tooltip.wawla.tooltype.axe=Axe
 tooltip.wawla.armorprot=Protection
 tooltip.wawla.armor=Armor Points
 tooltip.wawla.progress=Progress
+tooltip.wawla.missingEnch=No description was found for this enchantment. 
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
