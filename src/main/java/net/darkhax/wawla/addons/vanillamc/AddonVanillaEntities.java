@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityVillager;
@@ -54,6 +55,10 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                 tip.add("Zombie Villager");
         }
         
+        // TNT
+        else if (entity instanceof EntityTNTPrimed && cfg.getConfig(showTntFuse))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
+        
         return tip;
     }
     
@@ -82,9 +87,13 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         register.registerBodyProvider(dataProvider, EntityVillager.class);
         register.registerNBTProvider(dataProvider, EntityVillager.class);
         
+        register.registerBodyProvider(dataProvider, EntityTNTPrimed.class);
+        register.registerNBTProvider(dataProvider, EntityTNTPrimed.class);
+        
         register.addConfig("Wawla-Entity", showHorseJump);
         register.addConfig("Wawla-Entity", showHorseSpeed);
         register.addConfig("Wawla-Entity", showZombieType);
+        register.addConfig("Wawla-Entity", showTntFuse);
     }
     
     private static String showHorseJump = "wawla.horse.showJump";
@@ -92,5 +101,5 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
     
     private static String showZombieType = "wawla.villagerZombie";
     
-    private static String showPlayerLevel = "wawla.playerLevel";
+    private static String showTntFuse = "wawla.tnt.fuse";
 }
