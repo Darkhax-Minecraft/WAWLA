@@ -36,6 +36,7 @@ tooltip.wawla.armor=Armor Points
 tooltip.wawla.progress=Progress
 tooltip.wawla.missingEnch=No description was found for this enchantment. 
 tooltip.wawla.tnt.fuse=Fuse Time
+tooltip.wawla.profession=Profession
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -60,7 +61,6 @@ option.wawla.beacon.showSecondary=Second Beacon Effect?
 option.wawla.light.lightLevel=Light Level?
 option.wawla.light.showDay=Day Light Level?
 option.wawla.light.monsterSpawn=Monster Light Level?
-option.wawla.villagerZombie=Villager Zombie?
 option.wawla.pets.showOwner=Pet Owner?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Baby Age?
@@ -68,6 +68,7 @@ option.wawla.pets.sitting=Sitting?
 option.wawla.showMobArmor=Show Mob Armor Value?
 option.wawla.harvest.showProgress=Show Block Breaking Progression
 option.wawla.tnt.fuse=Show Fuse Time
+option.wawla.showProfession=Show Villager Profession
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.
@@ -94,6 +95,24 @@ description.enchantment.arrowFire=This enchantment will set cause arrows launche
 description.enchantment.arrowInfinite=This enchantment prevents arrows from being consumed when fired. This effect requires that the player has at least one arrow in their inventory. This enchantment is only for bows.
 description.enchantment.lootBonusFishing=This enchantment increases the players odds of getting treasure when fishing by 1% per level. This enchantment is only for fishing rods.
 description.enchantment.fishingSpeed=This enchantment decreases the time it takes for a fish to bite the hook by 5 seconds per level. This also increases the chance to get junk and treasure by 1% per level.
+
+#Villager Professions
+description.villager.profession.farmer=Farmer
+description.villager.profession.librarian=Librarian
+description.villager.profession.priest=Priest
+description.villager.profession.blacksmith=Blacksmith
+description.villager.profession.butcher=Butcher
+description.villager.profession.wizard=Wizard
+description.villager.profession.moneychanger=Merchant
+description.villager.profession.villagertools=Tinkerer
+description.villager.profession.zombie=Zombie
+description.villager.profession.Engineer=Engineer
+description.villager.profession.king-ish=The King(ish)
+description.villager.profession.apothecary=Apothecary
+description.villager.profession.archivist=Archivist
+description.villager.profession.beekeeper=Bee Keeper
+description.villager.profession.lumberjack=Lumberjack
+description.villager.profession.unmapped= This villager has yet to be mapped. Please report this to Darkhax on the Wawla forum thread. Please include the name of the mod you think this villager is from and the following: 
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness

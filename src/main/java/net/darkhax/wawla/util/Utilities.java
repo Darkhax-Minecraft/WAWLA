@@ -16,10 +16,15 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.text.WordUtils;
+
+import cpw.mods.fml.common.registry.VillagerRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Utilities {
     
@@ -283,5 +288,24 @@ public class Utilities {
     public static float getGrowth (float curStage, float maxStage) {
     
         return (curStage / maxStage) * 100;
+    }
+    
+    /**
+     * Lists of names for the vanilla villagers.
+     */
+    private static String[] vanillaVillagers = { "farmer", "librarian", "priest", "blacksmith", "butcher" };
+    
+    /**
+     * Retrieves a unique string related to the texture name of a villager. This allows for
+     * villagers to be differentiated based on their profession rather than their ID.
+     * 
+     * @param id: The ID of the villager being looked up.
+     * @return
+     */
+    @SideOnly(Side.CLIENT)
+    public static String getVillagerName (int id) {
+    
+        ResourceLocation skin = VillagerRegistry.getVillagerSkin(id, null);
+        return (id >= 0 && id <= 4) ? vanillaVillagers[id] : (skin != null) ? skin.getResourcePath().substring(skin.getResourcePath().lastIndexOf("/") + 1, skin.getResourcePath().length() - 4) : "misingno";
     }
 }

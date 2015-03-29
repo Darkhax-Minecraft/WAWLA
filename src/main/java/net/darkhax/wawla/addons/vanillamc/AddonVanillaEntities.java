@@ -17,6 +17,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 
 public class AddonVanillaEntities implements IWailaEntityProvider {
     
@@ -47,12 +49,35 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
         }
         
-        // Villager
-        else if (entity instanceof EntityZombie && cfg.getConfig(showZombieType)) {
+        // Villager Profession
+        else if (cfg.getConfig(showProfession)) {
             
-            EntityZombie zombie = (EntityZombie) entity;
-            if (zombie.isVillager())
-                tip.add("Zombie Villager");
+            String profession = "";
+            
+            if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT) && entity instanceof EntityVillager) {
+                
+                EntityVillager villager = (EntityVillager) entity;
+                profession = StatCollector.translateToLocal("description.villager.profession." + Utilities.getVillagerName(villager.getProfession()));
+                
+                if (profession.startsWith("description.villager.profession.")) {
+                    
+                    Utilities.wrapStringToList(StatCollector.translateToLocal("description.villager.profession.unmapped") + " " + profession, 45, true, tip);
+                    return tip;
+                }
+                
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
+            }
+            
+            if (entity instanceof EntityZombie) {
+                
+                EntityZombie zombie = (EntityZombie) entity;
+                
+                if (zombie.isVillager()) {
+                    
+                    profession = StatCollector.translateToLocal("description.villager.profession.zombie");
+                    tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
+                }
+            }
         }
         
         // TNT
@@ -87,19 +112,22 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         register.registerBodyProvider(dataProvider, EntityVillager.class);
         register.registerNBTProvider(dataProvider, EntityVillager.class);
         
+        register.registerBodyProvider(dataProvider, EntityZombie.class);
+        register.registerNBTProvider(dataProvider, EntityZombie.class);
+        
         register.registerBodyProvider(dataProvider, EntityTNTPrimed.class);
         register.registerNBTProvider(dataProvider, EntityTNTPrimed.class);
         
         register.addConfig("Wawla-Entity", showHorseJump);
         register.addConfig("Wawla-Entity", showHorseSpeed);
-        register.addConfig("Wawla-Entity", showZombieType);
+        register.addConfig("Wawla-Entity", showProfession);
         register.addConfig("Wawla-Entity", showTntFuse);
     }
     
     private static String showHorseJump = "wawla.horse.showJump";
     private static String showHorseSpeed = "wawla.horse.showSpeed";
     
-    private static String showZombieType = "wawla.villagerZombie";
+    private static String showProfession = "wawla.showProfession";
     
     private static String showTntFuse = "wawla.tnt.fuse";
 }
