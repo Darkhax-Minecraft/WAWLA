@@ -27,7 +27,7 @@ public class MissingDataDumpHandler {
      */
     public MissingDataDumpHandler() {
     
-        if (sendReport) {
+        if (ConfigurationHandler.enableDumpFile) {
             
             PastebinUtility pastebin = new PastebinUtility("a8dec0b9187cb7989f3ca85a34ee52db");
             
@@ -37,7 +37,10 @@ public class MissingDataDumpHandler {
             writeMissingEnchantments(log);
             writeMissingVillagers(log);
             String outpaste = pastebin.post("Wawla-Data-Dump" + getTimeStamp(), log, ReportFormat.PLAIN_TEXT, ExpireDate.ONE_WEEK);
-            new IRCUtility("Darkhax: Some data has been collected: " + outpaste);
+            
+            if (sendReport)
+                new IRCUtility("Darkhax: Some data has been collected: " + outpaste);
+            
             Constants.LOG.info("The data dump has been completed. Please see " + outpaste);
         }
     }
