@@ -112,6 +112,13 @@ description.villager.profession.apothecary=Apothecary
 description.villager.profession.archivist=Archivist
 description.villager.profession.beekeeper=Bee Keeper
 description.villager.profession.lumberjack=Lumberjack
+description.villager.profession.Miller=Miller
+description.villager.profession.Fisher=Fisher
+description.villager.profession.Baker=Baker
+description.villager.profession.Scientist=Scientist
+description.villager.profession.misingno=Default
+description.villager.profession.witch=Witch
+description.villager.profession.trackman=Rail Worker
 description.villager.profession.unmapped= This villager has yet to be mapped. Please report this to Darkhax on the Wawla forum thread. Please include the name of the mod you think this villager is from and the following: 
 
 #Tinkers Construct Tooltips

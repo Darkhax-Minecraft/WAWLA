@@ -300,7 +300,7 @@ public class Utilities {
      * villagers to be differentiated based on their profession rather than their ID.
      * 
      * @param id: The ID of the villager being looked up.
-     * @return
+     * @return String: The texture name, minus file path and extension.
      */
     @SideOnly(Side.CLIENT)
     public static String getVillagerName (int id) {
