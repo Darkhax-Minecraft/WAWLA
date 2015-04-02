@@ -1,6 +1,7 @@
 package net.darkhax.wawla.proxy;
 
 import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
+import net.darkhax.wawla.handler.MissingDataDumpHandler;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Loader;
@@ -26,5 +27,14 @@ public class ProxyClient extends ProxyCommon {
     
         new AddonGenericTooltips();
         new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
+    }
+    
+    /**
+     * Used to handle postInit stuff on the client.
+     */
+    @Override
+    public void sidedPostInit () {
+    
+        new MissingDataDumpHandler();
     }
 }

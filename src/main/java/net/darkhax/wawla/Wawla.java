@@ -13,6 +13,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, dependencies = "required-after:Waila")
@@ -52,6 +53,12 @@ public class Wawla {
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles.registerAddon");
         
         proxy.registerSidedModules();
+    }
+    
+    @EventHandler
+    public void postInit (FMLPostInitializationEvent event) {
+    
+        proxy.sidedPostInit();
     }
     
     @EventHandler
