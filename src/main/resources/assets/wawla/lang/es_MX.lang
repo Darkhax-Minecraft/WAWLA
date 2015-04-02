@@ -52,18 +52,6 @@ tooltip.wawla.item=Objeto
 
 tooltip.wawla.lightLevel=Nivel de Luz
 
-tooltip.wawla.dev.blockID=ID del Bloque
-
-tooltip.wawla.dev.blockClass=Bloque
-
-tooltip.wawla.dev.entityClass=Entidad
-
-tooltip.wawla.dev.teClass=Baldosa
-
-tooltip.wawla.dev.width=Ancho
-
-tooltip.wawla.dev.height=Altura
-
 tooltip.wawla.sit=Sentandose
 
 tooltip.wawla.birth=Tiempo de Reutilización
@@ -78,13 +66,15 @@ tooltip.wawla.tooltype.axe=Hacha
 
 tooltip.wawla.armorprot=Protección
 
-tooltip.wawla.food=Puntos de Comida
-
-tooltip.wawla.hats=Sombreros
-
 tooltip.wawla.armor=Puntos de Armadura
 
+tooltip.wawla.progress=Progreso
 
+tooltip.wawla.missingEnch=No se ha encontrado una descripción para este encantamiento.
+
+tooltip.wawla.tnt.fuse=Tiempo de detonación
+
+tooltip.wawla.profession=Profesión
 
 
 #Fixed/Missing Strings
@@ -92,7 +82,6 @@ tooltip.wawla.armor=Puntos de Armadura
 tile.null.name=Bloque sin nombre, favor informarle al autor del mod.
 
 entity.ItemFrame.name=Marco de Objeto
-
 
 
 
@@ -136,22 +125,6 @@ option.wawla.light.monsterSpawn=Nivel de la Luz de monstruos?
 
 option.wawla.villagerZombie=Aldeano Zombi?
 
-option.wawla.dev.devOn=Activar modo de Desarollador?
-
-option.wawla.dev.blockNBT=NBT del Tile Entity?
-
-option.wawla.dev.blockClass=Clase del Bloque?
-
-option.wawla.dev.teClass=Clase del Tile Entity?
-
-option.wawla.dev.entityNBT=Entidad NBT?
-
-option.wawla.dev.blockID=ID del Bloque?
-
-option.wawla.dev.entityClass=Clase de la Entidad?
-
-option.wawla.dev.entitySize=Tamaño de la Entidad?
-
 option.wawla.pets.showOwner=Dueño de la Mascota?
 
 option.wawla.pets.cooldown=Tiempo de Reutilización de Reproducción?
@@ -160,10 +133,13 @@ option.wawla.pets.age=Edad Bebé?
 
 option.wawla.pets.sitting=Sentandose?
 
-option.wawla.showHat=Mostrar Nombres de los Sombreros?
-
 option.wawla.showMobArmor=Mostrar Valor de la Armadura de los Enemigos?
 
+option.wawla.harvest.showProgress=Mostrar el Progreso del Rompimiento del Bloque
+
+option.wawla.tnt.fuse=Mostrar Tiempo de Detonación
+
+option.wawla.showProfession=Mostrar Profesión del Aldeano
 
 
 
@@ -220,11 +196,36 @@ description.enchantment.fishingSpeed=Este encantamiento reduce el tiempo que tom
 
 
 
+#Villager Professions
+description.villager.profession.farmer=Granjero
+description.villager.profession.librarian=Librero
+description.villager.profession.priest=Sacerdote
+description.villager.profession.blacksmith=Herrero
+description.villager.profession.butcher=Carnicero
+description.villager.profession.wizard=Hechicero
+description.villager.profession.moneychanger=Mercader
+description.villager.profession.villagertools=Tinkerer
+description.villager.profession.zombie=Zombie
+description.villager.profession.Engineer=Ingeniero
+description.villager.profession.king-ish=El Rey(ish)
+description.villager.profession.apothecary=Apotecario
+description.villager.profession.archivist=Archivista
+description.villager.profession.beekeeper=Apicultor
+description.villager.profession.lumberjack=Leñador
+description.villager.profession.Miller=Molinero
+description.villager.profession.Fisher=Pescador
+description.villager.profession.Baker=Panadero
+description.villager.profession.Scientist=Cientifico
+description.villager.profession.misingno=Default
+description.villager.profession.witch=Bruja
+description.villager.profession.trackman=Trabajador ferroviario
+description.villager.profession.unmapped= Este Aldeano necesita ser asignado todavia. Por favor reportar esto a Darkhax en el foro de Wawla. Por favor incluir el nombre del mod del que crees al que pertenece este Aldeano, y lo siguiente:
+
+
 
 #Tinkers Construct Tooltips
 
 tooltip.wawla.tinkers.dryness=Sequedad
-
 
 
 
@@ -242,23 +243,21 @@ option.wawla.tinkers.showBurnTime=Tiempo de quemado?
 
 
 
-
 #AquaCulture Enchantment Descriptions
 
-description.enchantment.aquacultureAppealing=This enchantment gives the player a greater amount of time to catch fish.
+description.enchantment.aquacultureAppealing=Este encantamiento le da al jugador un más tiempo para atrapar un pez.
 
-description.enchantment.aquacultureBarbedHook=This enchantment gives the player a better chance of catching the fish.
+description.enchantment.aquacultureBarbedHook=Este encantamiento le da al jugador un mejor chance de atrapar el pez.
 
-description.enchantment.aquacultureDoubleHook=This enchantment allows the player to get more than one fish or loot.
+description.enchantment.aquacultureDoubleHook=Este encantamiento le permite al jugador obtener mas de un pez o tesoro.
 
-description.enchantment.aquacultureHeavyLine=This enchantment allows the player to catch larger and heavier fish.
+description.enchantment.aquacultureHeavyLine=Este encantamiento le da al jugador atrapar peces mas grandes y pesados.
 
-description.enchantment.aquacultureLongCast=This enchantment allows the hook(bobber) of the fishing rod, to be casted longer.
+description.enchantment.aquacultureLongCast=Este encantamiento permite que la cuerda de pescar pueda ser lanzada mas lejos.
 
-description.enchantment.aquacultureMagnetic=This enchantment gives the player a greater chance to catch fish.
+description.enchantment.aquacultureMagnetic=Este encantamiento le da al jugador un mejor chance de atrapar peces.
 
-description.enchantment.aquacultureShortCast=This enchantment allows the hook(bobber) of the fishing rod, to be casted shorter.
-
+description.enchantment.aquacultureShortCast=Este encantamiento permite que la cuerda de pescar pueda ser lanzada menos lejos.
 
 
 
@@ -302,11 +301,9 @@ tooltip.wawla.pixelmon.size=Tamaño
 
 
 
-
 #Pixelmon Fixed Strings
 
 entity.pixelmon.Pixelmon.name=Pixelmon
-
 
 
 
@@ -326,6 +323,9 @@ option.wawla.pixelmon.showNature=Naturalezas?
 
 option.wawla.pixelmon.showSize=Tamaño?
 
+option.wawla.pixelmon.showIV=Mostrar IV's?
+
+option.wawla.pixelmon.showEV=Mostrar EV's?
 
 
 
@@ -338,7 +338,6 @@ tooltip.wawla.thaumcraft.linked=Vinculado
 tooltip.wawla.thaumcraft.dimension=Dimension
 
 tooltip.wawla.thaumcraft.experience=Experiencia
-
 
 
 
@@ -364,7 +363,6 @@ option.wawla.thaumcraft.deconAspect=Aspecto en la mesa de Deconstrucción?
 
 
 
-
 #Thaumcraft Enchantment Descriptions
 
 description.enchantment.repair=Hace que los objetos reparen la durabilidad durante el tiempo. Este encantamiento tiene dos niveles, el segundo nivel restaura la durabilidad del objeto a una velocidad mayor. Este encantamiento puede ser usado en armas, Focos de Varitas y otras herramientas, excluyendo tijeras.
@@ -376,7 +374,6 @@ description.enchantment.potency=Aumenta la fuerza de un hechizo. Este es un enca
 description.enchantment.frugal=Reduce el monto de vis consumida cuando un Foco de Varita es usado. Este es un encantamiento de tres niveles, cada nivel aumenta mas la reducción de vis. Este encantamiento es solamente aplicable a Focos de Varitas.
 
 description.enchantment.wandfortune=Este encantamiento es como el encantamiento de fortuna, permitiendo que algunos bloques tengan mayor chance de dar objetos extra. Este encantamiento tiene tres niveles, cada uno aumentando mas el chance de objetos extra. Este encantamiento es solamente aplicable para Focos de Varitas.
-
 
 
 
