@@ -10,6 +10,7 @@ import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityVillager;
@@ -64,20 +65,20 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                     Utilities.wrapStringToList(StatCollector.translateToLocal("description.villager.profession.unmapped") + " " + profession, 45, true, tip);
                     return tip;
                 }
-                
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
             }
             
             if (entity instanceof EntityZombie) {
                 
                 EntityZombie zombie = (EntityZombie) entity;
                 
-                if (zombie.isVillager()) {
-                    
+                if (zombie.isVillager())
                     profession = StatCollector.translateToLocal("description.villager.profession.zombie");
-                    tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
-                }
             }
+            
+            if (entity instanceof EntityWitch)
+                profession = StatCollector.translateToLocal("description.villager.profession.witch");
+            
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
         }
         
         // TNT
