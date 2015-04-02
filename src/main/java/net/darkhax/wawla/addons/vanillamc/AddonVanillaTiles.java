@@ -120,7 +120,7 @@ public class AddonVanillaTiles implements IWailaDataProvider {
         register.registerBodyProvider(dataProvider, BlockFurnace.class);
         register.registerNBTProvider(dataProvider, BlockFurnace.class);
         
-        register.addConfig("Wawla-Blocks", "wawla.showhead");
+        register.addConfig("Wawla-Blocks", showSkullName);
         register.registerBodyProvider(dataProvider, BlockSkull.class);
         register.registerNBTProvider(dataProvider, BlockSkull.class);
     }
@@ -134,5 +134,5 @@ public class AddonVanillaTiles implements IWailaDataProvider {
     private static String showFurnaceFuel = "wawla.furnace.fuel";
     private static String showFurnaceBurnTime = "wawla.furnace.burntime";
     
-    private String showSkullName = "wawla.showHead";
+    private static String showSkullName = "wawla.showHead";
 }

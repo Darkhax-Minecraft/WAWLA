@@ -38,6 +38,7 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
     
+        // tip.add("CLASS: " + entity.getClass());
         // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true, tip);
         
         // Equipment
