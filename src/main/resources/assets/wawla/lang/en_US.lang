@@ -132,6 +132,8 @@ description.villager.profession.defeatedcrow.villager_yome=Yome
 description.villager.profession.grccellar.brewer=Brewer
 description.villager.profession.peripheralsplusplus.CCVillager=Computer Technician
 description.villager.profession.evilcraft.werewolfVillager=Werewolf
+description.villager.profession.redgear_brewcraft.villagerwitch=Witch
+description.villager.profession.redgear_brewcraft.villagerwarlock=Warlock
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
@@ -229,6 +231,10 @@ description.enchantment.ttinkerer:quickDraw=This enchantment is designed for bow
 #Ars Magic Enchantment Descriptions
 description.enchantment.magicresist=Reduces amount of damage received from magical sources. 
 description.enchantment.soulbound=When the player dies, this item will be kept in the inventory on respawn, and will not drop on the ground.
+
+#Red Pwer 2 Enchantmnet Descriptions
+description.enchantment.vorpal=Increases the chance that a mob will drop its head on death. 
+description.enchantment.disjunction=Increases damage dealt to Enderman and Wither Skeletons.
 
 #Special Mobs Enchantment Descriptions
 description.enchantment.SpecialMobs.painBow=A bow based enchantment which deals additional damage which will bypass protection. Each level deals an additional half heart of damage.
