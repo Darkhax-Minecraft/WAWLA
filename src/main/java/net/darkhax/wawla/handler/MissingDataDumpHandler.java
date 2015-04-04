@@ -61,7 +61,7 @@ public class MissingDataDumpHandler {
         paste.appendLine("                 WW   W  WW AA   AA WW   W  WW LL      AA   AA ");
         paste.appendLine("                  WW WWW WW AAAAAAA  WW WWW WW LL      AAAAAAA ");
         paste.appendLine("                   WW   WW  AA   AA   WW   WW  LLLLLLL AA   AA ");
-        paste.appendLine(System.getProperty("line.separator"));
+        paste.appendLine("");
         
         for (String line : message)
             paste.appendLine(line);
@@ -77,7 +77,7 @@ public class MissingDataDumpHandler {
      */
     public void writeMissingEnchantments (Paste paste) {
     
-        paste.appendLine(System.getProperty("line.separator"));
+        paste.appendLine("");
         Enchantment[] enchantments = Enchantment.enchantmentsBookList;
         List<String> missings = new ArrayList<String>();
         
@@ -112,7 +112,7 @@ public class MissingDataDumpHandler {
      */
     public void writeMissingVillagers (Paste paste) {
     
-        paste.appendLine(System.getProperty("line.separator"));
+        paste.appendLine("");
         
         VillagerRegistry village = VillagerRegistry.instance();
         List<String> missings = new ArrayList<String>();
