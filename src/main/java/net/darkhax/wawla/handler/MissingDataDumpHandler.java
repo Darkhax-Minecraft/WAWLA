@@ -1,5 +1,10 @@
 package net.darkhax.wawla.handler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +25,8 @@ public class MissingDataDumpHandler {
     
     public static boolean sendReport = false;
     
+    ArrayList<String> lang = new ArrayList<String>();
+    
     /**
      * Constructs the handler object for sending a missing data report. This class will go
      * through various data in the users installation, an if permitted, shall send that data to
@@ -34,6 +41,7 @@ public class MissingDataDumpHandler {
             Constants.LOG.info("Beginning missing data dump.");
             Paste log = new Paste();
             writeIntroduction(log);
+            initExistingLangFile();
             writeMissingEnchantments(log);
             writeMissingVillagers(log);
             String outpaste = pastebin.post("Wawla-Data-Dump" + getTimeStamp(), log, ReportFormat.PLAIN_TEXT, ExpireDate.ONE_WEEK);
@@ -42,6 +50,7 @@ public class MissingDataDumpHandler {
                 new IRCUtility("Darkhax: Some data has been collected: " + outpaste);
             
             Constants.LOG.info("The data dump has been completed. Please see " + outpaste);
+            lang = null;
         }
     }
     
@@ -86,7 +95,8 @@ public class MissingDataDumpHandler {
         for (int pos = 0; pos < enchantments.length; pos++) {
             
             Enchantment ench = enchantments[pos];
-            if (ench != null && StatCollector.translateToLocal("description." + ench.getName()).startsWith("description.")) {
+            String translation = StatCollector.translateToLocal("description." + ench.getName());
+            if (ench != null && translation.startsWith("description.") && !lang.contains(translation)) {
                 
                 missings.add("description." + ench.getName());
                 counter++;
@@ -97,7 +107,8 @@ public class MissingDataDumpHandler {
         paste.appendLine("#Missing Enchantment Descriptions: " + counter + " found.");
         
         for (String entry : missings)
-            paste.appendLine(entry);
+            if (!lang.contains(entry))
+                paste.appendLine(entry);
     }
     
     /**
@@ -122,7 +133,7 @@ public class MissingDataDumpHandler {
             
             String profession = StatCollector.translateToLocal("description.villager.profession." + Utilities.getVillagerName(id));
             
-            if (profession.startsWith("description.villager.profession.")) {
+            if (profession.startsWith("description.villager.profession.") && !lang.contains(profession)) {
                 
                 missings.add(profession);
                 counter++;
@@ -133,7 +144,8 @@ public class MissingDataDumpHandler {
         paste.appendLine("#Missing Villager Professions: " + counter + " found.");
         
         for (String entry : missings)
-            paste.appendLine(entry);
+            if (!lang.contains(entry))
+                paste.appendLine(entry);
     }
     
     /**
@@ -147,5 +159,37 @@ public class MissingDataDumpHandler {
         Date now = new Date();
         String timeStamp = sdfDate.format(now);
         return timeStamp;
+    }
+    
+    /**
+     * Populates an array containing all language key entries from the Github page. This is
+     * used to check if the mod author already knows about the missing language key.
+     */
+    public void initExistingLangFile () {
+    
+        try {
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/Darkhax-Minecraft/WAWLA/master/src/main/resources/assets/wawla/lang/en_US.lang").openStream()));
+            String line;
+            
+            while ((line = reader.readLine()) != null) {
+                
+                if (!line.equals("") || !line.startsWith("#")) {
+                    
+                    String[] langs = line.split("=");
+                    lang.add(langs[0]);
+                }
+            }
+            
+            reader.close();
+        }
+        
+        catch (MalformedURLException e) {
+            
+        }
+        
+        catch (IOException e) {
+            
+        }
     }
 }
