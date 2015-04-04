@@ -59,12 +59,6 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                 
                 EntityVillager villager = (EntityVillager) entity;
                 profession = StatCollector.translateToLocal("description.villager.profession." + Utilities.getVillagerName(villager.getProfession()));
-                
-                if (profession.startsWith("description.villager.profession.")) {
-                    
-                    Utilities.wrapStringToList(StatCollector.translateToLocal("description.villager.profession.unmapped") + " " + profession, 45, true, tip);
-                    return tip;
-                }
             }
             
             if (entity instanceof EntityZombie) {
