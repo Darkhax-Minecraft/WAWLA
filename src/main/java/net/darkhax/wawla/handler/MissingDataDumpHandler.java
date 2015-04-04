@@ -107,8 +107,7 @@ public class MissingDataDumpHandler {
         paste.appendLine("#Missing Enchantment Descriptions: " + counter + " found.");
         
         for (String entry : missings)
-            if (!lang.contains(entry))
-                paste.appendLine(entry);
+            paste.appendLine(entry);
     }
     
     /**
@@ -144,8 +143,7 @@ public class MissingDataDumpHandler {
         paste.appendLine("#Missing Villager Professions: " + counter + " found.");
         
         for (String entry : missings)
-            if (!lang.contains(entry))
-                paste.appendLine(entry);
+            paste.appendLine(entry);
     }
     
     /**
