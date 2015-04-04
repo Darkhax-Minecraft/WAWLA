@@ -116,6 +116,11 @@ description.villager.profession.forestry.lumberjack=Lumberjack
 description.villager.profession.mystcraft.archivist=Archivist
 description.villager.profession.thaumcraft.wizard=Wizard
 description.villager.profession.thaumcraft.moneychanger=Merchant
+description.villager.profession.compactmachines.villager=Compact Machinist
+description.villager.profession.railcraft.trackman=Rail Worker
+description.villager.profession.pneumaticcraft.VillagerMechanic=Mechanic
+description.villager.profession.witchery.apothecary=Apothecary
+description.villager.profession.minefactoryreloaded.zoologist=Zoologist
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
