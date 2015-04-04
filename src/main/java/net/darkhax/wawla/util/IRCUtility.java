@@ -17,7 +17,7 @@ public class IRCUtility {
     private final String server = "irc.esper.net";
     private final String nick = "WawlaDataDump";
     private final String login = "WawlaDataDump";
-    private final String channel = "#wawla";
+    private final String channel = "#wawla-dev";
     
     String nick2 = nick;
     String login2 = login;
