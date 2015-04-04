@@ -253,3 +253,37 @@ description.enchantment.SpecialMobs.plagueBow=A bow based enchantment which give
 description.enchantment.SpecialMobs.plagueSword=A sword based enchantment which gives the damaged mob a random negative effect. The possible effects are slowness, nausea, blindness, hunger, weakness and poison. 
 description.enchantment.SpecialMobs.poisonBow=A bow based enchantment which gives the damaged mob poison. Each level increases the power of the poison effect applied.
 description.enchantment.SpecialMobs.poisonSword=A sword based enchantment which gives the damaged mob poison. Each level increases the power of the poison effect applied.
+
+#Unknown Enchantment Descriptions
+description.enchantment.imperviousness=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.bash.weightless=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.bash.power=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.bash.damage=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.shield.usage=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.shield.recover=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.bow.loot=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.bow.charge=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.poison=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.frost=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.explosive=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.quickdraw=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.venom=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.iceaspect=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.defusing=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.dowsing=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.spellbane=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.mending=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.cleave=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.leech=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.execute=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.poisonprotect=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.knowledge=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.berserk=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.steadfast=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.agility=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.mobility=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.fleetfoot=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.resurrection=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.harvest=This enchantment is unknown. Please contact Darkhax to help him provide a description.
