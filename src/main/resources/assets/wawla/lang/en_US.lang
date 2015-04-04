@@ -134,6 +134,10 @@ description.villager.profession.peripheralsplusplus.CCVillager=Computer Technici
 description.villager.profession.evilcraft.werewolfVillager=Werewolf
 description.villager.profession.redgear_brewcraft.villagerwitch=Witch
 description.villager.profession.redgear_brewcraft.villagerwarlock=Warlock
+description.villager.profession.fossil.Archaeologist=Archaeologist
+description.villager.profession.pennyarcade.CoinMerchant=Coin Vendor
+description.villager.profession.psychedelicraft.villagerDealer=Drug Dealer
+
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
