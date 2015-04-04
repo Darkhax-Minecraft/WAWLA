@@ -141,6 +141,10 @@ description.villager.profession.jukeboxreloaded.villager=Record Dealer
 description.villager.profession.minecraft.etymologist=Etymologist
 description.villager.profession.tofucraft.tofucook=Tofu Chef
 description.villager.profession.jewelrycraft.jeweler=Jeweller
+description.villager.profession.taverns.barwench=Bar Maid
+description.villager.profession.taverns.village_shepherdess=Shepherdess
+description.villager.profession.taverns.village_hostler=Hostler
+description.villager.profession.taverns.village_baker=Baker
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
