@@ -203,25 +203,25 @@ description.villager.profession.priest=Sacerdote
 description.villager.profession.blacksmith=Herrero
 description.villager.profession.butcher=Carnicero
 description.villager.profession.wizard=Hechicero
-description.villager.profession.moneychanger=Mercader
-description.villager.profession.villagertools=Tinkerer
-description.villager.profession.zombie=Zombie
-description.villager.profession.Engineer=Ingeniero
-description.villager.profession.king-ish=El Rey(ish)
-description.villager.profession.apothecary=Apotecario
-description.villager.profession.archivist=Archivista
-description.villager.profession.beekeeper=Apicultor
-description.villager.profession.lumberjack=Leñador
-description.villager.profession.Miller=Molinero
-description.villager.profession.Fisher=Pescador
-description.villager.profession.Baker=Panadero
-description.villager.profession.Scientist=Cientifico
-description.villager.profession.misingno=Default
 description.villager.profession.witch=Bruja
-description.villager.profession.trackman=Trabajador ferroviario
-description.villager.profession.unmapped= Este Aldeano necesita ser asignado todavia. Por favor reportar esto a Darkhax en el foro de Wawla. Por favor incluir el nombre del mod del que crees al que pertenece este Aldeano, y lo siguiente:
-
-
+description.villager.profession.zombie=Zombi
+description.villager.profession.misingno=Defecto
+description.villager.profession.thaumcraft.moneychanger=Mercader
+description.villager.profession.tinker.villagertools=Tinkerer
+description.villager.profession.bcaddons.Engineer=Ingeniero
+description.villager.profession.openblocks.king-ish=El Rey(ish)
+description.villager.profession.witchery.apothecary=Apotecario
+description.villager.profession.mystcraft.archivist=Archivista
+description.villager.profession.forestry.beekeeper=Apicultor
+description.villager.profession.forestry.lumberjack=Leñador
+description.villager.profession.extvil.Miller=Molinero
+description.villager.profession.extvil.Fisher=Pescador
+description.villager.profession.extvil.Baker=Panadero
+description.villager.profession.extvil.Scientist=Cientifico
+description.villager.profession.railcraft.trackman=Trabajador ferroviario
+description.villager.profession.minefactoryreloaded.zoologist=Zoólogo
+description.villager.profession.pneumaticcraft.VillagerMechanic=Mecánico
+description.villager.profession.compactmachines.villager=Maquinista compacto
 
 #Tinkers Construct Tooltips
 
