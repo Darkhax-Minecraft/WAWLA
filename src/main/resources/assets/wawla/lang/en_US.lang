@@ -137,7 +137,8 @@ description.villager.profession.redgear_brewcraft.villagerwarlock=Warlock
 description.villager.profession.fossil.Archaeologist=Archaeologist
 description.villager.profession.pennyarcade.CoinMerchant=Coin Vendor
 description.villager.profession.psychedelicraft.villagerDealer=Drug Dealer
-
+description.villager.profession.jukeboxreloaded.villager=Record Dealer
+description.villager.profession.minecraft.etymologist=Etymologist
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
@@ -208,6 +209,11 @@ option.wawla.thaumcraft.wandItem=Recharge Item?
 option.wawla.thaumcraft.wandCharge=Wand Charge?
 option.wawla.thaumcraft.pedestalItem=Pedestal Item?
 option.wawla.thaumcraft.deconAspect=Deconstruction Aspect?
+
+#Artifice Enchantment Descriptions
+description.enchantment.artifice.invisible=An armour enchantment which makes the equipped piece of armour look invisible. 
+description.enchantment.artifice.soulstealing=A weapon enchantment that causes mobs to drop additional experience points. Higher levels causes the amount of exp to increase.
+description.enchantment.artifice.resistance=An armour enchantment which provides protection from magical damage and wither damage. Higher levels offer better resistance.
 
 #Thaumcraft Enchantment Descriptions
 description.enchantment.repair=Causes items to repair durability over time. This enchantment has two tiers, the second tier restoring durability at a faster rate. This enchantment can be used on weapons, Wand Foci and other tools, excluding shears.
