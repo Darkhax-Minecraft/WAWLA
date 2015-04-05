@@ -148,6 +148,7 @@ description.villager.profession.taverns.village_baker=Baker
 description.villager.profession.tynkyn.jx_villager_chef=Chef
 description.villager.profession.tynkyn.jx_villager_recycle=Recycling
 description.villager.profession.tynkyn.jx_villager_botanist=Botanist
+description.villager.profession.diversity.warrior=Warrior
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
@@ -262,6 +263,36 @@ description.enchantment.SpecialMobs.plagueBow=A bow based enchantment which give
 description.enchantment.SpecialMobs.plagueSword=A sword based enchantment which gives the damaged mob a random negative effect. The possible effects are slowness, nausea, blindness, hunger, weakness and poison. 
 description.enchantment.SpecialMobs.poisonBow=A bow based enchantment which gives the damaged mob poison. Each level increases the power of the poison effect applied.
 description.enchantment.SpecialMobs.poisonSword=A sword based enchantment which gives the damaged mob poison. Each level increases the power of the poison effect applied.
+
+#Natural Absorption Enchantment Descriptions
+description.enchantment.NaturalAbsorption.absorb=An enchantment for armour. The equipped piece of armour will increase the players maximum absorption amount.
+
+#Simple Flight Enchantment Descriptions
+description.enchantment.fly_longer=Increases the total amount of flaps on Simple Flight devices. 
+description.enchantment.fly_faster=Decreases the duration between flaps on Simple Flight devices. Useless on Jet Packs and Jet Gliders.
+
+#More Swords Mod Enchantment Descriptions
+description.msm.unused=Note: This item/block has been added to help achieve compatibility with other mods. As of now these do not do anything and are not an ordinary part of this mod. No new ores or tools will be added this is ONLY for for mod compatibility.
+description.enchantment.msm.ignite=This enchantment will set damaged mobs on fire doing damage equal to that of the enchantment level.
+description.enchantment.msm.spark=This enchantment will do 3 fire damage to mobs within 2.4 blocks of the damaged mob. Both the player and the target mob will not be set on fire. 
+description.enchantment.msm.feast=This enchantment will restore 0-3 durability when used. The amount restored is multiplied by the level of the effect. 
+description.enchantment.msm.vitality=This enchantment will consume 256 durability when used and in turn give the user several buffs such as regen, insta health and extra hearts. 
+description.enchantment.msm.venomAspect=This enchantment will poison target mob. The effect will last for seconds equivalent to the level of the effect. It's worth noting that many vanilla mobs such as spiders, zombies and skeletons can not be poisoned rendering this effect useless.
+description.enchantment.msm.absorb=This enchantment has a 5% chance to restore 0-2 hunger points when used. 
+description.enchantment.msm.keenEdge=This enchantment increases the damage of the sword by 1 for each level of the effect.
+description.enchantment.msm.scorn=This enchantment will double the damage of the sword by 2 when used in dimensions other than the surface world. 
+description.enchantment.msm.enderPulse=This enchantment will warp the player where they are looking when used. This effect has a range of 18 blocks per level. This enchantment will damage the item by 50 points every time it is used. The player will also take 1 damage in fall damage.
+description.enchantment.msm.enderAura=This enchantment has a 15% chance of activating when the player is hit. When activated the player will warp to a random mob within 30 blocks. This mob may not always be friendly. If no mob is found then the effect will be cancled. 
+description.enchantment.msm.greed=This enchantment has a 7% chance to drop 1-3 extra points of exp.
+description.enchantment.msm.wisdom=This enchantment is currently broken. My bad :/
+description.enchantment.msm.frozenAspect=This enchantment will slow mobs for 3 seconds per level. 
+description.enchantment.msm.frostWave=This enchantment will slow mobs within 2.5 blocks of the target mob for 1.5 seconds.
+description.enchantment.msm.ascension=This enchantment will propel targeted mobs upwards into the air. Hit the mob before it hits the ground to make increase the launch aspect of the effect exponential amount. 
+description.enchantment.msm.descension=This enchantment will cause the player to fall at a much slower rate than normal. To activate the effect press and hold shift. 
+description.enchantment.msm.shadows=This enchantment will blind the target mob for 1.5 seconds. There is also a 12% chance that the wither effect will be applied for a second. 
+description.enchantment.msm.decay=This enchantment will apply the wither effect to the target mob for just under 4 seconds. 
+description.enchantment.msm.stealth=This enchantment will cause the player to become invisible when activated. Unlike the potion of invisibility this effect will not give off particles and has no time limit or duration. To toggle this on or off simply right click with the sword. It's worth noting that swords and armor will still be visible while this effect is enabled.
+description.enchantment.msm.extinction=This enchantment will kill all mobs on the map that are an instance of the target mob. This can be used on boats to kill all boats in the world and can be used to manage entities in the world. This effect will not target players. 
 
 #Unknown Enchantment Descriptions
 description.enchantment.imperviousness=This enchantment is unknown. Please contact Darkhax to help him provide a description.
