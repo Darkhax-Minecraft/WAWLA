@@ -145,6 +145,9 @@ description.villager.profession.taverns.barwench=Bar Maid
 description.villager.profession.taverns.village_shepherdess=Shepherdess
 description.villager.profession.taverns.village_hostler=Hostler
 description.villager.profession.taverns.village_baker=Baker
+description.villager.profession.tynkyn.jx_villager_chef=Chef
+description.villager.profession.tynkyn.jx_villager_recycle=Recycling
+description.villager.profession.tynkyn.jx_villager_botanist=Botanist
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
