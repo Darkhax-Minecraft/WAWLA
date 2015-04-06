@@ -152,6 +152,7 @@ description.villager.profession.diversity.warrior=Warrior
 description.villager.profession.lozmod.villager_beedle=Beedle
 description.villager.profession.lozmod.villager_beedle_special=Beedle
 description.villager.profession.minecraft.farmer=Farmer
+description.villager.profession.savemoney.insurer=Insurer
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
@@ -330,3 +331,6 @@ description.enchantment.mobility=This enchantment is unknown. Please contact Dar
 description.enchantment.fleetfoot=This enchantment is unknown. Please contact Darkhax to help him provide a description.
 description.enchantment.resurrection=This enchantment is unknown. Please contact Darkhax to help him provide a description.
 description.enchantment.harvest=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.Swiftness=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.Vitality=This enchantment is unknown. Please contact Darkhax to help him provide a description.
