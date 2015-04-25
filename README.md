@@ -5,11 +5,11 @@ What Are We Looking At (WAWLA) is a mod aimed and drawing more attention to prov
 
 Required Mods
 =============
-[Code Chicken Core] (http://www.chickenbones.craftsaddle.org/Files/New_Versions/links.php) | Currently coded with 1.0.0 for 1.7.2
+[Code Chicken Core] (http://www.chickenbones.craftsaddle.org/Files/New_Versions/links.php) | No longer required since WAWLA 1.1.0
 
-[Not Enough Items] (http://www.chickenbones.craftsaddle.org/Files/New_Versions/links.php) | Currently coded with 1.0.1 for 1.7.2
+[Not Enough Items] (http://www.chickenbones.craftsaddle.org/Files/New_Versions/links.php) | No longer required since WAWLA 1.1.0
 
-[WAILA] (https://bitbucket.org/ProfMobius/waila) | Currently coded with 1.5.2a
+[WAILA] (https://bitbucket.org/ProfMobius/waila) | Currently coded with 1.5.10
 
 Credits
 =======
