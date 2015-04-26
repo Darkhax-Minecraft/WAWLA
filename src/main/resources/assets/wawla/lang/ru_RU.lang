@@ -25,12 +25,6 @@ tooltip.wawla.blockLevel=Требуемый уровень
 tooltip.wawla.amount=Количество
 tooltip.wawla.item=Предмет
 tooltip.wawla.lightLevel=Уровень освещения
-tooltip.wawla.dev.blockID=ID блока
-tooltip.wawla.dev.blockClass=Блок
-tooltip.wawla.dev.entityClass=Сущность
-tooltip.wawla.dev.teClass=Tile
-tooltip.wawla.dev.width=Ширина
-tooltip.wawla.dev.height=Высота
 tooltip.wawla.sit=Сидит
 tooltip.wawla.birth=Cooldown
 tooltip.wawla.age=Зрелость
@@ -38,9 +32,11 @@ tooltip.wawla.tooltype.shovel=Лопата
 tooltip.wawla.tooltype.pickaxe=Кирка
 tooltip.wawla.tooltype.axe=Топор
 tooltip.wawla.armorprot=Защита
-tooltip.wawla.food=Очки еды
-tooltip.wawla.hats=Шляпы
 tooltip.wawla.armor=Очки брони
+tooltip.wawla.progress=Прогресс
+tooltip.wawla.missingEnch=Описание для этого зачарования не найдено. 
+tooltip.wawla.tnt.fuse=Время до взрыва
+tooltip.wawla.profession=Профессия
 
 #Fixed/Missing Strings
 tile.null.name=Безымянный блок, сообщите автору мода.
@@ -65,21 +61,14 @@ option.wawla.beacon.showSecondary=Второй эффект маяка?
 option.wawla.light.lightLevel=Уровень освещения?
 option.wawla.light.showDay=Дневной уровень освещения?
 option.wawla.light.monsterSpawn=Уровень освещения для монстров?
-option.wawla.villagerZombie=Зомби-житель?
-option.wawla.dev.devOn=Включить режим разработчика?
-option.wawla.dev.blockNBT=NBT Tile Entity?
-option.wawla.dev.blockClass=Класс блока?
-option.wawla.dev.teClass=Класс Tile Entity?
-option.wawla.dev.entityNBT=NBT сущности?
-option.wawla.dev.blockID=ID блока?
-option.wawla.dev.entityClass=Класс сущности?
-option.wawla.dev.entitySize=Размер сущности?
 option.wawla.pets.showOwner=Владелец питомца?
 option.wawla.pets.cooldown=Birth Cooldown?
 option.wawla.pets.age=Возраст ребёнка?
 option.wawla.pets.sitting=Сидит ли?
-option.wawla.showHat=Показывать названия шляп?
-option.wawla.showMobArmor=Показывать значение брони?
+option.wawla.showMobArmor=Показывать очки брони мобов?
+option.wawla.harvest.showProgress=Показывать прогресс добычи блока
+option.wawla.tnt.fuse=Показывать время до взрыва
+option.wawla.showProfession=Показывать профессии жителей
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=Это зачарование уменьшает наносимый урон владельцу от многих источников. Оно сочетается с такими зачарованиями, как Огнестойкость и Лёгкость, однако можно достичь ограничения по снижению урона. Это зачарование применимо ко всем видам брони.
@@ -106,6 +95,64 @@ description.enchantment.arrowFire=Это зачарование поджигае
 description.enchantment.arrowInfinite=Это зачарование предотвращает затраты стрел, во время выстрела. Этот эффект требует хотябы одну стрелу в инвентаре игрока. Это зачарование применимо только к лукам.
 description.enchantment.lootBonusFishing=Это зачарование увеличивает шансы игроков получения сокровищ, во время рыбалки на 1% за уровень. Это зачарование применимо только к удочкам.
 description.enchantment.fishingSpeed=Это зачарование уменьшает время на поимку рыбы на 5 секунд за уровень. Оно также увеличивает шанс получения хлама и сокровищ на 1% за уровень.
+
+#Villager Professions
+description.villager.profession.farmer=Фермер
+description.villager.profession.librarian=Библиотекарь
+description.villager.profession.priest=Священник
+description.villager.profession.blacksmith=Кузнец
+description.villager.profession.butcher=Мясник
+description.villager.profession.zombie=Зомби
+description.villager.profession.witch=Ведьма
+description.villager.profession.misingno=Обычный
+description.villager.profession.openblocks.king-ish=Королевский
+description.villager.profession.tinker.villagertools=Инженер
+description.villager.profession.extvil.Miller=Мельник
+description.villager.profession.extvil.Fisher=Рыбак
+description.villager.profession.extvil.Baker=Пекарь
+description.villager.profession.extvil.Scientist=Учёный
+description.villager.profession.forestry.beekeeper=Пчеловод
+description.villager.profession.forestry.lumberjack=Дровосек
+description.villager.profession.mystcraft.archivist=Архивист
+description.villager.profession.bcaddons.Engineer=Инженер
+description.villager.profession.thaumcraft.wizard=Волшебник
+description.villager.profession.thaumcraft.moneychanger=Торговец
+description.villager.profession.compactmachines.villager=Compact Machinist
+description.villager.profession.railcraft.trackman=Железнодорожный рабочий
+description.villager.profession.pneumaticcraft.VillagerMechanic=Механик
+description.villager.profession.witchery.apothecary=Аптекарь
+description.villager.profession.minefactoryreloaded.zoologist=Зоолог
+description.villager.profession.is_mtc.card_master=Card Master
+description.villager.profession.gravestone.undertaker=Гробовщик
+description.villager.profession.gcewing_sg.tokra=Ток'ра
+description.villager.profession.steamcraft.villager=Steamcrafter
+description.villager.profession.fantastic.fantastic_fisherman=Профессиональный рыбак
+description.villager.profession.defeatedcrow.villager_cafe=Cafe
+description.villager.profession.defeatedcrow.villager_yome=Йоме
+description.villager.profession.grccellar.brewer=Варщик
+description.villager.profession.peripheralsplusplus.CCVillager=Компьютерный техник
+description.villager.profession.evilcraft.werewolfVillager=Оборотень
+description.villager.profession.redgear_brewcraft.villagerwitch=Ведьма
+description.villager.profession.redgear_brewcraft.villagerwarlock=Колдун
+description.villager.profession.fossil.Archaeologist=Археолог
+description.villager.profession.pennyarcade.CoinMerchant=Coin Vendor
+description.villager.profession.psychedelicraft.villagerDealer=Наркоторговец
+description.villager.profession.jukeboxreloaded.villager=Торговец пластинками
+description.villager.profession.minecraft.etymologist=Этимолог
+description.villager.profession.tofucraft.tofucook=Шеф-повар по тофу
+description.villager.profession.jewelrycraft.jeweler=Ювелир
+description.villager.profession.taverns.barwench=Барменша
+description.villager.profession.taverns.village_shepherdess=Пастушка
+description.villager.profession.taverns.village_hostler=Конюх
+description.villager.profession.taverns.village_baker=Пекарь
+description.villager.profession.tynkyn.jx_villager_chef=Шеф-повар
+description.villager.profession.tynkyn.jx_villager_recycle=Переработчик
+description.villager.profession.tynkyn.jx_villager_botanist=Ботаник
+description.villager.profession.diversity.warrior=Воин
+description.villager.profession.lozmod.villager_beedle=Биддл
+description.villager.profession.lozmod.villager_beedle_special=Биддл
+description.villager.profession.minecraft.farmer=Фермер
+description.villager.profession.savemoney.insurer=Страховщик
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Вяление
@@ -157,6 +204,8 @@ option.wawla.pixelmon.showAbility=Способности?
 option.wawla.pixelmon.showHeldItem=Предмет в руке?
 option.wawla.pixelmon.showNature=Характеры?
 option.wawla.pixelmon.showSize=Размер?
+option.wawla.pixelmon.showIV=Показывать IV?
+option.wawla.pixelmon.showEV=Показывать EV?
 
 #Thaumcraft Tooltips
 tooltip.wawla.thaumcraft.aspect=Аспект
@@ -174,6 +223,11 @@ option.wawla.thaumcraft.wandItem=Recharge Item?
 option.wawla.thaumcraft.wandCharge=Заряд жезла?
 option.wawla.thaumcraft.pedestalItem=Предмет на пьедестале?
 option.wawla.thaumcraft.deconAspect=Расщепляющий аспект?
+
+#Artifice Enchantment Descriptions
+description.enchantment.artifice.invisible=Зачарование для брони, которое делает экипированную броню невидимой.
+description.enchantment.artifice.soulstealing=Зачарование для оружия, которое увеличивает количество получаемого опыта с мобов. Более высокие уровни увеличивают количество опыта.
+description.enchantment.artifice.resistance=Зачарование для брони, которое защищает от магического и иссушающего урона. Более высокие уровни увеличивают сопротивление.
 
 #Thaumcraft Enchantment Descriptions
 description.enchantment.repair=Восстанавливает прочность предметов со временем. Это зачарование имеет два уровня, второй уровень восстанавливает прочность быстрее. Это зачарование можно применить на оружие, набалдашники и на другие инструменты, кроме ножниц.
@@ -197,3 +251,86 @@ description.enchantment.ttinkerer:focusedStrike=Это зачарование п
 description.enchantment.ttinkerer:finalStrike=Это зачарование применимо только к мечам. Когда урон нанесён, этот эффект даёт шанс утроить этот урон. 
 description.enchantment.ttinkerer:valiance=Это зачарование применимо только к мечам. Этот эффект увеличит наносимый урон, когда у владельца мало здоровья. 
 description.enchantment.ttinkerer:quickDraw=Это зачарование предназначено для луков, при применении, лук начинает стрелять значительно быстрее. 
+
+#Ars Magica 2 Enchantment Descriptions
+description.enchantment.magicresist=Уменьшает количество урона, получаемого от магических источников.
+description.enchantment.soulbound=Когда игрок умрёт, этот предмет не пропадёт из инвентаря и не упадёт на землю.
+
+#Red Power 2 Enchantment Descriptions
+description.enchantment.vorpal=Увеличивает шанс того, что голова моба упадёт с его плеч.
+description.enchantment.disjunction=Увеличивает наносимый урон страннику Края и скелетам-иссушелям.
+
+#Special Mobs Enchantment Descriptions
+description.enchantment.SpecialMobs.painBow=Зачарование для лука, которое наносит дополнительный урон, пробивая защиту. Каждый уровень наносит дополнительную половинку сердечка урона.
+description.enchantment.SpecialMobs.painSword=Зачарование для меча, которое наносит дополнительный урон, пробивая защиту. Каждый уровень наносит дополнительную половинку сердечка урона.
+description.enchantment.SpecialMobs.plagueBow=Зачарование для лука, которое добавляет раненому мобу случайный негативный эффект. Возможные эффекты: замедление, тошнота, слепота, голод, слабость и отравление.
+description.enchantment.SpecialMobs.plagueSword=Зачарование для меча, которое добавляет раненому мобу случайный негативный эффект. Возможные эффекты: замедление, тошнота, слепота, голод, слабость и отравление.
+description.enchantment.SpecialMobs.poisonBow=Зачарование для лука, которое отравляет раненого моба. Каждый уровень увеличивает силу эффекта отравления.
+description.enchantment.SpecialMobs.poisonSword=Зачарование для меча, которое отравляет раненого моба. Каждый уровень увеличивает силу эффекта отравления.
+
+#Natural Absorption Enchantment Descriptions
+description.enchantment.NaturalAbsorption.absorb=Зачарование для брони. Экипированная броня будет увеличивать максимальное поглощение игроков.
+
+#Simple Flight Enchantment Descriptions
+description.enchantment.fly_longer=Increases the total amount of flaps on Simple Flight devices.
+description.enchantment.fly_faster=Decreases the duration between flaps on Simple Flight devices. Useless on Jet Packs and Jet Gliders.
+
+#More Swords Mod Enchantment Descriptions
+description.msm.unused=Note: This item/block has been added to help achieve compatibility with other mods. As of now these do not do anything and are not an ordinary part of this mod. No new ores or tools will be added this is ONLY for for mod compatibility.
+description.enchantment.msm.ignite=This enchantment will set damaged mobs on fire doing damage equal to that of the enchantment level.
+description.enchantment.msm.spark=This enchantment will do 3 fire damage to mobs within 2.4 blocks of the damaged mob. Both the player and the target mob will not be set on fire.
+description.enchantment.msm.feast=This enchantment will restore 0-3 durability when used. The amount restored is multiplied by the level of the effect.
+description.enchantment.msm.vitality=This enchantment will consume 256 durability when used and in turn give the user several buffs such as regen, insta health and extra hearts.
+description.enchantment.msm.venomAspect=This enchantment will poison target mob. The effect will last for seconds equivalent to the level of the effect. It's worth noting that many vanilla mobs such as spiders, zombies and skeletons can not be poisoned rendering this effect useless.
+description.enchantment.msm.absorb=This enchantment has a 5% chance to restore 0-2 hunger points when used.
+description.enchantment.msm.keenEdge=This enchantment increases the damage of the sword by 1 for each level of the effect.
+description.enchantment.msm.scorn=This enchantment will double the damage of the sword by 2 when used in dimensions other than the surface world.
+description.enchantment.msm.enderPulse=This enchantment will warp the player where they are looking when used. This effect has a range of 18 blocks per level. This enchantment will damage the item by 50 points every time it is used. The player will also take 1 damage in fall damage.
+description.enchantment.msm.enderAura=This enchantment has a 15% chance of activating when the player is hit. When activated the player will warp to a random mob within 30 blocks. This mob may not always be friendly. If no mob is found then the effect will be canceled.
+description.enchantment.msm.greed=This enchantment has a 7% chance to drop 1-3 extra points of exp.
+description.enchantment.msm.wisdom=This enchantment is currently broken. My bad :/
+description.enchantment.msm.frozenAspect=This enchantment will slow mobs for 3 seconds per level.
+description.enchantment.msm.frostWave=This enchantment will slow mobs within 2.5 blocks of the target mob for 1.5 seconds.
+description.enchantment.msm.ascension=This enchantment will propel targeted mobs upwards into the air. Hit the mob before it hits the ground to make increase the launch aspect of the effect exponential amount.
+description.enchantment.msm.descension=This enchantment will cause the player to fall at a much slower rate than normal. To activate the effect press and hold shift.
+description.enchantment.msm.shadows=This enchantment will blind the target mob for 1.5 seconds. There is also a 12% chance that the wither effect will be applied for a second.
+description.enchantment.msm.decay=This enchantment will apply the wither effect to the target mob for just under 4 seconds.
+description.enchantment.msm.stealth=This enchantment will cause the player to become invisible when activated. Unlike the potion of invisibility this effect will not give off particles and has no time limit or duration. To toggle this on or off simply right click with the sword. It's worth noting that swords and armor will still be visible while this effect is enabled.
+description.enchantment.msm.extinction=This enchantment will kill all mobs on the map that are an instance of the target mob. This can be used on boats to kill all boats in the world and can be used to manage entities in the world. This effect will not target players.
+
+#Unknown Enchantment Descriptions
+description.enchantment.imperviousness=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+
+description.enchantment.bash.weightless=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.bash.power=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.bash.damage=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.shield.usage=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.shield.recover=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.bow.loot=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.bow.charge=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+
+description.enchantment.poison=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.frost=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.explosive=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.quickdraw=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.venom=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.iceaspect=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.defusing=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.dowsing=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.spellbane=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.mending=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.cleave=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.leech=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.execute=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.poisonprotect=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.knowledge=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.berserk=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.steadfast=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.agility=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.mobility=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.fleetfoot=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.resurrection=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.harvest=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+
+description.enchantment.Swiftness=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
+description.enchantment.Vitality=Неизвестное зачарование. Пожалуйста свяжитесь с Darkhax, чтобы помочь ему в добавлении описания.
