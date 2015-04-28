@@ -153,7 +153,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         register.registerBodyProvider(dataProvider, Block.class);
         
         if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
-            currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, " field_78770_f", "curBlockDamageMP");
+            currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, "g", "field_78770_f", "curBlockDamageMP");
     }
     
     private static Field currentBlockDamage;
