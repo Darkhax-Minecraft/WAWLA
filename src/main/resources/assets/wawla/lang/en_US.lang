@@ -112,6 +112,7 @@ description.villager.profession.extvil.Fisher=Fisher
 description.villager.profession.extvil.Baker=Baker
 description.villager.profession.extvil.Miner=Miner
 description.villager.profession.extvil.Scientist=Scientist
+description.villager.profession.extvillom.Tanner=Tanner
 description.villager.profession.forestry.beekeeper=Bee Keeper
 description.villager.profession.forestry.lumberjack=Lumberjack
 description.villager.profession.mystcraft.archivist=Archivist
@@ -337,3 +338,5 @@ description.enchantment.harvest=This enchantment is unknown. Please contact Dark
 
 description.enchantment.Swiftness=This enchantment is unknown. Please contact Darkhax to help him provide a description.
 description.enchantment.Vitality=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.SkyBlow=This enchantment is unknown. Please contact Darkhax to help him provide a description.
