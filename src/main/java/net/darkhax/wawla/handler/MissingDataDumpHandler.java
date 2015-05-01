@@ -46,7 +46,7 @@ public class MissingDataDumpHandler {
             writeMissingVillagers(log);
             String outpaste = pastebin.post("Wawla-Data-Dump" + getTimeStamp(), log, ReportFormat.PLAIN_TEXT, ExpireDate.ONE_WEEK);
             
-            if (sendReport)
+            if (sendReport && outpaste != null && !outpaste.isEmpty() && !outpaste.endsWith(" ") && !outpaste.contains("Post limit") )
                 new IRCUtility("Darkhax: Some data has been collected: " + outpaste);
             
             Constants.LOG.info("The data dump has been completed. Please see " + outpaste);
