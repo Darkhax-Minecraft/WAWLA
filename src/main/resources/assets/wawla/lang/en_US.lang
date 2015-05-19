@@ -150,7 +150,6 @@ description.villager.profession.taverns.village_baker=Baker
 description.villager.profession.tynkyn.jx_villager_chef=Chef
 description.villager.profession.tynkyn.jx_villager_recycle=Recycling
 description.villager.profession.tynkyn.jx_villager_botanist=Botanist
-description.villager.profession.diversity.warrior=Warrior
 description.villager.profession.lozmod.villager_beedle=Beedle
 description.villager.profession.lozmod.villager_beedle_special=Beedle
 description.villager.profession.minecraft.farmer=Farmer
@@ -162,8 +161,19 @@ description.villager.profession.pokecube_adventures.cubesalesman=Salesman
 description.villager.profession.terraarts.YE3TE2y=YE3TE2y
 description.villager.profession.xw.smithy3=Smithy
 description.villager.profession.xw.hunter_v1=Hunter
+description.villager.profession.diversity.warrior=Warrior
 description.villager.profession.diversity.priest=Priest
 description.villager.profession.diversity.butcher=Butcher
+description.villager.profession.diversity.chief=Chief
+description.villager.profession.diversity.breeder=Breeder
+description.villager.profession.diversity.guru=Guru
+description.villager.profession.diversity.farmer=Farmer
+description.villager.profession.jbrobot.jbvillagerblock=Blocks
+description.villager.profession.jbrobot.jbvillageritem=Items
+description.villager.profession.jbrobot.jbvillagermodel=Models
+description.villager.profession.jbrobot.jbvillagermotion=Motion
+description.villager.profession.jbrobot.jbvillagercarving=Carving
+
 
 #Jewelrycraft Tooltips
 tooltip.wawla.jewelry.molten=Molten
