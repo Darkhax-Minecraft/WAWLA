@@ -163,6 +163,20 @@ description.villager.profession.terraarts.YE3TE2y=YE3TE2y
 description.villager.profession.xw.smithy3=Smithy
 description.villager.profession.xw.hunter_v1=Hunter
 description.villager.profession.diversity.priest=Priest
+description.villager.profession.diversity.butcher=Butcher
+
+#Jewelrycraft Tooltips
+tooltip.wawla.jewelry.molten=Molten
+tooltip.wawla.jewelry.unmelted=Unmelted
+tooltip.wawla.jewelry.melttime=Melt Time
+tooltip.wawla.jewelry.cooling=Cooling
+
+#Jewelrycraft Options
+option.wawla.jewelrycraft.showMoltenAmount=Molten Amounts
+option.wawla.jewelrycraft.showMetalAmount=Unmelted Amounts
+option.wawla.jewelrycraft.showMeltTime=Melting Time
+option.wawla.jewelrycraft.showCooling=Cooling Time
+
 
 #Tinkers Construct Tooltips
 tooltip.wawla.tinkers.dryness=Dryness
@@ -346,3 +360,12 @@ description.enchantment.Swiftness=This enchantment is unknown. Please contact Da
 description.enchantment.Vitality=This enchantment is unknown. Please contact Darkhax to help him provide a description.
 
 description.enchantment.SkyBlow=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.Information=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.autoSmelt=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+description.enchantment.oreFragments=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.smartHarvest=This enchantment is unknown. Please contact Darkhax to help him provide a description.
+
+description.enchantment.freeze=This enchantment is unknown. Please contact Darkhax to help him provide a description.

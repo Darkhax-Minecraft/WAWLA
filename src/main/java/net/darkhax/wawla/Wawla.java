@@ -54,6 +54,9 @@ public class Wawla {
         if (Loader.isModLoaded("TConstruct"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles.registerAddon");
         
+        if (Loader.isModLoaded("Jewelrycraft"))
+            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.jewelrycraft.AddonJewelrycraftTiles.registerAddon");
+        
         proxy.registerSidedModules();
     }
     

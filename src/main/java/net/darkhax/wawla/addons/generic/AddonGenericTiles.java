@@ -43,6 +43,9 @@ public class AddonGenericTiles implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
     
+        // tip.add(data.getTileEntity().getClass().toString());
+        // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true, tip);
+        
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
@@ -134,6 +137,9 @@ public class AddonGenericTiles implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
     
+        if (te != null)
+            te.writeToNBT(tag);
+        
         return tag;
     }
     
@@ -151,6 +157,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         register.addConfig("Wawla-General", showDay);
         
         register.registerBodyProvider(dataProvider, Block.class);
+        register.registerNBTProvider(dataProvider, Block.class);
         
         if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
             currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, "g", "field_78770_f", "curBlockDamageMP");
