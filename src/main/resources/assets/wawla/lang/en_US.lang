@@ -173,6 +173,10 @@ description.villager.profession.jbrobot.jbvillageritem=Items
 description.villager.profession.jbrobot.jbvillagermodel=Models
 description.villager.profession.jbrobot.jbvillagermotion=Motion
 description.villager.profession.jbrobot.jbvillagercarving=Carving
+description.villager.profession.wa.villager=Villager
+description.villager.profession.wa.swordsmith=Swordsmith
+description.villager.profession.wa.teaMaster=Tea Master
+description.villager.profession.wa.priest=Priest
 
 
 #Jewelrycraft Tooltips
