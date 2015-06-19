@@ -23,7 +23,7 @@ public class Wawla {
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-        
+    
         proxy.registerSidedEvents();
     }
     

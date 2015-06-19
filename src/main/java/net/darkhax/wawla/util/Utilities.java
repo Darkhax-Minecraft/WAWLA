@@ -1,6 +1,5 @@
 package net.darkhax.wawla.util;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
@@ -8,14 +7,11 @@ import java.util.List;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
-import net.minecraft.event.ClickEvent;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -268,6 +264,23 @@ public class Utilities {
     public static float getGrowth (float curStage, float maxStage) {
     
         return (curStage / maxStage) * 100;
+    }
+    
+    /**
+     * Retrieves an EntityPlayer based on a provided player name.
+     * 
+     * @param world: Instance of the world which the player with said player name will be.
+     * @param displayname: The display name to look for.
+     * @return EntityPlayer: If a player with the same name is found, it will be provided. If
+     *         one is not found, null will be returned.
+     */
+    public static EntityPlayer getPlayerByName (World world, String displayname) {
+    
+        for (EntityPlayer player : (List<EntityPlayer>) world.playerEntities)
+            if (player.getCommandSenderName().equalsIgnoreCase(displayname))
+                return player;
+        
+        return null;
     }
     
     /**
