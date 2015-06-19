@@ -17,11 +17,4 @@ public class ProxyCommon {
     public void registerSidedModules () {
     
     }
-    
-    /**
-     * This method is used to do stuff postInit on the server.
-     */
-    public void sidedPostInit () {
-    
-    }
 }
