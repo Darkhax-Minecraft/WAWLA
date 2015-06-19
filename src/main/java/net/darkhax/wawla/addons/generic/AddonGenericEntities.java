@@ -89,7 +89,9 @@ public class AddonGenericEntities implements IWailaEntityProvider {
         if (entity instanceof EntityTameable && cfg.getConfig(showPetSitting)) {
             
             EntityTameable pet = (EntityTameable) entity;
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.sit") + ": " + pet.isSitting());
+            
+            if (pet.isTamed())
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.sit") + ": " + pet.isSitting());
         }
         
         return tip;
