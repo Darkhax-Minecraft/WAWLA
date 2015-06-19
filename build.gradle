@@ -1,16 +1,23 @@
 buildscript {
+
     repositories {
+    
         mavenCentral()
         maven {
+        
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        
         maven {
+        
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
+    
     dependencies {
+    
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
@@ -20,70 +27,61 @@ apply plugin: 'forge'
 ext.buildProps = file "build.properties"
 
 buildProps.withReader {
+
     def prop = new Properties()
     prop.load(it)
     ext.config = new ConfigSlurper().parse prop
 }
 
-version = "${config.version.minecraft}-${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}"
-group= "net.darkhax.wawla" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}-${config.version.minecraft}"
+group = "net.darkhax.wawla"
 archivesBaseName = "Wawla"
 
 minecraft {
+
     version = "${config.version.minecraft}-${config.version.forge}"
     runDir = "run"
-    //mappings = "snapshot_20140918"
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
 
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-	    compile "mcp.mobius.waila:Waila:${config.version.waila}"
+    compile "mcp.mobius.waila:Waila:${config.version.waila}"
 }
 
 repositories {
-    maven { // The repo from which to get waila
+
+    maven {
+    
         name "Mobius Repo"
         url "http://mobiusstrip.eu/maven"
     }
-    maven { // the repo from which to get NEI and stuff 
+    
+    maven {
+    
         name 'CB Repo'
         url "http://chickenbones.net/maven/"
     }
 }
 
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
+processResources {
+
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
+
         include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
-        
-    // copy everything else, thats not the mcmod.info
+
     from(sourceSets.main.resources.srcDirs) {
+    
         exclude 'mcmod.info'
     }
 }
 
 jar {
+
     classifier = ''
     destinationDir = file 'output'
 }
