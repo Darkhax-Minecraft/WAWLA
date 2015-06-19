@@ -72,7 +72,8 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             if (entity instanceof EntityWitch)
                 profession = StatCollector.translateToLocal("description.villager.profession.witch");
             
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
+            if (!profession.isEmpty())
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
         }
         
         // TNT
