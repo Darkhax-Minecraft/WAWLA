@@ -6,9 +6,6 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ThreadDownloadImageData;
-import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.event.ClickEvent;
@@ -310,12 +307,5 @@ public class Utilities {
     
         ResourceLocation skin = VillagerRegistry.getVillagerSkin(id, null);
         return (id >= 0 && id <= 4) ? vanillaVillagers[id] : (skin != null) ? skin.getResourceDomain() + "." + skin.getResourcePath().substring(skin.getResourcePath().lastIndexOf("/") + 1, skin.getResourcePath().length() - 4) : "misingno";
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public static void addCapeForPlayer (String username, String capeURL) {
-    
-        ThreadDownloadImageData object = new ThreadDownloadImageData(null, capeURL, null, null);
-        Minecraft.getMinecraft().renderEngine.loadTexture(new ResourceLocation("cloaks/" + username), (ITextureObject) object);
     }
 }

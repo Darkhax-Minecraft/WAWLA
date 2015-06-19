@@ -3,7 +3,6 @@ package net.darkhax.wawla.proxy;
 import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
 import net.darkhax.wawla.handler.MissingDataDumpHandler;
 import net.darkhax.wawla.plugins.PluginVersionChecker;
-import net.darkhax.wawla.util.Utilities;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Loader;
 
@@ -36,7 +35,6 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void sidedPostInit () {
     
-        Utilities.addCapeForPlayer("Darkhax", "http://i.imgur.com/bpFCXC6.png");
         new MissingDataDumpHandler();
     }
 }
