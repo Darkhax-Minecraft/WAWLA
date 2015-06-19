@@ -1,6 +1,5 @@
 package net.darkhax.wawla;
 
-import net.darkhax.wawla.handler.ConfigurationHandler;
 import net.darkhax.wawla.handler.IMCHandler;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Constants;
@@ -24,8 +23,7 @@ public class Wawla {
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-    
-        new ConfigurationHandler(event.getSuggestedConfigurationFile());
+        
         proxy.registerSidedEvents();
     }
     

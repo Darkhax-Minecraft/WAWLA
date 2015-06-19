@@ -44,7 +44,7 @@ public class IMCHandler {
      * 
      * @param nbtKey: The new nbtKey to add.
      */
-    public static void registerOwnerTag (String nbtKey) {
+    private static void registerOwnerTag (String nbtKey) {
     
         AddonGenericEntities.petTags.add(nbtKey);
     }
@@ -57,7 +57,7 @@ public class IMCHandler {
      *            1.8
      * @param modid: The id of the mod. Used in case something goes wrong.
      */
-    public static void registerEnchantToBlacklist (int id, String modid) {
+    private static void registerEnchantToBlacklist (int id, String modid) {
     
         Enchantment ench = Enchantment.enchantmentsList[id];
         

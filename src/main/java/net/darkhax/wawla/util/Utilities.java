@@ -95,26 +95,6 @@ public class Utilities {
     }
     
     /**
-     * This method will create a chat component that includes both a string and a clickable
-     * link to the location of a file. This method should be sued when the player saves a file.
-     * Works similarly to the screenshot.
-     * 
-     * @param translationKey: The key to be used for translating the first part of the message.
-     *            Example: command.print.sucess
-     * @param file: The link to the file being linked. This is used to generate the file name
-     *            and provide a link to that file.
-     * @return IChatComponent: A chat component that can be added to any chat message.
-     */
-    public static IChatComponent generateClickableMessage (String translationKey, File file) {
-    
-        ChatComponentText fileLink = new ChatComponentText(file.getName());
-        fileLink.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
-        fileLink.getChatStyle().setUnderlined(true);
-        
-        return new ChatComponentTranslation(translationKey, fileLink);
-    }
-    
-    /**
      * This method can be used to round a double to a certain amount of places.
      * 
      * @param value: The double being round.
