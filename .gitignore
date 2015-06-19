@@ -2,7 +2,7 @@
 *.iml
 *.ipr
 *.iws
-/out
+/output
 
 #ForgeGradle
 /build
