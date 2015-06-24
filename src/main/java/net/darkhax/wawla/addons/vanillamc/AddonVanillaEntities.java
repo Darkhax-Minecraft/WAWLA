@@ -50,8 +50,12 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
         }
         
+        // TNT
+        else if (entity instanceof EntityTNTPrimed && cfg.getConfig(showTntFuse))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
+        
         // Villager Profession
-        else if (cfg.getConfig(showProfession)) {
+        if (cfg.getConfig(showProfession)) {
             
             String profession = "";
             
@@ -75,10 +79,6 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             if (!profession.isEmpty())
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
         }
-        
-        // TNT
-        else if (entity instanceof EntityTNTPrimed && cfg.getConfig(showTntFuse))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
         
         return tip;
     }
