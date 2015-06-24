@@ -9,6 +9,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
@@ -53,6 +54,14 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         // TNT
         else if (entity instanceof EntityTNTPrimed && cfg.getConfig(showTntFuse))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
+        
+        // Item Frame
+        else if (entity instanceof EntityItemFrame) {
+            
+            EntityItemFrame frame = (EntityItemFrame) entity;
+            if (frame.getDisplayedItem() != null)
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.item") + ": " + frame.getDisplayedItem().getDisplayName());
+        }
         
         // Villager Profession
         if (cfg.getConfig(showProfession)) {
@@ -113,6 +122,9 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         
         register.registerBodyProvider(dataProvider, EntityTNTPrimed.class);
         register.registerNBTProvider(dataProvider, EntityTNTPrimed.class);
+        
+        register.registerBodyProvider(dataProvider, EntityItemFrame.class);
+        register.registerNBTProvider(dataProvider, EntityItemFrame.class);
         
         register.addConfig("Wawla-Entity", showHorseJump);
         register.addConfig("Wawla-Entity", showHorseSpeed);
