@@ -82,8 +82,8 @@ public class AddonVanillaTiles implements IWailaDataProvider {
         }
         
         // Player Skull
-        if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(showSkullName))
-            tip.add(StatCollector.translateToLocal("tooltooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(data.getNBTData().getCompoundTag("Owner")).getName());
+        if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(showSkullName) && data.getNBTData().hasKey("Owner"))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(data.getNBTData().getCompoundTag("Owner")).getName());
         
         return tip;
     }
