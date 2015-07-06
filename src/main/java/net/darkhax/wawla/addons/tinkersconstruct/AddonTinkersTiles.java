@@ -172,8 +172,8 @@ public class AddonTinkersTiles implements IWailaDataProvider {
      * This is a special method added to allow the ModuleHarvest to apply to tinkers construct
      * tools and ores.
      * 
-     * @param item: The item stack being checked.
-     * @param required: The tool type required for the block.
+     * @param item : The item stack being checked.
+     * @param required : The tool type required for the block.
      * @return true: When the item is the right type.
      * @return false: When the item is not the right type.
      */

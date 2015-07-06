@@ -44,7 +44,8 @@ public class AddonGenericTiles implements IWailaDataProvider {
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
     
         // tip.add(data.getTileEntity().getClass().toString());
-        // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true, tip);
+        // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true,
+        // tip);
         
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();

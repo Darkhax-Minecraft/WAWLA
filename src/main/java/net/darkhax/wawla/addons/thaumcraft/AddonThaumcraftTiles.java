@@ -63,6 +63,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
     
         if (data.getBlock() != null && data.getTileEntity() != null) {
             
+            // Jars
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileJarFillable) || Utilities.compareTileEntityByClass(data.getTileEntity(), classTileJarFillableVoid)) {
                 
                 String aspect = data.getNBTData().getString("Aspect");
@@ -75,6 +76,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.amount") + ": " + amount);
             }
             
+            // Mirrors
             if ((Utilities.compareTileEntityByClass(data.getTileEntity(), classTileMirror) || Utilities.compareTileEntityByClass(data.getTileEntity(), classTileMirrorEssentia)) && data.getNBTData().getBoolean("linked")) {
                 
                 if (cfg.getConfig(showMirrorLink))
@@ -84,18 +86,21 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.dimension") + ": " + DimensionManager.getProvider(data.getNBTData().getInteger("linkDim")).getDimensionName());
             }
             
+            // Brain Jar
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileJarBrain)) {
                 
                 if (cfg.getConfig(showJarEXP))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.experience") + ": " + data.getNBTData().getInteger("XP"));
             }
             
+            // Deconstruction Table
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileDeconstructionTable)) {
                 
                 if (cfg.getConfig(showDeconstructionAspect))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.aspect") + ": " + (data.getNBTData().hasKey("Aspect") ? Utilities.upperCase(data.getNBTData().getString("Aspect")) : "None"));
             }
             
+            // Pedestal
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTilePedestal)) {
                 
                 if (cfg.getConfig(showPedestalItem)) {
@@ -106,6 +111,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                 }
             }
             
+            // Wand Pedestal
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileWandPedestal)) {
                 
                 if (true) {

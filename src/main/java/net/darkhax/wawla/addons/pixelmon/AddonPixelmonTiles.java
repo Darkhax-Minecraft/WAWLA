@@ -85,10 +85,10 @@ public class AddonPixelmonTiles implements IWailaDataProvider {
      * double block structures and the top block does not contain the correct information. This
      * corrects for that.
      * 
-     * @param entity: A possible TileEntity related to the apricorn tree. It is okay for this
+     * @param entity : A possible TileEntity related to the apricorn tree. It is okay for this
      *            variable to be null.
-     * @param tip: The list of tool tips.
-     * @param block: The name of the block. This is used to generate the name of the product.
+     * @param tip : The list of tool tips.
+     * @param block : The name of the block. This is used to generate the name of the product.
      */
     void createApricornTooltip (TileEntity entity, List<String> tip, Block block, IWailaConfigHandler cfg) {
     
