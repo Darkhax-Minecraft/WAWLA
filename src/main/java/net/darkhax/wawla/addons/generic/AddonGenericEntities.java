@@ -1,6 +1,5 @@
 package net.darkhax.wawla.addons.generic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -21,7 +20,6 @@ import net.minecraft.world.World;
 public class AddonGenericEntities implements IWailaEntityProvider {
     
     private static String[] itemTypes = { "heldItem", "feet", "leggings", "chestplate", "helmet" };
-    public static ArrayList<String> petTags = new ArrayList<String>();
     
     @Override
     public Entity getWailaOverride (IWailaEntityAccessor data, IWailaConfigHandler cfg) {
@@ -38,7 +36,8 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
     
-        // Utilities.wrapStringToList(data.getNBTData().toString(), 45, true, tip);
+        // Utilities.wrapStringToList(data.getNBTData().toString(), 45, true,
+        // tip);
         
         // Equipment
         if (entity instanceof EntityLiving && cfg.getConfig(showEquippedItems)) {
@@ -58,20 +57,8 @@ public class AddonGenericEntities implements IWailaEntityProvider {
         }
         
         // shows pet owner
-        if (cfg.getConfig(showPetOwner)) {
-            
-            NBTTagCompound tag = Utilities.convertEntityToNbt(entity);
-            NBTTagCompound extTag = entity.getEntityData();
-            
-            for (String currentKey : petTags) {
-                
-                if (tag.hasKey(currentKey) && !tag.getString(currentKey).isEmpty())
-                    tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + tag.getString(currentKey));
-                
-                if (extTag.hasKey(currentKey) && !extTag.getString(currentKey).isEmpty())
-                    tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + extTag.getString(currentKey));
-            }
-        }
+        if (cfg.getConfig(showPetOwner) && data.getNBTData().hasKey("OwnerUUID") && data.getNBTData().getString("OwnerUUID").length() > 0)
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + Utilities.getUsernameByUUID(data.getNBTData().getString("OwnerUUID")));
         
         // shows age info
         if (entity instanceof EntityAnimal) {
@@ -116,10 +103,6 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     
         AddonGenericEntities dataProvider = new AddonGenericEntities();
         
-        petTags.add("Owner");
-        petTags.add("OwnerName");
-        petTags.add("owner");
-        petTags.add("ownerName");
         register.addConfig("Wawla-Entity", showEquippedItems);
         register.addConfig("Wawla-Entity", showPetOwner);
         register.addConfig("Wawla-Entity", showPetSitting);
