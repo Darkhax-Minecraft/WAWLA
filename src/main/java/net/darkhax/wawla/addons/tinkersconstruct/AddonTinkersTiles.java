@@ -221,14 +221,14 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     private static String showBurnTime = "wawla.tinkers.showBurnTime";
     private static String hideLandmine = "wawla.tinkers.hideLandmine";
     
-    public static boolean isEnabled = false;
-    public static Class classHarvestTool = null;
-    public static Class classDualHarvestTool = null;
-    public static Class classDryingRackLogic = null;
-    public static Class classFurnaceLogic = null;
-    public static Class classBlockLandmine = null;
-    public static Class classDryingRack = null;
-    public static Class classFurnaceSlab = null;
-    public static Method getHarvestType = null;
-    public static Method getSecondHarvestType = null;
+    private static boolean isEnabled = false;
+    private static Class classHarvestTool = null;
+    private static Class classDualHarvestTool = null;
+    private static Class classDryingRackLogic = null;
+    private static Class classFurnaceLogic = null;
+    private static Class classBlockLandmine = null;
+    private static Class classDryingRack = null;
+    private static Class classFurnaceSlab = null;
+    private static Method getHarvestType = null;
+    private static Method getSecondHarvestType = null;
 }
