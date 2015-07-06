@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -251,23 +250,6 @@ public class Utilities {
     public static float getGrowth (float curStage, float maxStage) {
     
         return (curStage / maxStage) * 100;
-    }
-    
-    /**
-     * Retrieves an EntityPlayer based on a provided player name.
-     * 
-     * @param world : Instance of the world which the player with said player name will be.
-     * @param displayname : The display name to look for.
-     * @return EntityPlayer: If a player with the same name is found, it will be provided. If
-     *         one is not found, null will be returned.
-     */
-    public static EntityPlayer getPlayerByName (World world, String displayname) {
-    
-        for (EntityPlayer player : (List<EntityPlayer>) world.playerEntities)
-            if (player.getCommandSenderName().equalsIgnoreCase(displayname))
-                return player;
-        
-        return null;
     }
     
     /**
