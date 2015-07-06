@@ -120,6 +120,9 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         register.registerBodyProvider(dataProvider, EntityZombie.class);
         register.registerNBTProvider(dataProvider, EntityZombie.class);
         
+        register.registerBodyProvider(dataProvider, EntityWitch.class);
+        register.registerNBTProvider(dataProvider, EntityWitch.class);
+        
         register.registerBodyProvider(dataProvider, EntityTNTPrimed.class);
         register.registerNBTProvider(dataProvider, EntityTNTPrimed.class);
         
