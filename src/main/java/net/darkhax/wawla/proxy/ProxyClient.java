@@ -1,9 +1,7 @@
 package net.darkhax.wawla.proxy;
 
 import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
-import net.darkhax.wawla.plugins.PluginVersionChecker;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.Loader;
 
 public class ProxyClient extends ProxyCommon {
     
@@ -24,7 +22,5 @@ public class ProxyClient extends ProxyCommon {
     @Override
     public void registerSidedModules () {
     
-        new AddonGenericTooltips();
-        new PluginVersionChecker(Loader.isModLoaded("VersionChecker"));
     }
 }
