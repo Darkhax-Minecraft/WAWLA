@@ -2,6 +2,7 @@ package net.darkhax.wawla;
 
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Constants;
+import net.darkhax.wawla.util.Utilities;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,6 +23,7 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
     
+        Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
         proxy.registerSidedEvents();
     }
     
@@ -47,6 +49,12 @@ public class Wawla {
         
         if (Loader.isModLoaded("Jewelrycraft"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.jewelrycraft.AddonJewelrycraftTiles.registerAddon");
+        
+        if (Utilities.isDevMode) {
+            
+            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperEntities.registerAddon");
+            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperTiles.registerAddon");
+        }
         
         proxy.registerSidedModules();
     }

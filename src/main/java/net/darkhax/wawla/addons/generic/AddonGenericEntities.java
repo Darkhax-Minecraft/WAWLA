@@ -36,11 +36,8 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
     
-        // Utilities.wrapStringToList(data.getNBTData().toString(), 45, true,
-        // tip);
-        
         // Equipment
-        if (entity instanceof EntityLiving && cfg.getConfig(showEquippedItems)) {
+        if (entity instanceof EntityLiving && cfg.getConfig(CONFIG_EQUIPMENT)) {
             
             EntityLiving living = (EntityLiving) entity;
             
@@ -52,12 +49,12 @@ public class AddonGenericEntities implements IWailaEntityProvider {
             }
             
             // Total Armor
-            if (cfg.getConfig(showEntityArmor) && living.getTotalArmorValue() > 0)
+            if (cfg.getConfig(CONFIG_ARMOR) && living.getTotalArmorValue() > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.armor") + ": " + living.getTotalArmorValue());
         }
         
         // shows pet owner
-        if (cfg.getConfig(showPetOwner) && data.getNBTData().hasKey("OwnerUUID") && data.getNBTData().getString("OwnerUUID").length() > 0)
+        if (cfg.getConfig(CONFIG_PET_OWNER) && data.getNBTData().hasKey("OwnerUUID") && data.getNBTData().getString("OwnerUUID").length() > 0)
             tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + Utilities.getUsernameByUUID(data.getNBTData().getString("OwnerUUID")));
         
         // shows age info
@@ -65,15 +62,15 @@ public class AddonGenericEntities implements IWailaEntityProvider {
             
             EntityAnimal animal = (EntityAnimal) entity;
             
-            if (cfg.getConfig(showAge) && animal.isChild() && animal.getGrowingAge() != 0)
+            if (cfg.getConfig(CONFIG_AGE) && animal.isChild() && animal.getGrowingAge() != 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.age") + ": " + ((animal.getGrowingAge() / 20) * -1) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
             
-            else if (cfg.getConfig(showBirthCooldown) && animal.getGrowingAge() != 0)
+            else if (cfg.getConfig(CONFIG_BIRTH_COOLDOWN) && animal.getGrowingAge() != 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.birth") + ": " + ((animal.getGrowingAge() / 20)) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
         }
         
         // shows if sitting
-        if (entity instanceof EntityTameable && cfg.getConfig(showPetSitting)) {
+        if (entity instanceof EntityTameable && cfg.getConfig(CONFIG_PET_SITTING)) {
             
             EntityTameable pet = (EntityTameable) entity;
             
@@ -103,23 +100,21 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     
         AddonGenericEntities dataProvider = new AddonGenericEntities();
         
-        register.addConfig("Wawla-Entity", showEquippedItems);
-        register.addConfig("Wawla-Entity", showPetOwner);
-        register.addConfig("Wawla-Entity", showPetSitting);
-        register.addConfig("Wawla-Entity", showAge);
-        register.addConfig("Wawla-Entity", showBirthCooldown);
-        register.addConfig("Wawla-Entity", showEntityArmor);
+        register.addConfig("Wawla-Entity", CONFIG_EQUIPMENT);
+        register.addConfig("Wawla-Entity", CONFIG_PET_OWNER);
+        register.addConfig("Wawla-Entity", CONFIG_PET_SITTING);
+        register.addConfig("Wawla-Entity", CONFIG_AGE);
+        register.addConfig("Wawla-Entity", CONFIG_BIRTH_COOLDOWN);
+        register.addConfig("Wawla-Entity", CONFIG_ARMOR);
         
         register.registerBodyProvider(dataProvider, Entity.class);
         register.registerNBTProvider(dataProvider, Entity.class);
     }
     
-    private static String showEquippedItems = "wawla.showEquipment";
-    private static String showEntityArmor = "wawla.showMobArmor";
-    
-    private static String showPetOwner = "wawla.pets.showOwner";
-    private static String showPetSitting = "wawla.pets.sitting";
-    
-    private static String showAge = "wawla.pets.age";
-    private static String showBirthCooldown = "wawla.pets.cooldown";
+    private static final String CONFIG_EQUIPMENT = "wawla.showEquipment";
+    private static final String CONFIG_ARMOR = "wawla.showMobArmor";
+    private static final String CONFIG_PET_OWNER = "wawla.pets.showOwner";
+    private static final String CONFIG_PET_SITTING = "wawla.pets.sitting";
+    private static final String CONFIG_AGE = "wawla.pets.age";
+    private static final String CONFIG_BIRTH_COOLDOWN = "wawla.pets.cooldown";
 }
