@@ -26,6 +26,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Utilities {
     
     /**
+     * A simple boolean which will be true if the mod is launched in a developer environment.
+     * This field is set when the mod is launched, see the preInit of the Wawla mod for more
+     * info.
+     */
+    public static boolean isDevMode;
+    
+    /**
      * A simple method to make an ItemStack safe to work with in regards of nbt. If the stack
      * does not have a tag compound one will be added. If it already has one then nothing will
      * happen. This is useful when working with ItemStacks that may not have tag compounds yet.
@@ -121,8 +128,10 @@ public class Utilities {
     public static String[] generateElementArray (Class enumClass) {
     
         if (enumClass != null) {
+            
             Object[] constants = enumClass.getEnumConstants();
             String[] elements = new String[constants.length];
+            
             for (int i = 0; i < constants.length; i++)
                 elements[i] = constants[i].toString();
             
@@ -171,10 +180,7 @@ public class Utilities {
      */
     public static boolean compareByClass (Class class1, Class class2) {
     
-        if (class1 != null && class2 != null)
-            return (class1.getName().equalsIgnoreCase(class2.getName()));
-        
-        return false;
+        return (class1 != null && class2 != null) ? class1.getName().equalsIgnoreCase(class2.getName()) : false;
     }
     
     /**
@@ -186,10 +192,7 @@ public class Utilities {
      */
     public static boolean compareTileEntityByClass (TileEntity entity, Class teClass) {
     
-        if (entity != null && teClass != null)
-            return (compareByClass(entity.getClass(), teClass));
-        
-        return false;
+        return compareByClass(entity.getClass(), teClass);
     }
     
     /**
@@ -213,8 +216,7 @@ public class Utilities {
      */
     public static String upperCase (String string) {
     
-        String newString = Character.toString(string.charAt(0)).toUpperCase() + string.substring(1);
-        return newString;
+        return Character.toString(string.charAt(0)).toUpperCase() + string.substring(1);
     }
     
     /**
@@ -240,16 +242,24 @@ public class Utilities {
     }
     
     /**
-     * This is a helper method to generate the percentage of growth in a block using meta-data
-     * stages.
+     * Retrieves a Class which has the same name as the one specified.
      * 
-     * @param curStage : The current stage of the block, should be meta-data.
-     * @param maxStage : The stage in meta-data where the block is fully grown.
-     * @return float: The percent value of growth based on metadata stages.
+     * @param className: The class name to look for.
+     * @return Class: A class that maches the provided name. Can be null, if no class is found.
      */
-    public static float getGrowth (float curStage, float maxStage) {
+    public static Class getClass (String className) {
     
-        return (curStage / maxStage) * 100;
+        try {
+            
+            return Class.forName(className);
+        }
+        
+        catch (ClassNotFoundException e) {
+            
+            Constants.LOG.warn("A class could not be found! This will cause issues, please report to Darkhax!");
+            e.printStackTrace();
+            return null;
+        }
     }
     
     /**

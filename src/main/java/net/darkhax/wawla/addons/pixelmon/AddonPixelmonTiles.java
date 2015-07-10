@@ -98,7 +98,7 @@ public class AddonPixelmonTiles implements IWailaDataProvider {
             String product = Block.blockRegistry.getNameForObject(block);
             
             if (cfg.getConfig(showApricornGrowth))
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.growth") + ": " + Utilities.round(Utilities.getGrowth(meta, 5), 0) + "%");
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.growth") + ": " + Utilities.round(Utilities.getProgression(meta, 5), 0) + "%");
             
             if (cfg.getConfig(showApricornProduct))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.product") + ": " + product.substring(9, product.length() - 5));
