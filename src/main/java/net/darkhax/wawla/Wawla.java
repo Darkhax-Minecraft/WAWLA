@@ -24,12 +24,14 @@ public class Wawla {
     public void preInit (FMLPreInitializationEvent event) {
     
         Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
-        proxy.registerSidedEvents();
+        proxy.preInit();
     }
     
     @EventHandler
     public void init (FMLInitializationEvent event) {
     
+        proxy.init();
+        
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaEntities.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaTiles.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericEntities.registerAddon");
@@ -55,7 +57,5 @@ public class Wawla {
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperEntities.registerAddon");
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperTiles.registerAddon");
         }
-        
-        proxy.registerSidedModules();
     }
 }

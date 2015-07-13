@@ -1,26 +1,27 @@
 package net.darkhax.wawla.proxy;
 
 import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
+import net.darkhax.wawla.util.Utilities;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ProxyClient extends ProxyCommon {
     
-    /**
-     * The client side alternative to .registerSidedEvents(), this method should only be called
-     * from the client side. The purpose of this method is to register events that are unique
-     * to the client.
-     */
     @Override
-    public void registerSidedEvents () {
+    public void preInit () {
     
         MinecraftForge.EVENT_BUS.register(new AddonGenericTooltips());
+        Utilities.currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, "g", "field_78770_f", "curBlockDamageMP");
     }
     
-    /**
-     * Used to register modules only on the client side.
-     */
     @Override
-    public void registerSidedModules () {
+    public void init () {
+    
+    }
+    
+    @Override
+    public void postInit () {
     
     }
 }

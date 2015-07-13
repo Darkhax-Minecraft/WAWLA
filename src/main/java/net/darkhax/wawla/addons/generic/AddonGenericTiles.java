@@ -1,6 +1,5 @@
 package net.darkhax.wawla.addons.generic;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -10,8 +9,6 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -21,10 +18,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class AddonGenericTiles implements IWailaDataProvider {
     
@@ -43,10 +36,6 @@ public class AddonGenericTiles implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
     
-        // tip.add(data.getTileEntity().getClass().toString());
-        // Utilities.wrapStringToList(data.getNBTData().toString(), 50, true,
-        // tip);
-        
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
@@ -118,9 +107,9 @@ public class AddonGenericTiles implements IWailaDataProvider {
         }
         
         // Block Progression
-        if (cfg.getConfig(showProgress) && data.getPlayer().worldObj.isRemote && currentBlockDamage != null) {
+        if (cfg.getConfig(showProgress) && data.getPlayer().worldObj.isRemote) {
             
-            double progress = Utilities.round(getBlockDamage(), 2);
+            double progress = Utilities.round(Utilities.getBlockDamage(), 2);
             
             if (progress > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.progress") + ": " + (int) (progress * 100) + "%");
@@ -159,12 +148,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         
         register.registerBodyProvider(dataProvider, Block.class);
         register.registerNBTProvider(dataProvider, Block.class);
-        
-        if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
-            currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, "g", "field_78770_f", "curBlockDamageMP");
     }
-    
-    private static Field currentBlockDamage;
     
     private static String showTool = "wawla.harvest.showTool";
     private static String showHarvestable = "wawla.harvest.showHarvest";
@@ -174,32 +158,4 @@ public class AddonGenericTiles implements IWailaDataProvider {
     private static String showDay = "wawla.light.showDay";
     private static String showMonsterSpawn = "wawla.light.monsterSpawn";
     private static String showLightLevel = "wawla.light.lightLevel";
-    
-    /**
-     * A client sided method used to retrieve the progression of the block currently being
-     * mined by the player. This method is client side only, and refers to only the one
-     * instance of the player. Do not try to use this method to get data for multiple players,
-     * or for server sided things.
-     * 
-     * @return float: A float value representing how much time is left for the block being
-     *         broken to break. 0 = no damage has been done. 1 = the block is broken.
-     */
-    @SideOnly(Side.CLIENT)
-    public float getBlockDamage () {
-    
-        try {
-            
-            return currentBlockDamage.getFloat(Minecraft.getMinecraft().playerController);
-        }
-        
-        catch (IllegalArgumentException e) {
-            
-        }
-        
-        catch (IllegalAccessException e) {
-            
-        }
-        
-        return 0;
-    }
 }
