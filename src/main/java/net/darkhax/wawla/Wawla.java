@@ -37,6 +37,8 @@ public class Wawla {
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericEntities.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericTiles.registerAddon");
         
+        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.morph.AddonMorphEntities.registerAddon");
+        
         if (Loader.isModLoaded("pixelmon")) {
             
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.pixelmon.AddonPixelmonEntities.registerAddon");
