@@ -38,6 +38,7 @@ tooltip.wawla.missingEnch=No description was found for this enchantment.
 tooltip.wawla.tnt.fuse=Fuse Time
 tooltip.wawla.profession=Profession
 tooltip.wawla.unknownplayer=Unknown Player
+tooltip.wawla.sleepable=Sleepable
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -46,7 +47,7 @@ entity.ItemFrame.name=Item Frame
 #Vanilla Module Options
 option.wawla.showEquipment=Entity Equipment?
 option.wawla.furnace.output=Furnace Output?
-option.wawla.showhead=Player Head Names?
+option.wawla.showHead=Player Head Names?
 option.wawla.horse.showJump=Horse Jump Power?
 option.wawla.furnace.fuel=Furnace Fuel?
 option.wawla.harvest.showHarvest=Harvestability?
@@ -70,6 +71,7 @@ option.wawla.showMobArmor=Show Mob Armor Value?
 option.wawla.harvest.showProgress=Show Block Breaking Progression
 option.wawla.tnt.fuse=Show Fuse Time
 option.wawla.showProfession=Show Villager Profession
+option.wawla.bed.sleepable=Bed Status?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.
