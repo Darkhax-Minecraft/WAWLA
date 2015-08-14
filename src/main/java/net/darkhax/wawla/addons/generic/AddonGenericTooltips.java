@@ -52,7 +52,7 @@ public class AddonGenericTooltips {
                     event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.armorprot") + ": " + armor.damageReduceAmount);
                 }
                 
-                //Dev Tips
+                // Dev Tips
                 if (Utilities.isDevMode)
                     event.toolTip.add(Item.itemRegistry.getNameForObject(event.itemStack.getItem()));
             }

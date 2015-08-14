@@ -10,5 +10,6 @@ public class Constants {
     public static final String VERSION = "1.3.1";
     public static final String SERVER = "net.darkhax.wawla.proxy.ProxyCommon";
     public static final String CLIENT = "net.darkhax.wawla.proxy.ProxyClient";
+    public static final String FACTORY = "";
     public static final Logger LOG = LogManager.getLogger(MOD_NAME);
 }
