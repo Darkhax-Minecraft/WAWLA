@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -282,6 +283,42 @@ public class Utilities {
             username = StatCollector.translateToLocal("tooltip.wawla.unknownplayer");
         
         return username;
+    }
+    
+    /**
+     * Checks if a specific player can sleep. For this to be true, a player must not already be
+     * in a bed, and the world time bust be greater than 12541, but less than 23458.
+     * 
+     * @param player: The player to check the sleepability of.
+     * @return boolean: True if the player can sleep, false if they can not.
+     */
+    public static boolean canPlayerSleep (EntityPlayer player) {
+    
+        return (!player.isPlayerSleeping() && player.isEntityAlive() && player.worldObj.getWorldTime() > 12541 && player.worldObj.getWorldTime() < 23458);
+    }
+    
+    /**
+     * Provides a way to access an NBTTagCompound that is very deep within another
+     * NBTTagCompound. This will allow you to use an array of strings which represent the
+     * different steps to get to the deep NBTTagCompound.
+     * 
+     * @param tag: An NBTTagCompound to search through.
+     * @param tags: An array containing the various steps to get to the desired deep
+     *            NBTTagCompound.
+     * @return NBTTagCompound: This method will return the deepest possible NBTTagCompound. In
+     *         some cases, this may be the tag you provide, or only a few steps deep, rather
+     *         than all of the way.
+     */
+    public static NBTTagCompound getDeepTagCompound (NBTTagCompound tag, String[] tags) {
+    
+        NBTTagCompound deepTag = tag;
+        
+        if (tag != null)
+            for (String tagName : tags)
+                if (deepTag.hasKey(tagName))
+                    deepTag = deepTag.getCompoundTag(tagName);
+        
+        return deepTag;
     }
     
     /**
