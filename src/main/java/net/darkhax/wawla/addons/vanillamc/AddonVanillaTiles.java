@@ -47,13 +47,13 @@ public class AddonVanillaTiles implements IWailaDataProvider {
             int primary = tag.getInteger("Primary");
             int secondary = tag.getInteger("Secondary");
             
-            if (cfg.getConfig(showBeaconLevel))
+            if (cfg.getConfig(CONFIG_BEACON_LEVEL))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.levels") + ": " + level);
             
-            if (cfg.getConfig(showBeaconPrimaryEffect) && primary > 0)
+            if (cfg.getConfig(CONFIG_BEACON_PRIMARY) && primary > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.primary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[primary].getName()));
             
-            if (cfg.getConfig(showBeaconSecondaryEffect) && secondary > 0)
+            if (cfg.getConfig(CONFIG_BEACON_SECONDARY) && secondary > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.secondary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[secondary].getName()));
         }
         
@@ -63,26 +63,26 @@ public class AddonVanillaTiles implements IWailaDataProvider {
             TileEntityFurnace furnace = (TileEntityFurnace) data.getTileEntity();
             int burnTime = data.getNBTData().getInteger("BurnTime") / 20;
             
-            if (burnTime > 0 && cfg.getConfig(showFurnaceBurnTime))
+            if (burnTime > 0 && cfg.getConfig(CONFIG_FURNACE_BURNTIME))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
             
             if (data.getPlayer().isSneaking()) {
                 
                 ItemStack[] furnaceStacks = Utilities.getInventoryStacks(data.getNBTData(), 3);
                 
-                if (furnaceStacks[0] != null && cfg.getConfig(showFurnaceInput))
+                if (furnaceStacks[0] != null && cfg.getConfig(CONFIG_FURNACE_INPUT))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
                 
-                if (furnaceStacks[1] != null && cfg.getConfig(showFurnaceFuel))
+                if (furnaceStacks[1] != null && cfg.getConfig(CONFIG_FURNACE_FUEL))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
                 
-                if (furnaceStacks[2] != null && cfg.getConfig(showFurnaceOutput))
+                if (furnaceStacks[2] != null && cfg.getConfig(CONFIG_FURNACE_OUTPUT))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
             }
         }
         
         // Player Skull
-        if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(showSkullName) && data.getNBTData().hasKey("Owner"))
+        if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(CONFIG_PLAYER_SKULL) && data.getNBTData().hasKey("Owner"))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(data.getNBTData().getCompoundTag("Owner")).getName());
         
         return tip;
@@ -107,32 +107,30 @@ public class AddonVanillaTiles implements IWailaDataProvider {
     
         AddonVanillaTiles dataProvider = new AddonVanillaTiles();
         
-        register.addConfig("Wawla-Blocks", showBeaconLevel);
-        register.addConfig("Wawla-Blocks", showBeaconPrimaryEffect);
-        register.addConfig("Wawla-Blocks", showBeaconSecondaryEffect);
+        register.addConfig("Wawla-Blocks", CONFIG_BEACON_LEVEL);
+        register.addConfig("Wawla-Blocks", CONFIG_BEACON_PRIMARY);
+        register.addConfig("Wawla-Blocks", CONFIG_BEACON_SECONDARY);
         register.registerBodyProvider(dataProvider, BlockBeacon.class);
         register.registerNBTProvider(dataProvider, BlockBeacon.class);
         
-        register.addConfig("Wawla-Blocks", showFurnaceInput);
-        register.addConfig("Wawla-Blocks", showFurnaceOutput);
-        register.addConfig("Wawla-Blocks", showFurnaceFuel);
-        register.addConfig("Wawla-Blocks", showFurnaceBurnTime);
+        register.addConfig("Wawla-Blocks", CONFIG_FURNACE_INPUT);
+        register.addConfig("Wawla-Blocks", CONFIG_FURNACE_OUTPUT);
+        register.addConfig("Wawla-Blocks", CONFIG_FURNACE_FUEL);
+        register.addConfig("Wawla-Blocks", CONFIG_FURNACE_BURNTIME);
         register.registerBodyProvider(dataProvider, BlockFurnace.class);
         register.registerNBTProvider(dataProvider, BlockFurnace.class);
         
-        register.addConfig("Wawla-Blocks", showSkullName);
+        register.addConfig("Wawla-Blocks", CONFIG_PLAYER_SKULL);
         register.registerBodyProvider(dataProvider, BlockSkull.class);
         register.registerNBTProvider(dataProvider, BlockSkull.class);
     }
     
-    private static String showBeaconLevel = "wawla.beacon.showLevels";
-    private static String showBeaconPrimaryEffect = "wawla.beacon.showPrimary";
-    private static String showBeaconSecondaryEffect = "wawla.beacon.showSecondary";
-    
-    private static String showFurnaceInput = "wawla.furnace.input";
-    private static String showFurnaceOutput = "wawla.furnace.output";
-    private static String showFurnaceFuel = "wawla.furnace.fuel";
-    private static String showFurnaceBurnTime = "wawla.furnace.burntime";
-    
-    private static String showSkullName = "wawla.showHead";
+    private static final String CONFIG_BEACON_LEVEL = "wawla.beacon.showLevels";
+    private static final String CONFIG_BEACON_PRIMARY = "wawla.beacon.showPrimary";
+    private static final String CONFIG_BEACON_SECONDARY = "wawla.beacon.showSecondary";
+    private static final String CONFIG_FURNACE_INPUT = "wawla.furnace.input";
+    private static final String CONFIG_FURNACE_OUTPUT = "wawla.furnace.output";
+    private static final String CONFIG_FURNACE_FUEL = "wawla.furnace.fuel";
+    private static final String CONFIG_FURNACE_BURNTIME = "wawla.furnace.burntime";
+    private static final String CONFIG_PLAYER_SKULL = "wawla.showHead";
 }

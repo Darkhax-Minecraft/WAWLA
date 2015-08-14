@@ -69,41 +69,41 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                 String aspect = data.getNBTData().getString("Aspect");
                 int amount = data.getNBTData().getShort("Amount");
                 
-                if (true && aspect != null && !aspect.isEmpty() && cfg.getConfig(showJarAspects))
+                if (true && aspect != null && !aspect.isEmpty() && cfg.getConfig(CONFIG_JAR_ASPECTS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.aspect") + ": " + Utilities.upperCase(aspect));
                 
-                if (true && amount > 0 && cfg.getConfig(showJarAmount))
+                if (true && amount > 0 && cfg.getConfig(CONFIG_JAR_AMOUNTS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.amount") + ": " + amount);
             }
             
             // Mirrors
             if ((Utilities.compareTileEntityByClass(data.getTileEntity(), classTileMirror) || Utilities.compareTileEntityByClass(data.getTileEntity(), classTileMirrorEssentia)) && data.getNBTData().getBoolean("linked")) {
                 
-                if (cfg.getConfig(showMirrorLink))
+                if (cfg.getConfig(CONFIG_MIRROR_LINK_POS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.linked") + ": X:" + data.getNBTData().getInteger("linkX") + " Y:" + data.getNBTData().getInteger("linkY") + " Z:" + data.getNBTData().getInteger("linkZ"));
                 
-                if (cfg.getConfig(showMirrorDimension))
+                if (cfg.getConfig(CONFIG_MIRROR_LINK_DIM))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.dimension") + ": " + DimensionManager.getProvider(data.getNBTData().getInteger("linkDim")).getDimensionName());
             }
             
             // Brain Jar
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileJarBrain)) {
                 
-                if (cfg.getConfig(showJarEXP))
+                if (cfg.getConfig(CONFIG_JAR_EXP))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.experience") + ": " + data.getNBTData().getInteger("XP"));
             }
             
             // Deconstruction Table
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileDeconstructionTable)) {
                 
-                if (cfg.getConfig(showDeconstructionAspect))
+                if (cfg.getConfig(CONFIG_DECONSTRUCTION_ASPECT))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.aspect") + ": " + (data.getNBTData().hasKey("Aspect") ? Utilities.upperCase(data.getNBTData().getString("Aspect")) : "None"));
             }
             
             // Pedestal
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTilePedestal)) {
                 
-                if (cfg.getConfig(showPedestalItem)) {
+                if (cfg.getConfig(CONFIG_PEDESTAL_ITEM)) {
                     ItemStack pedestalStack = Utilities.getInventoryStacks(data.getNBTData(), 1)[0];
                     
                     if (pedestalStack != null)
@@ -120,10 +120,10 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                     
                     if (pedestalStack != null && pedestalStack.hasTagCompound()) {
                         
-                        if (cfg.getConfig(showWandItem))
+                        if (cfg.getConfig(CONFIG_WAND_ITEM))
                             tip.add(pedestalStack.getDisplayName());
                         
-                        if (pedestalStack.stackTagCompound.hasKey("aqua") && cfg.getConfig(showWandCharge)) {
+                        if (pedestalStack.stackTagCompound.hasKey("aqua") && cfg.getConfig(CONFIG_WAND_CHARGE)) {
                             
                             String split = EnumChatFormatting.WHITE + " | ";
                             tip.add(EnumChatFormatting.YELLOW + "" + (float) (pedestalStack.stackTagCompound.getInteger("aer") / 100f) + split + EnumChatFormatting.DARK_GREEN + "" + (float) (pedestalStack.stackTagCompound.getInteger("terra") / 100) + split + EnumChatFormatting.RED + "" + (float) (pedestalStack.stackTagCompound.getInteger("ignis") / 100f) + split + EnumChatFormatting.DARK_AQUA + "" + (float) (pedestalStack.stackTagCompound.getInteger("aqua") / 100f) + split + EnumChatFormatting.GRAY + "" + (float) (pedestalStack.stackTagCompound.getInteger("ordo") / 100f) + split + EnumChatFormatting.DARK_GRAY + "" + (float) (pedestalStack.stackTagCompound.getInteger("perditio") / 100f));
@@ -155,15 +155,15 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
     
         AddonThaumcraftTiles dataProvider = new AddonThaumcraftTiles();
         
-        register.addConfig("Thaumcraft", showJarAspects);
-        register.addConfig("Thaumcraft", showJarAmount);
-        register.addConfig("Thaumcraft", showMirrorLink);
-        register.addConfig("Thaumcraft", showMirrorDimension);
-        register.addConfig("Thaumcraft", showJarEXP);
-        register.addConfig("Thaumcraft", showWandItem);
-        register.addConfig("Thaumcraft", showWandCharge);
-        register.addConfig("Thaumcraft", showPedestalItem);
-        register.addConfig("Thaumcraft", showDeconstructionAspect);
+        register.addConfig("Thaumcraft", CONFIG_JAR_ASPECTS);
+        register.addConfig("Thaumcraft", CONFIG_JAR_AMOUNTS);
+        register.addConfig("Thaumcraft", CONFIG_MIRROR_LINK_POS);
+        register.addConfig("Thaumcraft", CONFIG_MIRROR_LINK_DIM);
+        register.addConfig("Thaumcraft", CONFIG_JAR_EXP);
+        register.addConfig("Thaumcraft", CONFIG_WAND_ITEM);
+        register.addConfig("Thaumcraft", CONFIG_WAND_CHARGE);
+        register.addConfig("Thaumcraft", CONFIG_PEDESTAL_ITEM);
+        register.addConfig("Thaumcraft", CONFIG_DECONSTRUCTION_ASPECT);
         
         register.registerBodyProvider(dataProvider, classBlockJar);
         register.registerBodyProvider(dataProvider, classBlockMirror);
@@ -175,15 +175,15 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
         register.registerNBTProvider(dataProvider, classBlockTable);
     }
     
-    private static String showJarAspects = "wawla.thaumcraft.jarAspect";
-    private static String showJarAmount = "wawla.thaumcraft.jarAmount";
-    private static String showMirrorLink = "wawla.thaumcraft.mirrorLink";
-    private static String showMirrorDimension = "wawla.thaumcraft.mirrorDim";
-    private static String showJarEXP = "wawla.thaumcraft.jarEXP";
-    private static String showWandItem = "wawla.thaumcraft.wandItem";
-    private static String showWandCharge = "wawla.thaumcraft.wandCharge";
-    private static String showPedestalItem = "wawla.thaumcraft.pedestalItem";
-    private static String showDeconstructionAspect = "wawla.thaumcraft.deconAspect";
+    private static final String CONFIG_JAR_ASPECTS = "wawla.thaumcraft.jarAspect";
+    private static final String CONFIG_JAR_AMOUNTS = "wawla.thaumcraft.jarAmount";
+    private static final String CONFIG_JAR_EXP = "wawla.thaumcraft.jarEXP";
+    private static final String CONFIG_MIRROR_LINK_POS = "wawla.thaumcraft.mirrorLink";
+    private static final String CONFIG_MIRROR_LINK_DIM = "wawla.thaumcraft.mirrorDim";
+    private static final String CONFIG_WAND_ITEM = "wawla.thaumcraft.wandItem";
+    private static final String CONFIG_WAND_CHARGE = "wawla.thaumcraft.wandCharge";
+    private static final String CONFIG_PEDESTAL_ITEM = "wawla.thaumcraft.pedestalItem";
+    private static final String CONFIG_DECONSTRUCTION_ASPECT = "wawla.thaumcraft.deconAspect";
     
     public Class classTileJarFillable = null;
     public Class classTileJarFillableVoid = null;

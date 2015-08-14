@@ -52,7 +52,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         }
         
         // TNT
-        else if (entity instanceof EntityTNTPrimed && cfg.getConfig(showTntFuse))
+        else if (entity instanceof EntityTNTPrimed && cfg.getConfig(CONFIG_TNT_FUSE))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
         
         // Item Frame
@@ -64,7 +64,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         }
         
         // Villager Profession
-        if (cfg.getConfig(showProfession)) {
+        if (cfg.getConfig(CONFIG_VILLAGER_PROFESSION)) {
             
             String profession = "";
             
@@ -129,16 +129,14 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         register.registerBodyProvider(dataProvider, EntityItemFrame.class);
         register.registerNBTProvider(dataProvider, EntityItemFrame.class);
         
-        register.addConfig("Wawla-Entity", showHorseJump);
-        register.addConfig("Wawla-Entity", showHorseSpeed);
-        register.addConfig("Wawla-Entity", showProfession);
-        register.addConfig("Wawla-Entity", showTntFuse);
+        register.addConfig("Wawla-Entity", CONFIG_HORSE_JUMP);
+        register.addConfig("Wawla-Entity", CONFIG_HORSE_SPEED);
+        register.addConfig("Wawla-Entity", CONFIG_VILLAGER_PROFESSION);
+        register.addConfig("Wawla-Entity", CONFIG_TNT_FUSE);
     }
     
-    private static String showHorseJump = "wawla.horse.showJump";
-    private static String showHorseSpeed = "wawla.horse.showSpeed";
-    
-    private static String showProfession = "wawla.showProfession";
-    
-    private static String showTntFuse = "wawla.tnt.fuse";
+    private static final String CONFIG_HORSE_JUMP = "wawla.horse.showJump";
+    private static final String CONFIG_HORSE_SPEED = "wawla.horse.showSpeed";
+    private static final String CONFIG_VILLAGER_PROFESSION = "wawla.showProfession";
+    private static final String CONFIG_TNT_FUSE = "wawla.tnt.fuse";
 }

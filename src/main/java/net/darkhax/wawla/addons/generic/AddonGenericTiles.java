@@ -57,20 +57,20 @@ public class AddonGenericTiles implements IWailaDataProvider {
         if (item != null && (item.getItem().getToolClasses(item).contains(tool) || AddonTinkersTiles.canHarvest(item, tool))) {
             
             // When the block is harvestable.
-            if (cfg.getConfig(showHarvestable) && (blockLevel <= itemLevel || blockLevel == 0))
+            if (cfg.getConfig(CONFIG_SHOW_HARVESTABILITY) && (blockLevel <= itemLevel || blockLevel == 0))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes"))));
             
             // When it's not harvestable.
             else {
                 
-                if (cfg.getConfig(showHarvestable))
+                if (cfg.getConfig(CONFIG_SHOW_HARVESTABILITY))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
                 
-                if (cfg.getConfig(showTier))
+                if (cfg.getConfig(CONFIG_CORRECT_TIER))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
                 
                 // Shows correct tool type.
-                if (tool != null && cfg.getConfig(showTool)) {
+                if (tool != null && cfg.getConfig(CONFIG_CORRECT_TOOL)) {
                     
                     String translation = StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool);
                     
@@ -84,14 +84,14 @@ public class AddonGenericTiles implements IWailaDataProvider {
         }
         
         // Light level
-        if (cfg.getConfig(showLightLevel) && (!data.getWorld().isBlockNormalCubeDefault(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ, false) || data.getWorld().isAirBlock(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ))) {
+        if (cfg.getConfig(CONFIG_LIGHTLEVEL) && (!data.getWorld().isBlockNormalCubeDefault(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ, false) || data.getWorld().isAirBlock(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ))) {
             
             int dayLevel = Utilities.getBlockLightLevel(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ, true);
             int nightLevel = Utilities.getBlockLightLevel(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ, false);
             
             String display = StatCollector.translateToLocal("tooltip.wawla.lightLevel") + ": ";
             
-            if (cfg.getConfig(showMonsterSpawn)) {
+            if (cfg.getConfig(CONFIG_MONSTERLIGHT)) {
                 
                 if (nightLevel <= 7)
                     display = display + EnumChatFormatting.DARK_RED + "" + nightLevel + " ";
@@ -100,20 +100,24 @@ public class AddonGenericTiles implements IWailaDataProvider {
                     display = display + EnumChatFormatting.GREEN + "" + nightLevel + " ";
             }
             
-            if (cfg.getConfig(showDay))
+            if (cfg.getConfig(CONFIG_DAYLIGHT))
                 display = display + EnumChatFormatting.YELLOW + "(" + dayLevel + ")";
             
             tip.add(display);
         }
         
         // Block Progression
-        if (cfg.getConfig(showProgress) && data.getPlayer().worldObj.isRemote) {
+        if (cfg.getConfig(CONFIG_BREAK_PROGRESSION) && data.getPlayer().worldObj.isRemote) {
             
             double progress = Utilities.round(Utilities.getBlockDamage(), 2);
             
             if (progress > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.progress") + ": " + (int) (progress * 100) + "%");
         }
+        
+        // Beds
+        if (cfg.getConfig(CONFIG_SLEEPY) && block.isBed(data.getWorld(), pos.blockX, pos.blockY, pos.blockZ, data.getPlayer()))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.sleepable") + " " + Utilities.canPlayerSleep(data.getPlayer()));
         
         return tip;
     }
@@ -137,25 +141,25 @@ public class AddonGenericTiles implements IWailaDataProvider {
     
         AddonGenericTiles dataProvider = new AddonGenericTiles();
         
-        register.addConfig("Wawla-General", showTool);
-        register.addConfig("Wawla-General", showHarvestable);
-        register.addConfig("Wawla-General", showTier);
-        register.addConfig("Wawla-General", showProgress);
-        
-        register.addConfig("Wawla-General", showLightLevel);
-        register.addConfig("Wawla-General", showMonsterSpawn);
-        register.addConfig("Wawla-General", showDay);
+        register.addConfig("Wawla-General", CONFIG_CORRECT_TOOL);
+        register.addConfig("Wawla-General", CONFIG_SHOW_HARVESTABILITY);
+        register.addConfig("Wawla-General", CONFIG_CORRECT_TIER);
+        register.addConfig("Wawla-General", CONFIG_BREAK_PROGRESSION);
+        register.addConfig("Wawla-General", CONFIG_LIGHTLEVEL);
+        register.addConfig("Wawla-General", CONFIG_MONSTERLIGHT);
+        register.addConfig("Wawla-General", CONFIG_DAYLIGHT);
+        register.addConfig("Wawla-General", CONFIG_SLEEPY);
         
         register.registerBodyProvider(dataProvider, Block.class);
         register.registerNBTProvider(dataProvider, Block.class);
     }
     
-    private static String showTool = "wawla.harvest.showTool";
-    private static String showHarvestable = "wawla.harvest.showHarvest";
-    private static String showTier = "wawla.harvest.showTier";
-    private static String showProgress = "wawla.harvest.showProgress";
-    
-    private static String showDay = "wawla.light.showDay";
-    private static String showMonsterSpawn = "wawla.light.monsterSpawn";
-    private static String showLightLevel = "wawla.light.lightLevel";
+    private static final String CONFIG_CORRECT_TOOL = "wawla.harvest.showTool";
+    private static final String CONFIG_SHOW_HARVESTABILITY = "wawla.harvest.showHarvest";
+    private static final String CONFIG_CORRECT_TIER = "wawla.harvest.showTier";
+    private static final String CONFIG_BREAK_PROGRESSION = "wawla.harvest.showProgress";
+    private static final String CONFIG_DAYLIGHT = "wawla.light.showDay";
+    private static final String CONFIG_MONSTERLIGHT = "wawla.light.monsterSpawn";
+    private static final String CONFIG_LIGHTLEVEL = "wawla.light.lightLevel";
+    private static final String CONFIG_SLEEPY = "wawla.bed.sleepable";
 }

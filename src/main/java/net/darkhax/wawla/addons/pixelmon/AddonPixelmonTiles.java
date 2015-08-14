@@ -73,8 +73,8 @@ public class AddonPixelmonTiles implements IWailaDataProvider {
     public static void registerAddon (IWailaRegistrar register) {
     
         AddonPixelmonTiles dataProvider = new AddonPixelmonTiles();
-        register.addConfig("Pixelmon", showApricornGrowth);
-        register.addConfig("Pixelmon", showApricornProduct);
+        register.addConfig("Pixelmon", CONFIG_APRICORN_GROWTH);
+        register.addConfig("Pixelmon", CONFIG_APRICORN_PRODUCT);
         register.registerBodyProvider(dataProvider, classBlockApricornTree);
         register.registerNBTProvider(dataProvider, classBlockApricornTree);
     }
@@ -97,10 +97,10 @@ public class AddonPixelmonTiles implements IWailaDataProvider {
             float meta = entity.getWorldObj().getBlockMetadata(entity.xCoord, entity.yCoord, entity.zCoord);
             String product = Block.blockRegistry.getNameForObject(block);
             
-            if (cfg.getConfig(showApricornGrowth))
+            if (cfg.getConfig(CONFIG_APRICORN_GROWTH))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.growth") + ": " + Utilities.round(Utilities.getProgression(meta, 5), 0) + "%");
             
-            if (cfg.getConfig(showApricornProduct))
+            if (cfg.getConfig(CONFIG_APRICORN_PRODUCT))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.product") + ": " + product.substring(9, product.length() - 5));
         }
     }
@@ -108,6 +108,6 @@ public class AddonPixelmonTiles implements IWailaDataProvider {
     public static Class classTileEntityApricornTree = null;
     public static Class classBlockApricornTree = null;
     
-    private static String showApricornGrowth = "wawla.pixelmon.showApricornGrowth";
-    private static String showApricornProduct = "wawla.pixelmon.showApricornProduct";
+    private static final String CONFIG_APRICORN_GROWTH = "wawla.pixelmon.showApricornGrowth";
+    private static final String CONFIG_APRICORN_PRODUCT = "wawla.pixelmon.showApricornProduct";
 }

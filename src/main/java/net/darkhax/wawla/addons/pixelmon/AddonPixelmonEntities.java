@@ -51,34 +51,34 @@ public class AddonPixelmonEntities implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
     
-        boolean canDisplay = (cfg.getConfig(useSneak)) ? data.getPlayer().isSneaking() : true;
+        boolean canDisplay = (cfg.getConfig(CONFIG_REQUIRE_SNEAK)) ? data.getPlayer().isSneaking() : true;
         
         if (canDisplay && Utilities.compareByClass(classEntityPixelmon, entity.getClass()) && data.getNBTData() != null) {
             
             NBTTagCompound tag = data.getNBTData();
             
-            if (natureList != null && cfg.getConfig(showNature))
+            if (natureList != null && cfg.getConfig(CONFIG_NATURE))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.nature") + ": " + natureList[tag.getShort("Nature")]);
             
-            if (cfg.getConfig(showAbility)) {
+            if (cfg.getConfig(CONFIG_ABILITIES)) {
                 
                 EnumChatFormatting abilityColor = (tag.getInteger("AbilitySlot") == 2) ? EnumChatFormatting.GOLD : EnumChatFormatting.GRAY;
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.ability") + ": " + abilityColor + tag.getString("Ability"));
             }
             
-            if (sizeList != null && cfg.getConfig(showSize))
+            if (sizeList != null && cfg.getConfig(CONFIG_SIZE))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.size") + ": " + sizeList[tag.getShort("Growth")]);
             
-            if (cfg.getConfig(showFriendship))
+            if (cfg.getConfig(CONFIG_FRIENDSHIP))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.happiness") + ": " + tag.getInteger("Friendship"));
             
-            if (cfg.getConfig(showHeldItem) && tag.hasKey("HeldItemStack"))
+            if (cfg.getConfig(CONFIG_HELD_ITEM) && tag.hasKey("HeldItemStack"))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.pixelmon.helditem") + ": " + ItemStack.loadItemStackFromNBT((NBTTagCompound) tag.getTag("HeldItemStack")).getDisplayName());
             
-            if (cfg.getConfig(showIV))
+            if (cfg.getConfig(CONFIG_INDIVIDUAL_VALUES))
                 tip.add("IV's - Atk:" + tag.getInteger("IVAttack") + " Def:" + tag.getInteger("IVDefence") + " HP:" + tag.getInteger("IVHP") + " SpAtk: " + tag.getInteger("IVSpAtt") + " SpDef:" + tag.getInteger("IVSpDef") + " Spd:" + tag.getInteger("IVSpeed"));
             
-            if (cfg.getConfig(showEV) && !tag.getString("OwnerUUID").isEmpty())
+            if (cfg.getConfig(CONFIG_EFFORT_VALUES) && !tag.getString("OwnerUUID").isEmpty())
                 tip.add("EV's - Atk:" + tag.getInteger("EVAttack") + " Def:" + tag.getInteger("EVDefence") + " HP:" + tag.getInteger("EVHP") + " SpAtk: " + tag.getInteger("EVSpAtt") + " SpDef:" + tag.getInteger("EVSpDef") + " Spd:" + tag.getInteger("EVSpeed"));
         }
         
@@ -104,14 +104,14 @@ public class AddonPixelmonEntities implements IWailaEntityProvider {
     
         AddonPixelmonEntities dataProvider = new AddonPixelmonEntities();
         
-        register.addConfig("Pixelmon", useSneak);
-        register.addConfig("Pixelmon", showAbility);
-        register.addConfig("Pixelmon", showFriendship);
-        register.addConfig("Pixelmon", showHeldItem);
-        register.addConfig("Pixelmon", showNature);
-        register.addConfig("Pixelmon", showSize);
-        register.addConfig("Pixelmon", showIV);
-        register.addConfig("Pixelmon", showEV);
+        register.addConfig("Pixelmon", CONFIG_REQUIRE_SNEAK);
+        register.addConfig("Pixelmon", CONFIG_ABILITIES);
+        register.addConfig("Pixelmon", CONFIG_FRIENDSHIP);
+        register.addConfig("Pixelmon", CONFIG_HELD_ITEM);
+        register.addConfig("Pixelmon", CONFIG_NATURE);
+        register.addConfig("Pixelmon", CONFIG_SIZE);
+        register.addConfig("Pixelmon", CONFIG_INDIVIDUAL_VALUES);
+        register.addConfig("Pixelmon", CONFIG_EFFORT_VALUES);
         register.registerBodyProvider(dataProvider, classEntityPixelmon);
         natureList = Utilities.generateElementArray(enumNature);
         sizeList = Utilities.generateElementArray(enumGrowth);
@@ -121,14 +121,14 @@ public class AddonPixelmonEntities implements IWailaEntityProvider {
     public static Class enumNature = null;
     public static Class enumGrowth = null;
     
-    private static String useSneak = "wawla.pixelmon.useSneak";
-    private static String showAbility = "wawla.pixelmon.showAbility";
-    private static String showFriendship = "wawla.pixelmon.showFriendship";
-    private static String showHeldItem = "wawla.pixelmon.showHeldItem";
-    private static String showNature = "wawla.pixelmon.showNature";
-    private static String showSize = "wawla.pixelmon.showSize";
-    private static String showIV = "wawla.pixelmon.showIV";
-    private static String showEV = "wawla.pixelmon.showEV";
+    private static final String CONFIG_REQUIRE_SNEAK = "wawla.pixelmon.useSneak";
+    private static final String CONFIG_ABILITIES = "wawla.pixelmon.showAbility";
+    private static final String CONFIG_FRIENDSHIP = "wawla.pixelmon.showFriendship";
+    private static final String CONFIG_HELD_ITEM = "wawla.pixelmon.showHeldItem";
+    private static final String CONFIG_NATURE = "wawla.pixelmon.showNature";
+    private static final String CONFIG_SIZE = "wawla.pixelmon.showSize";
+    private static final String CONFIG_INDIVIDUAL_VALUES = "wawla.pixelmon.showIV";
+    private static final String CONFIG_EFFORT_VALUES = "wawla.pixelmon.showEV";
     
     private static String[] natureList = null;
     private static String[] sizeList = null;

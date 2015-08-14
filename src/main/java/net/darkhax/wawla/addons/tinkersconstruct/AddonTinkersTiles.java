@@ -60,7 +60,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
     
         // Hides landmines
-        if (cfg.getConfig(hideLandmine) && data.getTileEntity() != null && Utilities.compareByClass(classBlockLandmine, data.getBlock().getClass())) {
+        if (cfg.getConfig(CONFIG_HIDE_LANDMINES) && data.getTileEntity() != null && Utilities.compareByClass(classBlockLandmine, data.getBlock().getClass())) {
             
             if (data.getNBTData() != null) {
                 
@@ -88,7 +88,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
             // drying rack
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classDryingRackLogic)) {
                 
-                if (cfg.getConfig(showDryerItem)) {
+                if (cfg.getConfig(CONFIG_DRYER_ITEM)) {
                     
                     ItemStack item = Utilities.getInventoryStacks(data.getNBTData(), 1)[0];
                     
@@ -96,7 +96,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.item") + ": " + item.getDisplayName());
                 }
                 
-                if (cfg.getConfig(showDryerTime)) {
+                if (cfg.getConfig(CONFIG_DRYER_TIME)) {
                     
                     double percent = Utilities.round(Utilities.getProgression(data.getNBTData().getInteger("Time"), data.getNBTData().getInteger("MaxTime")), 2);
                     
@@ -108,7 +108,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
             // slab furnace
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classFurnaceLogic)) {
                 
-                if (cfg.getConfig(showBurnTime)) {
+                if (cfg.getConfig(CONFIG_BURN_TIME)) {
                     
                     int burnTime = data.getNBTData().getInteger("Fuel") / 20;
                     
@@ -116,7 +116,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
                 }
                 
-                if (cfg.getConfig(showFurnaceItem)) {
+                if (cfg.getConfig(CONFIG_SLAB_FURNACE)) {
                     
                     if (data.getPlayer().isSneaking()) {
                         
@@ -157,10 +157,10 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     
         AddonTinkersTiles dataProvider = new AddonTinkersTiles();
         
-        register.addConfig("Tinkers' Construct", hideLandmine);
-        register.addConfig("Tinkers' Construct", showDryerTime);
-        register.addConfig("Tinkers' Construct", showDryerItem);
-        register.addConfig("Tinkers' Construct", showFurnaceItem);
+        register.addConfig("Tinkers' Construct", CONFIG_HIDE_LANDMINES);
+        register.addConfig("Tinkers' Construct", CONFIG_DRYER_TIME);
+        register.addConfig("Tinkers' Construct", CONFIG_DRYER_ITEM);
+        register.addConfig("Tinkers' Construct", CONFIG_SLAB_FURNACE);
         register.registerBodyProvider(dataProvider, classDryingRack);
         register.registerBodyProvider(dataProvider, classFurnaceSlab);
         register.registerNBTProvider(dataProvider, classDryingRack);
@@ -215,11 +215,11 @@ public class AddonTinkersTiles implements IWailaDataProvider {
         return false;
     }
     
-    private static String showDryerTime = "wawla.tinkers.showDryerTime";
-    private static String showDryerItem = "wawla.tinkers.showDryerItem";
-    private static String showFurnaceItem = "wawla.tinkers.showFurnace";
-    private static String showBurnTime = "wawla.tinkers.showBurnTime";
-    private static String hideLandmine = "wawla.tinkers.hideLandmine";
+    private static final String CONFIG_DRYER_TIME = "wawla.tinkers.showDryerTime";
+    private static final String CONFIG_DRYER_ITEM = "wawla.tinkers.showDryerItem";
+    private static final String CONFIG_SLAB_FURNACE = "wawla.tinkers.showFurnace";
+    private static final String CONFIG_BURN_TIME = "wawla.tinkers.showBurnTime";
+    private static final String CONFIG_HIDE_LANDMINES = "wawla.tinkers.hideLandmine";
     
     private static boolean isEnabled = false;
     private static Class classHarvestTool = null;

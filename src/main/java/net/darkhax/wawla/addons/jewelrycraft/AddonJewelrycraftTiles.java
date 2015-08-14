@@ -64,7 +64,7 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
                     NBTTagCompound moltenTag = data.getNBTData().getCompoundTag("moltenMetal");
                     ItemStack moltenStack = getMetalStack(moltenTag);
                     
-                    if (cfg.getConfig(showMoltenAmount))
+                    if (cfg.getConfig(CONFIG_MOLTEN_AMOUNT))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.molten") + ": " + moltenStack.getDisplayName() + " X " + Utilities.round(data.getNBTData().getFloat("quantity") * 10, 2));
                 }
                 
@@ -73,16 +73,16 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
                     NBTTagCompound moltenTag = data.getNBTData().getCompoundTag("metal");
                     ItemStack metalStack = getMetalStack(moltenTag);
                     
-                    if (cfg.getConfig(showMetalAmount))
+                    if (cfg.getConfig(CONFIG_METAL_AMOUNT))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.unmelted") + ": " + metalStack.getDisplayName() + " X " + metalStack.stackSize);
                     
-                    if (cfg.getConfig(showMeltTime))
+                    if (cfg.getConfig(CONFIG_MELTING_TIME))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.melttime") + ": " + data.getNBTData().getInteger("melting") / 20 + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
                 }
             }
             
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileEntityMolder))
-                if (cfg.getConfig(showCooling) && data.getNBTData().getInteger("cooling") > 0)
+                if (cfg.getConfig(CONFIG_COOLING_TIME) && data.getNBTData().getInteger("cooling") > 0)
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.cooling") + ": " + data.getNBTData().getInteger("cooling") / 20 + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
         }
         
@@ -113,20 +113,20 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
     
         AddonJewelrycraftTiles dataProvider = new AddonJewelrycraftTiles();
         
-        register.addConfig("Jewelrycraft", showMoltenAmount);
-        register.addConfig("Jewelrycraft", showMetalAmount);
-        register.addConfig("Jewelrycraft", showMeltTime);
-        register.addConfig("Jewelrycraft", showCooling);
+        register.addConfig("Jewelrycraft", CONFIG_MOLTEN_AMOUNT);
+        register.addConfig("Jewelrycraft", CONFIG_METAL_AMOUNT);
+        register.addConfig("Jewelrycraft", CONFIG_MELTING_TIME);
+        register.addConfig("Jewelrycraft", CONFIG_COOLING_TIME);
         register.registerBodyProvider(dataProvider, classTileEntitySmelter);
         register.registerNBTProvider(dataProvider, classTileEntitySmelter);
         register.registerBodyProvider(dataProvider, classTileEntityMolder);
         register.registerNBTProvider(dataProvider, classTileEntityMolder);
     }
     
-    private static String showMoltenAmount = "wawla.jewelrycraft.showMoltenAmount";
-    private static String showMetalAmount = "wawla.jewelrycraft.showMetalAmount";
-    private static String showMeltTime = "wawla.jewelrycraft.showMeltTime";
-    private static String showCooling = "wawla.jewelrycraft.showCooling";
+    private static final String CONFIG_MOLTEN_AMOUNT = "wawla.jewelrycraft.showMoltenAmount";
+    private static final String CONFIG_METAL_AMOUNT = "wawla.jewelrycraft.showMetalAmount";
+    private static final String CONFIG_MELTING_TIME = "wawla.jewelrycraft.showMeltTime";
+    private static final String CONFIG_COOLING_TIME = "wawla.jewelrycraft.showCooling";
     
     public static Class classTileEntitySmelter = null;
     public static Class classTileEntityMolder = null;
