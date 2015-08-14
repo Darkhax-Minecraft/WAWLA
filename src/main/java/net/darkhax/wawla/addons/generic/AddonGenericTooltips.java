@@ -3,6 +3,7 @@ package net.darkhax.wawla.addons.generic;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.util.StatCollector;
@@ -50,6 +51,10 @@ public class AddonGenericTooltips {
                     ItemArmor armor = (ItemArmor) event.itemStack.getItem();
                     event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.armorprot") + ": " + armor.damageReduceAmount);
                 }
+                
+                //Dev Tips
+                if (Utilities.isDevMode)
+                    event.toolTip.add(Item.itemRegistry.getNameForObject(event.itemStack.getItem()));
             }
         }
     }
