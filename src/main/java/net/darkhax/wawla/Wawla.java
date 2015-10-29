@@ -9,7 +9,6 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Constants;
-import net.darkhax.wawla.util.Utilities;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, acceptableRemoteVersions = "*", dependencies = "required-after:Waila")
 public class Wawla {
@@ -23,7 +22,7 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
+        // Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
         proxy.preInit();
     }
     
@@ -36,8 +35,6 @@ public class Wawla {
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaTiles.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericEntities.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericTiles.registerAddon");
-        
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.morph.AddonMorphEntities.registerAddon");
         
         if (Loader.isModLoaded("pixelmon")) {
             
@@ -53,11 +50,5 @@ public class Wawla {
             
         if (Loader.isModLoaded("Jewelrycraft"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.jewelrycraft.AddonJewelrycraftTiles.registerAddon");
-            
-        if (Utilities.isDevMode) {
-            
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperEntities.registerAddon");
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperTiles.registerAddon");
-        }
     }
 }

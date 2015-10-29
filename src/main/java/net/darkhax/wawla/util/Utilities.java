@@ -32,7 +32,7 @@ public class Utilities {
      * This field is set when the mod is launched, see the preInit of the Wawla mod for more
      * info.
      */
-    public static boolean isDevMode;
+    public static boolean isDevMode = false;
     
     /**
      * A simple method to make an ItemStack safe to work with in regards of nbt. If the stack
