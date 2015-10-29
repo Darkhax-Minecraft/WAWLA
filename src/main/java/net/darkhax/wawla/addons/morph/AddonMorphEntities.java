@@ -18,40 +18,40 @@ public class AddonMorphEntities implements IWailaEntityProvider {
     
     @Override
     public Entity getWailaOverride (IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         String morphID = "";
         Entity fakeEntity = data.getEntity();
         
         if (data.getNBTData().hasKey(KEY_MORPH_ID))
             morphID = data.getNBTData().getString(KEY_MORPH_ID);
-        
+            
         if (!morphID.isEmpty())
             fakeEntity = EntityList.createEntityByName(data.getNBTData().getString(KEY_MORPH_ID), data.getWorld());
-        
+            
         return fakeEntity != null ? fakeEntity : data.getEntity();
     }
     
     @Override
     public List<String> getWailaHead (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaTail (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, Entity entity, NBTTagCompound tag, World world) {
-    
+        
         if (entity != null && entity.getEntityData() != null) {
             
             NBTTagCompound morphTag = Utilities.getDeepTagCompound(entity.getEntityData(), new String[] { "PlayerPersisted", "MorphSave", "morphData", "nextState", "entInstanceTag" });
@@ -64,7 +64,7 @@ public class AddonMorphEntities implements IWailaEntityProvider {
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonMorphEntities dataProvider = new AddonMorphEntities();
         register.registerOverrideEntityProvider(dataProvider, EntityOtherPlayerMP.class);
         register.registerNBTProvider(dataProvider, EntityPlayerMP.class);

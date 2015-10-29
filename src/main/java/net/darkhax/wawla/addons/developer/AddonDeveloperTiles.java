@@ -23,19 +23,19 @@ public class AddonDeveloperTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getStack();
     }
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         boolean isKeySprinting = Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSprint);
         
         if (data.getPlayer().isSneaking()) {
@@ -48,27 +48,27 @@ public class AddonDeveloperTiles implements IWailaDataProvider {
         
         if (isKeySprinting)
             Utilities.wrapStringToList(data.getNBTData().toString(), 45, true, tip);
-        
+            
         return tip;
     }
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonDeveloperTiles dataProvider = new AddonDeveloperTiles();
         register.registerBodyProvider(dataProvider, Block.class);
         register.registerNBTProvider(dataProvider, Block.class);

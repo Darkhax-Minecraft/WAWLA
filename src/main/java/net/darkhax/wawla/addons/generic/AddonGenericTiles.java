@@ -23,19 +23,19 @@ public class AddonGenericTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getStack();
     }
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         MovingObjectPosition pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
@@ -48,7 +48,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
             
             if (block == Blocks.stone)
                 tool = "pickaxe";
-            
+                
             if (block == Blocks.planks)
                 tool = "axe";
         }
@@ -59,16 +59,16 @@ public class AddonGenericTiles implements IWailaDataProvider {
             // When the block is harvestable.
             if (cfg.getConfig(CONFIG_SHOW_HARVESTABILITY) && (blockLevel <= itemLevel || blockLevel == 0))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + ((EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal("tooltip.wawla.yes"))));
-            
+                
             // When it's not harvestable.
             else {
                 
                 if (cfg.getConfig(CONFIG_SHOW_HARVESTABILITY))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.canHarvest") + ": " + EnumChatFormatting.RED + StatCollector.translateToLocal("tooltip.wawla.no"));
-                
+                    
                 if (cfg.getConfig(CONFIG_CORRECT_TIER))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
-                
+                    
                 // Shows correct tool type.
                 if (tool != null && cfg.getConfig(CONFIG_CORRECT_TOOL)) {
                     
@@ -76,7 +76,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
                     
                     if (translation.startsWith("tooltip.wawla.tooltype."))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
-                    
+                        
                     else
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + translation);
                 }
@@ -95,14 +95,14 @@ public class AddonGenericTiles implements IWailaDataProvider {
                 
                 if (nightLevel <= 7)
                     display = display + EnumChatFormatting.DARK_RED + "" + nightLevel + " ";
-                
+                    
                 else if (nightLevel > 7)
                     display = display + EnumChatFormatting.GREEN + "" + nightLevel + " ";
             }
             
             if (cfg.getConfig(CONFIG_DAYLIGHT))
                 display = display + EnumChatFormatting.YELLOW + "(" + dayLevel + ")";
-            
+                
             tip.add(display);
         }
         
@@ -118,27 +118,27 @@ public class AddonGenericTiles implements IWailaDataProvider {
         // Beds
         if (cfg.getConfig(CONFIG_SLEEPY) && block.isBed(data.getWorld(), pos.blockX, pos.blockY, pos.blockZ, data.getPlayer()))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.sleepable") + " " + Utilities.canPlayerSleep(data.getPlayer()));
-        
+            
         return tip;
     }
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonGenericTiles dataProvider = new AddonGenericTiles();
         
         register.addConfig("Wawla-General", CONFIG_CORRECT_TOOL);

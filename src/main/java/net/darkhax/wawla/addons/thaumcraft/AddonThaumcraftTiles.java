@@ -2,6 +2,7 @@ package net.darkhax.wawla.addons.thaumcraft;
 
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -15,12 +16,11 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
-import cpw.mods.fml.common.Loader;
 
 public class AddonThaumcraftTiles implements IWailaDataProvider {
     
     public AddonThaumcraftTiles() {
-    
+        
         if (Loader.isModLoaded("Thaumcraft")) {
             
             try {
@@ -48,19 +48,19 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getStack();
     }
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         if (data.getBlock() != null && data.getTileEntity() != null) {
             
             // Jars
@@ -71,7 +71,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                 
                 if (true && aspect != null && !aspect.isEmpty() && cfg.getConfig(CONFIG_JAR_ASPECTS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.aspect") + ": " + Utilities.upperCase(aspect));
-                
+                    
                 if (true && amount > 0 && cfg.getConfig(CONFIG_JAR_AMOUNTS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.amount") + ": " + amount);
             }
@@ -81,7 +81,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                 
                 if (cfg.getConfig(CONFIG_MIRROR_LINK_POS))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.linked") + ": X:" + data.getNBTData().getInteger("linkX") + " Y:" + data.getNBTData().getInteger("linkY") + " Z:" + data.getNBTData().getInteger("linkZ"));
-                
+                    
                 if (cfg.getConfig(CONFIG_MIRROR_LINK_DIM))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.thaumcraft.dimension") + ": " + DimensionManager.getProvider(data.getNBTData().getInteger("linkDim")).getDimensionName());
             }
@@ -122,7 +122,7 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
                         
                         if (cfg.getConfig(CONFIG_WAND_ITEM))
                             tip.add(pedestalStack.getDisplayName());
-                        
+                            
                         if (pedestalStack.stackTagCompound.hasKey("aqua") && cfg.getConfig(CONFIG_WAND_CHARGE)) {
                             
                             String split = EnumChatFormatting.WHITE + " | ";
@@ -138,21 +138,21 @@ public class AddonThaumcraftTiles implements IWailaDataProvider {
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonThaumcraftTiles dataProvider = new AddonThaumcraftTiles();
         
         register.addConfig("Thaumcraft", CONFIG_JAR_ASPECTS);

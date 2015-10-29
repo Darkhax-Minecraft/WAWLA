@@ -1,8 +1,5 @@
 package net.darkhax.wawla;
 
-import net.darkhax.wawla.proxy.ProxyCommon;
-import net.darkhax.wawla.util.Constants;
-import net.darkhax.wawla.util.Utilities;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -10,6 +7,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.darkhax.wawla.proxy.ProxyCommon;
+import net.darkhax.wawla.util.Constants;
+import net.darkhax.wawla.util.Utilities;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, acceptableRemoteVersions = "*", dependencies = "required-after:Waila")
 public class Wawla {
@@ -22,14 +22,14 @@ public class Wawla {
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-    
+        
         Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
         proxy.preInit();
     }
     
     @EventHandler
     public void init (FMLInitializationEvent event) {
-    
+        
         proxy.init();
         
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaEntities.registerAddon");
@@ -47,13 +47,13 @@ public class Wawla {
         
         if (Loader.isModLoaded("Thaumcraft"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.thaumcraft.AddonThaumcraftTiles.registerAddon");
-        
+            
         if (Loader.isModLoaded("TConstruct"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles.registerAddon");
-        
+            
         if (Loader.isModLoaded("Jewelrycraft"))
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.jewelrycraft.AddonJewelrycraftTiles.registerAddon");
-        
+            
         if (Utilities.isDevMode) {
             
             FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.developer.AddonDeveloperEntities.registerAddon");

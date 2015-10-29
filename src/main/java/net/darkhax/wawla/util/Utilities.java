@@ -7,6 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.text.WordUtils;
+
+import cpw.mods.fml.common.registry.VillagerRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,13 +24,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
-
-import org.apache.commons.lang3.SystemUtils;
-import org.apache.commons.lang3.text.WordUtils;
-
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class Utilities {
     
@@ -45,10 +44,10 @@ public class Utilities {
      *         added if one did not already exist.
      */
     public static ItemStack prepareStackCompound (ItemStack stack) {
-    
+        
         if (!stack.hasTagCompound())
             stack.setTagCompound(new NBTTagCompound());
-        
+            
         return stack;
     }
     
@@ -71,7 +70,7 @@ public class Utilities {
      *         wrapped to the ideal line length and then added.
      */
     public static List wrapStringToList (String string, int lnLength, boolean wrapLongWords, List list) {
-    
+        
         String strings[] = WordUtils.wrap(string, lnLength, null, wrapLongWords).split(SystemUtils.LINE_SEPARATOR);
         list.addAll(Arrays.asList(strings));
         return list;
@@ -88,7 +87,7 @@ public class Utilities {
      * @return Enchantment[]: A list of all the enchantments on an ItemStack.
      */
     public static Enchantment[] getEnchantmentsFromStack (ItemStack stack, boolean stored) {
-    
+        
         prepareStackCompound(stack);
         String tagName = (stored) ? "StoredEnchantments" : "ench";
         NBTTagCompound tag = stack.stackTagCompound;
@@ -97,7 +96,7 @@ public class Utilities {
         
         for (int i = 0; i < list.tagCount(); i++)
             ench[i] = Enchantment.enchantmentsList[list.getCompoundTagAt(i).getShort("id")];
-        
+            
         return ench;
     }
     
@@ -110,7 +109,7 @@ public class Utilities {
      *         specified.
      */
     public static double round (double value, int places) {
-    
+        
         if (value >= 0 && places > 0) {
             
             BigDecimal bd = new BigDecimal(value);
@@ -129,7 +128,7 @@ public class Utilities {
      *         enum.
      */
     public static String[] generateElementArray (Class enumClass) {
-    
+        
         if (enumClass != null) {
             
             Object[] constants = enumClass.getEnumConstants();
@@ -137,7 +136,7 @@ public class Utilities {
             
             for (int i = 0; i < constants.length; i++)
                 elements[i] = constants[i].toString();
-            
+                
             return elements;
         }
         
@@ -153,7 +152,7 @@ public class Utilities {
      * @return ItemStack[]: An array of all the items, based on the invSize.
      */
     public static ItemStack[] getInventoryStacks (NBTTagCompound tag, int invSize) {
-    
+        
         ItemStack[] inventory = null;
         
         if (tag.hasKey("Items")) {
@@ -182,7 +181,7 @@ public class Utilities {
      * @return boolean: Are the classes the same?
      */
     public static boolean compareByClass (Class class1, Class class2) {
-    
+        
         return (class1 != null && class2 != null) ? class1.getName().equalsIgnoreCase(class2.getName()) : false;
     }
     
@@ -194,7 +193,7 @@ public class Utilities {
      * @return boolean: True if they are the same.
      */
     public static boolean compareTileEntityByClass (TileEntity entity, Class teClass) {
-    
+        
         return compareByClass(entity.getClass(), teClass);
     }
     
@@ -207,7 +206,7 @@ public class Utilities {
      * @return float: The float as a percentage. This is not rounded.
      */
     public static float getProgression (float curStage, float maxStage) {
-    
+        
         return (curStage / maxStage) * 100;
     }
     
@@ -218,7 +217,7 @@ public class Utilities {
      * @return string: The input string, with the first character being upper cased.
      */
     public static String upperCase (String string) {
-    
+        
         return Character.toString(string.charAt(0)).toUpperCase() + string.substring(1);
     }
     
@@ -240,7 +239,7 @@ public class Utilities {
      *         of light.
      */
     public static int getBlockLightLevel (World world, int x, int y, int z, boolean day) {
-    
+        
         return (day) ? world.getChunkFromChunkCoords(x >> 4, z >> 4).getBlockLightValue(x & 0xF, y + 1, z & 0xF, 0) : world.getChunkFromChunkCoords(x >> 4, z >> 4).getBlockLightValue(x & 0xF, y + 1, z & 0xF, 16);
     }
     
@@ -251,7 +250,7 @@ public class Utilities {
      * @return Class: A class that maches the provided name. Can be null, if no class is found.
      */
     public static Class getClass (String className) {
-    
+        
         try {
             
             return Class.forName(className);
@@ -273,15 +272,15 @@ public class Utilities {
      *         unknown will be used.
      */
     public static String getUsernameByUUID (String uuid) {
-    
+        
         String username = null;
         
         if (!uuid.isEmpty() && uuid.length() > 0)
             username = UsernameCache.getLastKnownUsername(UUID.fromString(uuid));
-        
+            
         if (username == null)
             username = StatCollector.translateToLocal("tooltip.wawla.unknownplayer");
-        
+            
         return username;
     }
     
@@ -293,7 +292,7 @@ public class Utilities {
      * @return boolean: True if the player can sleep, false if they can not.
      */
     public static boolean canPlayerSleep (EntityPlayer player) {
-    
+        
         return (!player.isPlayerSleeping() && player.isEntityAlive() && player.worldObj.getWorldTime() > 12541 && player.worldObj.getWorldTime() < 23458);
     }
     
@@ -310,14 +309,14 @@ public class Utilities {
      *         than all of the way.
      */
     public static NBTTagCompound getDeepTagCompound (NBTTagCompound tag, String[] tags) {
-    
+        
         NBTTagCompound deepTag = tag;
         
         if (tag != null)
             for (String tagName : tags)
                 if (deepTag.hasKey(tagName))
                     deepTag = deepTag.getCompoundTag(tagName);
-        
+                    
         return deepTag;
     }
     
@@ -342,7 +341,7 @@ public class Utilities {
      */
     @SideOnly(Side.CLIENT)
     public static String getVillagerName (int id) {
-    
+        
         ResourceLocation skin = VillagerRegistry.getVillagerSkin(id, null);
         return (id >= 0 && id <= 4) ? vanillaVillagers[id] : (skin != null) ? skin.getResourceDomain() + "." + skin.getResourcePath().substring(skin.getResourcePath().lastIndexOf("/") + 1, skin.getResourcePath().length() - 4) : "misingno";
     }
@@ -358,21 +357,21 @@ public class Utilities {
      */
     @SideOnly(Side.CLIENT)
     public static float getBlockDamage () {
-    
+        
         if (currentBlockDamage == null)
             return 0;
-        
+            
         try {
             
             return currentBlockDamage.getFloat(Minecraft.getMinecraft().playerController);
         }
         
         catch (IllegalArgumentException e) {
-            
+        
         }
         
         catch (IllegalAccessException e) {
-            
+        
         }
         
         return 0;

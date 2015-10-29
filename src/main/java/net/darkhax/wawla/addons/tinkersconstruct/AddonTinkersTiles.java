@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -15,12 +16,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.Loader;
 
 public class AddonTinkersTiles implements IWailaDataProvider {
     
     public AddonTinkersTiles() {
-    
+        
         if (Loader.isModLoaded("TConstruct")) {
             
             isEnabled = true;
@@ -58,7 +58,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         // Hides landmines
         if (cfg.getConfig(CONFIG_HIDE_LANDMINES) && data.getTileEntity() != null && Utilities.compareByClass(classBlockLandmine, data.getBlock().getClass())) {
             
@@ -76,13 +76,13 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         if (data.getBlock() != null && data.getTileEntity() != null) {
             
             // drying rack
@@ -124,10 +124,10 @@ public class AddonTinkersTiles implements IWailaDataProvider {
                         
                         if (furnaceStacks[0] != null && cfg.getConfig("wawla.furnace.input"))
                             tip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
-                        
+                            
                         if (furnaceStacks[1] != null && cfg.getConfig("wawla.furnace.fuel"))
                             tip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
-                        
+                            
                         if (furnaceStacks[2] != null && cfg.getConfig("wawla.furnace.output"))
                             tip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
                     }
@@ -140,21 +140,21 @@ public class AddonTinkersTiles implements IWailaDataProvider {
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonTinkersTiles dataProvider = new AddonTinkersTiles();
         
         register.addConfig("Tinkers' Construct", CONFIG_HIDE_LANDMINES);
@@ -178,7 +178,7 @@ public class AddonTinkersTiles implements IWailaDataProvider {
      * @return false: When the item is not the right type.
      */
     public static boolean canHarvest (ItemStack item, String required) {
-    
+        
         if (isEnabled) {
             
             List<String> tooltypes = new ArrayList<String>();

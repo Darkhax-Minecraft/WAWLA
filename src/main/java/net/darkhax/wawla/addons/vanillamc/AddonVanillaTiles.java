@@ -26,19 +26,19 @@ public class AddonVanillaTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getStack();
     }
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         // Beacon
         if (data.getTileEntity() instanceof TileEntityBeacon) {
             
@@ -49,10 +49,10 @@ public class AddonVanillaTiles implements IWailaDataProvider {
             
             if (cfg.getConfig(CONFIG_BEACON_LEVEL))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.levels") + ": " + level);
-            
+                
             if (cfg.getConfig(CONFIG_BEACON_PRIMARY) && primary > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.primary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[primary].getName()));
-            
+                
             if (cfg.getConfig(CONFIG_BEACON_SECONDARY) && secondary > 0)
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.secondary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[secondary].getName()));
         }
@@ -65,17 +65,17 @@ public class AddonVanillaTiles implements IWailaDataProvider {
             
             if (burnTime > 0 && cfg.getConfig(CONFIG_FURNACE_BURNTIME))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.burnTime") + ": " + burnTime + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
-            
+                
             if (data.getPlayer().isSneaking()) {
                 
                 ItemStack[] furnaceStacks = Utilities.getInventoryStacks(data.getNBTData(), 3);
                 
                 if (furnaceStacks[0] != null && cfg.getConfig(CONFIG_FURNACE_INPUT))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.input") + ": " + furnaceStacks[0].getDisplayName() + " X " + furnaceStacks[0].stackSize);
-                
+                    
                 if (furnaceStacks[1] != null && cfg.getConfig(CONFIG_FURNACE_FUEL))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.fuel") + ": " + furnaceStacks[1].getDisplayName() + " X " + furnaceStacks[1].stackSize);
-                
+                    
                 if (furnaceStacks[2] != null && cfg.getConfig(CONFIG_FURNACE_OUTPUT))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.output") + ": " + furnaceStacks[2].getDisplayName() + " X " + furnaceStacks[2].stackSize);
             }
@@ -84,27 +84,27 @@ public class AddonVanillaTiles implements IWailaDataProvider {
         // Player Skull
         if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(CONFIG_PLAYER_SKULL) && data.getNBTData().hasKey("Owner"))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(data.getNBTData().getCompoundTag("Owner")).getName());
-        
+            
         return tip;
     }
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonVanillaTiles dataProvider = new AddonVanillaTiles();
         
         register.addConfig("Wawla-Blocks", CONFIG_BEACON_LEVEL);

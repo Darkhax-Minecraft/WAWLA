@@ -1,5 +1,6 @@
 package net.darkhax.wawla.addons.generic;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.darkhax.wawla.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
@@ -8,13 +9,12 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class AddonGenericTooltips {
     
     @SubscribeEvent
     public void onTooltip (ItemTooltipEvent event) {
-    
+        
         if (event.entityPlayer != null && event.entityPlayer.worldObj != null) {
             
             boolean isShifting = Minecraft.getMinecraft().gameSettings.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak);
@@ -35,7 +35,7 @@ public class AddonGenericTooltips {
                             
                             if (translation.startsWith("description."))
                                 event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.missingEnch"));
-                            
+                                
                             else
                                 Utilities.wrapStringToList(StatCollector.translateToLocal("description." + ench.getName()), 45, false, event.toolTip);
                         }

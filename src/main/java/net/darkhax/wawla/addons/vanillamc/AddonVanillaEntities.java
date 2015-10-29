@@ -2,6 +2,8 @@ package net.darkhax.wawla.addons.vanillamc;
 
 import java.util.List;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
@@ -19,26 +21,24 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 
 public class AddonVanillaEntities implements IWailaEntityProvider {
     
     @Override
     public Entity getWailaOverride (IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getEntity();
     }
     
     @Override
     public List<String> getWailaHead (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         // Horses
         if (entity instanceof EntityHorse) {
             
@@ -46,7 +46,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             
             if (cfg.getConfig("wawla.horse.showJump"))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.jumpStrength") + ": " + Utilities.round(horse.getHorseJumpStrength(), 4));
-            
+                
             if (cfg.getConfig("wawla.horse.showSpeed"))
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.speed") + ": " + Utilities.round(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue(), 4));
         }
@@ -54,7 +54,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
         // TNT
         else if (entity instanceof EntityTNTPrimed && cfg.getConfig(CONFIG_TNT_FUSE))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.tnt.fuse") + ": " + data.getNBTData().getByte("Fuse"));
-        
+            
         // Item Frame
         else if (entity instanceof EntityItemFrame) {
             
@@ -84,7 +84,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             
             if (entity instanceof EntityWitch)
                 profession = StatCollector.translateToLocal("description.villager.profession.witch");
-            
+                
             if (!profession.isEmpty())
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.profession") + ": " + profession);
         }
@@ -94,21 +94,21 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
     
     @Override
     public List<String> getWailaTail (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, Entity entity, NBTTagCompound tag, World world) {
-    
+        
         if (entity != null)
             entity.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonVanillaEntities dataProvider = new AddonVanillaEntities();
         
         register.registerBodyProvider(dataProvider, EntityHorse.class);

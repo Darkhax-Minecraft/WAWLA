@@ -2,6 +2,7 @@ package net.darkhax.wawla.addons.jewelrycraft;
 
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -14,12 +15,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.Loader;
 
 public class AddonJewelrycraftTiles implements IWailaDataProvider {
     
     public AddonJewelrycraftTiles() {
-    
+        
         if (Loader.isModLoaded("Jewelrycraft2")) {
             
             try {
@@ -42,19 +42,19 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return data.getStack();
     }
     
     @Override
     public List<String> getWailaHead (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         if (data.getBlock() != null && data.getTileEntity() != null) {
             
             if (Utilities.compareTileEntityByClass(data.getTileEntity(), classTileEntitySmelter)) {
@@ -75,7 +75,7 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
                     
                     if (cfg.getConfig(CONFIG_METAL_AMOUNT))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.unmelted") + ": " + metalStack.getDisplayName() + " X " + metalStack.stackSize);
-                    
+                        
                     if (cfg.getConfig(CONFIG_MELTING_TIME))
                         tip.add(StatCollector.translateToLocal("tooltip.wawla.jewelry.melttime") + ": " + data.getNBTData().getInteger("melting") / 20 + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
                 }
@@ -90,27 +90,27 @@ public class AddonJewelrycraftTiles implements IWailaDataProvider {
     }
     
     public ItemStack getMetalStack (NBTTagCompound metalTag) {
-    
+        
         return new ItemStack(Item.getItemById(metalTag.getShort("id")), metalTag.getByte("Count"), metalTag.getShort("Damage"));
     }
     
     @Override
     public List<String> getWailaTail (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
-    
+        
         return tip;
     }
     
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-    
+        
         if (te != null)
             te.writeToNBT(tag);
-        
+            
         return tag;
     }
     
     public static void registerAddon (IWailaRegistrar register) {
-    
+        
         AddonJewelrycraftTiles dataProvider = new AddonJewelrycraftTiles();
         
         register.addConfig("Jewelrycraft", CONFIG_MOLTEN_AMOUNT);
