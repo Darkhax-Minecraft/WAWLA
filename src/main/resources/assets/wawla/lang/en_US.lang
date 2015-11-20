@@ -39,6 +39,9 @@ tooltip.wawla.tnt.fuse=Fuse Time
 tooltip.wawla.profession=Profession
 tooltip.wawla.unknownplayer=Unknown Player
 tooltip.wawla.sleepable=Sleepable
+tooltip.wawla.hardness=Hardness
+tooltip.wawla.resistance=Blast Resistance
+
 
 #Fixed/Missing Strings
 tile.null.name=Unnamed Block, report to mod author.
@@ -72,6 +75,8 @@ option.wawla.harvest.showProgress=Show Block Breaking Progression
 option.wawla.tnt.fuse=Show Fuse Time
 option.wawla.showProfession=Show Villager Profession
 option.wawla.bed.sleepable=Bed Status?
+option.wawla.info.showHardness=Show Block Hardness?
+option.wawla.info.showResistance=Show Blast Resistance?
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=This enchantment reduces damage done to the wearer from many damage sources. It stacks with enchantments such as Fire Resistance and Feather Falling however it is possible to hit a limit on how much damage will be reduced. This enchantment can be applied to all armour types.

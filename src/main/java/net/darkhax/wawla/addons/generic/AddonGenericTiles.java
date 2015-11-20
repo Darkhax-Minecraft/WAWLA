@@ -107,6 +107,12 @@ public class AddonGenericTiles implements IWailaDataProvider {
             tip.add(display);
         }
         
+        if (cfg.getConfig(CONFIG_HARDNESS))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.hardness") + ": " + data.getBlock().getBlockHardness(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ));
+        
+        if (cfg.getConfig(CONFIG_RESISTANCE))
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.resistance") + ": " + data.getBlock().getExplosionResistance(data.getPlayer()));
+            
         // Block Progression
         if (cfg.getConfig(CONFIG_BREAK_PROGRESSION) && data.getPlayer().worldObj.isRemote) {
             
@@ -142,14 +148,17 @@ public class AddonGenericTiles implements IWailaDataProvider {
         
         AddonGenericTiles dataProvider = new AddonGenericTiles();
         
-        register.addConfig("Wawla-General", CONFIG_CORRECT_TOOL);
-        register.addConfig("Wawla-General", CONFIG_SHOW_HARVESTABILITY);
-        register.addConfig("Wawla-General", CONFIG_CORRECT_TIER);
-        register.addConfig("Wawla-General", CONFIG_BREAK_PROGRESSION);
-        register.addConfig("Wawla-General", CONFIG_LIGHTLEVEL);
-        register.addConfig("Wawla-General", CONFIG_MONSTERLIGHT);
-        register.addConfig("Wawla-General", CONFIG_DAYLIGHT);
-        register.addConfig("Wawla-General", CONFIG_SLEEPY);
+        String catagory = "Wawla-General";
+        register.addConfig(catagory, CONFIG_CORRECT_TOOL);
+        register.addConfig(catagory, CONFIG_SHOW_HARVESTABILITY);
+        register.addConfig(catagory, CONFIG_CORRECT_TIER);
+        register.addConfig(catagory, CONFIG_BREAK_PROGRESSION);
+        register.addConfig(catagory, CONFIG_LIGHTLEVEL);
+        register.addConfig(catagory, CONFIG_MONSTERLIGHT);
+        register.addConfig(catagory, CONFIG_DAYLIGHT);
+        register.addConfig(catagory, CONFIG_SLEEPY);
+        register.addConfig(catagory, CONFIG_HARDNESS, false);
+        register.addConfig(catagory, CONFIG_RESISTANCE, false);
         
         register.registerBodyProvider(dataProvider, Block.class);
         register.registerNBTProvider(dataProvider, Block.class);
@@ -163,4 +172,6 @@ public class AddonGenericTiles implements IWailaDataProvider {
     private static final String CONFIG_MONSTERLIGHT = "wawla.light.monsterSpawn";
     private static final String CONFIG_LIGHTLEVEL = "wawla.light.lightLevel";
     private static final String CONFIG_SLEEPY = "wawla.bed.sleepable";
+    private static final String CONFIG_HARDNESS = "wawla.info.showHardness";
+    private static final String CONFIG_RESISTANCE = "wawla.info.showResistance";
 }
