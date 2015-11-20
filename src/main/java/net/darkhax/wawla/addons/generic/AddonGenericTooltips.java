@@ -1,5 +1,7 @@
 package net.darkhax.wawla.addons.generic;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -24,8 +26,11 @@ public class AddonGenericTooltips {
             
             if (event.entityPlayer.worldObj.isRemote) {
                 
+                Item item = event.itemStack.getItem();
+                Block block = Block.getBlockFromItem(item);
+                
                 // Enchantments
-                if (event.itemStack.getItem() instanceof ItemEnchantedBook) {
+                if (item instanceof ItemEnchantedBook) {
                     
                     if (isShifting) {
                         
@@ -49,10 +54,18 @@ public class AddonGenericTooltips {
                 }
                 
                 // Armor Points
-                else if (event.itemStack.getItem() instanceof ItemArmor) {
+                else if (item instanceof ItemArmor) {
                     
-                    ItemArmor armor = (ItemArmor) event.itemStack.getItem();
+                    ItemArmor armor = (ItemArmor) item;
                     event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.armorprot") + ": " + armor.damageReduceAmount);
+                }
+                
+                if (!(block instanceof BlockAir) && block != null) {
+                    
+                    float enchPower = block.getEnchantPowerBonus(event.entityPlayer.worldObj, 0, 0, 0);
+                    
+                    if (enchPower > 0)
+                        event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
                 }
                 
                 // Dev Tips
