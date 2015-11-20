@@ -1,14 +1,17 @@
 package net.darkhax.wawla.addons.generic;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.darkhax.wawla.util.Utilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.util.StatCollector;
+
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+import net.darkhax.wawla.util.Utilities;
 
 public class AddonGenericTooltips {
     

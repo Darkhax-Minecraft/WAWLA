@@ -2,11 +2,6 @@ package net.darkhax.wawla.addons.vanillamc;
 
 import java.util.List;
 
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockSkull;
@@ -21,6 +16,12 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 
 public class AddonVanillaTiles implements IWailaDataProvider {
     
