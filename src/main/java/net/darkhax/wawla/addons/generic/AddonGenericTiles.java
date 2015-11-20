@@ -109,7 +109,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         
         if (cfg.getConfig(CONFIG_HARDNESS))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.hardness") + ": " + data.getBlock().getBlockHardness(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ));
-        
+            
         if (cfg.getConfig(CONFIG_RESISTANCE))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.resistance") + ": " + data.getBlock().getExplosionResistance(data.getPlayer()));
             
