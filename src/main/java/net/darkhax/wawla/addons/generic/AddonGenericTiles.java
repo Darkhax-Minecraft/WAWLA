@@ -161,7 +161,6 @@ public class AddonGenericTiles implements IWailaDataProvider {
         register.addConfig(catagory, CONFIG_RESISTANCE, false);
         
         register.registerBodyProvider(dataProvider, Block.class);
-        register.registerNBTProvider(dataProvider, Block.class);
     }
     
     private static final String CONFIG_CORRECT_TOOL = "wawla.harvest.showTool";
