@@ -124,7 +124,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         
         // Beds
         if (cfg.getConfig(CONFIG_SLEEPY) && block.isBed(data.getWorld(), pos.blockX, pos.blockY, pos.blockZ, data.getPlayer()))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.sleepable") + " " + Utilities.canPlayerSleep(data.getPlayer()));
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.sleepable") + ": " + Utilities.canPlayerSleep(data.getPlayer()));
             
         return tip;
     }
