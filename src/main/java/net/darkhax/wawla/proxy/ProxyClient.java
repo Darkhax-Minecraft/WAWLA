@@ -14,7 +14,6 @@ public class ProxyClient extends ProxyCommon {
         
         MinecraftForge.EVENT_BUS.register(new AddonGenericTooltips());
         Utilities.currentBlockDamage = ReflectionHelper.findField(PlayerControllerMP.class, "g", "field_78770_f", "curBlockDamageMP");
-        FMLInterModComms.sendMessage("llibrary", "update-checker", "https://github.com/Darkhax-Minecraft/WAWLA/master/versions.json");
     }
     
     @Override

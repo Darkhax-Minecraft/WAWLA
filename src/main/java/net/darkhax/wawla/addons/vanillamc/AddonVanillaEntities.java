@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 public class AddonVanillaEntities implements IWailaEntityProvider {
     
@@ -66,11 +67,8 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             
             String profession = "";
             
-            if (entity instanceof EntityVillager) {
-                
-                EntityVillager villager = (EntityVillager) entity;
-                profession = Utilities.getVillagerName(villager.getProfession());
-            }
+            if (entity instanceof EntityVillager)
+                profession = ((EntityVillager) entity).getDisplayName().getFormattedText();
             
             else if (entity instanceof EntityZombie) {
                 
