@@ -3,8 +3,8 @@
       "modid":"wawla",
       "name":"What Are We Looking At",
       "description":"Greatly expands upon the amount of information provided by the Waila HUD, along with bridging support between Waila and many other minecraft mods!",
-      "version":"1.4.7",
-      "mcversion":"1.8.9",
+      "version":"${version}",
+      "mcversion":"${mcversion}",
       "url":"http://www.darkhax.net/wawla.html",
       "updateUrl":"",
       "authorList":[  
