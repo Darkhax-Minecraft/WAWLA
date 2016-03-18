@@ -1,5 +1,6 @@
 package net.darkhax.wawla.addons.generic;
 
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.client.Minecraft;
@@ -7,13 +8,10 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemEnchantedBook;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.StatCollector;
-
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-
-import net.darkhax.wawla.util.Utilities;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AddonGenericTooltips {
     
@@ -62,15 +60,11 @@ public class AddonGenericTooltips {
                 
                 if (!(block instanceof BlockAir) && block != null) {
                     
-                    float enchPower = block.getEnchantPowerBonus(event.entityPlayer.worldObj, 0, 0, 0);
+                    float enchPower = block.getEnchantPowerBonus(event.entityPlayer.worldObj, BlockPos.ORIGIN);
                     
                     if (enchPower > 0)
                         event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
                 }
-                
-                // Dev Tips
-                if (Utilities.isDevMode)
-                    event.toolTip.add(Item.itemRegistry.getNameForObject(event.itemStack.getItem()));
             }
         }
     }
