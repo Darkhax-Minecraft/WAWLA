@@ -60,7 +60,16 @@ public class AddonGenericTooltips {
                 
                 if (!(block instanceof BlockAir) && block != null) {
                     
-                    float enchPower = block.getEnchantPowerBonus(event.entityPlayer.worldObj, BlockPos.ORIGIN);
+                    float enchPower = 0;
+                    
+                    try {
+                        
+                        enchPower = block.getEnchantPowerBonus(event.entityPlayer.worldObj, BlockPos.ORIGIN);
+                    }
+                    
+                    catch (IllegalArgumentException exception) {
+                    
+                    }
                     
                     if (enchPower > 0)
                         event.toolTip.add(StatCollector.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
