@@ -6,6 +6,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityTameable;
@@ -33,6 +34,8 @@ public class AddonGenericEntities implements IWailaEntityProvider {
     
     @Override
     public List<String> getWailaBody (Entity entity, List<String> tip, IWailaEntityAccessor data, IWailaConfigHandler cfg) {
+        
+        // Utilities.wrapStringToList(data.getNBTData().toString(), 60, true, tip);
         
         // Equipment
         if (entity instanceof EntityLiving && cfg.getConfig(CONFIG_EQUIPMENT)) {
