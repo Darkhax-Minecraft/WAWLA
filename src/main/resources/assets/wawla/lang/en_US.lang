@@ -105,6 +105,7 @@ description.enchantment.arrowInfinite=This enchantment prevents arrows from bein
 description.enchantment.lootBonusFishing=This enchantment increases the players odds of getting treasure when fishing by 1% per level. This enchantment is only for fishing rods.
 description.enchantment.fishingSpeed=This enchantment decreases the time it takes for a fish to bite the hook by 5 seconds per level. This also increases the chance to get junk and treasure by 1% per level.
 
+
 #Villager Professions
 description.villager.profession.farmer=Farmer
 description.villager.profession.librarian=Librarian
@@ -189,7 +190,6 @@ description.villager.profession.wa.priest=Priest
 description.villager.profession.rftools.rftoolsvillager=RFTools Engineer
 description.villager.profession.forbidden.heretic=Heretic
 description.villager.profession.agricraft.villager=Agricraft Farmer
-
 
 #Jewelrycraft Tooltips
 tooltip.wawla.jewelry.molten=Molten
