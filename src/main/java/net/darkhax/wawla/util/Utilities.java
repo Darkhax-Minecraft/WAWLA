@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.text.WordUtils;
@@ -18,14 +17,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
-
-import net.minecraftforge.common.UsernameCache;
-
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Utilities {
     
@@ -92,12 +86,12 @@ public class Utilities {
         
         prepareStackCompound(stack);
         String tagName = (stored) ? "StoredEnchantments" : "ench";
-        NBTTagCompound tag = stack.stackTagCompound;
+        NBTTagCompound tag = stack.getTagCompound();
         NBTTagList list = tag.getTagList(tagName, 10);
         Enchantment[] ench = new Enchantment[list.tagCount()];
         
         for (int i = 0; i < list.tagCount(); i++)
-            ench[i] = Enchantment.enchantmentsList[list.getCompoundTagAt(i).getShort("id")];
+            ench[i] = Enchantment.getEnchantmentById(list.getCompoundTagAt(i).getShort("id"));
             
         return ench;
     }
@@ -224,28 +218,6 @@ public class Utilities {
     }
     
     /**
-     * Retrieves the light value (0-15) of a block. Keep in mind that the light level of a
-     * block is usually determined by what is above it. As such of you were to specify a block
-     * that does not have an empty space above it (like a block in a wall) you will be reading
-     * the light level in the block above, this will normally return 0, unless the block is a
-     * source of light. This method is set to ignore all light coming from non-block sources
-     * such as the sun and moon.
-     * 
-     * @param world : An instance of the world.
-     * @param x : The x position of the block.
-     * @param y : The y position of the block. (the +1 to get above is done by the method)
-     * @param z : The z position of the block.
-     * @param day : Would you like to take daylight into account?
-     * @return int: An integer between 0 and 15, depending on the light level. 15 represents
-     *         the highest possible strength of light, while 0 repressions a complete absence
-     *         of light.
-     */
-    public static int getBlockLightLevel (World world, int x, int y, int z, boolean day) {
-        
-        return (day) ? world.getChunkFromChunkCoords(x >> 4, z >> 4).getBlockLightValue(x & 0xF, y + 1, z & 0xF, 0) : world.getChunkFromChunkCoords(x >> 4, z >> 4).getBlockLightValue(x & 0xF, y + 1, z & 0xF, 16);
-    }
-    
-    /**
      * Retrieves a Class which has the same name as the one specified.
      * 
      * @param className: The class name to look for.
@@ -264,26 +236,6 @@ public class Utilities {
             e.printStackTrace();
             return null;
         }
-    }
-    
-    /**
-     * Provides a name for a player, based on their UUID.
-     * 
-     * @param uuid : The uuid for the player you are looking up. Stored as a String.
-     * @return String: A valid display name for the player. If no valid name can be found,
-     *         unknown will be used.
-     */
-    public static String getUsernameByUUID (String uuid) {
-        
-        String username = null;
-        
-        if (!uuid.isEmpty() && uuid.length() > 0)
-            username = UsernameCache.getLastKnownUsername(UUID.fromString(uuid));
-            
-        if (username == null)
-            username = StatCollector.translateToLocal("tooltip.wawla.unknownplayer");
-            
-        return username;
     }
     
     /**

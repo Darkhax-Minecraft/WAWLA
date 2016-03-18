@@ -2,30 +2,37 @@ package net.darkhax.wawla.addons.generic;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAnvil;
+import net.minecraft.block.BlockButton;
+import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockEndPortalFrame;
+import net.minecraft.block.BlockLever;
+import net.minecraft.block.BlockPistonBase;
+import net.minecraft.block.BlockRailBase;
+import net.minecraft.block.BlockTorch;
+import net.minecraft.block.BlockVine;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles;
-import net.darkhax.wawla.util.Utilities;
 
 public class AddonGenericTiles implements IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
-        return data.getStack();
+        return new ItemStack(data.getStack().getItem(), 1, 0);
     }
     
     @Override
@@ -37,11 +44,11 @@ public class AddonGenericTiles implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
-        MovingObjectPosition pos = data.getPosition();
+        BlockPos pos = data.getPosition();
         Block block = data.getBlock();
         ItemStack item = data.getPlayer().getHeldItem();
-        String tool = (block != null) ? block.getHarvestTool(data.getMetadata()) : "";
-        int blockLevel = block.getHarvestLevel(data.getMetadata());
+        String tool = (block != null) ? block.getHarvestTool(data.getBlockState()) : "";
+        int blockLevel = block.getHarvestLevel(data.getBlockState());
         int itemLevel = (item != null) ? item.getItem().getHarvestLevel(item, tool) : 0;
         
         // Corrective check to prevent chisel from breaking the module.
@@ -55,7 +62,7 @@ public class AddonGenericTiles implements IWailaDataProvider {
         }
         
         // Shows if the tool is the right tier.
-        if (item != null && (item.getItem().getToolClasses(item).contains(tool) || AddonTinkersTiles.canHarvest(item, tool))) {
+        if (item != null && (item.getItem().getToolClasses(item).contains(tool))) {
             
             // When the block is harvestable.
             if (cfg.getConfig(CONFIG_SHOW_HARVESTABILITY) && (blockLevel <= itemLevel || blockLevel == 0))
@@ -69,46 +76,23 @@ public class AddonGenericTiles implements IWailaDataProvider {
                     
                 if (cfg.getConfig(CONFIG_CORRECT_TIER))
                     tip.add(StatCollector.translateToLocal("tooltip.wawla.blockLevel") + ": " + blockLevel);
-                    
-                // Shows correct tool type.
-                if (tool != null && cfg.getConfig(CONFIG_CORRECT_TOOL)) {
-                    
-                    String translation = StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool);
-                    
-                    if (translation.startsWith("tooltip.wawla.tooltype."))
-                        tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
-                        
-                    else
-                        tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + translation);
-                }
             }
         }
         
-        // Light level
-        if (cfg.getConfig(CONFIG_LIGHTLEVEL) && (!data.getWorld().isBlockNormalCubeDefault(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ, false) || data.getWorld().isAirBlock(data.getPosition().blockX, data.getPosition().blockY + 1, data.getPosition().blockZ))) {
+        // Shows correct tool type.
+        else if (tool != null && cfg.getConfig(CONFIG_CORRECT_TOOL)) {
             
-            int dayLevel = Utilities.getBlockLightLevel(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ, true);
-            int nightLevel = Utilities.getBlockLightLevel(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ, false);
+            String translation = StatCollector.translateToLocal("tooltip.wawla.tooltype." + tool);
             
-            String display = StatCollector.translateToLocal("tooltip.wawla.lightLevel") + ": ";
-            
-            if (cfg.getConfig(CONFIG_MONSTERLIGHT)) {
+            if (translation.startsWith("tooltip.wawla.tooltype."))
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + tool);
                 
-                if (nightLevel <= 7)
-                    display = display + EnumChatFormatting.DARK_RED + "" + nightLevel + " ";
-                    
-                else if (nightLevel > 7)
-                    display = display + EnumChatFormatting.GREEN + "" + nightLevel + " ";
-            }
-            
-            if (cfg.getConfig(CONFIG_DAYLIGHT))
-                display = display + EnumChatFormatting.YELLOW + "(" + dayLevel + ")";
-                
-            tip.add(display);
+            else
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.toolType") + ": " + translation);
         }
         
         if (cfg.getConfig(CONFIG_HARDNESS))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.hardness") + ": " + data.getBlock().getBlockHardness(data.getWorld(), data.getPosition().blockX, data.getPosition().blockY, data.getPosition().blockZ));
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.hardness") + ": " + data.getBlock().getBlockHardness(data.getWorld(), data.getPosition()));
             
         if (cfg.getConfig(CONFIG_RESISTANCE))
             tip.add(StatCollector.translateToLocal("tooltip.wawla.resistance") + ": " + data.getBlock().getExplosionResistance(data.getPlayer()));
@@ -122,10 +106,13 @@ public class AddonGenericTiles implements IWailaDataProvider {
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.progress") + ": " + (int) (progress * 100) + "%");
         }
         
-        // Beds
-        if (cfg.getConfig(CONFIG_SLEEPY) && block.isBed(data.getWorld(), pos.blockX, pos.blockY, pos.blockZ, data.getPlayer()))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.sleepable") + ": " + Utilities.canPlayerSleep(data.getPlayer()));
+        if (cfg.getConfig(CONFIG_ENCHANTING)) {
             
+            float enchPower = block.getEnchantPowerBonus(data.getWorld(), data.getPosition());
+            
+            if (enchPower > 0)
+                tip.add(StatCollector.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
+        }
         return tip;
     }
     
@@ -136,11 +123,8 @@ public class AddonGenericTiles implements IWailaDataProvider {
     }
     
     @Override
-    public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
+    public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
         
-        if (te != null)
-            te.writeToNBT(tag);
-            
         return tag;
     }
     
@@ -157,10 +141,23 @@ public class AddonGenericTiles implements IWailaDataProvider {
         register.addConfig(catagory, CONFIG_MONSTERLIGHT);
         register.addConfig(catagory, CONFIG_DAYLIGHT);
         register.addConfig(catagory, CONFIG_SLEEPY);
+        register.addConfig(catagory, CONFIG_ENCHANTING);
         register.addConfig(catagory, CONFIG_HARDNESS, false);
         register.addConfig(catagory, CONFIG_RESISTANCE, false);
         
         register.registerBodyProvider(dataProvider, Block.class);
+        
+        // Patch
+        register.registerStackProvider(dataProvider, BlockDirectional.class);
+        register.registerStackProvider(dataProvider, BlockTorch.class);
+        // register.registerStackProvider(dataProvider, BlockLeaves.class);
+        register.registerStackProvider(dataProvider, BlockLever.class);
+        register.registerStackProvider(dataProvider, BlockButton.class);
+        register.registerStackProvider(dataProvider, BlockRailBase.class);
+        register.registerStackProvider(dataProvider, BlockPistonBase.class);
+        register.registerStackProvider(dataProvider, BlockEndPortalFrame.class);
+        register.registerStackProvider(dataProvider, BlockVine.class);
+        register.registerStackProvider(dataProvider, BlockAnvil.class);
     }
     
     private static final String CONFIG_CORRECT_TOOL = "wawla.harvest.showTool";
@@ -173,4 +170,5 @@ public class AddonGenericTiles implements IWailaDataProvider {
     private static final String CONFIG_SLEEPY = "wawla.bed.sleepable";
     private static final String CONFIG_HARDNESS = "wawla.info.showHardness";
     private static final String CONFIG_RESISTANCE = "wawla.info.showResistance";
+    private static final String CONFIG_ENCHANTING = "wawla.info.enchantFactor";
 }

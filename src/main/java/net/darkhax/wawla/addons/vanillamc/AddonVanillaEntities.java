@@ -2,6 +2,11 @@ package net.darkhax.wawla.addons.vanillamc;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaEntityProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItemFrame;
@@ -14,15 +19,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaEntityAccessor;
-import mcp.mobius.waila.api.IWailaEntityProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.util.Utilities;
 
 public class AddonVanillaEntities implements IWailaEntityProvider {
     
@@ -70,13 +66,13 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
             
             String profession = "";
             
-            if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT) && entity instanceof EntityVillager) {
+            if (entity instanceof EntityVillager) {
                 
                 EntityVillager villager = (EntityVillager) entity;
-                profession = StatCollector.translateToLocal("description.villager.profession." + Utilities.getVillagerName(villager.getProfession()));
+                profession = Utilities.getVillagerName(villager.getProfession());
             }
             
-            if (entity instanceof EntityZombie) {
+            else if (entity instanceof EntityZombie) {
                 
                 EntityZombie zombie = (EntityZombie) entity;
                 
@@ -84,7 +80,7 @@ public class AddonVanillaEntities implements IWailaEntityProvider {
                     profession = StatCollector.translateToLocal("description.villager.profession.zombie");
             }
             
-            if (entity instanceof EntityWitch)
+            else if (entity instanceof EntityWitch)
                 profession = StatCollector.translateToLocal("description.villager.profession.witch");
                 
             if (!profession.isEmpty())

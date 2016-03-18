@@ -2,21 +2,18 @@ package net.darkhax.wawla.addons.generic;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaEntityAccessor;
+import mcp.mobius.waila.api.IWailaEntityProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaEntityAccessor;
-import mcp.mobius.waila.api.IWailaEntityProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.util.Utilities;
 
 public class AddonGenericEntities implements IWailaEntityProvider {
     
@@ -54,28 +51,12 @@ public class AddonGenericEntities implements IWailaEntityProvider {
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.armor") + ": " + living.getTotalArmorValue());
         }
         
-        // shows pet owner
-        if (cfg.getConfig(CONFIG_PET_OWNER) && data.getNBTData().hasKey("OwnerUUID") && data.getNBTData().getString("OwnerUUID").length() > 0)
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + Utilities.getUsernameByUUID(data.getNBTData().getString("OwnerUUID")));
-            
-        // shows age info
-        if (entity instanceof EntityAnimal) {
-            
-            EntityAnimal animal = (EntityAnimal) entity;
-            
-            if (cfg.getConfig(CONFIG_AGE) && animal.isChild() && animal.getGrowingAge() != 0)
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.age") + ": " + ((animal.getGrowingAge() / 20) * -1) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
-                
-            else if (cfg.getConfig(CONFIG_BIRTH_COOLDOWN) && animal.getGrowingAge() != 0)
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.birth") + ": " + ((animal.getGrowingAge() / 20)) + " " + StatCollector.translateToLocal("tooltip.wawla.seconds"));
-        }
-        
         // shows if sitting
         if (entity instanceof EntityTameable && cfg.getConfig(CONFIG_PET_SITTING)) {
             
             EntityTameable pet = (EntityTameable) entity;
             
-            if (pet.isTamed())
+            if (pet.isTamed() && pet.isSitting())
                 tip.add(StatCollector.translateToLocal("tooltip.wawla.sit") + ": " + pet.isSitting());
         }
         

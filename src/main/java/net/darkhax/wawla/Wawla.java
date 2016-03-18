@@ -1,17 +1,15 @@
 package net.darkhax.wawla;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-
 import net.darkhax.wawla.proxy.ProxyCommon;
 import net.darkhax.wawla.util.Constants;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, acceptableRemoteVersions = "*", dependencies = "required-after:Waila")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION, acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.8,1.8.9]", dependencies = "required-after:Waila")
 public class Wawla {
     
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
@@ -23,7 +21,6 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        // Utilities.isDevMode = Utilities.getClass("net.minecraft.item.Item") != null;
         proxy.preInit();
     }
     
@@ -36,20 +33,5 @@ public class Wawla {
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaTiles.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericEntities.registerAddon");
         FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericTiles.registerAddon");
-        
-        if (Loader.isModLoaded("pixelmon")) {
-            
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.pixelmon.AddonPixelmonEntities.registerAddon");
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.pixelmon.AddonPixelmonTiles.registerAddon");
-        }
-        
-        if (Loader.isModLoaded("Thaumcraft"))
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.thaumcraft.AddonThaumcraftTiles.registerAddon");
-            
-        if (Loader.isModLoaded("TConstruct"))
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.tinkersconstruct.AddonTinkersTiles.registerAddon");
-            
-        if (Loader.isModLoaded("Jewelrycraft"))
-            FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.jewelrycraft.AddonJewelrycraftTiles.registerAddon");
     }
 }

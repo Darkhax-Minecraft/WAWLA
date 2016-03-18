@@ -1,14 +1,11 @@
 package net.darkhax.wawla.proxy;
 
-import net.minecraft.client.multiplayer.PlayerControllerMP;
-
-import net.minecraftforge.common.MinecraftForge;
-
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-
 import net.darkhax.wawla.addons.generic.AddonGenericTooltips;
 import net.darkhax.wawla.util.Utilities;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class ProxyClient extends ProxyCommon {
     

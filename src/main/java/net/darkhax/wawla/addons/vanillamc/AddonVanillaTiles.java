@@ -2,6 +2,11 @@ package net.darkhax.wawla.addons.vanillamc;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.util.Utilities;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockSkull;
@@ -9,19 +14,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
-import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.util.Utilities;
 
 public class AddonVanillaTiles implements IWailaDataProvider {
     
@@ -40,26 +38,8 @@ public class AddonVanillaTiles implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack stack, List<String> tip, IWailaDataAccessor data, IWailaConfigHandler cfg) {
         
-        // Beacon
-        if (data.getTileEntity() instanceof TileEntityBeacon) {
-            
-            NBTTagCompound tag = data.getNBTData();
-            int level = tag.getInteger("Levels");
-            int primary = tag.getInteger("Primary");
-            int secondary = tag.getInteger("Secondary");
-            
-            if (cfg.getConfig(CONFIG_BEACON_LEVEL))
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.levels") + ": " + level);
-                
-            if (cfg.getConfig(CONFIG_BEACON_PRIMARY) && primary > 0)
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.primary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[primary].getName()));
-                
-            if (cfg.getConfig(CONFIG_BEACON_SECONDARY) && secondary > 0)
-                tip.add(StatCollector.translateToLocal("tooltip.wawla.secondary") + ": " + StatCollector.translateToLocal(Potion.potionTypes[secondary].getName()));
-        }
-        
         // Furnace
-        else if (data.getTileEntity() instanceof TileEntityFurnace) {
+        if (data.getTileEntity() instanceof TileEntityFurnace) {
             
             TileEntityFurnace furnace = (TileEntityFurnace) data.getTileEntity();
             int burnTime = data.getNBTData().getInteger("BurnTime") / 20;
@@ -84,7 +64,7 @@ public class AddonVanillaTiles implements IWailaDataProvider {
         
         // Player Skull
         if (data.getTileEntity() instanceof TileEntitySkull && cfg.getConfig(CONFIG_PLAYER_SKULL) && data.getNBTData().hasKey("Owner"))
-            tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.func_152459_a(data.getNBTData().getCompoundTag("Owner")).getName());
+            tip.add(StatCollector.translateToLocal("tooltip.wawla.owner") + ": " + NBTUtil.readGameProfileFromNBT(data.getNBTData().getCompoundTag("Owner")).getName());
             
         return tip;
     }
@@ -96,9 +76,9 @@ public class AddonVanillaTiles implements IWailaDataProvider {
     }
     
     @Override
-    public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
+    public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
         
-        if (te != null)
+        if (te != null && !te.isInvalid())
             te.writeToNBT(tag);
             
         return tag;
