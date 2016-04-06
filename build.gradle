@@ -29,7 +29,7 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 group = "net.darkhax.wawla"
 archivesBaseName = "Wawla"
-version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/util/Constants.java"))
+version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants.java"))
 
 //Defines the MC environment information.
 minecraft {
