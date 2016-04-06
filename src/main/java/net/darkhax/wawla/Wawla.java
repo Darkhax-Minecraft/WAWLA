@@ -1,35 +1,42 @@
 package net.darkhax.wawla;
 
-import net.darkhax.wawla.proxy.ProxyCommon;
-import net.darkhax.wawla.util.Constants;
+import java.util.ArrayList;
+import java.util.List;
+
+import net.darkhax.icse.ICSE;
+import net.darkhax.wawla.common.CommonProxy;
+import net.darkhax.wawla.engine.ICSEEngine;
+import net.darkhax.wawla.engine.InfoEngine;
+import net.darkhax.wawla.lib.Constants;
+import net.darkhax.wawla.lib.InfoProvider;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.8,1.8.9]", dependencies = "required-after:Waila")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.9,1.9.2]", dependencies = "required-after:ICSE")
 public class Wawla {
     
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
-    public static ProxyCommon proxy;
+    public static CommonProxy proxy;
     
     @Mod.Instance(Constants.MODID)
     public static Wawla instance;
     
+	public static InfoEngine engine;
+    public static final List<InfoProvider> tileProviders = new ArrayList<InfoProvider>();
+    public static final List<InfoProvider> entityProviders = new ArrayList<InfoProvider>();
+    
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        proxy.preInit();
-    }
-    
-    @EventHandler
-    public void init (FMLInitializationEvent event) {
-        
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaEntities.registerAddon");
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.vanillamc.AddonVanillaTiles.registerAddon");
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericEntities.registerAddon");
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.addons.generic.AddonGenericTiles.registerAddon");
+    	if (Loader.isModLoaded("ICSE")) {
+    		
+        	engine = new ICSEEngine();
+    		ICSE.plugins.add((ICSEEngine) engine);
+    	}
+    	
+    	proxy.preInit();
     }
 }

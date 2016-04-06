@@ -1,4 +1,4 @@
-package net.darkhax.wawla.util;
+package net.darkhax.wawla.lib;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -10,14 +10,11 @@ import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -70,30 +67,6 @@ public class Utilities {
         String strings[] = WordUtils.wrap(string, lnLength, null, wrapLongWords).split(SystemUtils.LINE_SEPARATOR);
         list.addAll(Arrays.asList(strings));
         return list;
-    }
-    
-    /**
-     * This method will create a list of enchantments on an ItemStack.
-     * 
-     * @param stack  An instance of the ItemStack that you are checking.
-     * @param stored  This boolean is used to differentiate between stored enchantments and
-     *            actual enchantments. Enchantment Books do not keep their enchantments under
-     *            the same compound as other enchanted items. Set to true if the ItemStack
-     *            being checked has stored enchantments rather than active ones.
-     * @return Enchantment[] A list of all the enchantments on an ItemStack.
-     */
-    public static Enchantment[] getEnchantmentsFromStack (ItemStack stack, boolean stored) {
-        
-        prepareStackCompound(stack);
-        String tagName = (stored) ? "StoredEnchantments" : "ench";
-        NBTTagCompound tag = stack.getTagCompound();
-        NBTTagList list = tag.getTagList(tagName, 10);
-        Enchantment[] ench = new Enchantment[list.tagCount()];
-        
-        for (int i = 0; i < list.tagCount(); i++)
-            ench[i] = Enchantment.getEnchantmentById(list.getCompoundTagAt(i).getShort("id"));
-            
-        return ench;
     }
     
     /**
