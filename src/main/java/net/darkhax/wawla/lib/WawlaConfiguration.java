@@ -34,5 +34,7 @@ public class WawlaConfiguration {
             
         for (InfoProvider provider : Wawla.entityProviders)
             provider.syncConfig(config);
+            
+        config.save();
     }
 }
