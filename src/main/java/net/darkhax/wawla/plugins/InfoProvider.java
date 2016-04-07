@@ -3,9 +3,11 @@ package net.darkhax.wawla.plugins;
 import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
+import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 
@@ -59,5 +61,13 @@ public class InfoProvider {
     
     public void syncConfig (Configuration config) {
     
+    }
+    
+    public static String getBooleanForDisplay (boolean bool) {
+        
+        if (bool)
+            return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "yes" : "true"));
+            
+        return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "no" : "false"));
     }
 }
