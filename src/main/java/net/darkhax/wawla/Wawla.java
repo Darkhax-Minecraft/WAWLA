@@ -8,7 +8,8 @@ import net.darkhax.wawla.common.CommonProxy;
 import net.darkhax.wawla.engine.ICSEEngine;
 import net.darkhax.wawla.engine.InfoEngine;
 import net.darkhax.wawla.lib.Constants;
-import net.darkhax.wawla.lib.InfoProvider;
+import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -37,6 +38,8 @@ public class Wawla {
 			ICSE.plugins.add((ICSEEngine) engine);
 		}
 
+		// Generic Tiles
+		tileProviders.add(new PluginBreakProgression());
 		proxy.preInit();
 	}
 }
