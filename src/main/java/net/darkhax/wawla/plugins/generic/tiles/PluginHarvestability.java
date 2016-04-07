@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class PluginToolInfo extends InfoProvider {
+public class PluginHarvestability extends InfoProvider {
     
     private static final Map<String, ItemStack> overrides = new HashMap<String, ItemStack>();
     
