@@ -21,6 +21,6 @@ public class PluginHardness extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        enabled = config.getBoolean("Hardness", "Generic", false, "If this is enabled, the hud will display the hardness of a block while looking at it.");
+        enabled = config.getBoolean("Hardness", "generic_tiles", false, "If this is enabled, the hud will display the hardness of a block while looking at it.");
     }
 }

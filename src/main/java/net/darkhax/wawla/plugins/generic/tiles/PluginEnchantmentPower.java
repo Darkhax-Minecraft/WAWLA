@@ -26,6 +26,6 @@ public class PluginEnchantmentPower extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        enabled = config.getBoolean("EnchantPower", "Generic", true, "If this is enabled, the hud will display the enchant power of a block while looking at it.");
+        enabled = config.getBoolean("EnchantPower", "generic_tiles", true, "If this is enabled, the hud will display the enchant power of a block while looking at it.");
     }
 }

@@ -27,6 +27,6 @@ public class PluginBreakProgression extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        enabled = config.getBoolean("BreakProgression", "Generic", true, "If this is enabled, the hud will display the break progression.");
+        enabled = config.getBoolean("BreakProgression", "generic_tiles", true, "If this is enabled, the hud will display the break progression.");
     }
 }

@@ -21,6 +21,6 @@ public class PluginBlastResistance extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        enabled = config.getBoolean("BlastResist", "Generic", false, "If this is enabled, the hud will display the blast resistance of a block while looking at it.");
+        enabled = config.getBoolean("BlastResist", "generic_tiles", false, "If this is enabled, the hud will display the blast resistance of a block while looking at it.");
     }
 }
