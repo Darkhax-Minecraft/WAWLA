@@ -9,6 +9,7 @@ import net.darkhax.wawla.engine.ICSEEngine;
 import net.darkhax.wawla.engine.InfoEngine;
 import net.darkhax.wawla.lib.Constants;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.generic.tiles.PluginBlastResistance;
 import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.minecraftforge.fml.common.Loader;
@@ -42,7 +43,8 @@ public class Wawla {
 		// Generic Tiles
 		tileProviders.add(new PluginBreakProgression());
 		tileProviders.add(new PluginEnchantmentPower());
-		
+		tileProviders.add(new PluginBlastResistance());
+
 		proxy.preInit();
 	}
 }
