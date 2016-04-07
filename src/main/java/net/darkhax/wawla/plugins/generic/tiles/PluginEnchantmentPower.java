@@ -5,15 +5,27 @@ import java.util.List;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.common.config.Configuration;
 
 public class PluginEnchantmentPower extends InfoProvider {
-
-	@Override
-	public void addTileInfo(List<String> info, InfoAccess data) {
-
-        final float enchPower = data.block.getEnchantPowerBonus(data.world, data.pos);
+    
+    private static boolean enabled = true;
+    
+    @Override
+    public void addTileInfo (List<String> info, InfoAccess data) {
         
-        if (enchPower > 0)
-            info.add(I18n.translateToLocal("tooltip.wawla.generic.enchpower") + ": " + enchPower);
-	}
+        if (enabled) {
+            
+            final float enchPower = data.block.getEnchantPowerBonus(data.world, data.pos);
+            
+            if (enchPower > 0)
+                info.add(I18n.translateToLocal("tooltip.wawla.generic.enchpower") + ": " + enchPower);
+        }
+    }
+    
+    @Override
+    public void syncConfig (Configuration config) {
+        
+        enabled = config.getBoolean("EnchantPower", "Generic", true, "If this is enabled, the hud will display the enchant power of a block while looking at it.");
+    }
 }
