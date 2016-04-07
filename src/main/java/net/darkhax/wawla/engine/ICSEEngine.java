@@ -8,7 +8,7 @@ import net.darkhax.icse.lib.DataAccess;
 import net.darkhax.icse.plugins.InfoPlugin;
 import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.lib.InfoProvider;
+import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

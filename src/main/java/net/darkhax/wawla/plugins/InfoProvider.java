@@ -1,7 +1,8 @@
-package net.darkhax.wawla.lib;
+package net.darkhax.wawla.plugins;
 
 import java.util.List;
 
+import net.darkhax.wawla.lib.InfoAccess;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
