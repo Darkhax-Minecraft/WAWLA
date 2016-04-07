@@ -1,7 +1,23 @@
 #Wawla Language File
+tooltip.wawla.true=§aTrue
+tooltip.wawla.false=§4False
+tooltip.wawla.yes=§a✔
+tooltip.wawla.no=§4✖
+tooltip.wawla.item=Item
+tooltip.wawla.block=Block
+tooltip.wawla.shovel=Shovel
+tooltip.wawla.pickaxe=Pickaxe
+tooltip.wawla.axe=Axe
+tooltip.wawla.chisel=Chisel
+tooltip.wawla.scoop=Scoop
+tooltip.wawla.crowbar=Crowbar
+tooltip.wawla.sword=Sword
 
 #Generic Tiles
 tooltip.wawla.generic.progression=Progression
 tooltip.wawla.generic.enchpower=Enchant Power
 tooltip.wawla.generic.blastresist=Blast Resist
 tooltip.wawla.generic.hardness=Hardness
+tooltip.wawla.generic.harvestable=Harvestable
+tooltip.wawla.generic.showtier=Tier
+tooltip.wawla.generic.tooltype=Tool
