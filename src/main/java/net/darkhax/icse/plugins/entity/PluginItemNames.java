@@ -8,21 +8,20 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 
 /**
- * This plugin fixes an issue with EntityItem's display name showing
- * untranslated text. This overrides the name with the name of the held
- * ItemStack.
+ * This plugin fixes an issue with EntityItem's display name showing untranslated text. This
+ * overrides the name with the name of the held ItemStack.
  */
 public class PluginItemNames extends InfoPlugin {
-
-	@Override
-	public void addEntityInfo(List<String> info, DataAccess data) {
-
-		if (data.entity instanceof EntityItem) {
-
-			final ItemStack stack = ((EntityItem) data.entity).getEntityItem();
-
-			if (stack != null && stack.getItem() != null)
-				info.set(0, stack.getDisplayName());
-		}
-	}
+    
+    @Override
+    public void addEntityInfo (List<String> info, DataAccess data) {
+        
+        if (data.entity instanceof EntityItem) {
+            
+            final ItemStack stack = ((EntityItem) data.entity).getEntityItem();
+            
+            if (stack != null && stack.getItem() != null)
+                info.set(0, stack.getDisplayName());
+        }
+    }
 }
