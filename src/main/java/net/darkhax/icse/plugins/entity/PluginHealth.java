@@ -14,7 +14,7 @@ public class PluginHealth extends InfoPlugin {
         if (data.entity instanceof EntityLiving) {
             
             EntityLiving living = (EntityLiving) data.entity;
-            info.add(I18n.translateToLocal("tooltip.icse.health") + ": " + living.getHealth() + "/" + living.getMaxHealth());
+            info.add(I18n.translateToLocal("tooltip.icse.health") + ": " + (int) living.getHealth() + "/" + (int) living.getMaxHealth());
         }
     }
 }
