@@ -107,7 +107,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public boolean requireTileSync (World world, TileEntity tile) {
         
-        for (InfoProvider plugin : Wawla.entityProviders)
+        for (InfoProvider plugin : Wawla.tileProviders)
             if (plugin.requireTileSync(world, tile))
                 return true;
                 
