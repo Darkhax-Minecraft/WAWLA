@@ -5,6 +5,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -16,6 +17,11 @@ public class DataAccess {
      * Access to the client side world.
      */
     public World world = null;
+    
+    /**
+     * Access to the synced tag compound.
+     */
+    public NBTTagCompound tag = null;
     
     /**
      * Access to the client side player.
@@ -61,11 +67,12 @@ public class DataAccess {
      * @param player The client side player.
      * @param entity The entity being looked at.
      */
-    public DataAccess(World world, EntityPlayer player, Entity entity) {
+    public DataAccess(World world, EntityPlayer player, Entity entity, NBTTagCompound tag) {
         
         this.world = world;
         this.player = player;
         this.entity = entity;
+        this.tag = tag;
     }
     
     /**
@@ -77,7 +84,7 @@ public class DataAccess {
      * @param pos The position of the block.
      * @param side The side being looked at.
      */
-    public DataAccess(World world, EntityPlayer player, IBlockState state, BlockPos pos, EnumFacing side) {
+    public DataAccess(World world, EntityPlayer player, IBlockState state, BlockPos pos, EnumFacing side, NBTTagCompound tag) {
         
         this.world = world;
         this.player = player;
@@ -86,6 +93,7 @@ public class DataAccess {
         this.pos = pos;
         this.side = side;
         this.stack = new ItemStack(state.getBlock(), state.getBlock().getMetaFromState(state));
+        this.tag = tag;
     }
     
     public void override (ItemStack stack) {

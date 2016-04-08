@@ -8,6 +8,7 @@ import com.google.common.base.Predicates;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.darkhax.icse.ICSE;
+import net.darkhax.icse.common.packet.PacketRequestInfo;
 import net.darkhax.icse.lib.DataAccess;
 import net.darkhax.icse.lib.Utilities;
 import net.darkhax.icse.plugins.InfoPlugin;
@@ -16,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -27,6 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class RenderingHandler {
     
+    public static NBTTagCompound dataTag = new NBTTagCompound();
     private static int lineCount;
     
     @SubscribeEvent
@@ -48,8 +51,16 @@ public class RenderingHandler {
                 IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
                 if (entity != null) {
                     
-                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity);
+                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
                     
+                    boolean requireSync = false;
+                    for (InfoPlugin provider : ICSE.plugins)
+                        if (provider.requireEntitySync(mc.theWorld, entity))
+                            requireSync = true;
+                            
+                    if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
+                        ICSE.network.sendToServer(new PacketRequestInfo(entity.getUniqueID()));
+                        
                     if (info.isValidEntity()) {
                         
                         for (InfoPlugin provider : ICSE.plugins)
@@ -76,8 +87,16 @@ public class RenderingHandler {
                 
                 else if (state != null && state.getBlock() != null) {
                     
-                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit);
+                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit, dataTag);
                     
+                    boolean requireSync = false;
+                    for (InfoPlugin provider : ICSE.plugins)
+                        if (provider.requireTileSync(mc.theWorld, mc.theWorld.getTileEntity(info.pos)))
+                            requireSync = true;
+                            
+                    if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
+                        ICSE.network.sendToServer(new PacketRequestInfo(results.getBlockPos()));
+                        
                     if (info.isValidBlock()) {
                         
                         for (InfoPlugin provider : ICSE.plugins)

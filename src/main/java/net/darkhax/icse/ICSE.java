@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.darkhax.icse.common.CommonProxy;
+import net.darkhax.icse.common.packet.PacketRequestInfo;
+import net.darkhax.icse.common.packet.PacketSendInfo;
 import net.darkhax.icse.lib.Constants;
 import net.darkhax.icse.plugins.InfoPlugin;
 import net.darkhax.icse.plugins.entity.PluginEntityItem;
@@ -14,6 +16,9 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.9,1.9.2]", dependencies = "after:Waila")
 public class ICSE {
@@ -24,10 +29,16 @@ public class ICSE {
     @Mod.Instance(Constants.MODID)
     public static ICSE instance;
     
+    public static SimpleNetworkWrapper network;
+    
     public static List<InfoPlugin> plugins = new ArrayList<InfoPlugin>();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
+        
+        network = NetworkRegistry.INSTANCE.newSimpleChannel("ICSE");
+        network.registerMessage(PacketRequestInfo.PacketHandler.class, PacketRequestInfo.class, 0, Side.SERVER);
+        network.registerMessage(PacketSendInfo.PacketHandler.class, PacketSendInfo.class, 1, Side.CLIENT);
         
         proxy.preInit();
         plugins.add(new PluginEntityItem());
