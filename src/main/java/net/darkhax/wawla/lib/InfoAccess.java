@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class InfoAccess {
@@ -35,6 +36,11 @@ public class InfoAccess {
     public Entity entity = null;
     
     // Block
+    /**
+     * Access to the raytrace.
+     */
+    public RayTraceResult result = null;
+    
     /**
      * The block being looked at.
      */
@@ -84,7 +90,7 @@ public class InfoAccess {
      * @param pos The position of the block.
      * @param side The side being looked at.
      */
-    public InfoAccess(World world, EntityPlayer player, IBlockState state, BlockPos pos, EnumFacing side, NBTTagCompound tag) {
+    public InfoAccess(RayTraceResult result, World world, EntityPlayer player, IBlockState state, BlockPos pos, EnumFacing side, NBTTagCompound tag) {
         
         this.world = world;
         this.player = player;
@@ -92,8 +98,9 @@ public class InfoAccess {
         this.block = state.getBlock();
         this.pos = pos;
         this.side = side;
-        this.stack = new ItemStack(state.getBlock(), state.getBlock().getMetaFromState(state));
+        this.stack = block.getPickBlock(state, result, world, pos, player);
         this.tag = tag;
+        this.result = result;
     }
     
     /**

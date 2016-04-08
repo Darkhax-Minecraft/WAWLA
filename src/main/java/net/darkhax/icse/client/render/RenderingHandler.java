@@ -42,11 +42,11 @@ public class RenderingHandler {
         if (mc.gameSettings.showDebugInfo)
             return;
             
-        Entity entity = getMouseOver(mc, event.getPartialTicks());
-        
         if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             
-            RayTraceResult results = mc.getRenderViewEntity().rayTrace(4.5d, event.getPartialTicks());
+            float distance = mc.playerController.getBlockReachDistance();
+            Entity entity = getMouseOver(mc, event.getPartialTicks());
+            RayTraceResult results = rayTrace(mc.getRenderViewEntity(), distance, event.getPartialTicks());
             
             if (results != null && mc.theWorld != null) {
                 
@@ -55,7 +55,7 @@ public class RenderingHandler {
                     
                     if (lastEntity != null && !lastEntity.equals(entity.getUniqueID()))
                         dataTag = new NBTTagCompound();
-                    
+                        
                     lastEntity = entity.getUniqueID();
                     DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
                     
@@ -93,7 +93,7 @@ public class RenderingHandler {
                 
                 else if (state != null && state.getBlock() != null) {
                     
-                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit, dataTag);
+                    DataAccess info = new DataAccess(results, mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit, dataTag);
                     
                     boolean requireSync = false;
                     for (InfoPlugin provider : ICSE.plugins)
@@ -134,6 +134,14 @@ public class RenderingHandler {
         
         lineCount++;
         return lineCount * 10;
+    }
+    
+    public RayTraceResult rayTrace (Entity entity, double distance, float partialTicks) {
+        
+        Vec3d vec3 = entity.getPositionEyes(partialTicks);
+        Vec3d vec31 = entity.getLook(partialTicks);
+        Vec3d vec32 = vec3.addVector(vec31.xCoord * distance, vec31.yCoord * distance, vec31.zCoord * distance);
+        return entity.worldObj.rayTraceBlocks(vec3, vec32, false);
     }
     
     // Modified from Vanilla to detect entities that are collidable
