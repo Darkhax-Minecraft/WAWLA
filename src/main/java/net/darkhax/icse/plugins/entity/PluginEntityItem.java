@@ -21,7 +21,7 @@ public class PluginEntityItem extends InfoPlugin {
             final ItemStack stack = ((EntityItem) data.entity).getEntityItem();
             
             if (stack != null && stack.getItem() != null) {
-               
+                
                 info.set(0, stack.getDisplayName());
                 stack.getItem().addInformation(stack, data.player, info, false);
             }
