@@ -2,6 +2,7 @@ package net.darkhax.icse.client.render;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -30,6 +31,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class RenderingHandler {
     
     public static NBTTagCompound dataTag = new NBTTagCompound();
+    private static UUID lastEntity;
     private static int lineCount;
     
     @SubscribeEvent
@@ -51,6 +53,10 @@ public class RenderingHandler {
                 IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
                 if (entity != null) {
                     
+                    if (lastEntity != null && !lastEntity.equals(entity.getUniqueID()))
+                        dataTag = new NBTTagCompound();
+                    
+                    lastEntity = entity.getUniqueID();
                     DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
                     
                     boolean requireSync = false;
