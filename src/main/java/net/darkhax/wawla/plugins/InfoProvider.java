@@ -5,6 +5,7 @@ import java.util.List;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.translation.I18n;
@@ -69,5 +70,12 @@ public class InfoProvider {
             return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "yes" : "true"));
             
         return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "no" : "false"));
+    }
+    
+    public static void writeStackToTag (ItemStack stack, String tagName, NBTTagCompound tag) {
+        
+        NBTTagCompound itemTag = new NBTTagCompound();
+        stack.writeToNBT(itemTag);
+        tag.setTag(tagName, itemTag);
     }
 }

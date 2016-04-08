@@ -19,6 +19,7 @@ import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
+import net.darkhax.wawla.plugins.vanilla.tiles.PluginFurnace;
 import net.darkhax.wawla.plugins.vanilla.tiles.PluginSkulls;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -63,6 +64,7 @@ public class Wawla {
         
         // Vanilla tiles
         tileProviders.add(new PluginSkulls());
+        tileProviders.add(new PluginFurnace());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();

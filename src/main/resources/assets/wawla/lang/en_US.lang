@@ -37,3 +37,9 @@ tooltip.wawla.generic.tamed=Tamed
 tooltip.wawla.generic.breedingtime=Breeding Cooldown
 tooltip.wawla.generic.growingage=Growing Cooldown
 tooltip.wawla.generic.breedingitem=Breedable
+
+Vanilla Tiles
+tooltip.wawla.vanilla.input=Input
+tooltip.wawla.vanilla.fuel=Fuel
+tooltip.wawla.vanilla.output=Output
+tooltip.wawla.vanilla.burntime=Burn Time
