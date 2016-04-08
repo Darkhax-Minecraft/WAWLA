@@ -7,7 +7,7 @@ import net.darkhax.icse.common.CommonProxy;
 import net.darkhax.icse.lib.Constants;
 import net.darkhax.icse.plugins.InfoPlugin;
 import net.darkhax.icse.plugins.entity.PluginHealth;
-import net.darkhax.icse.plugins.entity.PluginItemNames;
+import net.darkhax.icse.plugins.entity.PluginEntityItem;
 import net.darkhax.icse.plugins.tile.PluginMonsterEggFix;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -30,7 +30,7 @@ public class ICSE {
     public void preInit (FMLPreInitializationEvent event) {
         
         proxy.preInit();
-        plugins.add(new PluginItemNames());
+        plugins.add(new PluginEntityItem());
         plugins.add(new PluginMonsterEggFix());
         plugins.add(new PluginHealth());
     }
