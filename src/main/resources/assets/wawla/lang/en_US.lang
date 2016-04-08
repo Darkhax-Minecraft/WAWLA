@@ -33,3 +33,6 @@ tooltip.wawla.generic.tooltype=Tool
 tooltip.wawla.generic.armor=Armor
 tooltip.wawla.generic.sitting=Sitting
 tooltip.wawla.generic.tamed=Tamed
+tooltip.wawla.generic.breedingtime=Breeding Cooldown
+tooltip.wawla.generic.growingage=Growing Cooldown
+tooltip.wawla.generic.breedingitem=Breedable

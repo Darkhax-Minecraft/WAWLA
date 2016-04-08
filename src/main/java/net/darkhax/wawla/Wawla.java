@@ -15,6 +15,7 @@ import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
+import net.darkhax.wawla.plugins.vanilla.entities.PluginAnimal;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginArmorPoints;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginEquipment;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginTameable;
@@ -57,6 +58,7 @@ public class Wawla {
         entityProviders.add(new PluginEquipment());
         entityProviders.add(new PluginArmorPoints());
         entityProviders.add(new PluginTameable());
+        entityProviders.add(new PluginAnimal());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
