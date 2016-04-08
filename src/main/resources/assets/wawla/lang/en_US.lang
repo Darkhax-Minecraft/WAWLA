@@ -12,6 +12,13 @@ tooltip.wawla.chisel=Chisel
 tooltip.wawla.scoop=Scoop
 tooltip.wawla.crowbar=Crowbar
 tooltip.wawla.sword=Sword
+tooltip.wawla.mainhand=Main Hand
+tooltip.wawla.offhand=Off Hand
+tooltip.wawla.feet=Feet
+tooltip.wawla.legs=Legs
+tooltip.wawla.chest=Chest
+tooltip.wawla.head=Head
+tooltip.wawla.star=★
 
 #Generic Tiles
 tooltip.wawla.generic.progression=Progression
