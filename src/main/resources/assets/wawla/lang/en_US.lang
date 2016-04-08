@@ -19,6 +19,7 @@ tooltip.wawla.legs=Legs
 tooltip.wawla.chest=Chest
 tooltip.wawla.head=Head
 tooltip.wawla.star=★
+tooltip.wawla.name=Name
 
 #Generic Tiles
 tooltip.wawla.generic.progression=Progression

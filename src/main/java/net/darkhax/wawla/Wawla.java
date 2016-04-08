@@ -19,6 +19,7 @@ import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
+import net.darkhax.wawla.plugins.vanilla.tiles.PluginSkulls;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -59,6 +60,9 @@ public class Wawla {
         entityProviders.add(new PluginArmorPoints());
         entityProviders.add(new PluginTameable());
         entityProviders.add(new PluginAnimal());
+        
+        // Vanilla tiles
+        tileProviders.add(new PluginSkulls());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
