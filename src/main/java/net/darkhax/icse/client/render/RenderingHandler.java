@@ -41,11 +41,11 @@ public class RenderingHandler {
         
         if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             
-            RayTraceResult mop = mc.getRenderViewEntity().rayTrace(4.5d, event.getPartialTicks());
+            RayTraceResult results = mc.getRenderViewEntity().rayTrace(4.5d, event.getPartialTicks());
             
-            if (mop != null && mc.theWorld != null) {
+            if (results != null && mc.theWorld != null) {
                 
-                IBlockState state = mc.theWorld.getBlockState(mop.getBlockPos());
+                IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
                 if (entity != null) {
                     
                     DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity);
@@ -76,7 +76,7 @@ public class RenderingHandler {
                 
                 else if (state != null && state.getBlock() != null) {
                     
-                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, state, mop.getBlockPos(), mop.sideHit);
+                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit);
                     
                     if (info.isValidBlock()) {
                         
