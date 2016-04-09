@@ -47,3 +47,8 @@ tooltip.wawla.vanilla.burntime=Burn Time
 #Vanilla Entities
 info.wawla.vanilla.jump=Jump Strength
 info.wawla.vanilla.speed=Speed
+tooltip.wawla.vanilla.career=Career
+
+#Villager Types
+villager.wawla.zombie=Zombie
+villager.wawla.witch=Witch
