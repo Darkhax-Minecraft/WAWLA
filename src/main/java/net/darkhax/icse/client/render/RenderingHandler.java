@@ -83,7 +83,7 @@ public class RenderingHandler {
                             for (InfoPlugin provider : ICSE.plugins)
                                 provider.addEntityInfo(lines, info);
                                 
-                            lines.add(ChatFormatting.BLUE + Utilities.getModName(info.entity));
+                            lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.entity));
                             
                             for (String line : lines)
                                 mc.fontRendererObj.drawStringWithShadow(line, 10, getLineOffset(), 0xFFFFFF);
@@ -119,7 +119,7 @@ public class RenderingHandler {
                             for (InfoPlugin provider : ICSE.plugins)
                                 provider.addTileInfo(lines, info);
                                 
-                            lines.add(ChatFormatting.BLUE + Utilities.getModName(info.stack));
+                            lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.stack));
                             
                             for (String line : lines)
                                 mc.fontRendererObj.drawStringWithShadow(line, 10, getLineOffset(), 0xFFFFFF);
