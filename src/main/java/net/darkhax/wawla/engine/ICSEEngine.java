@@ -27,7 +27,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
         
         InfoAccess info = new InfoAccess(data.world, data.player, data.entity, data.tag);
         
-        if (info.isValidBlock())
+        if (info.entity != null)
             for (InfoProvider provider : Wawla.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideTile(info);
