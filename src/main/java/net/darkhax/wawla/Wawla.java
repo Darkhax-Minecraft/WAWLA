@@ -7,6 +7,7 @@ import net.darkhax.icse.ICSE;
 import net.darkhax.wawla.common.CommonProxy;
 import net.darkhax.wawla.engine.ICSEEngine;
 import net.darkhax.wawla.engine.InfoEngine;
+import net.darkhax.wawla.engine.WailaEngine;
 import net.darkhax.wawla.lib.Constants;
 import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.darkhax.wawla.plugins.InfoProvider;
@@ -48,7 +49,12 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        if (Loader.isModLoaded("ICSE")) {
+        if (Loader.isModLoaded("Waila")) {
+            
+            engine = new WailaEngine();
+        }
+        
+        else if (Loader.isModLoaded("ICSE")) {
             
             engine = new ICSEEngine();
             ICSE.plugins.add((ICSEEngine) engine);
