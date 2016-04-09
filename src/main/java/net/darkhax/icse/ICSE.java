@@ -11,10 +11,10 @@ import net.darkhax.icse.plugins.InfoPlugin;
 import net.darkhax.icse.plugins.entity.PluginEntityItem;
 import net.darkhax.icse.plugins.entity.PluginHealth;
 import net.darkhax.icse.plugins.tile.PluginMonsterEggFix;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -30,12 +30,14 @@ public class ICSE {
     public static ICSE instance;
     
     public static SimpleNetworkWrapper network;
-    
     public static List<InfoPlugin> plugins = new ArrayList<InfoPlugin>();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
+        if (Loader.isModLoaded("Waila"))
+            return;
+            
         network = NetworkRegistry.INSTANCE.newSimpleChannel("ICSE");
         network.registerMessage(PacketRequestInfo.PacketHandler.class, PacketRequestInfo.class, 0, Side.SERVER);
         network.registerMessage(PacketSendInfo.PacketHandler.class, PacketSendInfo.class, 1, Side.CLIENT);
@@ -44,10 +46,5 @@ public class ICSE {
         plugins.add(new PluginEntityItem());
         plugins.add(new PluginMonsterEggFix());
         plugins.add(new PluginHealth());
-    }
-    
-    @EventHandler
-    public void init (FMLInitializationEvent event) {
-    
     }
 }
