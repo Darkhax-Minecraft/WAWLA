@@ -48,6 +48,7 @@ tooltip.wawla.vanilla.burntime=Burn Time
 info.wawla.vanilla.jump=Jump Strength
 info.wawla.vanilla.speed=Speed
 tooltip.wawla.vanilla.career=Career
+tooltip.wawla.vanilla.fuse=Fuse
 
 #Villager Types
 villager.wawla.zombie=Zombie

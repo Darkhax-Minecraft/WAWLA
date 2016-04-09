@@ -21,6 +21,7 @@ import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginHorse;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginItemFrame;
+import net.darkhax.wawla.plugins.vanilla.entities.PluginPrimedTNT;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginVillagerTypes;
 import net.darkhax.wawla.plugins.vanilla.tiles.PluginFurnace;
 import net.darkhax.wawla.plugins.vanilla.tiles.PluginSkulls;
@@ -73,6 +74,7 @@ public class Wawla {
         entityProviders.add(new PluginHorse());
         entityProviders.add(new PluginVillagerTypes());
         entityProviders.add(new PluginItemFrame());
+        entityProviders.add(new PluginPrimedTNT());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
