@@ -19,6 +19,7 @@ import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
+import net.darkhax.wawla.plugins.vanilla.entities.PluginEXPOrb;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginHorse;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginItemFrame;
 import net.darkhax.wawla.plugins.vanilla.entities.PluginPrimedTNT;
@@ -75,6 +76,7 @@ public class Wawla {
         entityProviders.add(new PluginVillagerTypes());
         entityProviders.add(new PluginItemFrame());
         entityProviders.add(new PluginPrimedTNT());
+        entityProviders.add(new PluginEXPOrb());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
