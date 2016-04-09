@@ -32,8 +32,8 @@ public class PluginHorse extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        jump = config.getBoolean("Horse_Jump", "generic_entities", true, "When enabled, shows how many times higher the horse can jump, when compared to the player.");
-        speed = config.getBoolean("Horse_Speed", "generic_entities", true, "When enabled, shows how many times faster the horse can run, when compared to the player's normal walking speed.");
+        jump = config.getBoolean("Horse_Jump", "vanilla_entities", true, "When enabled, shows how many times higher the horse can jump, when compared to the player.");
+        speed = config.getBoolean("Horse_Speed", "vanilla_entities", true, "When enabled, shows how many times faster the horse can run, when compared to the player's normal walking speed.");
     }
     
     public String getPlayerRelativeInfo (double horseStat, double playerStat) {
