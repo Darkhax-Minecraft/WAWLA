@@ -1,5 +1,7 @@
 package net.darkhax.wawla.plugins;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
@@ -77,5 +79,17 @@ public class InfoProvider {
         NBTTagCompound itemTag = new NBTTagCompound();
         stack.writeToNBT(itemTag);
         tag.setTag(tagName, itemTag);
+    }
+    
+    public static double round (double value, int places) {
+        
+        if (value >= 0 && places > 0) {
+            
+            BigDecimal bd = new BigDecimal(value);
+            bd = bd.setScale(places, RoundingMode.HALF_UP);
+            return bd.doubleValue();
+        }
+        
+        return value;
     }
 }

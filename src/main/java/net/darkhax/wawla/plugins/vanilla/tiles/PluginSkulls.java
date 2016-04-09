@@ -33,6 +33,6 @@ public class PluginSkulls extends InfoProvider {
     @Override
     public void syncConfig (Configuration config) {
         
-        enabled = config.getBoolean("Skull_Names", "vanills_tiles", true, "If this is enabled, the hud will display the owner of skulls.");
+        enabled = config.getBoolean("Skull_Names", "vanilla_tiles", true, "If this is enabled, the hud will display the owner of skulls.");
     }
 }
