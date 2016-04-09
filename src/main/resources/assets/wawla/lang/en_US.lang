@@ -52,3 +52,6 @@ tooltip.wawla.vanilla.career=Career
 #Villager Types
 villager.wawla.zombie=Zombie
 villager.wawla.witch=Witch
+
+#Vanilla Fixes
+entity.ItemFrame.name=Item Frame
