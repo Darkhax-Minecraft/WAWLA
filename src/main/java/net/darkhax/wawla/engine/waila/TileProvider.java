@@ -28,7 +28,7 @@ public class TileProvider implements IWailaDataProvider {
         InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
         if (info.isValidBlock())
-            for (InfoProvider provider : Wawla.tileProviders)
+            for (final InfoProvider provider : Wawla.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
                     
@@ -45,9 +45,9 @@ public class TileProvider implements IWailaDataProvider {
     public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         
         System.out.println("Body Fired");
-        InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
+        final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
-        for (InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(currenttip, info);
             
         return currenttip;
@@ -63,7 +63,7 @@ public class TileProvider implements IWailaDataProvider {
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
         
         System.out.println("NBT Sync Fired");
-        for (InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : Wawla.tileProviders)
             if (provider.requireTileSync(world, te))
                 provider.writeTileNBT(world, te, tag);
                 
@@ -72,7 +72,7 @@ public class TileProvider implements IWailaDataProvider {
     
     public static void register (IWailaRegistrar register) {
         
-        TileProvider provider = new TileProvider();
+        final TileProvider provider = new TileProvider();
         register.registerStackProvider(provider, Block.class);
         register.registerBodyProvider(provider, Block.class);
         register.registerNBTProvider(provider, Block.class);

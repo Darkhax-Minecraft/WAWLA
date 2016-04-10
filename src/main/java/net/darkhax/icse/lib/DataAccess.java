@@ -99,7 +99,7 @@ public class DataAccess {
         this.pos = pos;
         this.side = side;
         this.result = result;
-        this.stack = block.getPickBlock(state, result, world, pos, player);
+        this.stack = this.block.getPickBlock(state, result, world, pos, player);
         this.tag = tag;
         
     }
@@ -110,7 +110,7 @@ public class DataAccess {
             
             this.stack = stack;
             this.block = Block.getBlockFromItem(stack.getItem());
-            this.state = block.getStateFromMeta(stack.getMetadata());
+            this.state = this.block.getStateFromMeta(stack.getMetadata());
         }
     }
     
@@ -121,14 +121,14 @@ public class DataAccess {
      */
     public boolean isValidBlock () {
         
-        if (pos == null)
+        if (this.pos == null)
             System.out.println("bull");
             
-        return (block != null && state != null && stack != null && stack.getItem() != null && side != null && pos != null);
+        return this.block != null && this.state != null && this.stack != null && this.stack.getItem() != null && this.side != null && this.pos != null;
     }
     
     public boolean isValidEntity () {
         
-        return (world != null && player != null && entity != null);
+        return this.world != null && this.player != null && this.entity != null;
     }
 }

@@ -49,11 +49,8 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        if (Loader.isModLoaded("Waila")) {
-            
+        if (Loader.isModLoaded("Waila"))
             engine = new WailaEngine();
-        }
-        
         else if (Loader.isModLoaded("ICSE")) {
             
             engine = new ICSEEngine();

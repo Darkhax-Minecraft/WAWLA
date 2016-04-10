@@ -69,14 +69,14 @@ public class InfoProvider {
     public static String getBooleanForDisplay (boolean bool) {
         
         if (bool)
-            return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "yes" : "true"));
+            return I18n.translateToLocal("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "yes" : "true"));
             
-        return I18n.translateToLocal("tooltip.wawla." + ((WawlaConfiguration.useSymbols) ? "no" : "false"));
+        return I18n.translateToLocal("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "no" : "false"));
     }
     
     public static void writeStackToTag (ItemStack stack, String tagName, NBTTagCompound tag) {
         
-        NBTTagCompound itemTag = new NBTTagCompound();
+        final NBTTagCompound itemTag = new NBTTagCompound();
         stack.writeToNBT(itemTag);
         tag.setTag(tagName, itemTag);
     }

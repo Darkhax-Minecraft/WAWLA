@@ -98,7 +98,7 @@ public class InfoAccess {
         this.block = state.getBlock();
         this.pos = pos;
         this.side = side;
-        this.stack = block.getPickBlock(state, result, world, pos, player);
+        this.stack = this.block.getPickBlock(state, result, world, pos, player);
         this.tag = tag;
         this.result = result;
     }
@@ -110,6 +110,6 @@ public class InfoAccess {
      */
     public boolean isValidBlock () {
         
-        return (block != null && state != null && stack != null && stack.getItem() != null && side != null && pos != null);
+        return this.block != null && this.state != null && this.stack != null && this.stack.getItem() != null && this.side != null && this.pos != null;
     }
 }

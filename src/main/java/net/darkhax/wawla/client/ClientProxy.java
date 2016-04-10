@@ -11,6 +11,7 @@ public class ClientProxy extends CommonProxy {
     
     private static final String PREFIX = "[Wawla] ";
     
+    @Override
     public void preInit () {
         
         MinecraftForge.EVENT_BUS.register(this);
@@ -19,7 +20,7 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public void onOverlayRendered (RenderGameOverlayEvent.Text event) {
         
-        Minecraft mc = Minecraft.getMinecraft();
+        final Minecraft mc = Minecraft.getMinecraft();
         
         // Shows the current debug engine in the debug menu.
         if (mc.gameSettings.showDebugInfo)

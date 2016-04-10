@@ -12,7 +12,7 @@ public class PluginMonsterEggFix extends InfoPlugin {
         
         if (data.block == Blocks.monster_egg) {
             
-            int meta = data.block.getMetaFromState(data.state);
+            final int meta = data.block.getMetaFromState(data.state);
             
             switch (meta) {
                 
@@ -48,6 +48,6 @@ public class PluginMonsterEggFix extends InfoPlugin {
     @Override
     public boolean requireTileOverride (DataAccess data) {
         
-        return (data.block == Blocks.monster_egg);
+        return data.block == Blocks.monster_egg;
     }
 }

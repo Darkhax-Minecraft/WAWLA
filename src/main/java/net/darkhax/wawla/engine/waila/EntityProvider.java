@@ -23,7 +23,7 @@ public class EntityProvider implements IWailaEntityProvider {
         InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
         
         if (info.entity != null)
-            for (InfoProvider provider : Wawla.entityProviders)
+            for (final InfoProvider provider : Wawla.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideEntity(info);
                     
@@ -39,9 +39,9 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public List<String> getWailaBody (Entity entity, List<String> currenttip, IWailaEntityAccessor accessor, IWailaConfigHandler config) {
         
-        InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
+        final InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
         
-        for (InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : Wawla.entityProviders)
             provider.addEntityInfo(currenttip, info);
             
         return currenttip;
@@ -56,7 +56,7 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, Entity ent, NBTTagCompound tag, World world) {
         
-        for (InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : Wawla.entityProviders)
             if (provider.requireEntitySync(world, ent))
                 provider.writeEntityNBT(world, ent, tag);
                 
@@ -65,7 +65,7 @@ public class EntityProvider implements IWailaEntityProvider {
     
     public static void register (IWailaRegistrar register) {
         
-        EntityProvider provider = new EntityProvider();
+        final EntityProvider provider = new EntityProvider();
         register.registerOverrideEntityProvider(provider, Entity.class);
         register.registerBodyProvider(provider, Entity.class);
         register.registerNBTProvider(provider, EntitySkeleton.class);

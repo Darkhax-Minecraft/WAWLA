@@ -44,13 +44,13 @@ public class RenderingHandler {
             
         if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             
-            float distance = mc.playerController.getBlockReachDistance();
-            Entity entity = getMouseOver(mc, event.getPartialTicks());
-            RayTraceResult results = rayTrace(mc.getRenderViewEntity(), distance, event.getPartialTicks());
+            final float distance = mc.playerController.getBlockReachDistance();
+            final Entity entity = this.getMouseOver(mc, event.getPartialTicks());
+            final RayTraceResult results = this.rayTrace(mc.getRenderViewEntity(), distance, event.getPartialTicks());
             
             if (results != null && mc.theWorld != null) {
                 
-                IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
+                final IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
                 if (entity != null) {
                     
                     if (lastEntity != null && !lastEntity.equals(entity.getUniqueID()))
@@ -60,7 +60,7 @@ public class RenderingHandler {
                     DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
                     
                     boolean requireSync = false;
-                    for (InfoPlugin provider : ICSE.plugins)
+                    for (final InfoPlugin provider : ICSE.plugins)
                         if (provider.requireEntitySync(mc.theWorld, entity))
                             requireSync = true;
                             
@@ -69,7 +69,7 @@ public class RenderingHandler {
                         
                     if (info.isValidEntity()) {
                         
-                        for (InfoPlugin provider : ICSE.plugins)
+                        for (final InfoPlugin provider : ICSE.plugins)
                             if (provider.requireEntityOverride(info))
                                 info = provider.overrideEntity(info);
                                 
@@ -77,16 +77,16 @@ public class RenderingHandler {
                             
                             lineCount = 0;
                             
-                            List<String> lines = new ArrayList<String>();
+                            final List<String> lines = new ArrayList<String>();
                             lines.add(info.entity.getDisplayName().getFormattedText());
                             
-                            for (InfoPlugin provider : ICSE.plugins)
+                            for (final InfoPlugin provider : ICSE.plugins)
                                 provider.addEntityInfo(lines, info);
                                 
                             lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.entity));
                             
-                            for (String line : lines)
-                                mc.fontRendererObj.drawStringWithShadow(line, 10, getLineOffset(), 0xFFFFFF);
+                            for (final String line : lines)
+                                mc.fontRendererObj.drawStringWithShadow(line, 10, this.getLineOffset(), 0xFFFFFF);
                         }
                     }
                 }
@@ -96,7 +96,7 @@ public class RenderingHandler {
                     DataAccess info = new DataAccess(results, mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit, dataTag);
                     
                     boolean requireSync = false;
-                    for (InfoPlugin provider : ICSE.plugins)
+                    for (final InfoPlugin provider : ICSE.plugins)
                         if (provider.requireTileSync(mc.theWorld, mc.theWorld.getTileEntity(info.pos)))
                             requireSync = true;
                             
@@ -105,7 +105,7 @@ public class RenderingHandler {
                         
                     if (info.isValidBlock()) {
                         
-                        for (InfoPlugin provider : ICSE.plugins)
+                        for (final InfoPlugin provider : ICSE.plugins)
                             if (provider.requireTileOverride(info))
                                 info = provider.overrideTile(info);
                                 
@@ -113,16 +113,16 @@ public class RenderingHandler {
                             
                             lineCount = 0;
                             
-                            List<String> lines = new ArrayList<String>();
+                            final List<String> lines = new ArrayList<String>();
                             lines.add(info.stack.getDisplayName());
                             
-                            for (InfoPlugin provider : ICSE.plugins)
+                            for (final InfoPlugin provider : ICSE.plugins)
                                 provider.addTileInfo(lines, info);
                                 
                             lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.stack));
                             
-                            for (String line : lines)
-                                mc.fontRendererObj.drawStringWithShadow(line, 10, getLineOffset(), 0xFFFFFF);
+                            for (final String line : lines)
+                                mc.fontRendererObj.drawStringWithShadow(line, 10, this.getLineOffset(), 0xFFFFFF);
                         }
                     }
                 }
@@ -138,9 +138,9 @@ public class RenderingHandler {
     
     public RayTraceResult rayTrace (Entity entity, double distance, float partialTicks) {
         
-        Vec3d vec3 = entity.getPositionEyes(partialTicks);
-        Vec3d vec31 = entity.getLook(partialTicks);
-        Vec3d vec32 = vec3.addVector(vec31.xCoord * distance, vec31.yCoord * distance, vec31.zCoord * distance);
+        final Vec3d vec3 = entity.getPositionEyes(partialTicks);
+        final Vec3d vec31 = entity.getLook(partialTicks);
+        final Vec3d vec32 = vec3.addVector(vec31.xCoord * distance, vec31.yCoord * distance, vec31.zCoord * distance);
         return entity.worldObj.rayTraceBlocks(vec3, vec32, false);
     }
     
@@ -148,16 +148,16 @@ public class RenderingHandler {
     public Entity getMouseOver (Minecraft mc, float partialTicks) {
         
         Entity pointedEntity = null;
-        Entity entity = mc.getRenderViewEntity();
+        final Entity entity = mc.getRenderViewEntity();
         
         if (entity != null && mc.theWorld != null) {
             
             mc.mcProfiler.startSection("pick");
             mc.pointedEntity = null;
-            double d0 = (double) mc.playerController.getBlockReachDistance();
+            double d0 = mc.playerController.getBlockReachDistance();
             mc.objectMouseOver = entity.rayTrace(d0, partialTicks);
             double d1 = d0;
-            Vec3d vec3d = entity.getPositionEyes(partialTicks);
+            final Vec3d vec3d = entity.getPositionEyes(partialTicks);
             boolean flag = false;
             
             if (mc.playerController.extendedReach()) {
@@ -172,14 +172,15 @@ public class RenderingHandler {
             if (mc.objectMouseOver != null)
                 d1 = mc.objectMouseOver.hitVec.distanceTo(vec3d);
                 
-            Vec3d vec3d1 = entity.getLook(partialTicks);
-            Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0);
+            final Vec3d vec3d1 = entity.getLook(partialTicks);
+            final Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0);
             Vec3d vec3d3 = null;
             
-            float f = 1.0F;
+            final float f = 1.0F;
             
-            List<Entity> list = mc.theWorld.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand((double) f, (double) f, (double) f), Predicates.and(EntitySelectors.NOT_SPECTATING, new Predicate<Entity>() {
+            final List<Entity> list = mc.theWorld.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand(f, f, f), Predicates.and(EntitySelectors.NOT_SPECTATING, new Predicate<Entity>() {
                 
+                @Override
                 public boolean apply (Entity entity) {
                     
                     return entity != null;
@@ -190,9 +191,9 @@ public class RenderingHandler {
             
             for (int j = 0; j < list.size(); ++j) {
                 
-                Entity entity1 = (Entity) list.get(j);
-                AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz((double) entity1.getCollisionBorderSize());
-                RayTraceResult raytraceresult = axisalignedbb.calculateIntercept(vec3d, vec3d2);
+                final Entity entity1 = list.get(j);
+                final AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz(entity1.getCollisionBorderSize());
+                final RayTraceResult raytraceresult = axisalignedbb.calculateIntercept(vec3d, vec3d2);
                 
                 if (axisalignedbb.isVecInside(vec3d)) {
                     
@@ -206,10 +207,9 @@ public class RenderingHandler {
                 
                 else if (raytraceresult != null) {
                     
-                    double d3 = vec3d.distanceTo(raytraceresult.hitVec);
+                    final double d3 = vec3d.distanceTo(raytraceresult.hitVec);
                     
-                    if (d3 < d2 || d2 == 0.0D) {
-                        
+                    if (d3 < d2 || d2 == 0.0D)
                         if (entity1.getLowestRidingEntity() == entity.getLowestRidingEntity() && !entity.canRiderInteract()) {
                             
                             if (d2 == 0.0D) {
@@ -225,7 +225,6 @@ public class RenderingHandler {
                             vec3d3 = raytraceresult.hitVec;
                             d2 = d3;
                         }
-                    }
                 }
             }
             

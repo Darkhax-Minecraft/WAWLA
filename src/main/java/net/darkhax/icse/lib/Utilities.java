@@ -17,10 +17,10 @@ public class Utilities {
     public static String getModName (ItemStack stack) {
         
         @SuppressWarnings("deprecation")
-        String itemID = GameData.getItemRegistry().getNameForObject(stack.getItem()).toString();
-        String modID = itemID.substring(0, itemID.indexOf(':'));
-        ModContainer mod = mods.get(modID);
-        return (mod != null) ? mod.getName() : (modID.equalsIgnoreCase("minecraft") ? "Minecraft" : "Unknown");
+        final String itemID = GameData.getItemRegistry().getNameForObject(stack.getItem()).toString();
+        final String modID = itemID.substring(0, itemID.indexOf(':'));
+        final ModContainer mod = mods.get(modID);
+        return mod != null ? mod.getName() : modID.equalsIgnoreCase("minecraft") ? "Minecraft" : "Unknown";
     }
     
     public static String getModName (Entity entity) {
@@ -28,11 +28,11 @@ public class Utilities {
         if (entity == null)
             return "Unknown";
             
-        EntityRegistration reg = EntityRegistry.instance().lookupModSpawn(entity.getClass(), false);
+        final EntityRegistration reg = EntityRegistry.instance().lookupModSpawn(entity.getClass(), false);
         
         if (reg != null) {
             
-            ModContainer mod = reg.getContainer();
+            final ModContainer mod = reg.getContainer();
             
             if (mod != null)
                 return mod.getName();
@@ -47,8 +47,8 @@ public class Utilities {
         
         mods = new HashMap<String, ModContainer>();
         
-        Loader loader = Loader.instance();
-        for (String key : loader.getIndexedModList().keySet())
+        final Loader loader = Loader.instance();
+        for (final String key : loader.getIndexedModList().keySet())
             mods.put(key, loader.getIndexedModList().get(key));
     }
 }

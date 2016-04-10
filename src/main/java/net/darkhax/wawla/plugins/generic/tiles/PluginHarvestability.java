@@ -35,13 +35,13 @@ public class PluginHarvestability extends InfoProvider {
             return;
             
         final ItemStack heldItem = data.player.getHeldItemMainhand();
-        final String toolType = getEffectiveTool(data.world, data.state, data.pos);
+        final String toolType = this.getEffectiveTool(data.world, data.state, data.pos);
         final int blockLevel = data.block.getHarvestLevel(data.state);
-        final int itemLevel = (heldItem != null) ? heldItem.getItem().getHarvestLevel(heldItem, toolType) : 0;
-        final boolean isValidBlock = ((oresOnly && isOre(new ItemStack(data.block)) || !oresOnly));
+        final int itemLevel = heldItem != null ? heldItem.getItem().getHarvestLevel(heldItem, toolType) : 0;
+        final boolean isValidBlock = oresOnly && this.isOre(new ItemStack(data.block)) || !oresOnly;
         
         // Shows harvest information
-        if (isValidBlock && heldItem != null && (heldItem.getItem().getToolClasses(heldItem).contains(toolType))) {
+        if (isValidBlock && heldItem != null && heldItem.getItem().getToolClasses(heldItem).contains(toolType)) {
             
             // When the block is harvestable.
             if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0))
@@ -92,7 +92,7 @@ public class PluginHarvestability extends InfoProvider {
         if (Block.getBlockFromItem(stack.getItem()) instanceof BlockOre)
             return true;
             
-        for (int oreID : OreDictionary.getOreIDs(stack))
+        for (final int oreID : OreDictionary.getOreIDs(stack))
             if (OreDictionary.getOreName(oreID).startsWith("ore"))
                 return true;
                 
@@ -117,11 +117,10 @@ public class PluginHarvestability extends InfoProvider {
         
         if (tool == null || tool.isEmpty()) {
             
-            float blockHardness = state.getBlock().getBlockHardness(state, world, pos);
+            final float blockHardness = state.getBlock().getBlockHardness(state, world, pos);
             
-            if (blockHardness > 0f) {
-                
-                for (Map.Entry<String, ItemStack> entry : overrides.entrySet()) {
+            if (blockHardness > 0f)
+                for (final Map.Entry<String, ItemStack> entry : overrides.entrySet()) {
                     
                     final ItemStack stack = entry.getValue();
                     
@@ -131,7 +130,6 @@ public class PluginHarvestability extends InfoProvider {
                         break;
                     }
                 }
-            }
         }
         
         // TODO add sword hook

@@ -18,24 +18,24 @@ public class WawlaConfiguration {
         
         config = new Configuration(configFile);
         MinecraftForge.EVENT_BUS.register(this);
-        syncConfigData();
+        this.syncConfigData();
     }
     
     @SubscribeEvent
     public void onConfigChange (ConfigChangedEvent.OnConfigChangedEvent event) {
         
         if (event.getModID().equals(Constants.MODID))
-            syncConfigData();
+            this.syncConfigData();
     }
     
     private void syncConfigData () {
         
         useSymbols = config.getBoolean("Symbols", "core_settings", true, "Enables the use of symbols in place of some words. This will make things like true display as a check mark.");
         
-        for (InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : Wawla.tileProviders)
             provider.syncConfig(config);
             
-        for (InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : Wawla.entityProviders)
             provider.syncConfig(config);
             
         config.save();

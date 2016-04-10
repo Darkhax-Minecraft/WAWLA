@@ -13,10 +13,10 @@ public abstract class AbstractPacket<M extends AbstractPacket> implements IMessa
     public IMessage onMessage (M message, MessageContext ctx) {
         
         if (ctx.side.isClient())
-            handleClientMessage(message);
+            this.handleClientMessage(message);
             
         else
-            handleServerMessage(message, ctx.getServerHandler().playerEntity);
+            this.handleServerMessage(message, ctx.getServerHandler().playerEntity);
             
         return null;
     }

@@ -28,7 +28,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
         InfoAccess info = new InfoAccess(data.world, data.player, data.entity, data.tag);
         
         if (info.entity != null)
-            for (InfoProvider provider : Wawla.entityProviders)
+            for (final InfoProvider provider : Wawla.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideTile(info);
                     
@@ -41,7 +41,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
         InfoAccess info = new InfoAccess(data.result, data.world, data.player, data.state, data.pos, data.side, data.tag);
         
         if (info.isValidBlock())
-            for (InfoProvider provider : Wawla.tileProviders)
+            for (final InfoProvider provider : Wawla.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
                     
@@ -51,25 +51,25 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public void addEntityInfo (List<String> info, DataAccess data) {
         
-        InfoAccess infoAccess = new InfoAccess(data.world, data.player, data.entity, data.tag);
+        final InfoAccess infoAccess = new InfoAccess(data.world, data.player, data.entity, data.tag);
         
-        for (InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : Wawla.entityProviders)
             provider.addEntityInfo(info, infoAccess);
     }
     
     @Override
     public void addTileInfo (List<String> info, DataAccess data) {
         
-        InfoAccess infoAccess = new InfoAccess(data.result, data.world, data.player, data.state, data.pos, data.side, data.tag);
+        final InfoAccess infoAccess = new InfoAccess(data.result, data.world, data.player, data.state, data.pos, data.side, data.tag);
         
-        for (InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(info, infoAccess);
     }
     
     @Override
     public void writeEntityNBT (World world, Entity entity, NBTTagCompound tag) {
         
-        for (InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : Wawla.entityProviders)
             if (provider.requireEntitySync(world, entity))
                 provider.writeEntityNBT(world, entity, tag);
     }
@@ -77,7 +77,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public void writeTileNBT (World world, TileEntity entity, NBTTagCompound tag) {
         
-        for (InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : Wawla.tileProviders)
             if (provider.requireTileSync(world, entity))
                 provider.writeTileNBT(world, entity, tag);
     }
@@ -97,7 +97,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public boolean requireEntitySync (World world, Entity entity) {
         
-        for (InfoProvider plugin : Wawla.entityProviders)
+        for (final InfoProvider plugin : Wawla.entityProviders)
             if (plugin.requireEntitySync(world, entity))
                 return true;
                 
@@ -107,7 +107,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public boolean requireTileSync (World world, TileEntity tile) {
         
-        for (InfoProvider plugin : Wawla.tileProviders)
+        for (final InfoProvider plugin : Wawla.tileProviders)
             if (plugin.requireTileSync(world, tile))
                 return true;
                 

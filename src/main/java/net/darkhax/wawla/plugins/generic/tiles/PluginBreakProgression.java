@@ -17,7 +17,7 @@ public class PluginBreakProgression extends InfoProvider {
         
         if (enabled) {
             
-            double progress = Minecraft.getMinecraft().playerController.curBlockDamageMP;
+            final double progress = Minecraft.getMinecraft().playerController.curBlockDamageMP;
             
             if (progress > 0.0d)
                 info.add(I18n.translateToLocal("tooltip.wawla.generic.progression") + ": " + (int) (progress * 100) + "%");

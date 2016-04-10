@@ -15,7 +15,7 @@ public class PluginBlastResistance extends InfoProvider {
     public void addTileInfo (List<String> info, InfoAccess data) {
         
         if (enabled)
-            info.add(I18n.translateToLocal("tooltip.wawla.generic.blastresist") + ": " + data.block.blockResistance / 5f);
+            info.add(I18n.translateToLocal("tooltip.wawla.generic.blastresist") + ": " + 5f);
     }
     
     @Override

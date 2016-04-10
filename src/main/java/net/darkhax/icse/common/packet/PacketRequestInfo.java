@@ -41,27 +41,27 @@ public class PacketRequestInfo implements IMessage {
         final boolean isTileRequest = buf.readBoolean();
         
         if (isTileRequest)
-            pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
+            this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
             
         else
-            entityID = UUID.fromString(ByteBufUtils.readUTF8String(buf));
+            this.entityID = UUID.fromString(ByteBufUtils.readUTF8String(buf));
     }
     
     @Override
     public void toBytes (ByteBuf buf) {
         
-        final boolean isTileRequest = pos != null;
+        final boolean isTileRequest = this.pos != null;
         buf.writeBoolean(isTileRequest);
         
         if (isTileRequest) {
             
-            buf.writeInt(pos.getX());
-            buf.writeInt(pos.getY());
-            buf.writeInt(pos.getZ());
+            buf.writeInt(this.pos.getX());
+            buf.writeInt(this.pos.getY());
+            buf.writeInt(this.pos.getZ());
         }
         
         else
-            ByteBufUtils.writeUTF8String(buf, entityID.toString());
+            ByteBufUtils.writeUTF8String(buf, this.entityID.toString());
     }
     
     public static class PacketHandler implements IMessageHandler<PacketRequestInfo, IMessage> {
@@ -70,10 +70,10 @@ public class PacketRequestInfo implements IMessage {
         public IMessage onMessage (PacketRequestInfo packet, MessageContext ctx) {
             
             if (packet.pos != null)
-                syncTile(ctx.getServerHandler().playerEntity, packet.pos);
+                this.syncTile(ctx.getServerHandler().playerEntity, packet.pos);
                 
             else if (packet.entityID != null)
-                syncEntity(ctx.getServerHandler().playerEntity, packet.entityID);
+                this.syncEntity(ctx.getServerHandler().playerEntity, packet.entityID);
                 
             return null;
         }
@@ -85,7 +85,7 @@ public class PacketRequestInfo implements IMessage {
             final NBTTagCompound tag = new NBTTagCompound();
             
             if (tile != null)
-                for (InfoPlugin plugin : ICSE.plugins)
+                for (final InfoPlugin plugin : ICSE.plugins)
                     if (plugin.requireTileSync(world, tile))
                         plugin.writeTileNBT(world, tile, tag);
                         
@@ -97,14 +97,14 @@ public class PacketRequestInfo implements IMessage {
             final World world = player.getEntityWorld();
             
             Entity entity = null;
-            for (Entity loadedEntity : world.loadedEntityList)
+            for (final Entity loadedEntity : world.loadedEntityList)
                 if (loadedEntity.getUniqueID().equals(entityID))
                     entity = loadedEntity;
                     
             final NBTTagCompound tag = new NBTTagCompound();
             
             if (entity != null)
-                for (InfoPlugin plugin : ICSE.plugins)
+                for (final InfoPlugin plugin : ICSE.plugins)
                     if (plugin.requireEntitySync(world, entity))
                         plugin.writeEntityNBT(world, entity, tag);
                         

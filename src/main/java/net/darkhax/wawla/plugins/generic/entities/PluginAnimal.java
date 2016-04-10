@@ -48,7 +48,7 @@ public class PluginAnimal extends InfoProvider {
         
         if (enabled && entity instanceof EntityAnimal) {
             
-            EntityAnimal animal = (EntityAnimal) entity;
+            final EntityAnimal animal = (EntityAnimal) entity;
             
             if (showBreedingCooldown || showGrowingCooldown)
                 tag.setInteger("AnimalGrowingAge", animal.getGrowingAge());

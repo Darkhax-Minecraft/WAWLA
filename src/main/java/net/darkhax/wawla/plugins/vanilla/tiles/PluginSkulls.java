@@ -22,7 +22,7 @@ public class PluginSkulls extends InfoProvider {
             
             if (tile instanceof TileEntitySkull) {
                 
-                TileEntitySkull skull = (TileEntitySkull) tile;
+                final TileEntitySkull skull = (TileEntitySkull) tile;
                 
                 if (skull.getPlayerProfile() != null && skull.getPlayerProfile().getName() != null)
                     info.add(I18n.translateToLocal("tooltip.wawla.name") + ": " + skull.getPlayerProfile().getName());

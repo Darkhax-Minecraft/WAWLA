@@ -30,7 +30,7 @@ public class PacketSendInfo implements IMessage {
     @Override
     public void toBytes (ByteBuf buf) {
         
-        ByteBufUtils.writeTag(buf, tag);
+        ByteBufUtils.writeTag(buf, this.tag);
     }
     
     public static class PacketHandler implements IMessageHandler<PacketSendInfo, IMessage> {

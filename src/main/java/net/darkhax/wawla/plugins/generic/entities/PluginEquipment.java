@@ -25,7 +25,7 @@ public class PluginEquipment extends InfoProvider {
             
             final EntityLivingBase entity = (EntityLivingBase) data.entity;
             
-            for (EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
+            for (final EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
                 
                 final ItemStack stack = entity.getItemStackFromSlot(slot);
                 

@@ -24,8 +24,7 @@ public class PluginFurnace extends InfoProvider {
     @Override
     public void addTileInfo (List<String> info, InfoAccess data) {
         
-        if (enabled) {
-            
+        if (enabled)
             if (data.world.getTileEntity(data.pos) instanceof TileEntityFurnace) {
                 
                 if (input) {
@@ -54,13 +53,12 @@ public class PluginFurnace extends InfoProvider {
                 
                 if (burntime) {
                     
-                    int time = data.tag.getInteger("BurnTime");
+                    final int time = data.tag.getInteger("BurnTime");
                     
                     if (time > 0)
                         info.add(I18n.translateToLocal("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
                 }
             }
-        }
     }
     
     @Override
@@ -68,7 +66,7 @@ public class PluginFurnace extends InfoProvider {
         
         if (tile instanceof TileEntityFurnace) {
             
-            TileEntityFurnace furnace = (TileEntityFurnace) tile;
+            final TileEntityFurnace furnace = (TileEntityFurnace) tile;
             ItemStack stack = null;
             
             if (input) {
