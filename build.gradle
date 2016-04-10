@@ -49,6 +49,11 @@ repositories {
     }
 }
 
+dependencies {
+
+    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B2_1.9"
+}
+
 //Handles basic resources such as mcmod.info
 processResources {
 
