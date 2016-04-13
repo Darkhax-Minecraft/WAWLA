@@ -51,6 +51,7 @@ public class Wawla {
         
         if (Loader.isModLoaded("Waila"))
             engine = new WailaEngine();
+            
         else if (Loader.isModLoaded("ICSE")) {
             
             engine = new ICSEEngine();

@@ -138,8 +138,8 @@ public class PluginHarvestability extends InfoProvider {
     
     static {
         
-        overrides.put("pickaxe", new ItemStack(Items.wooden_pickaxe));
-        overrides.put("axe", new ItemStack(Items.wooden_axe));
-        overrides.put("shovel", new ItemStack(Items.wooden_shovel));
+        overrides.put("pickaxe", new ItemStack(Items.WOODEN_PICKAXE));
+        overrides.put("axe", new ItemStack(Items.WOODEN_AXE));
+        overrides.put("shovel", new ItemStack(Items.WOODEN_SHOVEL));
     }
 }
