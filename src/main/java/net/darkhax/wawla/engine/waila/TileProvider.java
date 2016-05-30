@@ -23,8 +23,6 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor accessor, IWailaConfigHandler config) {
         
-        System.out.println("Override Fired");
-        
         InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
         if (info.isValidBlock())
@@ -44,7 +42,6 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         
-        System.out.println("Body Fired");
         final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
         for (final InfoProvider provider : Wawla.tileProviders)
@@ -62,7 +59,6 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
         
-        System.out.println("NBT Sync Fired");
         for (final InfoProvider provider : Wawla.tileProviders)
             if (provider.requireTileSync(world, te))
                 provider.writeTileNBT(world, te, tag);
