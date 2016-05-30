@@ -119,7 +119,7 @@ public class RenderingHandler {
                             for (final InfoPlugin provider : ICSE.plugins)
                                 provider.addTileInfo(lines, info);
                                 
-                            lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.stack));
+                            lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.stack.getItem()));
                             
                             for (final String line : lines)
                                 mc.fontRendererObj.drawStringWithShadow(line, 10, this.getLineOffset(), 0xFFFFFF);
