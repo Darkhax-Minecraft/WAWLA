@@ -3,22 +3,19 @@ package net.darkhax.icse.lib;
 import java.util.HashMap;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
-import net.minecraftforge.fml.common.registry.GameData;
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 public class Utilities {
     
     private static HashMap<String, ModContainer> mods;
     
-    public static String getModName (ItemStack stack) {
+    public static String getModName (IForgeRegistryEntry.Impl<?> registerable) {
         
-        @SuppressWarnings("deprecation")
-        final String itemID = GameData.getItemRegistry().getNameForObject(stack.getItem()).toString();
-        final String modID = itemID.substring(0, itemID.indexOf(':'));
+        final String modID = registerable.getRegistryName().getResourceDomain();
         final ModContainer mod = mods.get(modID);
         return mod != null ? mod.getName() : modID.equalsIgnoreCase("minecraft") ? "Minecraft" : "Unknown";
     }
