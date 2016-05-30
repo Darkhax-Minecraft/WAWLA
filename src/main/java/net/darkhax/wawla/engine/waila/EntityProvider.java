@@ -10,7 +10,6 @@ import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -68,6 +67,6 @@ public class EntityProvider implements IWailaEntityProvider {
         final EntityProvider provider = new EntityProvider();
         register.registerOverrideEntityProvider(provider, Entity.class);
         register.registerBodyProvider(provider, Entity.class);
-        register.registerNBTProvider(provider, EntitySkeleton.class);
+        register.registerNBTProvider(provider, Entity.class);
     }
 }
