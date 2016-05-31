@@ -57,3 +57,36 @@ villager.wawla.witch=Witch
 
 #Vanilla Fixes
 entity.ItemFrame.name=Item Frame
+
+#Enchantment Tooltip
+tooltip.wawla.shiftEnch=Press your §d%s§7 key to see a description of the first enchantment.
+tooltip.wawla.missingench=No description could be found. Please ask the author of the §9%s§7 mod to add one. The localization key is %s
+
+#Vanilla Enchantment Descriptions
+description.enchantment.protect.all=Reduces damage from most sources. 
+description.enchantment.protect.fire=Reduces the effects of fire damage. Also reduces the burn time when set on fire.
+description.enchantment.protect.fall=Reduces fall damage and ender pearl teleportation damage.
+description.enchantment.protect.explosion=Reduces damage from explosions and explosion knockback.
+description.enchantment.protect.projectile=Reduces damage from projectiles such as arrows and fire balls.
+description.enchantment.oxygen=Extends the amount of time the player can spend under water. Also improves vision while under water.
+description.enchantment.waterWorker=Increases mining speed while underwater. 
+description.enchantment.thorns=Causes damage to enemies when they attack you.
+description.enchantment.damage.all=Increases the damage of the item.
+description.enchantment.damage.undead=Increases damage against undead mobs such as zombies and skeletons.
+description.enchantment.damage.arthropods=Increases damage against arthropods such as Spiders and Silverfish.
+description.enchantment.knockback=Increases the knockback strength of the weapon.
+description.enchantment.fire=Causes additional fire damage when used to attack a mob.
+description.enchantment.lootBonus=Mobs will drop more loot when killed.
+description.enchantment.digging=Increases mining speed of the tool.
+description.enchantment.untouching=Allows fragile blocks such as glass to be collected.
+description.enchantment.durability=Causes the tool to lose durability at a slower rate.
+description.enchantment.lootBonusDigger=Some blocks like coal and diamond ore may drop additional items.
+description.enchantment.arrowDamage=Increases the damage of arrows fired from the bow.
+description.enchantment.arrowKnockback=Increases the knockback strength of arrows fired by the bow.
+description.enchantment.arrowFire=Arrows fired from the bow will deal additional fire damage. 
+description.enchantment.arrowInfinite=Allows the bow to fire normal arrows for free. You must have at least one arrow for this to work.
+description.enchantment.lootBonusFishing=Increases the chance of getting good loot while fishing.
+description.enchantment.fishingSpeed=Decreases the amount of time it takes for a fish to bite the hook.
+description.enchantment.waterWalker=Increases movement speed while under water.
+description.enchantment.frostWalker=Freezes water under the player into cracked ice.
+description.enchantment.mending=Repairs the durability of armor and tools with EXP.

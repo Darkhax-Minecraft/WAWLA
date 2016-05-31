@@ -15,6 +15,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit () {
         
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new TooltipHandler());
     }
     
     @SubscribeEvent

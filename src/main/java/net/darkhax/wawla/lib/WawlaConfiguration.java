@@ -3,6 +3,7 @@ package net.darkhax.wawla.lib;
 import java.io.File;
 
 import net.darkhax.wawla.Wawla;
+import net.darkhax.wawla.client.TooltipHandler;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -38,6 +39,7 @@ public class WawlaConfiguration {
         for (final InfoProvider provider : Wawla.entityProviders)
             provider.syncConfig(config);
             
+        TooltipHandler.handleConfigs(config);
         config.save();
     }
 }
