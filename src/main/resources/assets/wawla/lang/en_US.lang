@@ -61,6 +61,8 @@ entity.ItemFrame.name=Item Frame
 #Enchantment Tooltip
 tooltip.wawla.shiftEnch=Press your §d%s§7 key to see a description of the first enchantment.
 tooltip.wawla.missingench=No description could be found. Please ask the author of the §9%s§7 mod to add one. The localization key is %s
+tooltip.wawla.addedby=Added by §9%s§7
+tooltip.wawla.enchPower=Enchanting Power
 
 #Vanilla Enchantment Descriptions
 description.enchantment.protect.all=Reduces damage from most sources. 

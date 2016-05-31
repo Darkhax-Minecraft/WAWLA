@@ -11,10 +11,10 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEnchantedBook;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,12 +24,9 @@ public class TooltipHandler {
     
     private final static String CATAGORY = "item_tooltips";
     
-    private static boolean showModName = true;
-    private static boolean showToolTier = true;
     private static boolean showEnchantmentPower = true;
     private static boolean enchantmentDescription = true;
     private static boolean enchantmentMod = true;
-    private static boolean showModID = false;
     
     @SubscribeEvent
     public void onItemTooltip (ItemTooltipEvent event) {
@@ -39,7 +36,7 @@ public class TooltipHandler {
             final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
             final boolean isShifting = GameSettings.isKeyDown(keyBindSneak);
             final Item item = event.getItemStack().getItem();
-            Block.getBlockFromItem(item);
+            final Block block = Block.getBlockFromItem(item);
             
             if (item instanceof ItemEnchantedBook && enchantmentDescription) {
                 
@@ -57,22 +54,39 @@ public class TooltipHandler {
                             if (description.startsWith("description."))
                                 Utilities.wrapStringToList(String.format(I18n.translateToLocal("tooltip.wawla.missingench"), Utilities.getModName(enchant), description), 45, false, event.getToolTip());
                                 
-                            else
+                            else {
+                                
                                 Utilities.wrapStringToList(description, 45, false, event.getToolTip());
+                                
+                                if (enchantmentMod)
+                                    event.getToolTip().add(String.format(I18n.translateToLocal("tooltip.wawla.addedby"), Utilities.getModName(enchant)));
+                            }
                         }
                         
                         else
                             Utilities.wrapStringToList(String.format(I18n.translateToLocal("tooltip.wawla.shiftEnch"), keyBindSneak.getDisplayName()), 45, false, event.getToolTip());
                 }
             }
+            
+            if (block != null && showEnchantmentPower)
+                try {
+                    
+                    final float enchPower = block.getEnchantPowerBonus(event.getEntityPlayer().worldObj, BlockPos.ORIGIN);
+                    
+                    if (enchPower > 0)
+                        event.getToolTip().add(I18n.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
+                }
+                
+                catch (final IllegalArgumentException exception) {
+                
+                }
         }
     }
     
     public static void handleConfigs (Configuration config) {
         
-        showModName = Loader.isModLoaded("Waila") ? false : config.getBoolean("modNames", CATAGORY, true, "When enabled, item tooltips will have the mod name displayed in blue. This will not enable if the player has Waila installed.");
-        showToolTier = config.getBoolean("toolTier", CATAGORY, true, "When enabled, tools will have their tier value on the tooltip.");
         showEnchantmentPower = config.getBoolean("enchantmentPower", CATAGORY, true, "When enabled, blocks that contribute to the total bookshelves at an enchantment table will be shown.");
-        showModID = config.getBoolean("modID", CATAGORY, false, "When enabled, items will show their full ID");
+        enchantmentDescription = config.getBoolean("enchantmentDescription", CATAGORY, true, "When enabled, enchantment books can display descriptions about what they do.");
+        enchantmentMod = config.getBoolean("enchantmentOwner", CATAGORY, true, "When enabled, shows the name of the mod that added the enchantment.");
     }
 }
