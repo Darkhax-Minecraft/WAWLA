@@ -2,8 +2,6 @@ package net.darkhax.wawla.engine.waila;
 
 import java.util.List;
 
-import com.jcraft.jorbis.Block;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -11,6 +9,7 @@ import mcp.mobius.waila.api.IWailaRegistrar;
 import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
