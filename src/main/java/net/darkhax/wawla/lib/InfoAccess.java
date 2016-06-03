@@ -90,7 +90,7 @@ public class InfoAccess {
      * @param pos The position of the block.
      * @param side The side being looked at.
      */
-    public InfoAccess(RayTraceResult result, World world, EntityPlayer player, IBlockState state, BlockPos pos, EnumFacing side, NBTTagCompound tag) {
+    public InfoAccess(RayTraceResult result, World world, EntityPlayer player, ItemStack stack, IBlockState state, BlockPos pos, EnumFacing side, NBTTagCompound tag) {
         
         this.world = world;
         this.player = player;
@@ -98,7 +98,7 @@ public class InfoAccess {
         this.block = state.getBlock();
         this.pos = pos;
         this.side = side;
-        this.stack = this.block.getPickBlock(state, result, world, pos, player);
+        this.stack = stack;
         this.tag = tag;
         this.result = result;
     }

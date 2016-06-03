@@ -38,7 +38,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public DataAccess overrideTile (DataAccess data) {
         
-        InfoAccess info = new InfoAccess(data.result, data.world, data.player, data.state, data.pos, data.side, data.tag);
+        InfoAccess info = new InfoAccess(data.result, data.world, data.player, data.stack, data.state, data.pos, data.side, data.tag);
         
         if (info.isValidBlock())
             for (final InfoProvider provider : Wawla.tileProviders)
@@ -60,7 +60,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
     @Override
     public void addTileInfo (List<String> info, DataAccess data) {
         
-        final InfoAccess infoAccess = new InfoAccess(data.result, data.world, data.player, data.state, data.pos, data.side, data.tag);
+        final InfoAccess infoAccess = new InfoAccess(data.result, data.world, data.player, data.stack, data.state, data.pos, data.side, data.tag);
         
         for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(info, infoAccess);
