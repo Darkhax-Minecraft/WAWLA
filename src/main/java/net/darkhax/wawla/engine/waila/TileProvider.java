@@ -22,7 +22,7 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor accessor, IWailaConfigHandler config) {
         
-        InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
+        InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
         if (info.isValidBlock())
             for (final InfoProvider provider : Wawla.tileProviders)
@@ -41,7 +41,7 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         
-        final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
+        final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
         
         for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(currenttip, info);
@@ -68,7 +68,7 @@ public class TileProvider implements IWailaDataProvider {
     public static void register (IWailaRegistrar register) {
         
         final TileProvider provider = new TileProvider();
-        register.registerStackProvider(provider, Block.class);
+        // register.registerStackProvider(provider, Block.class);
         register.registerBodyProvider(provider, Block.class);
         register.registerNBTProvider(provider, Block.class);
     }
