@@ -43,7 +43,7 @@ public class WawlaConfiguration {
             
         if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
             TooltipHandler.handleConfigs(config);
-        
+            
         config.save();
     }
 }
