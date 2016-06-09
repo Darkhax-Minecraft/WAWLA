@@ -4,9 +4,9 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginSkulls extends InfoProvider {
@@ -25,7 +25,7 @@ public class PluginSkulls extends InfoProvider {
                 final TileEntitySkull skull = (TileEntitySkull) tile;
                 
                 if (skull.getPlayerProfile() != null && skull.getPlayerProfile().getName() != null)
-                    info.add(I18n.translateToLocal("tooltip.wawla.name") + ": " + skull.getPlayerProfile().getName());
+                    info.add(I18n.format("tooltip.wawla.name") + ": " + skull.getPlayerProfile().getName());
             }
         }
     }

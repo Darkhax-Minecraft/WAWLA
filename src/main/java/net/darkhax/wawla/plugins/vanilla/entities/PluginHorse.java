@@ -4,9 +4,9 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginHorse extends InfoProvider {
@@ -22,10 +22,10 @@ public class PluginHorse extends InfoProvider {
             final EntityHorse horse = (EntityHorse) data.entity;
             
             if (jump)
-                info.add(I18n.translateToLocal("tooltip.wawla.vanilla.jump") + ": " + this.getPlayerRelativeInfo(horse.getHorseJumpStrength(), 0.45d));
+                info.add(I18n.format("tooltip.wawla.vanilla.jump") + ": " + this.getPlayerRelativeInfo(horse.getHorseJumpStrength(), 0.45d));
                 
             if (speed)
-                info.add(I18n.translateToLocal("tooltip.wawla.vanilla.speed") + ": " + this.getPlayerRelativeInfo(horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 0.1d));
+                info.add(I18n.format("tooltip.wawla.vanilla.speed") + ": " + this.getPlayerRelativeInfo(horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 0.1d));
         }
     }
     

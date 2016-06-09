@@ -6,8 +6,8 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginTameable extends InfoProvider {
@@ -24,10 +24,10 @@ public class PluginTameable extends InfoProvider {
             final EntityTameable entity = (EntityTameable) data.entity;
             
             if (showTamed && !entity.isOwner(data.player) && entity.isTamed())
-                info.add(ChatFormatting.YELLOW + I18n.translateToLocal("tooltip.wawla.generic.tamed"));
+                info.add(ChatFormatting.YELLOW + I18n.format("tooltip.wawla.generic.tamed"));
                 
             if (showSitting && entity.isSitting())
-                info.add(I18n.translateToLocal("tooltip.wawla.generic.sitting"));
+                info.add(I18n.format("tooltip.wawla.generic.sitting"));
         }
     }
     

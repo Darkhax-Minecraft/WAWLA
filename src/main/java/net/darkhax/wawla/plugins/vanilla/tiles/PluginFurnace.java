@@ -4,12 +4,12 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.StringUtils;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 
@@ -32,7 +32,7 @@ public class PluginFurnace extends InfoProvider {
                     final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("InputStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.translateToLocal("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
                 }
                 
                 if (fuel) {
@@ -40,7 +40,7 @@ public class PluginFurnace extends InfoProvider {
                     final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("FuelStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.translateToLocal("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
                 }
                 
                 if (output) {
@@ -48,7 +48,7 @@ public class PluginFurnace extends InfoProvider {
                     final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("OutputStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.translateToLocal("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
                 }
                 
                 if (burntime) {
@@ -56,7 +56,7 @@ public class PluginFurnace extends InfoProvider {
                     final int time = data.tag.getInteger("BurnTime");
                     
                     if (time > 0)
-                        info.add(I18n.translateToLocal("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
+                        info.add(I18n.format("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
                 }
             }
     }

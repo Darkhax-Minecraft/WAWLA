@@ -4,10 +4,10 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginVillagerTypes extends InfoProvider {
@@ -25,13 +25,13 @@ public class PluginVillagerTypes extends InfoProvider {
                 career = ((EntityVillager) data.entity).getDisplayName().getFormattedText();
                 
             else if (data.entity instanceof EntityZombie && ((EntityZombie) data.entity).isVillager())
-                career = I18n.translateToLocal("villager.wawla.zombie");
+                career = I18n.format("villager.wawla.zombie");
                 
             else if (data.entity instanceof EntityWitch)
-                career = I18n.translateToLocal("villager.wawla.witch");
+                career = I18n.format("villager.wawla.witch");
                 
             if (career != null && !career.isEmpty())
-                info.add(I18n.translateToLocal("tooltip.wawla.vanilla.career") + ": " + career);
+                info.add(I18n.format("tooltip.wawla.vanilla.career") + ": " + career);
         }
     }
     

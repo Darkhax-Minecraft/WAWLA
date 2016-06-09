@@ -6,10 +6,10 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginEquipment extends InfoProvider {
@@ -30,7 +30,7 @@ public class PluginEquipment extends InfoProvider {
                 final ItemStack stack = entity.getItemStackFromSlot(slot);
                 
                 if (stack != null && stack.getItem() != null)
-                    info.add(I18n.translateToLocal("tooltip.wawla." + slot.getName()) + ": " + stack.getDisplayName() + (enchantmentStar && stack.isItemEnchanted() ? ChatFormatting.LIGHT_PURPLE + I18n.translateToLocal("tooltip.wawla.star") : ""));
+                    info.add(I18n.format("tooltip.wawla." + slot.getName()) + ": " + stack.getDisplayName() + (enchantmentStar && stack.isItemEnchanted() ? ChatFormatting.LIGHT_PURPLE + I18n.format("tooltip.wawla.star") : ""));
             }
         }
     }

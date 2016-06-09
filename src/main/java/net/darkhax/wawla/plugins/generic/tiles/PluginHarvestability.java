@@ -9,11 +9,11 @@ import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
@@ -45,24 +45,24 @@ public class PluginHarvestability extends InfoProvider {
             
             // When the block is harvestable.
             if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0))
-                info.add(I18n.translateToLocal("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(true));
+                info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(true));
                 
             // When it's not harvestable.
             else {
                 
                 if (showHarvestable)
-                    info.add(I18n.translateToLocal("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(false));
+                    info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(false));
                     
                 if (showCorrectTier)
-                    info.add(I18n.translateToLocal("tooltip.wawla.generic.showtier") + ": " + blockLevel);
+                    info.add(I18n.format("tooltip.wawla.generic.showtier") + ": " + blockLevel);
             }
         }
         
         // Shows correct tool type.
         else if (isValidBlock && toolType != null && showCorrectTool) {
             
-            final String translation = I18n.translateToLocal("tooltip.wawla." + toolType);
-            info.add(I18n.translateToLocal("tooltip.wawla.generic.tooltype") + ": " + (translation.startsWith("tooltip.wawla.") ? toolType : translation));
+            final String translation = I18n.format("tooltip.wawla." + toolType);
+            info.add(I18n.format("tooltip.wawla.generic.tooltype") + ": " + (translation.startsWith("tooltip.wawla.") ? toolType : translation));
         }
     }
     

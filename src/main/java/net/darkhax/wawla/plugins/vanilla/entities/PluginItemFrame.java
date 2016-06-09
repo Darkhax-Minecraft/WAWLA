@@ -4,9 +4,9 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginItemFrame extends InfoProvider {
@@ -21,7 +21,7 @@ public class PluginItemFrame extends InfoProvider {
             final ItemStack stack = ((EntityItemFrame) data.entity).getDisplayedItem();
             
             if (stack != null && stack.getItem() != null)
-                info.add(I18n.translateToLocal("tooltip.wawla.item") + ": " + stack.getDisplayName());
+                info.add(I18n.format("tooltip.wawla.item") + ": " + stack.getDisplayName());
         }
     }
     

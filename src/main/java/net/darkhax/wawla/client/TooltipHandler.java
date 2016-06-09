@@ -5,6 +5,7 @@ import java.util.Set;
 import net.darkhax.icse.lib.Utilities;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.enchantment.Enchantment;
@@ -12,7 +13,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -49,22 +49,22 @@ public class TooltipHandler {
                     if (enchant != null)
                         if (isShifting) {
                             
-                            final String description = I18n.translateToLocal("description." + enchant.getName());
+                            final String description = I18n.format("description." + enchant.getName());
                             
                             if (description.startsWith("description."))
-                                Utilities.wrapStringToList(String.format(I18n.translateToLocal("tooltip.wawla.missingench"), Utilities.getModName(enchant), description), 45, false, event.getToolTip());
+                                Utilities.wrapStringToList(String.format(I18n.format("tooltip.wawla.missingench"), Utilities.getModName(enchant), description), 45, false, event.getToolTip());
                                 
                             else {
                                 
                                 Utilities.wrapStringToList(description, 45, false, event.getToolTip());
                                 
                                 if (enchantmentMod)
-                                    event.getToolTip().add(String.format(I18n.translateToLocal("tooltip.wawla.addedby"), Utilities.getModName(enchant)));
+                                    event.getToolTip().add(String.format(I18n.format("tooltip.wawla.addedby"), Utilities.getModName(enchant)));
                             }
                         }
                         
                         else
-                            Utilities.wrapStringToList(String.format(I18n.translateToLocal("tooltip.wawla.shiftEnch"), keyBindSneak.getDisplayName()), 45, false, event.getToolTip());
+                            Utilities.wrapStringToList(String.format(I18n.format("tooltip.wawla.shiftEnch"), keyBindSneak.getDisplayName()), 45, false, event.getToolTip());
                 }
             }
             
@@ -74,7 +74,7 @@ public class TooltipHandler {
                     final float enchPower = block.getEnchantPowerBonus(event.getEntityPlayer().worldObj, BlockPos.ORIGIN);
                     
                     if (enchPower > 0)
-                        event.getToolTip().add(I18n.translateToLocal("tooltip.wawla.enchPower") + ": " + enchPower);
+                        event.getToolTip().add(I18n.format("tooltip.wawla.enchPower") + ": " + enchPower);
                 }
                 
                 catch (final IllegalArgumentException exception) {

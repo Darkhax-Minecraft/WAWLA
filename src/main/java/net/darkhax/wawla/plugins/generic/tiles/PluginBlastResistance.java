@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.Configuration;
 
 public class PluginBlastResistance extends InfoProvider {
@@ -15,7 +15,7 @@ public class PluginBlastResistance extends InfoProvider {
     public void addTileInfo (List<String> info, InfoAccess data) {
         
         if (enabled)
-            info.add(I18n.translateToLocal("tooltip.wawla.generic.blastresist") + ": " + 5f);
+            info.add(I18n.format("tooltip.wawla.generic.blastresist") + ": " + 5f);
     }
     
     @Override
