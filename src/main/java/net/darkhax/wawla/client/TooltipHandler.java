@@ -52,19 +52,19 @@ public class TooltipHandler {
                             final String description = I18n.format("description." + enchant.getName());
                             
                             if (description.startsWith("description."))
-                                Utilities.wrapStringToList(String.format(I18n.format("tooltip.wawla.missingench"), Utilities.getModName(enchant), description), 45, false, event.getToolTip());
+                                Utilities.wrapStringToList(I18n.format("tooltip.wawla.missingench", Utilities.getModName(enchant), description), 45, false, event.getToolTip());
                                 
                             else {
                                 
                                 Utilities.wrapStringToList(description, 45, false, event.getToolTip());
                                 
                                 if (enchantmentMod)
-                                    event.getToolTip().add(String.format(I18n.format("tooltip.wawla.addedby"), Utilities.getModName(enchant)));
+                                    event.getToolTip().add(I18n.format("tooltip.wawla.addedby", Utilities.getModName(enchant)));
                             }
                         }
                         
                         else
-                            Utilities.wrapStringToList(String.format(I18n.format("tooltip.wawla.shiftEnch"), keyBindSneak.getDisplayName()), 45, false, event.getToolTip());
+                            Utilities.wrapStringToList(I18n.format("tooltip.wawla.shiftEnch", keyBindSneak.getDisplayName()), 45, false, event.getToolTip());
                 }
             }
             
