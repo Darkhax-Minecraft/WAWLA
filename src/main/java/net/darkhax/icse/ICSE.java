@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:Waila")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:Waila", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
 public class ICSE {
     
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
