@@ -33,7 +33,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:ICSE")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:ICSE", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
 public class Wawla {
     
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
