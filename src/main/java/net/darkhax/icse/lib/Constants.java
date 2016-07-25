@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Constants {
     
-    public static final String MODID = "ICSE";
+    public static final String MODID = "icse";
     public static final String MOD_NAME = "I Can See Everything";
     public static final String VERSION_NUMBER = "1.1.0.0";
     public static final String SERVER = "net.darkhax.icse.common.CommonProxy";
