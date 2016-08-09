@@ -24,7 +24,7 @@ public class ClientProxy extends CommonProxy {
         final Minecraft mc = Minecraft.getMinecraft();
         
         // Shows the current debug engine in the debug menu.
-        if (mc.gameSettings.showDebugInfo)
+        if (mc.gameSettings.showDebugInfo && event.getLeft() != null && Wawla.engine != null)
             event.getLeft().add(PREFIX + "Info Engine: " + Wawla.engine.getName());
     }
     
