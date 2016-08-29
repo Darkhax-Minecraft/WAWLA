@@ -29,21 +29,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TooltipHandler {
     
     private final static String CATAGORY = "item_tooltips";
+    private final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
     
     private static boolean showEnchantmentPower = true;
     private static boolean enchantmentDescription = true;
+    private static boolean isEnchDescLoaded = false;
     
     @SubscribeEvent
     public void onItemTooltip (ItemTooltipEvent event) {
         
         if (event.getEntityPlayer() != null && event.getEntityPlayer().worldObj != null && event.getItemStack() != null) {
             
-            final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-            final boolean isShifting = GameSettings.isKeyDown(keyBindSneak);
             final Item item = event.getItemStack().getItem();
             final Block block = Block.getBlockFromItem(item);
             
-            if (item instanceof ItemEnchantedBook && enchantmentDescription) {
+            if (item instanceof ItemEnchantedBook && enchantmentDescription && GameSettings.isKeyDown(keyBindSneak) && !isEnchDescLoaded) {
                 
                 final List<String> tooltip = event.getToolTip();
                 
@@ -125,5 +125,6 @@ public class TooltipHandler {
         
         showEnchantmentPower = config.getBoolean("enchantmentPower", CATAGORY, true, "When enabled, blocks that contribute to the total bookshelves at an enchantment table will be shown.");
         enchantmentDescription = config.getBoolean("enchantmentDescription", CATAGORY, true, "When enabled, enchantment books can display descriptions about what they do.");
+        isEnchDescLoaded = Loader.isModLoaded("enchdesc");
     }
 }
