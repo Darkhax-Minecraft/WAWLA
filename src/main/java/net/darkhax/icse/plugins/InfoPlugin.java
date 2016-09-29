@@ -31,19 +31,19 @@ public class InfoPlugin {
     }
     
     public void addEntityInfo (List<String> info, DataAccess data) {
-    
+        
     }
     
     public void addTileInfo (List<String> info, DataAccess dats) {
-    
+        
     }
     
     public void writeEntityNBT (World world, Entity entity, NBTTagCompound tag) {
-    
+        
     }
     
     public void writeTileNBT (World world, TileEntity entity, NBTTagCompound tag) {
-    
+        
     }
     
     public boolean requireEntitySync (World world, Entity entity) {

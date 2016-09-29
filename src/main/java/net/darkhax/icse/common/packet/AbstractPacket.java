@@ -14,10 +14,10 @@ public abstract class AbstractPacket<M extends AbstractPacket> implements IMessa
         
         if (ctx.side.isClient())
             this.handleClientMessage(message);
-            
+        
         else
             this.handleServerMessage(message, ctx.getServerHandler().playerEntity);
-            
+        
         return null;
     }
     
@@ -35,9 +35,9 @@ public abstract class AbstractPacket<M extends AbstractPacket> implements IMessa
      * provided message instance. Fields from the current class may not be reliable.
      * 
      * @param message An instance of the message that has been sent to the server. This can be
-     *            a dedicated server, or an integrated server.
+     *        a dedicated server, or an integrated server.
      * @param player An instance of the player who sent the message to the server. Taken from
-     *            ctx.getServerHandler().playerEntity.
+     *        ctx.getServerHandler().playerEntity.
      */
     public abstract void handleServerMessage (M message, EntityPlayer player);
 }

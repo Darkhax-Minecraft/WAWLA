@@ -23,7 +23,7 @@ public class PluginHorse extends InfoProvider {
             
             if (jump)
                 info.add(I18n.format("tooltip.wawla.vanilla.jump") + ": " + this.getPlayerRelativeInfo(horse.getHorseJumpStrength(), 0.45d));
-                
+            
             if (speed)
                 info.add(I18n.format("tooltip.wawla.vanilla.speed") + ": " + this.getPlayerRelativeInfo(horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 0.1d));
         }

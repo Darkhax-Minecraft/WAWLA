@@ -22,7 +22,7 @@ public class PacketRequestInfo implements IMessage {
     public UUID entityID;
     
     public PacketRequestInfo() {
-    
+        
     }
     
     public PacketRequestInfo(BlockPos pos) {
@@ -42,7 +42,7 @@ public class PacketRequestInfo implements IMessage {
         
         if (isTileRequest)
             this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
-            
+        
         else
             this.entityID = UUID.fromString(ByteBufUtils.readUTF8String(buf));
     }
@@ -71,10 +71,10 @@ public class PacketRequestInfo implements IMessage {
             
             if (packet.pos != null)
                 this.syncTile(ctx.getServerHandler().playerEntity, packet.pos);
-                
+            
             else if (packet.entityID != null)
                 this.syncEntity(ctx.getServerHandler().playerEntity, packet.entityID);
-                
+            
             return null;
         }
         
@@ -88,7 +88,7 @@ public class PacketRequestInfo implements IMessage {
                 for (final InfoPlugin plugin : ICSE.plugins)
                     if (plugin.requireTileSync(world, tile))
                         plugin.writeTileNBT(world, tile, tag);
-                        
+                    
             ICSE.network.sendTo(new PacketSendInfo(tag), player);
         }
         
@@ -100,14 +100,14 @@ public class PacketRequestInfo implements IMessage {
             for (final Entity loadedEntity : world.loadedEntityList)
                 if (loadedEntity.getUniqueID().equals(entityID))
                     entity = loadedEntity;
-                    
+                
             final NBTTagCompound tag = new NBTTagCompound();
             
             if (entity != null)
                 for (final InfoPlugin plugin : ICSE.plugins)
                     if (plugin.requireEntitySync(world, entity))
                         plugin.writeEntityNBT(world, entity, tag);
-                        
+                    
             ICSE.network.sendTo(new PacketSendInfo(tag), player);
         }
     }

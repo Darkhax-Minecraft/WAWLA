@@ -20,7 +20,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class PluginHarvestability extends InfoProvider {
     
-    private static final Map<String, ItemStack> overrides = new HashMap<String, ItemStack>();
+    private static final Map<String, ItemStack> overrides = new HashMap<>();
     
     private static boolean enabled = true;
     private static boolean oresOnly = true;
@@ -33,7 +33,7 @@ public class PluginHarvestability extends InfoProvider {
         
         if (!enabled)
             return;
-            
+        
         final ItemStack heldItem = data.player.getHeldItemMainhand();
         final String toolType = this.getEffectiveTool(data.world, data.state, data.pos);
         final int blockLevel = data.block.getHarvestLevel(data.state);
@@ -46,13 +46,13 @@ public class PluginHarvestability extends InfoProvider {
             // When the block is harvestable.
             if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0))
                 info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(true));
-                
+            
             // When it's not harvestable.
             else {
                 
                 if (showHarvestable)
                     info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(false));
-                    
+                
                 if (showCorrectTier)
                     info.add(I18n.format("tooltip.wawla.generic.showtier") + ": " + blockLevel);
             }
@@ -88,17 +88,17 @@ public class PluginHarvestability extends InfoProvider {
         
         if (stack == null || stack.getItem() == null)
             return false;
-            
+        
         if (Block.getBlockFromItem(stack.getItem()) instanceof BlockOre)
             return true;
-            
+        
         for (final int oreID : OreDictionary.getOreIDs(stack))
             if (OreDictionary.getOreName(oreID).startsWith("ore"))
                 return true;
-                
+            
         if (stack.getDisplayName().matches(".*(^|\\s)([oO]re)($|\\s)."))
             return true;
-            
+        
         return false;
     }
     

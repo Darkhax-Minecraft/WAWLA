@@ -13,7 +13,7 @@ public class PacketSendInfo implements IMessage {
     public NBTTagCompound tag;
     
     public PacketSendInfo() {
-    
+        
     }
     
     public PacketSendInfo(NBTTagCompound tag) {

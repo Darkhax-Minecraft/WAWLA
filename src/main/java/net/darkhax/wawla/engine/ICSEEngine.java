@@ -31,7 +31,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
             for (final InfoProvider provider : Wawla.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideTile(info);
-                    
+                
         return new DataAccess(info.world, info.player, info.entity, info.tag);
     }
     
@@ -44,7 +44,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
             for (final InfoProvider provider : Wawla.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
-                    
+                
         return new DataAccess(info.result, info.world, info.player, info.state, info.pos, info.side, info.tag);
     }
     
@@ -100,7 +100,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
         for (final InfoProvider plugin : Wawla.entityProviders)
             if (plugin.requireEntitySync(world, entity))
                 return true;
-                
+            
         return false;
     }
     
@@ -110,7 +110,7 @@ public class ICSEEngine extends InfoPlugin implements InfoEngine {
         for (final InfoProvider plugin : Wawla.tileProviders)
             if (plugin.requireTileSync(world, tile))
                 return true;
-                
+            
         return false;
     }
 }

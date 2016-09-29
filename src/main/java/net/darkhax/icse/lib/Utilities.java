@@ -23,13 +23,13 @@ public class Utilities {
      * when working with Minecraft.
      *
      * @param string: The string being split into multiple lines. It's recommended to use
-     *            StatCollector.translateToLocal() for this so multiple languages will be
-     *            supported.
+     *        StatCollector.translateToLocal() for this so multiple languages will be
+     *        supported.
      * @param lnLength: The ideal size for each line of text.
      * @param wrapLongWords: If true the ideal size will be exact, potentially splitting words
-     *            on the end of each line.
+     *        on the end of each line.
      * @param list: A list to add each line of text to. An good example of such list would be
-     *            the list of tooltips on an item.
+     *        the list of tooltips on an item.
      * @return List: The same List instance provided however the string provided will be
      *         wrapped to the ideal line length and then added.
      */
@@ -51,7 +51,7 @@ public class Utilities {
         
         if (entity == null)
             return "Unknown";
-            
+        
         final EntityRegistration reg = EntityRegistry.instance().lookupModSpawn(entity.getClass(), false);
         
         if (reg != null) {
@@ -60,7 +60,7 @@ public class Utilities {
             
             if (mod != null)
                 return mod.getName();
-                
+            
             return "Unknown";
         }
         

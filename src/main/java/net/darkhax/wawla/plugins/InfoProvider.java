@@ -37,19 +37,19 @@ public class InfoProvider {
     }
     
     public void addEntityInfo (List<String> info, InfoAccess data) {
-    
+        
     }
     
     public void addTileInfo (List<String> info, InfoAccess data) {
-    
+        
     }
     
     public void writeEntityNBT (World world, Entity entity, NBTTagCompound tag) {
-    
+        
     }
     
     public void writeTileNBT (World world, TileEntity tile, NBTTagCompound tag) {
-    
+        
     }
     
     public boolean requireEntitySync (World world, Entity entity) {
@@ -63,14 +63,14 @@ public class InfoProvider {
     }
     
     public void syncConfig (Configuration config) {
-    
+        
     }
     
     public static String getBooleanForDisplay (boolean bool) {
         
         if (bool)
             return I18n.format("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "yes" : "true"));
-            
+        
         return I18n.format("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "no" : "false"));
     }
     

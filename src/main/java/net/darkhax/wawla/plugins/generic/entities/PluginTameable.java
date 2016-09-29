@@ -25,7 +25,7 @@ public class PluginTameable extends InfoProvider {
             
             if (showTamed && !entity.isOwner(data.player) && entity.isTamed())
                 info.add(ChatFormatting.YELLOW + I18n.format("tooltip.wawla.generic.tamed"));
-                
+            
             if (showSitting && entity.isSitting())
                 info.add(I18n.format("tooltip.wawla.generic.sitting"));
         }

@@ -30,14 +30,14 @@ public class ICSE {
     public static ICSE instance;
     
     public static SimpleNetworkWrapper network;
-    public static List<InfoPlugin> plugins = new ArrayList<InfoPlugin>();
+    public static List<InfoPlugin> plugins = new ArrayList<>();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
         if (Loader.isModLoaded("Waila"))
             return;
-            
+        
         network = NetworkRegistry.INSTANCE.newSimpleChannel("ICSE");
         network.registerMessage(PacketRequestInfo.PacketHandler.class, PacketRequestInfo.class, 0, Side.SERVER);
         network.registerMessage(PacketSendInfo.PacketHandler.class, PacketSendInfo.class, 1, Side.CLIENT);

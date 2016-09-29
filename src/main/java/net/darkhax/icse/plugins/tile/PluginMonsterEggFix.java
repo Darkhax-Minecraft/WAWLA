@@ -19,23 +19,23 @@ public class PluginMonsterEggFix extends InfoPlugin {
                 case 0:
                     data.override(new ItemStack(Blocks.STONE, 1, 0));
                     break;
-                    
+                
                 case 1:
                     data.override(new ItemStack(Blocks.COBBLESTONE, 1, 0));
                     break;
-                    
+                
                 case 2:
                     data.override(new ItemStack(Blocks.STONEBRICK, 1, 0));
                     break;
-                    
+                
                 case 3:
                     data.override(new ItemStack(Blocks.STONEBRICK, 1, 1));
                     break;
-                    
+                
                 case 4:
                     data.override(new ItemStack(Blocks.STONEBRICK, 1, 2));
                     break;
-                    
+                
                 case 5:
                     data.override(new ItemStack(Blocks.STONEBRICK, 1, 3));
                     break;

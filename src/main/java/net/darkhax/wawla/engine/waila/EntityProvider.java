@@ -25,7 +25,7 @@ public class EntityProvider implements IWailaEntityProvider {
             for (final InfoProvider provider : Wawla.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideEntity(info);
-                    
+                
         return info.entity;
     }
     
@@ -42,7 +42,7 @@ public class EntityProvider implements IWailaEntityProvider {
         
         for (final InfoProvider provider : Wawla.entityProviders)
             provider.addEntityInfo(currenttip, info);
-            
+        
         return currenttip;
     }
     
@@ -58,7 +58,7 @@ public class EntityProvider implements IWailaEntityProvider {
         for (final InfoProvider provider : Wawla.entityProviders)
             if (provider.requireEntitySync(world, ent))
                 provider.writeEntityNBT(world, ent, tag);
-                
+            
         return tag;
     }
     

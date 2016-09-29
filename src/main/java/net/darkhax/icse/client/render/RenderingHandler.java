@@ -41,7 +41,7 @@ public class RenderingHandler {
         
         if (mc.gameSettings.showDebugInfo)
             return;
-            
+        
         if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
             
             final float distance = mc.playerController.getBlockReachDistance();
@@ -55,7 +55,7 @@ public class RenderingHandler {
                     
                     if (lastEntity != null && !lastEntity.equals(entity.getUniqueID()))
                         dataTag = new NBTTagCompound();
-                        
+                    
                     lastEntity = entity.getUniqueID();
                     DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
                     
@@ -63,26 +63,26 @@ public class RenderingHandler {
                     for (final InfoPlugin provider : ICSE.plugins)
                         if (provider.requireEntitySync(mc.theWorld, entity))
                             requireSync = true;
-                            
+                        
                     if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
                         ICSE.network.sendToServer(new PacketRequestInfo(entity.getUniqueID()));
-                        
+                    
                     if (info.isValidEntity()) {
                         
                         for (final InfoPlugin provider : ICSE.plugins)
                             if (provider.requireEntityOverride(info))
                                 info = provider.overrideEntity(info);
-                                
+                            
                         if (info.isValidEntity()) {
                             
                             lineCount = 0;
                             
-                            final List<String> lines = new ArrayList<String>();
+                            final List<String> lines = new ArrayList<>();
                             lines.add(info.entity.getDisplayName().getFormattedText());
                             
                             for (final InfoPlugin provider : ICSE.plugins)
                                 provider.addEntityInfo(lines, info);
-                                
+                            
                             lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.entity));
                             
                             for (final String line : lines)
@@ -99,26 +99,26 @@ public class RenderingHandler {
                     for (final InfoPlugin provider : ICSE.plugins)
                         if (provider.requireTileSync(mc.theWorld, mc.theWorld.getTileEntity(info.pos)))
                             requireSync = true;
-                            
+                        
                     if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
                         ICSE.network.sendToServer(new PacketRequestInfo(results.getBlockPos()));
-                        
+                    
                     if (info.isValidBlock()) {
                         
                         for (final InfoPlugin provider : ICSE.plugins)
                             if (provider.requireTileOverride(info))
                                 info = provider.overrideTile(info);
-                                
+                            
                         if (info.isValidBlock()) {
                             
                             lineCount = 0;
                             
-                            final List<String> lines = new ArrayList<String>();
+                            final List<String> lines = new ArrayList<>();
                             lines.add(info.stack.getDisplayName());
                             
                             for (final InfoPlugin provider : ICSE.plugins)
                                 provider.addTileInfo(lines, info);
-                                
+                            
                             lines.add(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + Utilities.getModName(info.stack.getItem()));
                             
                             for (final String line : lines)
@@ -168,24 +168,17 @@ public class RenderingHandler {
             
             else if (d0 > 3.0D)
                 flag = true;
-                
+            
             if (mc.objectMouseOver != null)
                 d1 = mc.objectMouseOver.hitVec.distanceTo(vec3d);
-                
+            
             final Vec3d vec3d1 = entity.getLook(partialTicks);
             final Vec3d vec3d2 = vec3d.addVector(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0);
             Vec3d vec3d3 = null;
             
             final float f = 1.0F;
             
-            final List<Entity> list = mc.theWorld.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand(f, f, f), Predicates.and(EntitySelectors.NOT_SPECTATING, new Predicate<Entity>() {
-                
-                @Override
-                public boolean apply (Entity entity) {
-                    
-                    return entity != null;
-                }
-            }));
+            final List<Entity> list = mc.theWorld.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand(f, f, f), Predicates.and(EntitySelectors.NOT_SPECTATING, (Predicate<Entity>) entity1 -> entity1 != null));
             
             double d2 = d1;
             

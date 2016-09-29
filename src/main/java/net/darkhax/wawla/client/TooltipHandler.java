@@ -43,24 +43,24 @@ public class TooltipHandler {
             final Item item = event.getItemStack().getItem();
             final Block block = Block.getBlockFromItem(item);
             
-            if (item instanceof ItemEnchantedBook && enchantmentDescription && GameSettings.isKeyDown(keyBindSneak) && !isEnchDescLoaded) {
+            if (item instanceof ItemEnchantedBook && enchantmentDescription && GameSettings.isKeyDown(this.keyBindSneak) && !isEnchDescLoaded) {
                 
                 final List<String> tooltip = event.getToolTip();
                 
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (GameSettings.isKeyDown(this.keyBindSneak)) {
                     
-                    final List<Enchantment> enchants = getEnchantments((ItemEnchantedBook) item, event.getItemStack());
+                    final List<Enchantment> enchants = this.getEnchantments((ItemEnchantedBook) item, event.getItemStack());
                     
-                    for (Enchantment enchant : enchants) {
+                    for (final Enchantment enchant : enchants) {
                         
                         tooltip.add(I18n.format("tooltip.enchdesc.name") + ": " + I18n.format(enchant.getName()));
-                        tooltip.add(getDescription(enchant));
+                        tooltip.add(this.getDescription(enchant));
                         tooltip.add(I18n.format("tooltip.enchdesc.addedby") + ": " + ChatFormatting.BLUE + getModName(enchant));
                     }
                 }
                 
                 else
-                    tooltip.add(I18n.format("tooltip.enchdesc.activate", ChatFormatting.LIGHT_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+                    tooltip.add(I18n.format("tooltip.enchdesc.activate", ChatFormatting.LIGHT_PURPLE, this.keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
             }
             
             if (block != null && showEnchantmentPower)
@@ -73,7 +73,7 @@ public class TooltipHandler {
                 }
                 
                 catch (final IllegalArgumentException exception) {
-                
+                    
                 }
         }
     }
@@ -85,17 +85,16 @@ public class TooltipHandler {
         
         if (description.startsWith("enchantment."))
             description = I18n.format("tooltip.enchdesc.missing", getModName(enchantment), key);
-            
+        
         return description;
     }
     
     private List<Enchantment> getEnchantments (ItemEnchantedBook book, ItemStack stack) {
         
         final NBTTagList enchTags = book.getEnchantments(stack);
-        final List<Enchantment> enchantments = new ArrayList<Enchantment>();
+        final List<Enchantment> enchantments = new ArrayList<>();
         
-        if (enchTags != null) {
-            
+        if (enchTags != null)
             for (int index = 0; index < enchTags.tagCount(); ++index) {
                 
                 final int id = enchTags.getCompoundTagAt(index).getShort("id");
@@ -104,11 +103,10 @@ public class TooltipHandler {
                 if (enchant != null)
                     enchantments.add(enchant);
             }
-        }
         
         return enchantments;
     }
-
+    
     public static String getModName (IForgeRegistryEntry.Impl<?> registerable) {
         
         final String modID = registerable.getRegistryName().getResourceDomain();
@@ -116,7 +114,7 @@ public class TooltipHandler {
         return mod != null ? mod.getName() : modID;
     }
     
-    public static String getTranslationKey(Enchantment enchant) {
+    public static String getTranslationKey (Enchantment enchant) {
         
         return String.format("enchantment.%s.%s.desc", enchant.getRegistryName().getResourceDomain(), enchant.getRegistryName().getResourcePath());
     }

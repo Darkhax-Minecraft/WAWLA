@@ -28,7 +28,7 @@ public class TileProvider implements IWailaDataProvider {
             for (final InfoProvider provider : Wawla.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
-                    
+                
         return info.stack;
     }
     
@@ -45,7 +45,7 @@ public class TileProvider implements IWailaDataProvider {
         
         for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(currenttip, info);
-            
+        
         return currenttip;
     }
     
@@ -61,7 +61,7 @@ public class TileProvider implements IWailaDataProvider {
         for (final InfoProvider provider : Wawla.tileProviders)
             if (provider.requireTileSync(world, te))
                 provider.writeTileNBT(world, te, tag);
-                
+            
         return tag;
     }
     

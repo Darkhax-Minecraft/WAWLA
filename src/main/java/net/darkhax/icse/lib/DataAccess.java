@@ -123,7 +123,7 @@ public class DataAccess {
         
         if (this.pos == null)
             System.out.println("bull");
-            
+        
         return this.block != null && this.state != null && this.stack != null && this.stack.getItem() != null && this.side != null && this.pos != null;
     }
     

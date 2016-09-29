@@ -23,13 +23,13 @@ public class PluginVillagerTypes extends InfoProvider {
             
             if (data.entity instanceof EntityVillager)
                 career = ((EntityVillager) data.entity).getDisplayName().getFormattedText();
-                
+            
             else if (data.entity instanceof EntityZombie && ((EntityZombie) data.entity).isVillager())
                 career = I18n.format("villager.wawla.zombie");
-                
+            
             else if (data.entity instanceof EntityWitch)
                 career = I18n.format("villager.wawla.witch");
-                
+            
             if (career != null && !career.isEmpty())
                 info.add(I18n.format("tooltip.wawla.vanilla.career") + ": " + career);
         }

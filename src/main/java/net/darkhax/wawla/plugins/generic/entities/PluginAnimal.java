@@ -33,7 +33,7 @@ public class PluginAnimal extends InfoProvider {
                 
                 if (showBreedingCooldown && age < 0)
                     info.add(I18n.format("tooltip.wawla.generic.growingage") + ": " + StringUtils.ticksToElapsedTime(Math.abs(age)));
-                    
+                
                 if (showGrowingCooldown && age > 0)
                     info.add(I18n.format("tooltip.wawla.generic.breedingtime") + ": " + StringUtils.ticksToElapsedTime(age));
             }

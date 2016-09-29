@@ -37,13 +37,13 @@ public class WawlaConfiguration {
         
         for (final InfoProvider provider : Wawla.tileProviders)
             provider.syncConfig(config);
-            
+        
         for (final InfoProvider provider : Wawla.entityProviders)
             provider.syncConfig(config);
-            
+        
         if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
             TooltipHandler.handleConfigs(config);
-            
+        
         config.save();
     }
 }
