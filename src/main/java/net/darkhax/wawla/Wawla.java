@@ -13,10 +13,12 @@ import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.darkhax.wawla.plugins.generic.entities.PluginAnimal;
 import net.darkhax.wawla.plugins.generic.entities.PluginArmorPoints;
+import net.darkhax.wawla.plugins.generic.entities.PluginDevEntity;
 import net.darkhax.wawla.plugins.generic.entities.PluginEquipment;
 import net.darkhax.wawla.plugins.generic.entities.PluginTameable;
 import net.darkhax.wawla.plugins.generic.tiles.PluginBlastResistance;
 import net.darkhax.wawla.plugins.generic.tiles.PluginBreakProgression;
+import net.darkhax.wawla.plugins.generic.tiles.PluginDevTiles;
 import net.darkhax.wawla.plugins.generic.tiles.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHardness;
 import net.darkhax.wawla.plugins.generic.tiles.PluginHarvestability;
@@ -43,15 +45,15 @@ public class Wawla {
     public static Wawla instance;
     
     public static InfoEngine engine;
-    public static final List<InfoProvider> tileProviders = new ArrayList<InfoProvider>();
-    public static final List<InfoProvider> entityProviders = new ArrayList<InfoProvider>();
+    public static final List<InfoProvider> tileProviders = new ArrayList<>();
+    public static final List<InfoProvider> entityProviders = new ArrayList<>();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
         if (Loader.isModLoaded("Waila"))
             engine = new WailaEngine();
-            
+        
         else if (Loader.isModLoaded("ICSE")) {
             
             engine = new ICSEEngine();
@@ -81,6 +83,10 @@ public class Wawla {
         entityProviders.add(new PluginItemFrame());
         entityProviders.add(new PluginPrimedTNT());
         entityProviders.add(new PluginEXPOrb());
+        
+        // Devs
+        tileProviders.add(new PluginDevTiles());
+        entityProviders.add(new PluginDevEntity());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
