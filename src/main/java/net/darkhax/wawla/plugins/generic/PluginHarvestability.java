@@ -1,4 +1,4 @@
-package net.darkhax.wawla.plugins.generic.tiles;
+package net.darkhax.wawla.plugins.generic;
 
 import java.util.HashMap;
 import java.util.List;

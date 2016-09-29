@@ -1,4 +1,4 @@
-package net.darkhax.wawla.plugins.generic.entities;
+package net.darkhax.wawla.plugins.generic;
 
 import java.util.List;
 
