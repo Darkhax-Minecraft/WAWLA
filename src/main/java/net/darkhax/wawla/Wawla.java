@@ -11,12 +11,12 @@ import net.darkhax.wawla.engine.WailaEngine;
 import net.darkhax.wawla.lib.Constants;
 import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.dragonmounts.PluginEggInfo;
+import net.darkhax.wawla.plugins.dragonmounts.PluginStageInfo;
 import net.darkhax.wawla.plugins.generic.PluginAnimal;
 import net.darkhax.wawla.plugins.generic.PluginArmorPoints;
 import net.darkhax.wawla.plugins.generic.PluginBlastResistance;
 import net.darkhax.wawla.plugins.generic.PluginBreakProgression;
-import net.darkhax.wawla.plugins.generic.PluginDevEntity;
-import net.darkhax.wawla.plugins.generic.PluginDevTiles;
 import net.darkhax.wawla.plugins.generic.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.PluginEquipment;
 import net.darkhax.wawla.plugins.generic.PluginHardness;
@@ -84,9 +84,15 @@ public class Wawla {
         entityProviders.add(new PluginPrimedTNT());
         entityProviders.add(new PluginEXPOrb());
         
+        if (Loader.isModLoaded("DragonMounts")) {
+            
+            tileProviders.add(new PluginEggInfo());
+            entityProviders.add(new PluginStageInfo());
+        }
+        
         // Devs
-        tileProviders.add(new PluginDevTiles());
-        entityProviders.add(new PluginDevEntity());
+        // tileProviders.add(new PluginDevTiles());
+        // entityProviders.add(new PluginDevEntity());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();

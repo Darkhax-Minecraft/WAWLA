@@ -27,6 +27,9 @@ apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 group = "net.darkhax.wawla"
 archivesBaseName = "Wawla"
 version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants.java"))
@@ -34,7 +37,7 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.1.2018"
+    version = "1.10.2-12.18.1.2094"
     runDir = "run"
     mappings = "snapshot_20160518"
     useDepAts = true
@@ -47,11 +50,22 @@ repositories {
 
         url "http://mobiusstrip.eu/maven"
     }
+    
+    maven {
+    
+        url "https://jitpack.io"
+    }
+    
+    maven {
+    
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
 
     deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile 'com.github.ata4:dragon-mounts:r46'
 }
 
 //Handles basic resources such as mcmod.info

@@ -92,3 +92,12 @@ enchantment.minecraft.lure.desc=Decreases the amount of time it takes for a fish
 enchantment.minecraft.depth_strider.desc=Increases movement speed while under water.
 enchantment.minecraft.frost_walker.desc=Freezes water under the player into cracked ice.
 enchantment.minecraft.mending.desc=Repairs the durability of armor and tools with EXP.
+
+#Dragon Mounts
+tooltip.wawla.dragonmounts.start=Click to start hatching!
+tooltip.wawla.dragonmounts.stage.egg=Egg
+tooltip.wawla.dragonmounts.stage.hatchling=Hatchling
+tooltip.wawla.dragonmounts.stage.juvenile=Juvenile
+tooltip.wawla.dragonmounts.stage.adult=Adult
+tooltip.wawla.dragonmounts.adulttime=Adulthood
+tooltip.wawla.dragonmounts.nexttime=Next stage
