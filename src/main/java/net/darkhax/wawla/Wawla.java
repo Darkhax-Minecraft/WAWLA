@@ -17,6 +17,7 @@ import net.darkhax.wawla.plugins.generic.PluginAnimal;
 import net.darkhax.wawla.plugins.generic.PluginArmorPoints;
 import net.darkhax.wawla.plugins.generic.PluginBlastResistance;
 import net.darkhax.wawla.plugins.generic.PluginBreakProgression;
+import net.darkhax.wawla.plugins.generic.PluginEnchantmentDescription;
 import net.darkhax.wawla.plugins.generic.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.PluginEquipment;
 import net.darkhax.wawla.plugins.generic.PluginHardness;
@@ -47,6 +48,7 @@ public class Wawla {
     public static InfoEngine engine;
     public static final List<InfoProvider> tileProviders = new ArrayList<>();
     public static final List<InfoProvider> entityProviders = new ArrayList<>();
+    public static final List<InfoProvider> itemProviders = new ArrayList<>();
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
@@ -72,6 +74,11 @@ public class Wawla {
         entityProviders.add(new PluginArmorPoints());
         entityProviders.add(new PluginTameable());
         entityProviders.add(new PluginAnimal());
+        
+        // Generic Items
+        itemProviders.add(new PluginEnchantmentPower());
+        if (!Loader.isModLoaded("enchdesc"))
+            itemProviders.add(new PluginEnchantmentDescription());
         
         // Vanilla tiles
         tileProviders.add(new PluginSkulls());

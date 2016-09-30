@@ -8,6 +8,7 @@ import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -41,6 +42,10 @@ public class InfoProvider {
     }
     
     public void addTileInfo (List<String> info, InfoAccess data) {
+        
+    }
+    
+    public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
         
     }
     

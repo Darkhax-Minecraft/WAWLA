@@ -3,14 +3,11 @@ package net.darkhax.wawla.lib;
 import java.io.File;
 
 import net.darkhax.wawla.Wawla;
-import net.darkhax.wawla.client.TooltipHandler;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class WawlaConfiguration {
     
@@ -41,8 +38,8 @@ public class WawlaConfiguration {
         for (final InfoProvider provider : Wawla.entityProviders)
             provider.syncConfig(config);
         
-        if (FMLCommonHandler.instance().getSide().equals(Side.CLIENT))
-            TooltipHandler.handleConfigs(config);
+        for (final InfoProvider provider : Wawla.itemProviders)
+            provider.syncConfig(config);
         
         config.save();
     }

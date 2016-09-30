@@ -59,9 +59,10 @@ villager.wawla.witch=Witch
 entity.ItemFrame.name=Item Frame
 
 #Enchantment Tooltip
-tooltip.wawla.shiftEnch=Press your §d%s§7 key to see a description of the first enchantment.
-tooltip.wawla.missingench=No description could be found. Please ask the author of the §9%s§7 mod to add one. The localization key is %s
-tooltip.wawla.addedby=Added by §9%s§7
+tooltip.wawla.enchdesc.name=Enchantment
+tooltip.wawla.enchdesc.addedby=Added by
+tooltip.wawla.enchdesc.missing=No description found. Please ask the author of %s to add one. Localization key is %s
+tooltip.wawla.enchdesc.activate=Press %s%s%s for enchantment descriptions.
 tooltip.wawla.enchPower=Enchanting Power
 
 #Vanilla Enchantment Descriptions
