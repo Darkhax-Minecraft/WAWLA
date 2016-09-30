@@ -37,6 +37,7 @@ tooltip.wawla.generic.tamed=Tamed
 tooltip.wawla.generic.breedingtime=Breeding Cooldown
 tooltip.wawla.generic.growingage=Growing Cooldown
 tooltip.wawla.generic.breedingitem=Breedable
+tooltip.wawla.generic.temperature=Temperature: %dK
 
 #Vanilla Tiles
 tooltip.wawla.vanilla.input=Input
