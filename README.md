@@ -1,11 +1,46 @@
 # WAWLA
 What Are We Looking At (WAWLA) is a Minecraft mod which helps provide in game documentation for vanilla and modded content. 
 
-## Source Code
-The latest source code can be found here on [GitHub](https://github.com/Darkhax-Minecraft/WAWLA) If you are using Git, you can use the following command to clone the project: `git clone git:github.com/Darkhax-Minecraft/WAWLA.git`
+# Generic Entity Info
+- Time left until animal can breed again.
+- Time left for baby animal to grow up.
+- Armor points of an entity.
+- Whether or not a pet has been tamed.
+- Whether or not a pet is sitting.
 
-## Building from Source
-This project can be built using the Gradle Wrapper included in the project. When the `gradlew build` command is executed, a compiled JAR will be created in `~/build/libs`. Sources and Javadocs will also be generated in the same directory. Alternatively the latest builds of WAWLA along with Sources and Javadocs can be found [here](http://maven.rubbix.net/net/darkhax/wawla/Wawla)
+#Generic Block Info
+- Blast resistance of the block.
+- Hardness of the block.
+- Harvestability info, such as correct item to use.
+- The amount of enchanting power a block gives to an enchantment table.
+- The break percentage of the block currently being mined.
 
-## How does Wawla 2 work? / What is ICSE? / What is an Info Engine?
-As of Wawla 2, the mod is now using what I call an Info Engine oriented system. An Info Engine is a mod which allows information to be displayed. Some examples of Info Engines include [WAILA](http://minecraft.curseforge.com/projects/waila), [WIT](http://minecraft.curseforge.com/projects/wit-what-is-that) and [SmartCursor](http://minecraft.curseforge.com/projects/smartcursor). Previously the Wawla mod was designed to specifically run on top of WAILA, and required it to function. As of Wawla 2, the mod will run with any of the supported info engines installed. Additionally, Wawla 2 comes bundled with another mod called I Can See Everything (ICSE). This mod acts like a lightweight version of WAILA, and serves as a fallback Info Engine for when the user has no other Info Engines installed. This allows for Wawla 2 to run as a stand alone mod for those who want it. Wawla 2 is still currently in early alpha, so support for new Info Engines and new features are being added over time.
+#Vanilla Entity Info
+- The amount of EXP an EXP orb is worth.
+- Speed and Jump strength of a horse.
+- Name of Item in Item Frame
+- Fuse time on Primed TNT
+- Name of a villagers profession. 
+
+#Vanilla Block Info
+- Info on everything in a furnace including contents and remaining fuel.
+- Name of the player on player skulls. 
+
+#Misc Features
+- Enchantment Descriptions on enchantment books.
+
+#Frequently Asked Questions
+**Does this mod work on servers?**    
+Yes, this mod can be installed on both the client and server. While this mod is can be installed client side only, some features will require that the server have the mod installed as well. Keep in mind that if this mod is installed on the server, players will **not** be required to install to connect. 
+
+**Could you add support for X mod or Y feature?**    
+I would love to add support for as many features as possible, however I am not very familiar with other mods. If you have a suggestion please create a new GitHub issue with general info about how it works. 
+
+**Can I use this mod in my mod pack?**    
+Yes, just remember to give credit and link back to the [official download page](https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at).
+
+**What relation does this mod have with Waila?**    
+Wawla started off as an add-on for WAILA. While Wawla is primarily a Waila add-on, it now revolves around the info engine system. This system allows Wawla to run without Waila installed, and will also allow Wawla to work with other Waila alternatives. 
+
+**How does the info engine work?**    
+The info engine system puts a layer between the features in Wawla, and the mod which displays the information to the player, which I refer to as an info engine. This provides independence from WAILA and allows the mod to run without it. For example, Wawla is now includes a small mini-mod called ICSE (I can see everything) which is used as a fallback engine. In the future I plan to add support for other mods like The One Probe. 
