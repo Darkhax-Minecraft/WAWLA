@@ -16,7 +16,7 @@ public class PluginStageInfo extends InfoProvider {
     private boolean showStage = true;
     private boolean showAdultTimer = true;
     private boolean showStageTimer = true;
-    private final int maxTime = 4 * EnumDragonLifeStage.TICKS_PER_STAGE;
+    private final int maxTime = 3 * EnumDragonLifeStage.TICKS_PER_STAGE;
     
     @Override
     @Method(modid = "DragonMounts")
@@ -36,30 +36,28 @@ public class PluginStageInfo extends InfoProvider {
             final EntityTameableDragon dragon = (EntityTameableDragon) data.entity;
             
             if (this.showStage)
-                I18n.format("tooltip.wawla.dragonmounts.stage." + dragon.getLifeStageHelper().getLifeStage().name().toLowerCase());
+                info.add(I18n.format("tooltip.wawla.dragonmounts.stage") + ": " + I18n.format("tooltip.wawla.dragonmounts.stage." + dragon.getLifeStageHelper().getLifeStage().name().toLowerCase()));
             
             if (this.showAdultTimer) {
                 
                 final int time = this.maxTime - dragon.getLifeStageHelper().getTicksSinceCreation();
                 
-                if (time > 0)
+                if (time > 0 && dragon.getLifeStageHelper().getTicksSinceCreation() < this.maxTime)
                     info.add(I18n.format("tooltip.wawla.dragonmounts.adulttime") + ": " + StringUtils.ticksToElapsedTime(time));
             }
             
             if (this.showStageTimer) {
                 
-                final int time = this.ticksUntilNextStage(dragon.getLifeStageHelper().getTicksSinceCreation(), dragon.getLifeStageHelper().getLifeStage());
+                final int time = this.ticksUntilNextStage(dragon.getLifeStageHelper().getTicksSinceCreation());
                 
-                if (time > 0)
+                if (time > 0 && dragon.getLifeStageHelper().getTicksSinceCreation() < this.maxTime)
                     info.add(I18n.format("tooltip.wawla.dragonmounts.nexttime") + ": " + StringUtils.ticksToElapsedTime(time));
             }
         }
     }
     
-    private int ticksUntilNextStage (int currentTicks, EnumDragonLifeStage stage) {
+    private int ticksUntilNextStage (int currentTicks) {
         
-        final int currentStage = stage == EnumDragonLifeStage.EGG ? 0 : stage == EnumDragonLifeStage.HATCHLING ? 1 : stage == EnumDragonLifeStage.JUVENILE ? 2 : 3;
-        final int ticks = currentTicks - currentStage * EnumDragonLifeStage.TICKS_PER_STAGE;
-        return EnumDragonLifeStage.TICKS_PER_STAGE - ticks;
+        return EnumDragonLifeStage.TICKS_PER_STAGE - currentTicks % EnumDragonLifeStage.TICKS_PER_STAGE;
     }
 }

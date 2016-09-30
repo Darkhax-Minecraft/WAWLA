@@ -95,6 +95,7 @@ enchantment.minecraft.mending.desc=Repairs the durability of armor and tools wit
 
 #Dragon Mounts
 tooltip.wawla.dragonmounts.start=Click to start hatching!
+tooltip.wawla.dragonmounts.stage=Stage
 tooltip.wawla.dragonmounts.stage.egg=Egg
 tooltip.wawla.dragonmounts.stage.hatchling=Hatchling
 tooltip.wawla.dragonmounts.stage.juvenile=Juvenile
