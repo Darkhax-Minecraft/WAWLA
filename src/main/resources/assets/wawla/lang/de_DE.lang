@@ -1,0 +1,106 @@
+#Wawla Language File
+tooltip.wawla.true=§aRichtig
+tooltip.wawla.false=§4Falsch
+tooltip.wawla.yes=§a✔
+tooltip.wawla.no=§4✖
+tooltip.wawla.item=Gegenstand
+tooltip.wawla.block=Block
+tooltip.wawla.shovel=Schaufel
+tooltip.wawla.pickaxe=Spitzhacke
+tooltip.wawla.axe=Axt
+tooltip.wawla.chisel=Meißel
+tooltip.wawla.scoop=Kelle
+tooltip.wawla.crowbar=Brecheisen
+tooltip.wawla.sword=Schwert
+tooltip.wawla.mainhand=Haupthand
+tooltip.wawla.offhand=Zweithand
+tooltip.wawla.feet=Füße
+tooltip.wawla.legs=Beine
+tooltip.wawla.chest=Brust
+tooltip.wawla.head=Kopf
+tooltip.wawla.star=★
+tooltip.wawla.name=Name
+
+#Generic Tiles
+tooltip.wawla.generic.progression=Fortschritt
+tooltip.wawla.generic.enchpower=Verzauberungskraft
+tooltip.wawla.generic.blastresist=Explosionsresistenz
+tooltip.wawla.generic.hardness=Härte
+tooltip.wawla.generic.harvestable=Erntbar
+tooltip.wawla.generic.showtier=Stufe
+tooltip.wawla.generic.tooltype=Werkzeug
+
+#Generic Entities
+tooltip.wawla.generic.armor=Rüstung
+tooltip.wawla.generic.sitting=Sitzt
+tooltip.wawla.generic.tamed=Gezähmt
+tooltip.wawla.generic.breedingtime=Fortpflanzungs-Cooldown
+tooltip.wawla.generic.growingage=Wachstums-Cooldown
+tooltip.wawla.generic.breedingitem=Fortpflanzungsfähig
+tooltip.wawla.generic.temperature=Temperatur: %dK
+
+#Vanilla Tiles
+tooltip.wawla.vanilla.input=Eingabe
+tooltip.wawla.vanilla.fuel=Kraftstoff
+tooltip.wawla.vanilla.output=Ausgabe
+tooltip.wawla.vanilla.burntime=Brennzeit
+
+#Vanilla Entities
+tooltip.wawla.vanilla.jump=Sprungstärke
+tooltip.wawla.vanilla.speed=Geschwindigkeit
+tooltip.wawla.vanilla.career=Beruf
+tooltip.wawla.vanilla.fuse=Zünder
+tooltip.wawla.vanilla.experience=Erfahrung
+
+#Villager Types
+villager.wawla.zombie=Zombie
+villager.wawla.witch=Hexe
+
+#Vanilla Fixes
+entity.ItemFrame.name=Rahmen
+
+#Enchantment Tooltip
+tooltip.wawla.enchdesc.name=Verzauberung
+tooltip.wawla.enchdesc.addedby=Hinzugefügt von
+tooltip.wawla.enchdesc.missing=Keine Beschreibung gefunden. Bitte den Autor von %s darum, eine hinzuzufügen. Der Lokalisierungsschlüssel lautet %s
+tooltip.wawla.enchdesc.activate=Drücke %s%s%s für Beschreibungen zu den Verzauberungen.
+tooltip.wawla.enchPower=Verzauberungskraft
+
+#Vanilla Enchantment Descriptions
+enchantment.minecraft.protection.desc=Reduziert Schaden aus den meisten Quellen.
+enchantment.minecraft.fire_protection.desc=Reduziert die Effekte von Feuerschaden sowie die Dauer, wenn man brennt.
+enchantment.minecraft.feather_falling.desc=Reduziert Fallschaden sowie Schaden durch Enderperlen-Teleportation.
+enchantment.minecraft.blast_protection.desc=Reduziert sowohl Schaden als auch Rückstoß durch Explosionen.
+enchantment.minecraft.projectile_protection.desc=Reduziert Schaden durch Geschosse wie Pfeile und Feuerbälle.
+enchantment.minecraft.respiration.desc=Verlängert die Zeitspanne, die man unter Wasser verweilen kann. Verbessert zudem die Sicht unter Wasser.
+enchantment.minecraft.aqua_affinity.desc=Erhöht die Abbaugeschwindigkeit unter Wasser.
+enchantment.minecraft.thorns.desc=Wirft Schaden auf angreifende Wesen zurück.
+enchantment.minecraft.sharpness.desc=Erhöht den Schadenswert des Gegenstands.
+enchantment.minecraft.smite.desc=Erhöht den Schaden gegen Untote wie Zombies und Skelette.
+enchantment.minecraft.bane_of_arthropods.desc=Erhöht den Schaden gegen Gliederfüßer wie Spinnen und Silberfische.
+enchantment.minecraft.knockback.desc=Erhöht den Rückstoßwert der Waffe.
+enchantment.minecraft.fire_aspect.desc=Verursacht zusätzlichen Feuerschaden, wenn damit ein Wesen angegriffen wird.
+enchantment.minecraft.looting.desc=Wesen lassen mehr Gegenstände zurück, wenn sie getötet werden.
+enchantment.minecraft.efficiency.desc=Erhöht die Abbaugeschwindigkeit des Werkzeugs.
+enchantment.minecraft.silk_touch.desc=Erlaubt es, zerbrechliche Blöcke wie Glas wieder aufzunehmen.
+enchantment.minecraft.unbreaking.desc=Bewirkt eine längere Haltbarkeit.
+enchantment.minecraft.fortune.desc=In einigen Blöcken wie Steinkohle oder Diamanterz können zusätzliche Gegenstände gefunden werden.
+enchantment.minecraft.power.desc=Erhöht den Schadenswert abgefeuerter Pfeile.
+enchantment.minecraft.punch.desc=Erhöht den Rückstoßwert abgefeuerter Pfeile.
+enchantment.minecraft.flame.desc=Abgefeuerte Pfeile verursachen zusätzlichen Feuerschaden.
+enchantment.minecraft.infinity.desc=Ermöglicht das Abfeuern nicht vorhandener normaler Pfeile. Es wird lediglich ein Pfeil gebraucht, damit es funktioniert.
+enchantment.minecraft.luck_of_the_sea.desc=Erhöht die Chance auf guten Ertrag beim Angeln.
+enchantment.minecraft.lure.desc=Verkürzt die Wartezeit, bis ein Fisch anbeißt.
+enchantment.minecraft.depth_strider.desc=Erhöht die Bewegungsgeschwindigkeit unter Wasser.
+enchantment.minecraft.frost_walker.desc=Gefriert Wasser unter den Füßen zu brüchigem Eis.
+enchantment.minecraft.mending.desc=Repariert Rüstungen und Werkzeuge mit Erfahrungspunkten.
+
+#Dragon Mounts
+tooltip.wawla.dragonmounts.start=Klicke um das Ausbrüten zu starten!
+tooltip.wawla.dragonmounts.stage=Stufe
+tooltip.wawla.dragonmounts.stage.egg=Ei
+tooltip.wawla.dragonmounts.stage.hatchling=Schlüpfling
+tooltip.wawla.dragonmounts.stage.juvenile=Jungtier
+tooltip.wawla.dragonmounts.stage.adult=Alttier
+tooltip.wawla.dragonmounts.adulttime=Adultstadium
+tooltip.wawla.dragonmounts.nexttime=Nächste Stufe
