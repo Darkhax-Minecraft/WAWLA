@@ -23,7 +23,7 @@ import net.darkhax.wawla.plugins.generic.PluginEquipment;
 import net.darkhax.wawla.plugins.generic.PluginHardness;
 import net.darkhax.wawla.plugins.generic.PluginHarvestability;
 import net.darkhax.wawla.plugins.generic.PluginTameable;
-import net.darkhax.wawla.plugins.generic.PluginTemperature;
+import net.darkhax.wawla.plugins.generic.PluginFluidDescription;
 import net.darkhax.wawla.plugins.vanilla.PluginEXPOrb;
 import net.darkhax.wawla.plugins.vanilla.PluginFurnace;
 import net.darkhax.wawla.plugins.vanilla.PluginHorse;
@@ -78,7 +78,7 @@ public class Wawla {
         
         // Generic Items
         itemProviders.add(new PluginEnchantmentPower());
-        itemProviders.add(new PluginTemperature());
+        itemProviders.add(new PluginFluidDescription());
         if (!Loader.isModLoaded("enchdesc"))
             itemProviders.add(new PluginEnchantmentDescription());
         
