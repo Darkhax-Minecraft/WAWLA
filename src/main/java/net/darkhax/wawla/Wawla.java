@@ -36,6 +36,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:icse", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
 public class Wawla {
@@ -79,7 +80,7 @@ public class Wawla {
         // Generic Items
         itemProviders.add(new PluginEnchantmentPower());
         itemProviders.add(new PluginFluidDescription());
-        if (!Loader.isModLoaded("enchdesc"))
+        if (!Loader.isModLoaded("enchdesc") && event.getSide().equals(Side.CLIENT))
             itemProviders.add(new PluginEnchantmentDescription());
         
         // Vanilla tiles
