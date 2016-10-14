@@ -1,4 +1,4 @@
-# WAWLA
+# WAWLA [![](http://cf.way2muchnoise.eu/224712.svg)](https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at) [![](http://cf.way2muchnoise.eu/versions/224712.svg)](https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at)
 What Are We Looking At (WAWLA) is a Minecraft mod which helps provide in game documentation for vanilla and modded content. 
 
 # Generic Entity Info
