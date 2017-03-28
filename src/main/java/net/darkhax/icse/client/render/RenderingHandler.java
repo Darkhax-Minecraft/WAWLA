@@ -48,23 +48,23 @@ public class RenderingHandler {
             final Entity entity = this.getMouseOver(mc, event.getPartialTicks());
             final RayTraceResult results = this.rayTrace(mc.getRenderViewEntity(), distance, event.getPartialTicks());
             
-            if (results != null && mc.theWorld != null) {
+            if (results != null && mc.world != null) {
                 
-                final IBlockState state = mc.theWorld.getBlockState(results.getBlockPos());
+                final IBlockState state = mc.world.getBlockState(results.getBlockPos());
                 if (entity != null) {
                     
                     if (lastEntity != null && !lastEntity.equals(entity.getUniqueID()))
                         dataTag = new NBTTagCompound();
                     
                     lastEntity = entity.getUniqueID();
-                    DataAccess info = new DataAccess(mc.theWorld, mc.thePlayer, entity, dataTag);
+                    DataAccess info = new DataAccess(mc.world, mc.player, entity, dataTag);
                     
                     boolean requireSync = false;
                     for (final InfoPlugin provider : ICSE.plugins)
-                        if (provider.requireEntitySync(mc.theWorld, entity))
+                        if (provider.requireEntitySync(mc.world, entity))
                             requireSync = true;
                         
-                    if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
+                    if (requireSync && mc.player.ticksExisted % 20 == 0)
                         ICSE.network.sendToServer(new PacketRequestInfo(entity.getUniqueID()));
                     
                     if (info.isValidEntity()) {
@@ -93,14 +93,14 @@ public class RenderingHandler {
                 
                 else if (state != null && state.getBlock() != null) {
                     
-                    DataAccess info = new DataAccess(results, mc.theWorld, mc.thePlayer, state, results.getBlockPos(), results.sideHit, dataTag);
+                    DataAccess info = new DataAccess(results, mc.world, mc.player, state, results.getBlockPos(), results.sideHit, dataTag);
                     
                     boolean requireSync = false;
                     for (final InfoPlugin provider : ICSE.plugins)
-                        if (provider.requireTileSync(mc.theWorld, mc.theWorld.getTileEntity(info.pos)))
+                        if (provider.requireTileSync(mc.world, mc.world.getTileEntity(info.pos)))
                             requireSync = true;
                         
-                    if (requireSync && mc.thePlayer.ticksExisted % 20 == 0)
+                    if (requireSync && mc.player.ticksExisted % 20 == 0)
                         ICSE.network.sendToServer(new PacketRequestInfo(results.getBlockPos()));
                     
                     if (info.isValidBlock()) {
@@ -141,7 +141,7 @@ public class RenderingHandler {
         final Vec3d vec3 = entity.getPositionEyes(partialTicks);
         final Vec3d vec31 = entity.getLook(partialTicks);
         final Vec3d vec32 = vec3.addVector(vec31.xCoord * distance, vec31.yCoord * distance, vec31.zCoord * distance);
-        return entity.worldObj.rayTraceBlocks(vec3, vec32, false);
+        return entity.world.rayTraceBlocks(vec3, vec32, false);
     }
     
     // Modified from Vanilla to detect entities that are collidable
@@ -150,7 +150,7 @@ public class RenderingHandler {
         Entity pointedEntity = null;
         final Entity entity = mc.getRenderViewEntity();
         
-        if (entity != null && mc.theWorld != null) {
+        if (entity != null && mc.world != null) {
             
             mc.mcProfiler.startSection("pick");
             mc.pointedEntity = null;
@@ -178,7 +178,7 @@ public class RenderingHandler {
             
             final float f = 1.0F;
             
-            final List<Entity> list = mc.theWorld.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand(f, f, f), Predicates.and(EntitySelectors.NOT_SPECTATING, (Predicate<Entity>) entity1 -> entity1 != null));
+            final List<Entity> list = mc.world.getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().addCoord(vec3d1.xCoord * d0, vec3d1.yCoord * d0, vec3d1.zCoord * d0).expand(f, f, f), Predicates.and(EntitySelectors.NOT_SPECTATING, (Predicate<Entity>) entity1 -> entity1 != null));
             
             double d2 = d1;
             

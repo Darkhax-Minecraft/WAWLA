@@ -37,9 +37,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.1.2094"
+    version = "1.10.2-12.18.3.2254"
     runDir = "run"
-    mappings = "snapshot_20160518"
+    mappings = "stable_29"
     useDepAts = true
 }
 
@@ -47,13 +47,8 @@ minecraft {
 repositories {
 
     maven {
-
-        url "http://mobiusstrip.eu/maven"
-    }
     
-    maven {
-    
-        url "https://jitpack.io"
+        url "http://tehnut.info/maven"
     }
     
     maven {
@@ -64,7 +59,7 @@ repositories {
 
 dependencies {
 
-    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+    deobfCompile "mcp.mobius.waila:Hwyla:1.8.10-B24_1.10.2"
     deobfCompile 'com.github.ata4:dragon-mounts:r46'
 }
 

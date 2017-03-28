@@ -13,7 +13,7 @@ public class TooltipHandler {
     @SubscribeEvent
     public void onItemTooltip (ItemTooltipEvent event) {
         
-        if (event.getEntityPlayer() != null && event.getEntityPlayer().worldObj != null && event.getItemStack() != null)
+        if (event.getEntityPlayer() != null && event.getEntityPlayer().world != null && event.getItemStack() != null)
             for (final InfoProvider provider : Wawla.itemProviders)
                 provider.addItemInfo(event.getToolTip(), event.getItemStack(), event.isShowAdvancedItemTooltips(), event.getEntityPlayer());
     }

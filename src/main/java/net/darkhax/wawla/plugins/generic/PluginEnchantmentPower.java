@@ -37,7 +37,7 @@ public class PluginEnchantmentPower extends InfoProvider {
             if (block != null)
                 try {
                     
-                    final float enchPower = block.getEnchantPowerBonus(entityPlayer.worldObj, BlockPos.ORIGIN);
+                    final float enchPower = block.getEnchantPowerBonus(entityPlayer.world, BlockPos.ORIGIN);
                     
                     if (enchPower > 0)
                         info.add(I18n.format("tooltip.wawla.enchPower") + ": " + enchPower);
