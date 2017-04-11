@@ -87,7 +87,7 @@ public class PluginHarvestability extends InfoProvider {
      */
     private boolean isOre (ItemStack stack) {
         
-        if (stack == null || stack.getItem() == null)
+        if (stack.isEmpty())
             return false;
         
         if (Block.getBlockFromItem(stack.getItem()) instanceof BlockOre)
