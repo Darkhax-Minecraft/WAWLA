@@ -42,7 +42,7 @@ public class PluginHarvestability extends InfoProvider {
         final boolean isValidBlock = oresOnly && this.isOre(new ItemStack(data.block)) || !oresOnly;
         
         // Shows harvest information
-        if (isValidBlock && heldItem != null && heldItem.getItem().getToolClasses(heldItem).contains(toolType)) {
+        if (isValidBlock && !heldItem.isEmpty() && heldItem.getItem().getToolClasses(heldItem).contains(toolType)) {
             
             // When the block is harvestable.
             if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0))
