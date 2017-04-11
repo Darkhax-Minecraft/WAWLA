@@ -37,9 +37,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.3.2254"
+    version = "${version_forge}"
+    mappings = "${version_mcp}"
     runDir = "run"
-    mappings = "stable_29"
     useDepAts = true
 }
 
@@ -59,8 +59,7 @@ repositories {
 
 dependencies {
 
-    deobfCompile "mcp.mobius.waila:Hwyla:1.8.10-B24_1.10.2"
-    deobfCompile 'com.github.ata4:dragon-mounts:r46'
+    deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
 }
 
 //Handles basic resources such as mcmod.info
@@ -124,7 +123,7 @@ String getVersionFromJava(File file) {
 
     file.write(outfile);
 
-    return "1.10.2-$release.$update.$patch.$build";
+    return "${version_minecraft}-$release.$update.$patch.$build";
 }
 
 //Creates the source jar.
@@ -200,7 +199,7 @@ curseforge {
         releaseType = project.releaseType;
         changelog = project.changelog;
 
-        addGameVersion "1.10.2"
+        addGameVersion "${version_minecraft}"
         
         //Adds main jar, deobf jar, source jar, and javadoc jar to the upload.
         mainArtifact(jar) {
