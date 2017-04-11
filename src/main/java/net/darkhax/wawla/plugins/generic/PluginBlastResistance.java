@@ -16,4 +16,10 @@ public class PluginBlastResistance extends InfoProvider {
 
         info.add(I18n.format("tooltip.wawla.generic.blastresist") + ": " + data.block.getExplosionResistance(data.world, data.pos, null, null) * 5F);
     }
+
+    @Override
+    public boolean enabledByDefault () {
+
+        return false;
+    }
 }

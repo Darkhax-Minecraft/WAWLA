@@ -16,4 +16,10 @@ public class PluginHardness extends InfoProvider {
 
         info.add(I18n.format("tooltip.wawla.generic.hardness") + ": " + data.block.getBlockHardness(data.state, data.world, data.pos));
     }
+
+    @Override
+    public boolean enabledByDefault () {
+
+        return false;
+    }
 }

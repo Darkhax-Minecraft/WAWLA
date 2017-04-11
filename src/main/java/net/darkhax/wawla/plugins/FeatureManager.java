@@ -40,26 +40,34 @@ public class FeatureManager {
 
     public static void registerFeature (InfoProvider feature, String name, String description, ProviderType type) {
 
-        final boolean enabled = Wawla.config.getConfig().getBoolean(name, "_feature", feature.enabledByDefault(), description);
+        if (feature.canEnable()) {
 
-        if (enabled && feature.canEnable())
-            switch (type) {
+            final boolean enabled = Wawla.config.getConfig().getBoolean(name, "_feature", feature.enabledByDefault(), description);
 
-                case BLOCK:
-                    tileProviders.add(feature);
-                    break;
+            if (enabled)
+                switch (type) {
 
-                case ENTITY:
-                    entityProviders.add(feature);
-                    break;
+                    case BLOCK:
+                        tileProviders.add(feature);
+                        break;
 
-                case ITEM:
-                    itemProviders.add(feature);
-                    break;
+                    case ENTITY:
+                        entityProviders.add(feature);
+                        break;
 
-                default:
-                    break;
-            }
+                    case ITEM:
+                        itemProviders.add(feature);
+                        break;
+
+                    case ITEM_BLOCK:
+                        itemProviders.add(feature);
+                        tileProviders.add(feature);
+                        break;
+
+                    default:
+                        break;
+                }
+        }
     }
 
     public static boolean isLoaded () {

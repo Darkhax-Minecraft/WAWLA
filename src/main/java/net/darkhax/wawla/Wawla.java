@@ -38,9 +38,6 @@ public class Wawla {
         if (Loader.isModLoaded("waila"))
             engine = new WailaEngine();
 
-        // if (!Loader.isModLoaded("enchdesc") && event.getSide().equals(Side.CLIENT))
-        // itemProviders.add(new PluginEnchantmentDescription());
-
         proxy.preInit();
     }
 }

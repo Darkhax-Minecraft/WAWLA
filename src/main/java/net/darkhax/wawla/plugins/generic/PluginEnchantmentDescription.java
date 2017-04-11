@@ -18,9 +18,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+import net.minecraftforge.fml.relauncher.Side;
 
 @WawlaFeature(description = "Shows descriptions of enchantments on enchantment books", name = "enchdesc", type = ProviderType.ITEM)
 public class PluginEnchantmentDescription extends InfoProvider {
@@ -51,6 +53,12 @@ public class PluginEnchantmentDescription extends InfoProvider {
 
             else
                 info.add(I18n.format("tooltip.wawla.enchdesc.activate", ChatFormatting.LIGHT_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+    }
+
+    @Override
+    public boolean canEnable () {
+
+        return !Loader.isModLoaded("enchdesc") && FMLCommonHandler.instance().getSide().equals(Side.CLIENT);
     }
 
     /**
