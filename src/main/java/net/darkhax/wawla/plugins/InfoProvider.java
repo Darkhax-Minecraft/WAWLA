@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Configuration;
 
 public class InfoProvider {
 
@@ -67,16 +65,20 @@ public class InfoProvider {
         return false;
     }
 
-    public void syncConfig (Configuration config) {
+    public boolean enabledByDefault () {
 
+        return true;
     }
 
+    public boolean canEnable () {
+
+        return true;
+    }
+
+    // utilities
     public static String getBooleanForDisplay (boolean bool) {
 
-        if (bool)
-            return I18n.format("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "yes" : "true"));
-
-        return I18n.format("tooltip.wawla." + (WawlaConfiguration.useSymbols ? "no" : "false"));
+        return I18n.format("tooltip.wawla." + (bool ? "yes" : "no"));
     }
 
     public static void writeStackToTag (ItemStack stack, String tagName, NBTTagCompound tag) {

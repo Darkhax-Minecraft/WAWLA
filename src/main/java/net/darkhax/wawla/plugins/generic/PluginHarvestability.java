@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.darkhax.wawla.config.Configurable;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.ProviderType;
+import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.state.IBlockState;
@@ -15,30 +18,33 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 
+@WawlaFeature(description = "Shows harvestability data", name = "harvestable", type = ProviderType.BLOCK)
 public class PluginHarvestability extends InfoProvider {
 
     private static final Map<String, ItemStack> overrides = new HashMap<>();
 
-    private static boolean enabled = true;
-    private static boolean oresOnly = true;
-    private static boolean showHarvestable = true;
-    private static boolean showCorrectTier = true;
-    private static boolean showCorrectTool = true;
+    @Configurable(category = "harvestable", description = "Limit to only ores?")
+    public static boolean oresOnly = true;
+
+    @Configurable(category = "harvestable", description = "Show if the block is harvestable?")
+    public static boolean showHarvestable = true;
+
+    @Configurable(category = "harvestable", description = "Show the correct tier if the player lacks it?")
+    public static boolean showCorrectTier = true;
+
+    @Configurable(category = "harvestable", description = "Show the correct tool if the player is using the wrong one?")
+    public static boolean showCorrectTool = true;
 
     @Override
     public void addTileInfo (List<String> info, InfoAccess data) {
-
-        if (!enabled)
-            return;
 
         final IBlockState state = data.world.getBlockState(data.pos);
         final ItemStack heldItem = data.player.getHeldItemMainhand();
         final String toolType = this.getEffectiveTool(data.world, data.state, data.pos);
         final int blockLevel = data.block.getHarvestLevel(data.state);
-        final int itemLevel = heldItem != null ? heldItem.getItem().getHarvestLevel(heldItem, toolType, data.player, state) : 0;
+        final int itemLevel = !heldItem.isEmpty() && toolType != null && !toolType.isEmpty() ? heldItem.getItem().getHarvestLevel(heldItem, toolType, data.player, state) : 0;
         final boolean isValidBlock = oresOnly && this.isOre(new ItemStack(data.block)) || !oresOnly;
 
         // Shows harvest information
@@ -65,16 +71,6 @@ public class PluginHarvestability extends InfoProvider {
             final String translation = I18n.format("tooltip.wawla." + toolType);
             info.add(I18n.format("tooltip.wawla.generic.tooltype") + ": " + (translation.startsWith("tooltip.wawla.") ? toolType : translation));
         }
-    }
-
-    @Override
-    public void syncConfig (Configuration config) {
-
-        enabled = config.getBoolean("Harvestability", "generic_tiles", true, "If this is enabled, the hud will display information about tool harvestability.");
-        oresOnly = config.getBoolean("Harvestability_OnlyOres", "generic_tiles", true, "When enabled, only ore blocks will show harvestability info.");
-        showHarvestable = config.getBoolean("Harvestability_Harvestable", "generic_tiles", true, "When enabled, shows if the current tile can be harvested or not.");
-        showCorrectTier = config.getBoolean("Harvestability_Tier", "generic_tiles", true, "When enabled, shows the required tool tier, if the correct tool is used, but it is not good enough.");
-        showCorrectTool = config.getBoolean("Harvestability_Tool", "generic_tiles", true, "When enabled, shows the required tool, if the correct one is not being held.");
     }
 
     /**

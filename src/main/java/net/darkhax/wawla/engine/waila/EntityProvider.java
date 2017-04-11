@@ -6,8 +6,8 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
+import net.darkhax.wawla.plugins.FeatureManager;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -22,7 +22,7 @@ public class EntityProvider implements IWailaEntityProvider {
         InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
         if (info.entity != null)
-            for (final InfoProvider provider : Wawla.entityProviders)
+            for (final InfoProvider provider : FeatureManager.entityProviders)
                 if (provider.requireEntityOverride(info))
                     info = provider.overrideEntity(info);
 
@@ -40,7 +40,7 @@ public class EntityProvider implements IWailaEntityProvider {
 
         final InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
-        for (final InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : FeatureManager.entityProviders)
             provider.addEntityInfo(currenttip, info);
 
         return currenttip;
@@ -55,7 +55,7 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, Entity ent, NBTTagCompound tag, World world) {
 
-        for (final InfoProvider provider : Wawla.entityProviders)
+        for (final InfoProvider provider : FeatureManager.entityProviders)
             if (provider.requireEntitySync(world, ent))
                 provider.writeEntityNBT(world, ent, tag);
 

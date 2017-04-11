@@ -4,27 +4,34 @@ import java.util.List;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import net.darkhax.wawla.config.Configurable;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.ProviderType;
+import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Configuration;
 
+@WawlaFeature(description = "Shows information about breedable animals", name = "animals", type = ProviderType.ENTITY)
 public class PluginAnimal extends InfoProvider {
 
-    private static boolean enabled = true;
-    private static boolean showBreedingCooldown = true;
-    private static boolean showGrowingCooldown = true;
-    private static boolean showBreedingItem = true;
+    @Configurable(category = "animals", description = "Should the breedting timer be shown?")
+    public static boolean showBreedingCooldown = true;
+
+    @Configurable(category = "animals", description = "Should the growing timer be shown?")
+    public static boolean showGrowingCooldown = true;
+
+    @Configurable(category = "animals", description = "Should the correct breeding item reflect in the hud?")
+    public static boolean showBreedingItem = true;
 
     @Override
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
-        if (enabled && data.entity instanceof EntityAnimal) {
+        if (data.entity instanceof EntityAnimal) {
 
             final EntityAnimal entity = (EntityAnimal) data.entity;
             final int age = data.tag.getInteger("AnimalGrowingAge");
@@ -46,7 +53,7 @@ public class PluginAnimal extends InfoProvider {
     @Override
     public void writeEntityNBT (World world, Entity entity, NBTTagCompound tag) {
 
-        if (enabled && entity instanceof EntityAnimal) {
+        if (entity instanceof EntityAnimal) {
 
             final EntityAnimal animal = (EntityAnimal) entity;
 
@@ -58,15 +65,6 @@ public class PluginAnimal extends InfoProvider {
     @Override
     public boolean requireEntitySync (World world, Entity entity) {
 
-        return enabled && entity instanceof EntityAnimal;
-    }
-
-    @Override
-    public void syncConfig (Configuration config) {
-
-        enabled = config.getBoolean("Animal", "generic_entities", true, "When enabled, information about the animal will be displayed.");
-        showBreedingCooldown = config.getBoolean("Animal_Breeding_Cooldown", "generic_entities", true, "When enabled, shows how long the entity has before it can breed again.");
-        showGrowingCooldown = config.getBoolean("Animal_Growing_Age", "generic_entities", true, "When enabled, shows how long the entity has before it is fully grown.");
-        showBreedingItem = config.getBoolean("Animal_Breeding_Item", "generic_entities", true, "When enabled, will show if the held item is a breeding item.");
+        return entity instanceof EntityAnimal;
     }
 }

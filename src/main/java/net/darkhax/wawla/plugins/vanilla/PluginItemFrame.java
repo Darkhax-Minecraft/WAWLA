@@ -4,30 +4,24 @@ import java.util.List;
 
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.ProviderType;
+import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
 
+@WawlaFeature(description = "Shows info about item frames", name = "itemframes", type = ProviderType.ENTITY)
 public class PluginItemFrame extends InfoProvider {
-
-    private static boolean enabled;
 
     @Override
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
-        if (enabled && data.entity instanceof EntityItemFrame) {
+        if (data.entity instanceof EntityItemFrame) {
 
             final ItemStack stack = ((EntityItemFrame) data.entity).getDisplayedItem();
 
             if (!stack.isEmpty())
                 info.add(I18n.format("tooltip.wawla.item") + ": " + stack.getDisplayName());
         }
-    }
-
-    @Override
-    public void syncConfig (Configuration config) {
-
-        enabled = config.getBoolean("Item_Frame", "vanilla_entities", true, "When enabled, shows the name of the Item in an item frame.");
     }
 }

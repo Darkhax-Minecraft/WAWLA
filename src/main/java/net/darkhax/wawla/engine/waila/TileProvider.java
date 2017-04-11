@@ -6,8 +6,8 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
-import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
+import net.darkhax.wawla.plugins.FeatureManager;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -25,7 +25,7 @@ public class TileProvider implements IWailaDataProvider {
         InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
 
         if (info.isValidBlock())
-            for (final InfoProvider provider : Wawla.tileProviders)
+            for (final InfoProvider provider : FeatureManager.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
 
@@ -43,7 +43,7 @@ public class TileProvider implements IWailaDataProvider {
 
         final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
 
-        for (final InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : FeatureManager.tileProviders)
             provider.addTileInfo(currenttip, info);
 
         return currenttip;
@@ -58,7 +58,7 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
 
-        for (final InfoProvider provider : Wawla.tileProviders)
+        for (final InfoProvider provider : FeatureManager.tileProviders)
             if (provider.requireTileSync(world, te))
                 provider.writeTileNBT(world, te, tag);
 

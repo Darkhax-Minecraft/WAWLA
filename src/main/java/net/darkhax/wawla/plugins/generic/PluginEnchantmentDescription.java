@@ -5,7 +5,10 @@ import java.util.List;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import net.darkhax.wawla.config.Configurable;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.ProviderType;
+import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
@@ -15,21 +18,22 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
+@WawlaFeature(description = "Shows descriptions of enchantments on enchantment books", name = "enchdesc", type = ProviderType.ITEM)
 public class PluginEnchantmentDescription extends InfoProvider {
 
     private static final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-    private static boolean enabled = true;
-    private static boolean showOwner = true;
+
+    @Configurable(category = "enchdesc", description = "Should the mod which added the enchantment be shown?")
+    public static boolean showOwner = true;
 
     @Override
     public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
 
-        if (enabled && stack.getItem() instanceof ItemEnchantedBook)
+        if (stack.getItem() instanceof ItemEnchantedBook)
             if (GameSettings.isKeyDown(keyBindSneak)) {
 
                 final ItemEnchantedBook item = (ItemEnchantedBook) stack.getItem();
@@ -47,13 +51,6 @@ public class PluginEnchantmentDescription extends InfoProvider {
 
             else
                 info.add(I18n.format("tooltip.wawla.enchdesc.activate", ChatFormatting.LIGHT_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
-    }
-
-    @Override
-    public void syncConfig (Configuration config) {
-
-        enabled = config.getBoolean("EnchantDescriptions", "generic_items", true, "Should the tooltip for enchanted books give descriptions of the enchantment?");
-        showOwner = config.getBoolean("ShowEnchantmentSource", "generic_items", true, "Should the tooltip for enchanted books show the name of the mod that added them?");
     }
 
     /**

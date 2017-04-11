@@ -2,8 +2,11 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
+import net.darkhax.wawla.config.Configurable;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.InfoProvider;
+import net.darkhax.wawla.plugins.ProviderType;
+import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,54 +14,57 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Configuration;
 
+@WawlaFeature(description = "Shows info about the furnace", name = "furnace", type = ProviderType.BLOCK)
 public class PluginFurnace extends InfoProvider {
 
-    private static boolean enabled = true;
-    private static boolean fuel = true;
-    private static boolean input = true;
-    private static boolean output = true;
-    private static boolean burntime = true;
+    @Configurable(category = "furnace", description = "Show the stack in the fuel slot?")
+    public static boolean fuel = true;
+    @Configurable(category = "furnace", description = "Show the stack in the input slot?")
+    public static boolean input = true;
+    @Configurable(category = "furnace", description = "Show the stack in the output slot?")
+    public static boolean output = true;
+
+    @Configurable(category = "furnace", description = "Show the remaining fuel time?")
+    public static boolean burntime = true;
 
     @Override
     public void addTileInfo (List<String> info, InfoAccess data) {
 
-        if (enabled)
-            if (data.world.getTileEntity(data.pos) instanceof TileEntityFurnace) {
+        if (data.world.getTileEntity(data.pos) instanceof TileEntityFurnace) {
 
-                if (input) {
+            if (input) {
 
-                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("InputStack"));
+                final ItemStack stack = new ItemStack(data.tag.getCompoundTag("InputStack"));
 
-                    if (!stack.isEmpty())
-                        info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.getCount());
-                }
-
-                if (fuel) {
-
-                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("FuelStack"));
-
-                    if (!stack.isEmpty())
-                        info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.getCount());
-                }
-
-                if (output) {
-
-                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("OutputStack"));
-
-                    if (!stack.isEmpty())
-                        info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.getCount());
-                }
-
-                if (burntime) {
-
-                    final int time = data.tag.getInteger("BurnTime");
-
-                    if (time > 0)
-                        info.add(I18n.format("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
-                }
+                if (!stack.isEmpty())
+                    info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.getCount());
             }
+
+            if (fuel) {
+
+                final ItemStack stack = new ItemStack(data.tag.getCompoundTag("FuelStack"));
+
+                if (!stack.isEmpty())
+                    info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.getCount());
+            }
+
+            if (output) {
+
+                final ItemStack stack = new ItemStack(data.tag.getCompoundTag("OutputStack"));
+
+                if (!stack.isEmpty())
+                    info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.getCount());
+            }
+
+            if (burntime) {
+
+                final int time = data.tag.getInteger("BurnTime");
+
+                if (time > 0)
+                    info.add(I18n.format("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
+            }
+        }
     }
 
     @Override
@@ -100,16 +106,6 @@ public class PluginFurnace extends InfoProvider {
     @Override
     public boolean requireTileSync (World world, TileEntity tile) {
 
-        return enabled && tile instanceof TileEntityFurnace;
-    }
-
-    @Override
-    public void syncConfig (Configuration config) {
-
-        enabled = config.getBoolean("Furnace", "vanilla_tiles", true, "If this is enabled, the hud will display info about furnaces.");
-        fuel = config.getBoolean("Furnace_Fuel", "vanilla_tiles", true, "If this is enabled, the hud will show fuel items in a furnace.");
-        input = config.getBoolean("Furnace_Input", "vanilla_tiles", true, "If this is enabled, the hud will show input items in a furnace.");
-        output = config.getBoolean("Furnace_Output", "vanilla_tiles", true, "If this is enabled, the hud will show output items in a furnace.");
-        burntime = config.getBoolean("Furnace_Burn_Time", "vanilla_tiles", true, "If this is enabled, the hud will show how much longer the furnace will burn.");
+        return tile instanceof TileEntityFurnace;
     }
 }
