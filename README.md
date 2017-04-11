@@ -44,3 +44,4 @@ Wawla started off as an add-on for WAILA. While Wawla is primarily a Waila add-o
 
 **How does the info engine work?**    
 The info engine system puts a layer between the features in Wawla, and the mod which displays the information to the player, which I refer to as an info engine. This provides independence from WAILA and allows the mod to run without it. For example, Wawla is now includes a small mini-mod called ICSE (I can see everything) which is used as a fallback engine. In the future I plan to add support for other mods like The One Probe. 
+
