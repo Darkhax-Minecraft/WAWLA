@@ -208,6 +208,7 @@ curseforge {
 
                 //Adds the file relations to the upload.
                 optionalLibrary 'waila'
+                optionalLibrary 'hwyla'
             }
         }
         
