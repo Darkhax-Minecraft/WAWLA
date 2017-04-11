@@ -7,6 +7,7 @@ import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraftforge.common.config.Configuration;
 
@@ -22,10 +23,10 @@ public class PluginVillagerTypes extends InfoProvider {
             String career = "";
             
             if (data.entity instanceof EntityVillager)
-                career = ((EntityVillager) data.entity).getDisplayName().getFormattedText();
+                career = ((EntityVillager) data.entity).getProfessionForge().getRegistryName().getResourcePath();
             
-            else if (data.entity instanceof EntityZombie && ((EntityZombie) data.entity).isVillager())
-                career = I18n.format("villager.wawla.zombie");
+            else if (data.entity instanceof EntityZombieVillager)
+                career = ((EntityZombieVillager) data.entity).getForgeProfession().getRegistryName().getResourcePath();
             
             else if (data.entity instanceof EntityWitch)
                 career = I18n.format("villager.wawla.witch");

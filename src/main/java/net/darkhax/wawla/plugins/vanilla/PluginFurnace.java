@@ -29,26 +29,26 @@ public class PluginFurnace extends InfoProvider {
                 
                 if (input) {
                     
-                    final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("InputStack"));
+                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("InputStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
                 if (fuel) {
                     
-                    final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("FuelStack"));
+                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("FuelStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
                 if (output) {
                     
-                    final ItemStack stack = ItemStack.loadItemStackFromNBT(data.tag.getCompoundTag("OutputStack"));
+                    final ItemStack stack = new ItemStack(data.tag.getCompoundTag("OutputStack"));
                     
                     if (stack != null && stack.getItem() != null)
-                        info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.stackSize);
+                        info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
                 if (burntime) {

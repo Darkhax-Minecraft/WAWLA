@@ -3,16 +3,12 @@ package net.darkhax.wawla;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.icse.ICSE;
 import net.darkhax.wawla.common.CommonProxy;
-import net.darkhax.wawla.engine.ICSEEngine;
 import net.darkhax.wawla.engine.InfoEngine;
 import net.darkhax.wawla.engine.WailaEngine;
 import net.darkhax.wawla.lib.Constants;
 import net.darkhax.wawla.lib.WawlaConfiguration;
 import net.darkhax.wawla.plugins.InfoProvider;
-import net.darkhax.wawla.plugins.dragonmounts.PluginEggInfo;
-import net.darkhax.wawla.plugins.dragonmounts.PluginStageInfo;
 import net.darkhax.wawla.plugins.generic.PluginAnimal;
 import net.darkhax.wawla.plugins.generic.PluginArmorPoints;
 import net.darkhax.wawla.plugins.generic.PluginBlastResistance;
@@ -38,7 +34,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*", dependencies = "after:icse", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
+@Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*")
 public class Wawla {
     
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
@@ -57,12 +53,6 @@ public class Wawla {
         
         if (Loader.isModLoaded("Waila"))
             engine = new WailaEngine();
-        
-        else if (Loader.isModLoaded("ICSE")) {
-            
-            engine = new ICSEEngine();
-            ICSE.plugins.add((ICSEEngine) engine);
-        }
         
         // Generic Tiles
         tileProviders.add(new PluginBreakProgression());
@@ -93,16 +83,6 @@ public class Wawla {
         entityProviders.add(new PluginItemFrame());
         entityProviders.add(new PluginPrimedTNT());
         entityProviders.add(new PluginEXPOrb());
-        
-        if (Loader.isModLoaded("DragonMounts")) {
-            
-            tileProviders.add(new PluginEggInfo());
-            entityProviders.add(new PluginStageInfo());
-        }
-        
-        // Devs
-        // tileProviders.add(new PluginDevTiles());
-        // entityProviders.add(new PluginDevEntity());
         
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();

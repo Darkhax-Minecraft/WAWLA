@@ -34,10 +34,11 @@ public class PluginHarvestability extends InfoProvider {
         if (!enabled)
             return;
         
+        final IBlockState state = data.world.getBlockState(data.pos);
         final ItemStack heldItem = data.player.getHeldItemMainhand();
         final String toolType = this.getEffectiveTool(data.world, data.state, data.pos);
         final int blockLevel = data.block.getHarvestLevel(data.state);
-        final int itemLevel = heldItem != null ? heldItem.getItem().getHarvestLevel(heldItem, toolType) : 0;
+        final int itemLevel = heldItem != null ? heldItem.getItem().getHarvestLevel(heldItem, toolType, data.player, state) : 0;
         final boolean isValidBlock = oresOnly && this.isOre(new ItemStack(data.block)) || !oresOnly;
         
         // Shows harvest information
