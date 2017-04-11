@@ -8,8 +8,8 @@ public class WailaEngine implements InfoEngine {
     
     public WailaEngine() {
         
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.engine.waila.EntityProvider.register");
-        FMLInterModComms.sendMessage("Waila", "register", "net.darkhax.wawla.engine.waila.TileProvider.register");
+        FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.EntityProvider.register");
+        FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.TileProvider.register");
     }
     
     @Override

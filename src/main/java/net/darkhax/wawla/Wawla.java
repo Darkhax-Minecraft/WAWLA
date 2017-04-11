@@ -51,7 +51,7 @@ public class Wawla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        if (Loader.isModLoaded("Waila"))
+        if (Loader.isModLoaded("waila"))
             engine = new WailaEngine();
         
         // Generic Tiles
