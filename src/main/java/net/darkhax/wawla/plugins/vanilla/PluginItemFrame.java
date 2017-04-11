@@ -20,7 +20,7 @@ public class PluginItemFrame extends InfoProvider {
             
             final ItemStack stack = ((EntityItemFrame) data.entity).getDisplayedItem();
             
-            if (stack != null && stack.getItem() != null)
+            if (!stack.isEmpty())
                 info.add(I18n.format("tooltip.wawla.item") + ": " + stack.getDisplayName());
         }
     }
