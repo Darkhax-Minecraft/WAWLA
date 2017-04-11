@@ -31,7 +31,7 @@ public class PluginFurnace extends InfoProvider {
                     
                     final ItemStack stack = new ItemStack(data.tag.getCompoundTag("InputStack"));
                     
-                    if (stack != null && stack.getItem() != null)
+                    if (!stack.isEmpty())
                         info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
@@ -39,7 +39,7 @@ public class PluginFurnace extends InfoProvider {
                     
                     final ItemStack stack = new ItemStack(data.tag.getCompoundTag("FuelStack"));
                     
-                    if (stack != null && stack.getItem() != null)
+                    if (!stack.isEmpty())
                         info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
@@ -47,7 +47,7 @@ public class PluginFurnace extends InfoProvider {
                     
                     final ItemStack stack = new ItemStack(data.tag.getCompoundTag("OutputStack"));
                     
-                    if (stack != null && stack.getItem() != null)
+                    if (!stack.isEmpty())
                         info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.getCount());
                 }
                 
