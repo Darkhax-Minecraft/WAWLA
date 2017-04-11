@@ -29,7 +29,7 @@ public class PluginEquipment extends InfoProvider {
                 
                 final ItemStack stack = entity.getItemStackFromSlot(slot);
                 
-                if (stack != null && stack.getItem() != null)
+                if (!stack.isEmpty())
                     info.add(I18n.format("tooltip.wawla." + slot.getName()) + ": " + stack.getDisplayName() + (enchantmentStar && stack.isItemEnchanted() ? ChatFormatting.LIGHT_PURPLE + I18n.format("tooltip.wawla.star") : ""));
             }
         }
