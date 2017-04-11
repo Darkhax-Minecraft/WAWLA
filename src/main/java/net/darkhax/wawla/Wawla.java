@@ -16,10 +16,10 @@ import net.darkhax.wawla.plugins.generic.PluginBreakProgression;
 import net.darkhax.wawla.plugins.generic.PluginEnchantmentDescription;
 import net.darkhax.wawla.plugins.generic.PluginEnchantmentPower;
 import net.darkhax.wawla.plugins.generic.PluginEquipment;
+import net.darkhax.wawla.plugins.generic.PluginFluidDescription;
 import net.darkhax.wawla.plugins.generic.PluginHardness;
 import net.darkhax.wawla.plugins.generic.PluginHarvestability;
 import net.darkhax.wawla.plugins.generic.PluginTameable;
-import net.darkhax.wawla.plugins.generic.PluginFluidDescription;
 import net.darkhax.wawla.plugins.vanilla.PluginEXPOrb;
 import net.darkhax.wawla.plugins.vanilla.PluginFurnace;
 import net.darkhax.wawla.plugins.vanilla.PluginHorse;
@@ -36,54 +36,54 @@ import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Constants.MODID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER, acceptableRemoteVersions = "*")
 public class Wawla {
-    
+
     @SidedProxy(serverSide = Constants.SERVER, clientSide = Constants.CLIENT)
     public static CommonProxy proxy;
-    
+
     @Mod.Instance(Constants.MODID)
     public static Wawla instance;
-    
+
     public static InfoEngine engine;
     public static final List<InfoProvider> tileProviders = new ArrayList<>();
     public static final List<InfoProvider> entityProviders = new ArrayList<>();
     public static final List<InfoProvider> itemProviders = new ArrayList<>();
-    
+
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-        
+
         if (Loader.isModLoaded("waila"))
             engine = new WailaEngine();
-        
+
         // Generic Tiles
         tileProviders.add(new PluginBreakProgression());
         tileProviders.add(new PluginEnchantmentPower());
         tileProviders.add(new PluginBlastResistance());
         tileProviders.add(new PluginHardness());
         tileProviders.add(new PluginHarvestability());
-        
+
         // Generic Entities
         entityProviders.add(new PluginEquipment());
         entityProviders.add(new PluginArmorPoints());
         entityProviders.add(new PluginTameable());
         entityProviders.add(new PluginAnimal());
-        
+
         // Generic Items
         itemProviders.add(new PluginEnchantmentPower());
         itemProviders.add(new PluginFluidDescription());
         if (!Loader.isModLoaded("enchdesc") && event.getSide().equals(Side.CLIENT))
             itemProviders.add(new PluginEnchantmentDescription());
-        
+
         // Vanilla tiles
         tileProviders.add(new PluginSkulls());
         tileProviders.add(new PluginFurnace());
-        
+
         // Vanilla Entities
         entityProviders.add(new PluginHorse());
         entityProviders.add(new PluginVillagerTypes());
         entityProviders.add(new PluginItemFrame());
         entityProviders.add(new PluginPrimedTNT());
         entityProviders.add(new PluginEXPOrb());
-        
+
         new WawlaConfiguration(event.getSuggestedConfigurationFile());
         proxy.preInit();
     }

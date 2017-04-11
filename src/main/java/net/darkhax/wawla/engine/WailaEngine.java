@@ -5,16 +5,16 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 public class WailaEngine implements InfoEngine {
-    
-    public WailaEngine() {
-        
+
+    public WailaEngine () {
+
         FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.EntityProvider.register");
         FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.TileProvider.register");
     }
-    
+
     @Override
     public String getName () {
-        
+
         return ChatFormatting.GOLD + "Waila";
     }
 }

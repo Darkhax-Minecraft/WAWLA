@@ -18,55 +18,55 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TileProvider implements IWailaDataProvider {
-    
+
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+
         InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
-        
+
         if (info.isValidBlock())
             for (final InfoProvider provider : Wawla.tileProviders)
                 if (provider.requireTileOverride(info))
                     info = provider.overrideTile(info);
-                
+
         return info.stack;
     }
-    
+
     @Override
     public List<String> getWailaHead (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+
         return currenttip;
     }
-    
+
     @Override
     public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+
         final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
-        
+
         for (final InfoProvider provider : Wawla.tileProviders)
             provider.addTileInfo(currenttip, info);
-        
+
         return currenttip;
     }
-    
+
     @Override
     public List<String> getWailaTail (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+
         return currenttip;
     }
-    
+
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
-        
+
         for (final InfoProvider provider : Wawla.tileProviders)
             if (provider.requireTileSync(world, te))
                 provider.writeTileNBT(world, te, tag);
-            
+
         return tag;
     }
-    
+
     public static void register (IWailaRegistrar register) {
-        
+
         final TileProvider provider = new TileProvider();
         // register.registerStackProvider(provider, Block.class);
         register.registerBodyProvider(provider, Block.class);

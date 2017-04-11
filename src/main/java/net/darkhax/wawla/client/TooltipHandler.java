@@ -9,10 +9,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TooltipHandler {
-    
+
     @SubscribeEvent
     public void onItemTooltip (ItemTooltipEvent event) {
-        
+
         if (event.getEntityPlayer() != null && event.getEntityPlayer().world != null && event.getItemStack() != null)
             for (final InfoProvider provider : Wawla.itemProviders)
                 provider.addItemInfo(event.getToolTip(), event.getItemStack(), event.isShowAdvancedItemTooltips(), event.getEntityPlayer());
