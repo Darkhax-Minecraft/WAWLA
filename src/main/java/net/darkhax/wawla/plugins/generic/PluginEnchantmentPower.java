@@ -12,7 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
-@WawlaFeature(description = "Shows the enchantment power of a block", name = "Enchantment Power", type = ProviderType.ITEM_BLOCK)
+@WawlaFeature(description = "Shows the enchantment power of a block", name = "enchpower", type = ProviderType.ITEM_BLOCK)
 public class PluginEnchantmentPower extends InfoProvider {
 
     @Override
