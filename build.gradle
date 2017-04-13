@@ -3,6 +3,7 @@ buildscript {
     repositories {
 
         jcenter()
+        mavenCentral()
 
         maven {
 
@@ -14,32 +15,35 @@ buildscript {
 
             url "https://plugins.gradle.org/m2/"
         }
+        
     }
 
     dependencies {
 
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.0.7"
+        classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.7'
+        classpath 'com.selesse:gradle-git-changelog:0.2.+'
     }
 }
 
-apply plugin: "maven"
+apply plugin: 'maven'
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: "com.matthewprenger.cursegradle"
+apply plugin: 'com.matthewprenger.cursegradle'
+apply plugin: 'com.selesse.git.changelog'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group = "net.darkhax.wawla"
-archivesBaseName = "Wawla"
-version = getVersionFromJava(file("src/main/java/net/darkhax/wawla/lib/Constants.java"))
+group = 'net.darkhax.wawla'
+archivesBaseName = 'Wawla'
+version = getVersionFromJava(file('src/main/java/net/darkhax/wawla/lib/Constants.java'))
 
 //Defines the MC environment information.
 minecraft {
 
     version = "${version_forge}"
     mappings = "${version_mcp}"
-    runDir = "run"
+    runDir = 'run'
     useDepAts = true
 }
 
@@ -48,12 +52,12 @@ repositories {
 
     maven {
     
-        url "http://tehnut.info/maven"
+        url 'http://tehnut.info/maven'
     }
     
     maven {
     
-        url "https://jitpack.io"
+        url 'https://jitpack.io'
     }
 }
 
@@ -65,8 +69,8 @@ dependencies {
 //Handles basic resources such as mcmod.info
 processResources {
 
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
 
@@ -93,13 +97,13 @@ jar {
 //Pulls the build version from a Java file.
 String getVersionFromJava(File file) {
 
-    String release = "0";
-    String update = "0";
-    String patch = "0";
+    String release = '0';
+    String update = '0';
+    String patch = '0';
 
-    String build = System.getenv("BUILD_NUMBER") ? System.getenv("BUILD_NUMBER") : "0";
+    String build = System.getenv('BUILD_NUMBER') ? System.getenv("BUILD_NUMBER") : "0";
     def outfile = "";
-    def ln = System.getProperty("line.separator")
+    def ln = System.getProperty('line.separator')
 
     String prefix = "public static final String VERSION_NUMBER = \"";
     file.eachLine {
@@ -167,12 +171,6 @@ uploadArchives {
     }
 }
 
-task setCurseForgeInfo() {
-
-    project.ext.releaseType = "alpha";
-    project.ext.changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/WAWLA/commits/master";
-}
-
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
 if (JavaVersion.current().isJava8Compatible()) {
 
@@ -185,6 +183,25 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
+changelog {
+    
+    title = "${project.name} - Changelog"
+    fileName = "changelog.md"
+    since = 'last_tag'
+    outputDirectory = file("$projectDir")
+    commitFormat = '%s (%an)'
+    commitFormat = '- %s (%an)'
+    
+    markdown {
+    
+        commitFormat = '- %s (%an)'
+    }
+    
+    includeLines = {
+    
+        !it.contains("Merge")
+    }
+}
 //Provides the basic CurseForge upload details
 curseforge {
 
@@ -196,8 +213,9 @@ curseforge {
         //Sets the Project ID from the system environment, if available.
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
 
-        releaseType = project.releaseType;
-        changelog = project.changelog;
+        releaseType = 'alpha';
+        changelog = new File("$projectDir" + '/changelog.md')
+	    changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
         
