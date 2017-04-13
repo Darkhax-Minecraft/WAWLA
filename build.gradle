@@ -180,6 +180,32 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
+def getGitChangelog = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        def gitHash = System.getenv("GIT_COMMIT")
+        def gitPrevHash = System.getenv("GIT_PREVIOUS_COMMIT")
+        def travisRange = System.getenv("TRAVIS_COMMIT_RANGE")
+        if(gitHash && gitPrevHash) {
+            exec {
+                commandLine 'git', 'log', '--pretty=tformat:%s - %aN', '' + gitPrevHash + '...' + gitHash
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        } else if(travisRange) {
+            exec {
+                commandLine 'git', 'log', '--pretty=tformat:%s - %aN', '' + travisRange
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        } else {
+            return "";
+        }
+    } catch(ignored) {
+        return "";
+    }
+}
+
 //Provides the basic CurseForge upload details
 curseforge {
 
@@ -192,7 +218,7 @@ curseforge {
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
 
         releaseType = 'alpha';
-        changelog = project.changelog;
+        changelog = getGitChangelog()
 	    changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
@@ -211,32 +237,5 @@ curseforge {
         addArtifact(deobfJar)
         addArtifact(sourcesJar)
         addArtifact(javadocJar)
-    }
-}
-
-task gitChangelog() << {
-
-    try {
-        def stdout = new ByteArrayOutputStream()
-        def gitHash = System.getenv("GIT_COMMIT")
-        def gitPrevHash = System.getenv("GIT_PREVIOUS_COMMIT")
-        def travisRange = System.getenv("TRAVIS_COMMIT_RANGE")
-        if(gitHash && gitPrevHash) {
-            exec {
-                commandLine 'git', 'log', '--pretty=tformat:%s - %aN', '' + gitPrevHash + '...' + gitHash
-                standardOutput = stdout
-            }
-            project.ext.changelog = stdout.toString().trim()
-        } else if(travisRange) {
-            exec {
-                commandLine 'git', 'log', '--pretty=tformat:%s - %aN', '' + travisRange
-                standardOutput = stdout
-            }
-            project.ext.changelog = stdout.toString().trim()
-        } else {
-            project.ext.changelog = "";
-        }
-    } catch(ignored) {
-        project.ext.changelog = "";
     }
 }
