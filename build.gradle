@@ -3,7 +3,6 @@ buildscript {
     repositories {
 
         jcenter()
-        mavenCentral()
 
         maven {
 
@@ -22,14 +21,12 @@ buildscript {
 
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.0.7'
-        classpath 'com.selesse:gradle-git-changelog:0.2.+'
     }
 }
 
 apply plugin: 'maven'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.matthewprenger.cursegradle'
-apply plugin: 'com.selesse.git.changelog'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -183,25 +180,6 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-changelog {
-    
-    title = "${project.name} - Changelog"
-    fileName = "changelog.md"
-    since = 'last_tag'
-    outputDirectory = file("$projectDir")
-    commitFormat = '%s (%an)'
-    commitFormat = '- %s (%an)'
-    
-    markdown {
-    
-        commitFormat = '- %s (%an)'
-    }
-    
-    includeLines = {
-    
-        !it.contains("Merge")
-    }
-}
 //Provides the basic CurseForge upload details
 curseforge {
 
@@ -214,7 +192,7 @@ curseforge {
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
 
         releaseType = 'alpha';
-        changelog = new File("$projectDir" + '/changelog.md')
+        changelog = new File(project.buildDir.getPath() + '/changelog.md')
 	    changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
@@ -234,4 +212,73 @@ curseforge {
         addArtifact(sourcesJar)
         addArtifact(javadocJar)
     }
+}
+
+def getHeadCommitMessage() {
+	def headProc = "git log -1 --format=%B".execute()
+	headProc.waitForOrKill(1000)
+	assert headProc.exitValue() == 0, headProc.err.text
+	return headProc.in.text.trim()
+}
+
+def getLastTaggedCommit() {
+	return getLastTaggedCommit(0)
+}
+
+def getLastTaggedCommit(int skip) {
+	def lastTagProc = "git rev-list HEAD --tags --max-count=1 --no-walk --skip=$skip".execute()
+	lastTagProc.waitForOrKill(1000)
+	assert lastTagProc.exitValue() == 0, lastTagProc.err.text
+	def lastTag = lastTagProc.in.text.trim()
+
+	if (lastTag.equals(getHeadCommit()))
+		return getLastTaggedCommit(1)
+	else
+		return lastTag
+}
+
+def getHeadCommit() {
+	def headProc = "git rev-parse HEAD".execute()
+	headProc.waitForOrKill(1000)
+	assert headProc.exitValue() == 0, headProc.err.text
+	return headProc.in.text.trim()
+}
+
+def getChangelogSince(String commitSHA, String format="- %B") {
+	def changelog = ""
+	def range = commitSHA.isEmpty() ? "HEAD" : "$commitSHA..HEAD"
+	def cmd = ["git", "log", "--no-merges", "--format=$format", "$range"]
+	def changelogProc = cmd.execute()
+	changelogProc.in.eachLine { line ->
+		if (!line.isEmpty()) {
+			changelog += line + "\n"
+		}
+	}
+	changelogProc.err.eachLine { line -> println line }
+	return changelog
+}
+
+def sanitizeChangelog(String changelog) {
+	def splitChangelog = changelog.split(/(^|\n)\- /)
+	def sanitizedChangelog = ""
+	splitChangelog.each { change ->
+		if (!change.isEmpty() && !change.contains(":skip:"))
+		sanitizedChangelog += "\n- " + change.replaceAll(/\n\n/) { match ->
+			return "\n"
+		}
+	}
+	return sanitizedChangelog
+}
+
+task changelog() << {
+	def changelogFile = new File(project.buildDir.getPath() + '/changelog.md')
+	if (!changelogFile.getParentFile().exists())
+		changelogFile.getParentFile().mkdirs()
+	changelogFile.delete()
+
+	def lastTag = getLastTaggedCommit()
+	def changelog = getChangelogSince(lastTag)
+	def sanitizedChangelog = sanitizeChangelog(changelog)
+	println sanitizedChangelog
+	changelogFile << sanitizedChangelog
 }
