@@ -192,7 +192,7 @@ curseforge {
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
 
         releaseType = 'alpha';
-        changelog = changelog()
+        changelog = gitChangelog()
 	    changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
@@ -214,7 +214,7 @@ curseforge {
     }
 }
 
-task changelog() << {
+task gitChangelog() << {
 
     try {
         def stdout = new ByteArrayOutputStream()
