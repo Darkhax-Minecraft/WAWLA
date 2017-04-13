@@ -23,18 +23,21 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @WawlaFeature(description = "Shows descriptions of enchantments on enchantment books", name = "enchdesc", type = ProviderType.ITEM)
 public class PluginEnchantmentDescription extends InfoProvider {
 
-    private static final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
     @Configurable(category = "enchdesc", description = "Should the mod which added the enchantment be shown?")
     public static boolean showOwner = true;
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
 
+         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+         
         if (stack.getItem() instanceof ItemEnchantedBook)
             if (GameSettings.isKeyDown(keyBindSneak)) {
 
@@ -67,6 +70,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
      * @param enchantment The enchantment to get a description for.
      * @return The enchantment description.
      */
+    @SideOnly(Side.CLIENT)
     private String getDescription (Enchantment enchantment) {
 
         final String key = getTranslationKey(enchantment);
@@ -86,6 +90,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
      * @param stack The stack to read the data from.
      * @return The list of enchantments stored on the stack.
      */
+    @SideOnly(Side.CLIENT)
     private List<Enchantment> getEnchantments (ItemEnchantedBook book, ItemStack stack) {
 
         final NBTTagList enchTags = book.getEnchantments(stack);
@@ -111,6 +116,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
      * @param registerable The object to get the mod name of.
      * @return The name of the mod which registered the object.
      */
+    @SideOnly(Side.CLIENT)
     public static String getModName (IForgeRegistryEntry.Impl<?> registerable) {
 
         final String modID = registerable.getRegistryName().getResourceDomain();
@@ -118,6 +124,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
         return mod != null ? mod.getName() : modID;
     }
 
+    @SideOnly(Side.CLIENT)
     public static String getTranslationKey (Enchantment enchant) {
 
         return String.format("enchantment.%s.%s.desc", enchant.getRegistryName().getResourceDomain(), enchant.getRegistryName().getResourcePath());
