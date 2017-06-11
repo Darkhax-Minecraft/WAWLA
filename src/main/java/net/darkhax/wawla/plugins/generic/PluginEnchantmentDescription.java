@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemEnchantedBook;
@@ -34,7 +35,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
+    public void addItemInfo (List<String> info, ItemStack stack, ITooltipFlag flag, EntityPlayer entityPlayer) {
 
          final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
          

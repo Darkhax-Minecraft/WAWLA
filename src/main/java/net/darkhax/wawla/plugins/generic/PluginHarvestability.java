@@ -121,7 +121,7 @@ public class PluginHarvestability extends InfoProvider {
 
                     final ItemStack stack = entry.getValue();
 
-                    if (stack.getItem() instanceof ItemTool && stack.getItem().getStrVsBlock(stack, state) >= ((ItemTool) stack.getItem()).getToolMaterial().getEfficiencyOnProperMaterial()) {
+                    if (stack.getItem() instanceof ItemTool && stack.getItem().getStrVsBlock(stack, state) >= ((ItemTool) stack.getItem()).toolMaterial.getEfficiencyOnProperMaterial()) {
 
                         tool = entry.getKey();
                         break;

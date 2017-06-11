@@ -15,6 +15,6 @@ public class TooltipHandler {
 
         if (event.getEntityPlayer() != null && event.getEntityPlayer().world != null && event.getItemStack() != null)
             for (final InfoProvider provider : FeatureManager.itemProviders)
-                provider.addItemInfo(event.getToolTip(), event.getItemStack(), event.isShowAdvancedItemTooltips(), event.getEntityPlayer());
+                provider.addItemInfo(event.getToolTip(), event.getItemStack(), event.getFlags(), event.getEntityPlayer());
     }
 }

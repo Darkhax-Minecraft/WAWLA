@@ -8,6 +8,7 @@ import net.darkhax.wawla.plugins.ProviderType;
 import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +26,7 @@ public class PluginEnchantmentPower extends InfoProvider {
     }
 
     @Override
-    public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
+    public void addItemInfo (List<String> info, ItemStack stack, ITooltipFlag flag, EntityPlayer entityPlayer) {
 
         final Block block = Block.getBlockFromItem(stack.getItem());
 

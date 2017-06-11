@@ -9,6 +9,7 @@ import net.darkhax.wawla.plugins.InfoProvider;
 import net.darkhax.wawla.plugins.ProviderType;
 import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -27,7 +28,7 @@ public class PluginFluidDescription extends InfoProvider {
     public static boolean showOwner = true;
 
     @Override
-    public void addItemInfo (List<String> info, ItemStack stack, boolean advanced, EntityPlayer entityPlayer) {
+    public void addItemInfo (List<String> info, ItemStack stack, ITooltipFlag flag, EntityPlayer entityPlayer) {
 
         final FluidStack fluid = FluidUtil.getFluidContained(stack);
 
