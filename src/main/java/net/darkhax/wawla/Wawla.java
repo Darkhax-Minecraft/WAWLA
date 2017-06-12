@@ -41,6 +41,10 @@ public class Wawla {
         if (Loader.isModLoaded("waila")) {
             engine = new WailaEngine();
         }
+        
+        if (engine == null) {
+            LOG.warn("No info engine detected! No info will be displayed!");
+        }
     }
 
     @SubscribeEvent
