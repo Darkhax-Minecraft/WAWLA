@@ -28,7 +28,7 @@ public class EntityProvider implements IWailaEntityProvider {
                 }
             }
         }
-        
+
         return info.entity;
     }
 
@@ -64,7 +64,7 @@ public class EntityProvider implements IWailaEntityProvider {
                 provider.writeEntityNBT(world, ent, tag);
             }
         }
-        
+
         return tag;
     }
 

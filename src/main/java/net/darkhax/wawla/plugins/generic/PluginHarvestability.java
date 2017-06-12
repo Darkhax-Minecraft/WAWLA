@@ -97,7 +97,7 @@ public class PluginHarvestability extends InfoProvider {
                 return true;
             }
         }
-        
+
         if (stack.getDisplayName().matches(".*(^|\\s)([oO]re)($|\\s).")) {
             return true;
         }

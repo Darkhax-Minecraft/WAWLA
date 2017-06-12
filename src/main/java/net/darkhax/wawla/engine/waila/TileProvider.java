@@ -31,7 +31,7 @@ public class TileProvider implements IWailaDataProvider {
                 }
             }
         }
-        
+
         return info.stack;
     }
 
@@ -67,7 +67,7 @@ public class TileProvider implements IWailaDataProvider {
                 provider.writeTileNBT(world, te, tag);
             }
         }
-        
+
         return tag;
     }
 

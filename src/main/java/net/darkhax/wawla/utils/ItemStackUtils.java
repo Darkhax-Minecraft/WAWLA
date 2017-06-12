@@ -113,7 +113,7 @@ public final class ItemStackUtils {
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -134,7 +134,7 @@ public final class ItemStackUtils {
                 }
             }
         }
-        
+
         return false;
     }
 
@@ -255,7 +255,7 @@ public final class ItemStackUtils {
                 return true;
             }
         }
-        
+
         return false;
     }
 
