@@ -28,11 +28,13 @@ public class PluginTameable extends InfoProvider {
 
             final EntityTameable entity = (EntityTameable) data.entity;
 
-            if (showTamed && entity.isTamed())
+            if (showTamed && entity.isTamed()) {
                 info.add(ChatFormatting.YELLOW + I18n.format("tooltip.wawla.generic.tamed"));
+            }
 
-            if (showSitting && entity.isSitting())
+            if (showSitting && entity.isSitting()) {
                 info.add(I18n.format("tooltip.wawla.generic.sitting"));
+            }
         }
     }
 }

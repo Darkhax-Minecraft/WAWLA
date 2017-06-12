@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.darkhax.wawla.lib.Constants;
+import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.utils.AnnotationUtils;
 import net.darkhax.wawla.utils.CollectionUtils;
 import net.darkhax.wawla.utils.ItemStackUtils;
@@ -114,10 +114,11 @@ public class WawlaConfiguration {
 
             if (!(Modifier.isPublic(field.getModifiers()) && Modifier.isStatic(field.getModifiers()))) {
 
-                Constants.LOG.info("Configuration fields must be public, and static!");
+                Wawla.LOG.info("Configuration fields must be public, and static!");
 
-                while (true)
+                while (true) {
                     System.out.println("Bad field: " + field.getName());
+                }
             }
 
             field.setAccessible(true);
@@ -125,7 +126,7 @@ public class WawlaConfiguration {
             final String propName = configurable.name().isEmpty() ? field.getName() : configurable.name();
             final Class<?> type = field.getType();
 
-            if (handlers.containsKey(type))
+            if (handlers.containsKey(type)) {
                 try {
 
                     // TODO look into a better way to handle defaults
@@ -136,21 +137,25 @@ public class WawlaConfiguration {
 
                 catch (IllegalArgumentException | IllegalAccessException e) {
 
-                    Constants.LOG.info("Error handling configurable field! Could not read/write " + field.getName(), e);
+                    Wawla.LOG.info("Error handling configurable field! Could not read/write " + field.getName(), e);
                 }
-            else
-                Constants.LOG.info("Unhandled type: " + type.getCanonicalName());
+            }
+            else {
+                Wawla.LOG.info("Unhandled type: " + type.getCanonicalName());
+            }
         }
 
-        if (this.hasChanged())
+        if (this.hasChanged()) {
             this.save();
+        }
     }
 
     @SubscribeEvent
     public void onConfigChanged (ConfigChangedEvent event) {
 
-        if (event.getModID().equalsIgnoreCase(this.name))
+        if (event.getModID().equalsIgnoreCase(this.name)) {
             this.sync();
+        }
     }
 
     public boolean hasChanged () {

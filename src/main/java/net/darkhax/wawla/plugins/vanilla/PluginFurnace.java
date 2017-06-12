@@ -37,32 +37,36 @@ public class PluginFurnace extends InfoProvider {
 
                 final ItemStack stack = new ItemStack(data.tag.getCompoundTag("InputStack"));
 
-                if (!stack.isEmpty())
+                if (!stack.isEmpty()) {
                     info.add(I18n.format("tooltip.wawla.vanilla.input") + ": " + stack.getDisplayName() + " * " + stack.getCount());
+                }
             }
 
             if (fuel) {
 
                 final ItemStack stack = new ItemStack(data.tag.getCompoundTag("FuelStack"));
 
-                if (!stack.isEmpty())
+                if (!stack.isEmpty()) {
                     info.add(I18n.format("tooltip.wawla.vanilla.fuel") + ": " + stack.getDisplayName() + " * " + stack.getCount());
+                }
             }
 
             if (output) {
 
                 final ItemStack stack = new ItemStack(data.tag.getCompoundTag("OutputStack"));
 
-                if (!stack.isEmpty())
+                if (!stack.isEmpty()) {
                     info.add(I18n.format("tooltip.wawla.vanilla.output") + ": " + stack.getDisplayName() + " * " + stack.getCount());
+                }
             }
 
             if (burntime) {
 
                 final int time = data.tag.getInteger("BurnTime");
 
-                if (time > 0)
+                if (time > 0) {
                     info.add(I18n.format("tooltip.wawla.vanilla.burntime") + ": " + StringUtils.ticksToElapsedTime(time));
+                }
             }
         }
     }
@@ -79,24 +83,27 @@ public class PluginFurnace extends InfoProvider {
 
                 stack = furnace.getStackInSlot(0);
 
-                if (stack != null)
+                if (stack != null) {
                     InfoProvider.writeStackToTag(stack, "InputStack", tag);
+                }
             }
 
             if (fuel) {
 
                 stack = furnace.getStackInSlot(1);
 
-                if (stack != null)
+                if (stack != null) {
                     InfoProvider.writeStackToTag(stack, "FuelStack", tag);
+                }
             }
 
             if (output) {
 
                 stack = furnace.getStackInSlot(2);
 
-                if (stack != null)
+                if (stack != null) {
                     InfoProvider.writeStackToTag(stack, "OutputStack", tag);
+                }
             }
 
             tag.setInteger("BurnTime", furnace.getField(0));

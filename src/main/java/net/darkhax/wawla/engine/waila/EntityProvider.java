@@ -21,11 +21,14 @@ public class EntityProvider implements IWailaEntityProvider {
 
         InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
-        if (info.entity != null)
-            for (final InfoProvider provider : FeatureManager.entityProviders)
-                if (provider.requireEntityOverride(info))
+        if (info.entity != null) {
+            for (final InfoProvider provider : FeatureManager.entityProviders) {
+                if (provider.requireEntityOverride(info)) {
                     info = provider.overrideEntity(info);
-
+                }
+            }
+        }
+        
         return info.entity;
     }
 
@@ -40,8 +43,9 @@ public class EntityProvider implements IWailaEntityProvider {
 
         final InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
-        for (final InfoProvider provider : FeatureManager.entityProviders)
+        for (final InfoProvider provider : FeatureManager.entityProviders) {
             provider.addEntityInfo(currenttip, info);
+        }
 
         return currenttip;
     }
@@ -55,10 +59,12 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, Entity ent, NBTTagCompound tag, World world) {
 
-        for (final InfoProvider provider : FeatureManager.entityProviders)
-            if (provider.requireEntitySync(world, ent))
+        for (final InfoProvider provider : FeatureManager.entityProviders) {
+            if (provider.requireEntitySync(world, ent)) {
                 provider.writeEntityNBT(world, ent, tag);
-
+            }
+        }
+        
         return tag;
     }
 

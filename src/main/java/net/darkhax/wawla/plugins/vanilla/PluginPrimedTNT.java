@@ -16,7 +16,8 @@ public class PluginPrimedTNT extends InfoProvider {
     @Override
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
-        if (data.entity instanceof EntityTNTPrimed)
+        if (data.entity instanceof EntityTNTPrimed) {
             info.add(I18n.format("tooltip.wawla.vanilla.fuse") + ": " + StringUtils.ticksToElapsedTime(((EntityTNTPrimed) data.entity).getFuse()));
+        }
     }
 }

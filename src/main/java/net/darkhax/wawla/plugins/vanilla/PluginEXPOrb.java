@@ -15,7 +15,8 @@ public class PluginEXPOrb extends InfoProvider {
     @Override
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
-        if (data.entity instanceof EntityXPOrb)
+        if (data.entity instanceof EntityXPOrb) {
             info.add(I18n.format("tooltip.wawla.vanilla.experience") + ": " + ((EntityXPOrb) data.entity).xpValue);
+        }
     }
 }

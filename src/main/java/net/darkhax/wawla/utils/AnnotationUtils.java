@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.darkhax.wawla.lib.Constants;
+import net.darkhax.wawla.Wawla;
 import net.minecraft.util.Tuple;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.discovery.ASMDataTable.ASMData;
@@ -51,19 +51,21 @@ public final class AnnotationUtils {
 
         final List<Tuple<Class<?>, A>> classes = new ArrayList<>();
 
-        for (final ASMData data : getData(table, annotation))
+        for (final ASMData data : getData(table, annotation)) {
             try {
 
                 final Class clazz = Class.forName(data.getClassName());
 
-                if (clazz != null)
+                if (clazz != null) {
                     classes.add(new Tuple<Class<?>, A>(clazz, (A) clazz.getAnnotation(annotation)));
+                }
             }
 
             catch (final ClassNotFoundException e) {
 
-                Constants.LOG.warn("Could not load " + data.getClassName(), e);
+                Wawla.LOG.warn("Could not load " + data.getClassName(), e);
             }
+        }
 
         return classes;
     }
@@ -79,11 +81,14 @@ public final class AnnotationUtils {
 
         final List<Field> fields = new ArrayList<>();
 
-        for (final Class<?> clazz : collection)
-            for (final Field field : clazz.getFields())
-                if (field.isAnnotationPresent(class1))
+        for (final Class<?> clazz : collection) {
+            for (final Field field : clazz.getFields()) {
+                if (field.isAnnotationPresent(class1)) {
                     fields.add(field);
-
+                }
+            }
+        }
+        
         return fields;
     }
 
@@ -102,7 +107,7 @@ public final class AnnotationUtils {
 
         final Map<T, A> map = new HashMap<>();
 
-        for (final ASMDataTable.ASMData asmData : getData(table, annotation))
+        for (final ASMDataTable.ASMData asmData : getData(table, annotation)) {
             try {
 
                 final Class<?> asmClass = Class.forName(asmData.getClassName());
@@ -112,8 +117,9 @@ public final class AnnotationUtils {
 
             catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 
-                Constants.LOG.warn("Could not load " + asmData.getClassName(), e);
+                Wawla.LOG.warn("Could not load " + asmData.getClassName(), e);
             }
+        }
 
         return map;
     }

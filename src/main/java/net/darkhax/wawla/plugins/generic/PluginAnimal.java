@@ -38,15 +38,18 @@ public class PluginAnimal extends InfoProvider {
 
             if (age != 0) {
 
-                if (showBreedingCooldown && age < 0)
+                if (showBreedingCooldown && age < 0) {
                     info.add(I18n.format("tooltip.wawla.generic.growingage") + ": " + StringUtils.ticksToElapsedTime(Math.abs(age)));
+                }
 
-                if (showGrowingCooldown && age > 0)
+                if (showGrowingCooldown && age > 0) {
                     info.add(I18n.format("tooltip.wawla.generic.breedingtime") + ": " + StringUtils.ticksToElapsedTime(age));
+                }
             }
 
-            if (showBreedingItem && data.player.getHeldItemMainhand() != null && entity.isBreedingItem(data.player.getHeldItemMainhand()))
+            if (showBreedingItem && data.player.getHeldItemMainhand() != null && entity.isBreedingItem(data.player.getHeldItemMainhand())) {
                 info.add(ChatFormatting.YELLOW + I18n.format("tooltip.wawla.generic.breedingitem"));
+            }
         }
     }
 
@@ -57,8 +60,9 @@ public class PluginAnimal extends InfoProvider {
 
             final EntityAnimal animal = (EntityAnimal) entity;
 
-            if (showBreedingCooldown || showGrowingCooldown)
+            if (showBreedingCooldown || showGrowingCooldown) {
                 tag.setInteger("AnimalGrowingAge", animal.getGrowingAge());
+            }
         }
     }
 

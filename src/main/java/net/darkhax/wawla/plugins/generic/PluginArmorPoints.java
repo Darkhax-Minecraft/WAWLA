@@ -20,8 +20,9 @@ public class PluginArmorPoints extends InfoProvider {
             final EntityLivingBase entity = (EntityLivingBase) data.entity;
             final int armorPoints = entity.getTotalArmorValue();
 
-            if (armorPoints > 0)
+            if (armorPoints > 0) {
                 info.add(I18n.format("tooltip.wawla.generic.armor") + ": " + armorPoints);
+            }
         }
     }
 }

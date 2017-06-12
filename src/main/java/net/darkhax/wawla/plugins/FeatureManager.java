@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import net.darkhax.wawla.Wawla;
-import net.darkhax.wawla.lib.Constants;
 import net.darkhax.wawla.utils.AnnotationUtils;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 
@@ -29,7 +28,7 @@ public class FeatureManager {
 
             if (annotation == null) {
 
-                Constants.LOG.warn("Annotation for " + feature.getKey().getClass().getCanonicalName() + " was null!");
+                Wawla.LOG.warn("Annotation for " + feature.getKey().getClass().getCanonicalName() + " was null!");
                 continue;
             }
 
@@ -44,7 +43,7 @@ public class FeatureManager {
 
             final boolean enabled = Wawla.config.getConfig().getBoolean(name, "_feature", feature.enabledByDefault(), description);
 
-            if (enabled)
+            if (enabled) {
                 switch (type) {
 
                     case BLOCK:
@@ -67,6 +66,7 @@ public class FeatureManager {
                     default:
                         break;
                 }
+            }
         }
     }
 

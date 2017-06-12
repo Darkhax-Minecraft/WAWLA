@@ -15,8 +15,9 @@ public class CollectionUtils {
 
         final double[] output = new double[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = input[index];
+        }
 
         return output;
     }
@@ -25,8 +26,9 @@ public class CollectionUtils {
 
         final float[] output = new float[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = (float) input[index];
+        }
 
         return output;
     }
@@ -35,8 +37,9 @@ public class CollectionUtils {
 
         final String[] output = new String[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = input[index].toString();
+        }
 
         return output;
     }
@@ -45,8 +48,9 @@ public class CollectionUtils {
 
         final ResourceLocation[] output = new ResourceLocation[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = new ResourceLocation(input[index]);
+        }
 
         return output;
     }
@@ -55,8 +59,9 @@ public class CollectionUtils {
 
         final ResourceLocation[] output = new ResourceLocation[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = input[index].getRegistryName();
+        }
 
         return output;
     }
@@ -65,8 +70,9 @@ public class CollectionUtils {
 
         final ResourceLocation[] output = new ResourceLocation[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = input[index].getRegistryName();
+        }
 
         return output;
     }
@@ -75,8 +81,9 @@ public class CollectionUtils {
 
         final Item[] output = new Item[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = ForgeRegistries.ITEMS.getValue(input[index]);
+        }
 
         return output;
     }
@@ -85,8 +92,9 @@ public class CollectionUtils {
 
         final Block[] output = new Block[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = ForgeRegistries.BLOCKS.getValue(input[index]);
+        }
 
         return output;
     }
@@ -95,8 +103,9 @@ public class CollectionUtils {
 
         final String[] output = new String[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = ItemStackUtils.writeStackToString(input[index]);
+        }
 
         return output;
     }
@@ -105,8 +114,9 @@ public class CollectionUtils {
 
         final ItemStack[] output = new ItemStack[input.length];
 
-        for (int index = 0; index < input.length; index++)
+        for (int index = 0; index < input.length; index++) {
             output[index] = ItemStackUtils.createStackFromString(input[index]);
+        }
 
         return output;
     }

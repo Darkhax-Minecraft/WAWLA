@@ -24,11 +24,14 @@ public class TileProvider implements IWailaDataProvider {
 
         InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
 
-        if (info.isValidBlock())
-            for (final InfoProvider provider : FeatureManager.tileProviders)
-                if (provider.requireTileOverride(info))
+        if (info.isValidBlock()) {
+            for (final InfoProvider provider : FeatureManager.tileProviders) {
+                if (provider.requireTileOverride(info)) {
                     info = provider.overrideTile(info);
-
+                }
+            }
+        }
+        
         return info.stack;
     }
 
@@ -43,8 +46,9 @@ public class TileProvider implements IWailaDataProvider {
 
         final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
 
-        for (final InfoProvider provider : FeatureManager.tileProviders)
+        for (final InfoProvider provider : FeatureManager.tileProviders) {
             provider.addTileInfo(currenttip, info);
+        }
 
         return currenttip;
     }
@@ -58,10 +62,12 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
 
-        for (final InfoProvider provider : FeatureManager.tileProviders)
-            if (provider.requireTileSync(world, te))
+        for (final InfoProvider provider : FeatureManager.tileProviders) {
+            if (provider.requireTileSync(world, te)) {
                 provider.writeTileNBT(world, te, tag);
-
+            }
+        }
+        
         return tag;
     }
 

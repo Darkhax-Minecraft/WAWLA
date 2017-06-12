@@ -29,7 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @WawlaFeature(description = "Shows descriptions of enchantments on enchantment books", name = "enchdesc", type = ProviderType.ITEM)
 public class PluginEnchantmentDescription extends InfoProvider {
 
-
     @Configurable(category = "enchdesc", description = "Should the mod which added the enchantment be shown?")
     public static boolean showOwner = true;
 
@@ -37,9 +36,9 @@ public class PluginEnchantmentDescription extends InfoProvider {
     @SideOnly(Side.CLIENT)
     public void addItemInfo (List<String> info, ItemStack stack, ITooltipFlag flag, EntityPlayer entityPlayer) {
 
-         final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-         
-        if (stack.getItem() instanceof ItemEnchantedBook)
+        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+
+        if (stack.getItem() instanceof ItemEnchantedBook) {
             if (GameSettings.isKeyDown(keyBindSneak)) {
 
                 final ItemEnchantedBook item = (ItemEnchantedBook) stack.getItem();
@@ -50,13 +49,15 @@ public class PluginEnchantmentDescription extends InfoProvider {
                     info.add(I18n.format("tooltip.wawla.enchdesc.name") + ": " + I18n.format(enchant.getName()));
                     info.add(this.getDescription(enchant));
 
-                    if (showOwner)
+                    if (showOwner) {
                         info.add(I18n.format("tooltip.wawla.enchdesc.addedby") + ": " + ChatFormatting.BLUE + getModName(enchant));
+                    }
                 }
             }
-
-            else
+            else {
                 info.add(I18n.format("tooltip.wawla.enchdesc.activate", ChatFormatting.LIGHT_PURPLE, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
+            }
+        }
     }
 
     @Override
@@ -77,8 +78,9 @@ public class PluginEnchantmentDescription extends InfoProvider {
         final String key = getTranslationKey(enchantment);
         String description = I18n.format(key);
 
-        if (description.startsWith("enchantment."))
+        if (description.startsWith("enchantment.")) {
             description = I18n.format("tooltip.wawla.enchdesc.missing", getModName(enchantment), key);
+        }
 
         return description;
     }
@@ -94,18 +96,20 @@ public class PluginEnchantmentDescription extends InfoProvider {
     @SideOnly(Side.CLIENT)
     private List<Enchantment> getEnchantments (ItemEnchantedBook book, ItemStack stack) {
 
-        final NBTTagList enchTags = book.getEnchantments(stack);
+        final NBTTagList enchTags = ItemEnchantedBook.getEnchantments(stack);
         final List<Enchantment> enchantments = new ArrayList<>();
 
-        if (enchTags != null)
+        if (enchTags != null) {
             for (int index = 0; index < enchTags.tagCount(); ++index) {
 
                 final int id = enchTags.getCompoundTagAt(index).getShort("id");
                 final Enchantment enchant = Enchantment.getEnchantmentByID(id);
 
-                if (enchant != null)
+                if (enchant != null) {
                     enchantments.add(enchant);
+                }
             }
+        }
 
         return enchantments;
     }

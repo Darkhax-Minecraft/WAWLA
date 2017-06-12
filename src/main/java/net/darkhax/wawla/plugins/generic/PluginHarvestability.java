@@ -51,17 +51,18 @@ public class PluginHarvestability extends InfoProvider {
         if (isValidBlock && !heldItem.isEmpty() && heldItem.getItem().getToolClasses(heldItem).contains(toolType)) {
 
             // When the block is harvestable.
-            if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0))
+            if (showHarvestable && (blockLevel <= itemLevel || blockLevel == 0)) {
                 info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(true));
-
-            // When it's not harvestable.
+            }
             else {
 
-                if (showHarvestable)
+                if (showHarvestable) {
                     info.add(I18n.format("tooltip.wawla.generic.harvestable") + ": " + InfoProvider.getBooleanForDisplay(false));
+                }
 
-                if (showCorrectTier)
+                if (showCorrectTier) {
                     info.add(I18n.format("tooltip.wawla.generic.showtier") + ": " + blockLevel);
+                }
             }
         }
 
@@ -83,18 +84,23 @@ public class PluginHarvestability extends InfoProvider {
      */
     private boolean isOre (ItemStack stack) {
 
-        if (stack.isEmpty())
+        if (stack.isEmpty()) {
             return false;
+        }
 
-        if (Block.getBlockFromItem(stack.getItem()) instanceof BlockOre)
+        if (Block.getBlockFromItem(stack.getItem()) instanceof BlockOre) {
             return true;
+        }
 
-        for (final int oreID : OreDictionary.getOreIDs(stack))
-            if (OreDictionary.getOreName(oreID).startsWith("ore"))
+        for (final int oreID : OreDictionary.getOreIDs(stack)) {
+            if (OreDictionary.getOreName(oreID).startsWith("ore")) {
                 return true;
-
-        if (stack.getDisplayName().matches(".*(^|\\s)([oO]re)($|\\s)."))
+            }
+        }
+        
+        if (stack.getDisplayName().matches(".*(^|\\s)([oO]re)($|\\s).")) {
             return true;
+        }
 
         return false;
     }
@@ -116,7 +122,7 @@ public class PluginHarvestability extends InfoProvider {
 
             final float blockHardness = state.getBlock().getBlockHardness(state, world, pos);
 
-            if (blockHardness > 0f)
+            if (blockHardness > 0f) {
                 for (final Map.Entry<String, ItemStack> entry : overrides.entrySet()) {
 
                     final ItemStack stack = entry.getValue();
@@ -127,6 +133,7 @@ public class PluginHarvestability extends InfoProvider {
                         break;
                     }
                 }
+            }
         }
 
         // TODO add sword hook

@@ -21,8 +21,9 @@ public class PluginEnchantmentPower extends InfoProvider {
 
         final float enchPower = data.block.getEnchantPowerBonus(data.world, data.pos);
 
-        if (enchPower > 0)
+        if (enchPower > 0) {
             info.add(I18n.format("tooltip.wawla.generic.enchpower") + ": " + enchPower);
+        }
     }
 
     @Override
@@ -30,17 +31,19 @@ public class PluginEnchantmentPower extends InfoProvider {
 
         final Block block = Block.getBlockFromItem(stack.getItem());
 
-        if (block != null)
+        if (block != null) {
             try {
 
                 final float enchPower = block.getEnchantPowerBonus(entityPlayer.world, BlockPos.ORIGIN);
 
-                if (enchPower > 0)
+                if (enchPower > 0) {
                     info.add(I18n.format("tooltip.wawla.enchPower") + ": " + enchPower);
+                }
             }
 
             catch (final Exception exception) {
 
             }
+        }
     }
 }

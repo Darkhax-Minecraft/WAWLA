@@ -23,9 +23,9 @@ public class PluginVillagerTypes extends InfoProvider {
 
         String career = "";
 
-        if (data.entity instanceof EntityVillager)
+        if (data.entity instanceof EntityVillager) {
             career = ((EntityVillager) data.entity).getProfessionForge().getRegistryName().getResourcePath();
-
+        }
         else if (data.entity instanceof EntityZombieVillager) {
 
             final String forgeCareer = data.tag.getString("WAWLAZombieType");
@@ -33,11 +33,13 @@ public class PluginVillagerTypes extends InfoProvider {
             career = forgeCareer.isEmpty() ? I18n.format("villager.wawla.zombie") : forgeCareer;
         }
 
-        else if (data.entity instanceof EntityWitch)
+        else if (data.entity instanceof EntityWitch) {
             career = I18n.format("villager.wawla.witch");
+        }
 
-        if (career != null && !career.isEmpty())
+        if (career != null && !career.isEmpty()) {
             info.add(I18n.format("tooltip.wawla.vanilla.career") + ": " + career);
+        }
     }
 
     @Override
@@ -48,8 +50,9 @@ public class PluginVillagerTypes extends InfoProvider {
             final EntityZombieVillager zombie = (EntityZombieVillager) entity;
             final VillagerProfession type = zombie.getForgeProfession();
 
-            if (type != null)
+            if (type != null) {
                 tag.setString("WAWLAZombieType", type.getRegistryName().getResourcePath());
+            }
         }
     }
 

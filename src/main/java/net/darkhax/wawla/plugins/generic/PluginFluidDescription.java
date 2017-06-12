@@ -32,11 +32,13 @@ public class PluginFluidDescription extends InfoProvider {
 
         final FluidStack fluid = FluidUtil.getFluidContained(stack);
 
-        if (showTemp && fluid != null)
+        if (showTemp && fluid != null) {
             info.add(I18n.format("tooltip.wawla.generic.temperature", fluid.getFluid().getTemperature(fluid)));
+        }
 
-        if (showOwner && fluid != null)
+        if (showOwner && fluid != null) {
             info.add(I18n.format("tooltip.wawla.enchdesc.addedby") + ": " + ChatFormatting.BLUE + getModName(FluidRegistry.getDefaultFluidName(fluid.getFluid()).split(":")[0]));
+        }
 
     }
 
