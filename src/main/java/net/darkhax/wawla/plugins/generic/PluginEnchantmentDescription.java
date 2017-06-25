@@ -22,9 +22,9 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 @WawlaFeature(description = "Shows descriptions of enchantments on enchantment books", name = "enchdesc", type = ProviderType.ITEM)
 public class PluginEnchantmentDescription extends InfoProvider {
