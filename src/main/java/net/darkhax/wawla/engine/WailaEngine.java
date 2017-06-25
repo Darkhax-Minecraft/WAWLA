@@ -6,8 +6,11 @@ import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 public class WailaEngine implements InfoEngine {
 
-    public WailaEngine () {
+    private final boolean isHwyla;
 
+    public WailaEngine (boolean isHwyla) {
+
+        this.isHwyla = isHwyla;
         FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.EntityProvider.register");
         FMLInterModComms.sendMessage("waila", "register", "net.darkhax.wawla.engine.waila.TileProvider.register");
     }
@@ -15,6 +18,6 @@ public class WailaEngine implements InfoEngine {
     @Override
     public String getName () {
 
-        return ChatFormatting.GOLD + "Waila";
+        return ChatFormatting.GOLD + (this.isHwyla ? "Hwyla" : "Waila");
     }
 }

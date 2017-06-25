@@ -9,6 +9,7 @@ import net.darkhax.wawla.plugins.FeatureManager;
 import net.darkhax.wawla.plugins.InfoProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -38,10 +39,25 @@ public class Wawla {
         config.init(FeatureManager.classes);
         config.sync();
 
+        MinecraftForge.EVENT_BUS.register(this);
+
         if (Loader.isModLoaded("waila")) {
-            engine = new WailaEngine();
+
+            boolean isHwyla = false;
+
+            try {
+
+                Class.forName("mcp.mobius.waila.api.WailaPlugin");
+                isHwyla = true;
+            }
+            catch (final ClassNotFoundException e) {
+
+                isHwyla = false;
+            }
+
+            engine = new WailaEngine(isHwyla);
         }
-        
+
         if (engine == null) {
             LOG.warn("No info engine detected! No info will be displayed!");
         }
