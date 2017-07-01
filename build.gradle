@@ -56,6 +56,14 @@ dependencies {
     deobfCompile "mcp.mobius.waila:Hwyla:${version_hwyla}"
 }
 
+jar {
+
+    manifest {
+ 	
+ 	    attributes 'FMLAT': 'wawla_at.cfg'
+ 	}
+ }
+
 processResources {
 
     inputs.property "version", project.version
@@ -73,6 +81,7 @@ processResources {
     }
     
     from 'LICENSE'
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 // Taken from https://github.com/Inventory-Tweaks/inventory-tweaks/blob/develop/build.gradle
