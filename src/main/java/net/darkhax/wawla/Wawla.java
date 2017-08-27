@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = "wawla", name = "What are We Looking at", version = "@VERSION@", guiFactory = "", acceptableRemoteVersions = "*")
+@Mod(modid = "wawla", name = "What are We Looking at", version = "@VERSION@", guiFactory = "", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.12,1.12.2)")
 public class Wawla {
 
     public static WawlaConfiguration config;
