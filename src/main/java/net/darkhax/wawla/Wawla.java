@@ -1,5 +1,6 @@
 package net.darkhax.wawla;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.darkhax.wawla.config.WawlaConfiguration;
@@ -14,24 +15,24 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = "wawla", name = "What are We Looking at", version = "@VERSION@", guiFactory = "", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.12,1.12.2)")
+@Mod(modid = "wawla", name = "What are We Looking at", version = "@VERSION@", guiFactory = "", acceptableRemoteVersions = "*", acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
 public class Wawla {
 
     public static WawlaConfiguration config;
 
     public static InfoEngine engine;
 
-    public static Logger LOG = null;
+    public static final Logger LOG = LogManager.getLogger("WAWLA");
 
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
-        LOG = event.getModLog();
         config = new WawlaConfiguration("wawla");
 
         FeatureManager.init(event.getAsmData());
@@ -84,4 +85,10 @@ public class Wawla {
             event.getLeft().add("[Wawla] Info Engine: " + Wawla.engine.getName());
         }
     }
+     
+   @EventHandler
+   public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
+       
+       LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
+   }
 }
