@@ -5,7 +5,7 @@
       "description":"Greatly expands upon the amount of information provided by the Waila HUD, along with bridging support between Waila and many other minecraft mods!",
       "version":"${version}",
       "mcversion":"${mcversion}",
-      "url":"http://www.darkhax.net/wawla.html",
+      "url":"https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at",
       "updateUrl":"",
       "authorList":[  
          "Darkhax"
