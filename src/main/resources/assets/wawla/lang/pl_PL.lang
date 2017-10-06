@@ -1,0 +1,110 @@
+#Polish translation for Wawla by Kaperios
+
+tooltip.wawla.true=§aTak
+tooltip.wawla.false=§4Nie
+tooltip.wawla.yes=§a?
+tooltip.wawla.no=§4?
+tooltip.wawla.item=Przedmiot
+tooltip.wawla.block=Blok
+tooltip.wawla.shovel=Lopata
+tooltip.wawla.pickaxe=Kilof
+tooltip.wawla.axe=Siekiera
+tooltip.wawla.chisel=Dluto
+tooltip.wawla.scoop=Scoop
+tooltip.wawla.crowbar=Lom
+tooltip.wawla.sword=Miecz
+tooltip.wawla.mainhand=Glówna Reka
+tooltip.wawla.offhand=Druga Reka
+tooltip.wawla.feet=Stopy
+tooltip.wawla.legs=Nogi
+tooltip.wawla.chest=Klatka Piersiowa
+tooltip.wawla.head=Glowa
+tooltip.wawla.star=?
+tooltip.wawla.name=Nazwa
+
+#Generic Tiles
+tooltip.wawla.generic.progression=Postep
+tooltip.wawla.generic.enchpower=Sila Zaklecia
+tooltip.wawla.generic.blastresist=Odpornosc na wybuchy
+tooltip.wawla.generic.hardness=Twardosc
+tooltip.wawla.generic.harvestable=Zniszczalne
+tooltip.wawla.generic.showtier=Poziom
+tooltip.wawla.generic.tooltype=Narzedzie
+
+#Generic Entities
+tooltip.wawla.generic.armor=Zbroja
+tooltip.wawla.generic.sitting=Siedzi
+tooltip.wawla.generic.tamed=Oswojone
+tooltip.wawla.generic.breedingtime=Breeding Cooldown
+tooltip.wawla.generic.growingage=Growing Cooldown
+tooltip.wawla.generic.breedingitem=Breedable
+tooltip.wawla.generic.temperature=Temperatura: %dK
+
+#Vanilla Tiles
+tooltip.wawla.vanilla.input=Wejscie
+tooltip.wawla.vanilla.fuel=Paliwo
+tooltip.wawla.vanilla.output=Wyjscie
+tooltip.wawla.vanilla.burntime=Czas Spalania
+
+#Vanilla Entities
+tooltip.wawla.vanilla.jump=Sila Skoku
+tooltip.wawla.vanilla.speed=Predkosc
+tooltip.wawla.vanilla.career=Zawód
+tooltip.wawla.vanilla.fuse=Fuse
+tooltip.wawla.vanilla.experience=Doswiadczenie
+
+#Villager Types
+villager.wawla.zombie=Zombie
+villager.wawla.witch=Wiedzma
+
+#Vanilla Fixes
+entity.ItemFrame.name=Ramka na Przedmioty
+
+#Enchantment Tooltip
+tooltip.wawla.enchdesc.name=Zaklecie
+tooltip.wawla.enchdesc.addedby=Dodane przez
+tooltip.wawla.enchdesc.missing=Nie znaleziono opisu. Popros autora moda: %s by go dodal. Klucz lokalizacji to: %s
+tooltip.wawla.enchdesc.activate=Nacisnij %s%s%s dla szczególów zaklecia.
+tooltip.wawla.enchPower=Sila Zaklecia
+
+#Vanilla Enchantment Descriptions
+enchantment.minecraft.protection.desc=Redukuje obrazenia z  wiekszosci zródel. 
+enchantment.minecraft.fire_protection.desc=Redukuje efekty obrazen od ognia. Redukuje takze czas palenia sie.
+enchantment.minecraft.feather_falling.desc=Redukuje obrazenia od upadku i teleportacji perlami kresu.
+enchantment.minecraft.blast_protection.desc=Redukuje obrazenia i odrzut od ekslpozji.
+enchantment.minecraft.projectile_protection.desc=Redukuje obrazenia od pocisków takich jak strzaly czy ogniste kule.
+enchantment.minecraft.respiration.desc=Przeluza czas, który gracz moze spedzic pod woda. Poprawia takze wizje pod woda.
+enchantment.minecraft.aqua_affinity.desc=Zwieksza predkosc kopania pod woda. 
+enchantment.minecraft.thorns.desc=Zadaje obrazenia wrogom, którzy ciebie zatakauja.
+enchantment.minecraft.sharpness.desc=Zwieksza obrazenia przedmiotu.
+enchantment.minecraft.smite.desc=Zwieksza obrazenia przeciwko nieumarlym mobom takim jak zombie czy szkielety.
+enchantment.minecraft.bane_of_arthropods.desc=Zwieksza obrazenia przeciwko stawonogom takim jak pajaki czy rybiki cukrowe.
+enchantment.minecraft.knockback.desc=Zwieksza sile odrzutu broni.
+enchantment.minecraft.fire_aspect.desc=Powoduje podpalenie przeciwnika w momencie zaatakowania.
+enchantment.minecraft.looting.desc=Moby beda wyrzucaly wieksze ilosci przedmiotów po smierci.
+enchantment.minecraft.efficiency.desc=Zwieksza predkosc kopania.
+enchantment.minecraft.silk_touch.desc=Pozwala na zbieranie delikatnych bloków takich jak szklo.
+enchantment.minecraft.unbreaking.desc=Powoduje wolniejsze niszczenie sie narzedzia.
+enchantment.minecraft.fortune.desc=Niektóre bloki takie jak rudy wegla czy diamentów moga wyrzucic dodatkowe przedmioty.
+enchantment.minecraft.power.desc=Zwieksza obrazenia strzal wystrzelanych z luku.
+enchantment.minecraft.punch.desc=Zwieksza sile odrzutu strzal wystrzelanych z luku.
+enchantment.minecraft.flame.desc=Strzaly wystrzelone z luku beda podpalaly przeciwników. 
+enchantment.minecraft.infinity.desc=Pozwala na wysztrzeliwanie normalnych strzal z luku za darmo. Musisz posiadac przynajmniej 1 strzale by to dzialalo.
+enchantment.minecraft.luck_of_the_sea.desc=Zwieksza szanse na zdobycie dobrych przedmiotów podczas lowienia.
+enchantment.minecraft.lure.desc=Zmniejsza czas, w którym ryba lapie za haczyk.
+enchantment.minecraft.depth_strider.desc=Zwieksza predkosc poruszania sie pod woda.
+enchantment.minecraft.frost_walker.desc=Zamraza wode pod stopami gracza w lamliwy lód.
+enchantment.minecraft.mending.desc=Naprawia zbroje i narzedzia kosztem punktów doswiadczenia.
+enchantment.minecraft.binding_curse.desc=Zapobiega zdejmowaniu zbroi z ta klatwa.
+enchantment.minecraft.vanishing_curse.desc=Niszczy przedmiot po smierci jezeli posiadales przedmiot z ta klatwa w ekwipunku.
+enchantment.minecraft.sweeping.desc=Zwieksza obrazenia ataków obszarowych.
+
+#Dragon Mounts
+tooltip.wawla.dragonmounts.start=Kliknij aby zaczac wykluwac!
+tooltip.wawla.dragonmounts.stage=Etap
+tooltip.wawla.dragonmounts.stage.egg=Jajko
+tooltip.wawla.dragonmounts.stage.hatchling=Piskle
+tooltip.wawla.dragonmounts.stage.juvenile=Malolat
+tooltip.wawla.dragonmounts.stage.adult=Dorosly
+tooltip.wawla.dragonmounts.adulttime=Wiek Dojrzaly
+tooltip.wawla.dragonmounts.nexttime=Nastepny Etap
