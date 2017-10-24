@@ -9,7 +9,7 @@ import net.darkhax.wawla.plugins.ProviderType;
 import net.darkhax.wawla.plugins.WawlaFeature;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.AbstractHorse;
 
 @WawlaFeature(description = "Shows info about horses", name = "horses", type = ProviderType.ENTITY)
 public class PluginHorse extends InfoProvider {
@@ -23,9 +23,9 @@ public class PluginHorse extends InfoProvider {
     @Override
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
-        if (data.entity instanceof EntityHorse) {
+        if (data.entity instanceof AbstractHorse) {
 
-            final EntityHorse horse = (EntityHorse) data.entity;
+            final AbstractHorse horse = (AbstractHorse) data.entity;
 
             if (jump) {
                 info.add(I18n.format("tooltip.wawla.vanilla.jump") + ": " + this.getPlayerRelativeInfo(horse.getHorseJumpStrength(), 0.45d));
