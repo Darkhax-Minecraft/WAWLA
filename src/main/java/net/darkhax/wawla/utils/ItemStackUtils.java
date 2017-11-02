@@ -148,7 +148,7 @@ public final class ItemStackUtils {
      */
     public static boolean areStacksSimilar (ItemStack firstStack, ItemStack secondStack) {
 
-        return firstStack == null && secondStack == null ? true : !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem();
+        return firstStack == null && secondStack == null || !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem();
     }
 
     /**
@@ -161,7 +161,7 @@ public final class ItemStackUtils {
      */
     public static boolean areStacksSimilarWithSize (ItemStack firstStack, ItemStack secondStack) {
 
-        return firstStack == null && secondStack == null ? true : !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem() && firstStack.getCount() == secondStack.getCount();
+        return firstStack == null && secondStack == null || !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem() && firstStack.getCount() == secondStack.getCount();
     }
 
     public static ItemStack writePotionEffectsToStack (ItemStack stack, PotionEffect[] effects) {

@@ -5,5 +5,5 @@ public enum ProviderType {
     BLOCK,
     ENTITY,
     ITEM,
-    ITEM_BLOCK;
+    ITEM_BLOCK
 }
