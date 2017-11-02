@@ -288,8 +288,8 @@ public class WawlaConfiguration {
 
     // Functional Interfaces
 
-    public static interface Adapter<T extends Object> {
+    public interface Adapter<T extends Object> {
 
-        public T read (String name, String category, String comment, Configuration config, T object);
+        T read(String name, String category, String comment, Configuration config, T object);
     }
 }

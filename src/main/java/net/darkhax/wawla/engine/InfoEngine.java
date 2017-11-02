@@ -8,5 +8,5 @@ public interface InfoEngine {
      *
      * @return String A name for the engine.
      */
-    public String getName ();
+    String getName();
 }
