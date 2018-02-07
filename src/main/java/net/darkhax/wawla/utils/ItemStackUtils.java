@@ -1,5 +1,7 @@
 package net.darkhax.wawla.utils;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -146,7 +148,7 @@ public final class ItemStackUtils {
      * @param secondStackThe second stack to check.
      * @return booleanTrue if stacks are similar, or if both are null.
      */
-    public static boolean areStacksSimilar (ItemStack firstStack, ItemStack secondStack) {
+    public static boolean areStacksSimilar (@Nonnull ItemStack firstStack, @Nonnull ItemStack secondStack) {
 
         return firstStack == null && secondStack == null ? true : !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem();
     }
@@ -159,12 +161,12 @@ public final class ItemStackUtils {
      * @param secondStackThe second stack to check.
      * @return booleanTrue if stacks are similar, or if both are null.
      */
-    public static boolean areStacksSimilarWithSize (ItemStack firstStack, ItemStack secondStack) {
+    public static boolean areStacksSimilarWithSize (@Nonnull ItemStack firstStack, @Nonnull ItemStack secondStack) {
 
         return firstStack == null && secondStack == null ? true : !firstStack.isEmpty() && !secondStack.isEmpty() && firstStack.getItemDamage() == secondStack.getItemDamage() && firstStack.getItem() == secondStack.getItem() && firstStack.getCount() == secondStack.getCount();
     }
 
-    public static ItemStack writePotionEffectsToStack (ItemStack stack, PotionEffect[] effects) {
+    public static ItemStack writePotionEffectsToStack (@Nonnull ItemStack stack, PotionEffect[] effects) {
 
         final NBTTagCompound stackTag = prepareDataTag(stack);
         final NBTTagList potionTag = new NBTTagList();
@@ -184,7 +186,7 @@ public final class ItemStackUtils {
      * @param tagThe NBTTagCompound to write the stack to.
      * @param tagNameThe name for this new NBTTagCompound entry.
      */
-    public static void writeStackToTag (ItemStack stack, NBTTagCompound tag, String tagName) {
+    public static void writeStackToTag (@Nonnull ItemStack stack, NBTTagCompound tag, String tagName) {
 
         final NBTTagCompound stackTag = new NBTTagCompound();
         stack.writeToNBT(stackTag);
