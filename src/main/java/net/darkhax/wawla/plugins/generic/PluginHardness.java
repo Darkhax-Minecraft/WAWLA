@@ -14,7 +14,7 @@ public class PluginHardness extends InfoProvider {
     @Override
     public void addTileInfo (List<String> info, InfoAccess data) {
 
-        info.add(I18n.format("tooltip.wawla.generic.hardness") + ": " + data.block.getBlockHardness(data.state, data.world, data.pos));
+        info.add(I18n.format("tooltip.wawla.generic.hardness") + ": " + data.state.getBlockHardness(data.world, data.pos));
     }
 
     @Override
