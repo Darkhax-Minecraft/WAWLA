@@ -74,7 +74,6 @@ public class TileProvider implements IWailaDataProvider {
     public static void register (IWailaRegistrar register) {
 
         final TileProvider provider = new TileProvider();
-        // register.registerStackProvider(provider, Block.class);
         register.registerBodyProvider(provider, Block.class);
         register.registerNBTProvider(provider, Block.class);
     }
