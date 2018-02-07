@@ -93,7 +93,7 @@ public class InfoProvider {
 
         if (value >= 0 && places > 0) {
 
-            BigDecimal bd = new BigDecimal(value);
+            BigDecimal bd = BigDecimal.valueOf(value);
             bd = bd.setScale(places, RoundingMode.HALF_UP);
             return bd.doubleValue();
         }
