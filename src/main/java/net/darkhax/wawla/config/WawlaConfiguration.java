@@ -114,11 +114,7 @@ public class WawlaConfiguration {
 
             if (!(Modifier.isPublic(field.getModifiers()) && Modifier.isStatic(field.getModifiers()))) {
 
-                Wawla.LOG.info("Configuration fields must be public, and static!");
-
-                while (true) {
-                    System.out.println("Bad field: " + field.getName());
-                }
+                Wawla.LOG.info("Configuration fields must be public, and static! " + field.getName());
             }
 
             field.setAccessible(true);
