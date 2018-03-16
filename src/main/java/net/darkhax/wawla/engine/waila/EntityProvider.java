@@ -6,6 +6,7 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaEntityAccessor;
 import mcp.mobius.waila.api.IWailaEntityProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.InfoAccess;
 import net.darkhax.wawla.plugins.FeatureManager;
 import net.darkhax.wawla.plugins.InfoProvider;
@@ -19,17 +20,25 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public Entity getWailaOverride (IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
-        InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
+    	try {
+    		
+            InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
-        if (info.entity != null) {
-            for (final InfoProvider provider : FeatureManager.entityProviders) {
-                if (provider.requireEntityOverride(info)) {
-                    info = provider.overrideEntity(info);
+            if (info.entity != null) {
+                for (final InfoProvider provider : FeatureManager.entityProviders) {
+                    if (provider.requireEntityOverride(info)) {
+                        info = provider.overrideEntity(info);
+                    }
                 }
             }
-        }
 
-        return info.entity;
+            return info.entity;
+    	}
+    	
+    	catch (Exception e){
+    		
+    		Wawla.LOG.trace("Could not process override for " + accessor.getEntity().getName(), e);
+    	}
     }
 
     @Override
