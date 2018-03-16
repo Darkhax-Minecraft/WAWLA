@@ -38,6 +38,7 @@ public class EntityProvider implements IWailaEntityProvider {
     	catch (Exception e){
     		
     		Wawla.LOG.trace("Could not process override for " + accessor.getEntity().getName(), e);
+    		return accessor.getEntity();
     	}
     }
 
