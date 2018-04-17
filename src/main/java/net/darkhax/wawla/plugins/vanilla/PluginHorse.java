@@ -28,17 +28,21 @@ public class PluginHorse extends InfoProvider {
             final AbstractHorse horse = (AbstractHorse) data.entity;
 
             if (jump) {
-                info.add(I18n.format("tooltip.wawla.vanilla.jump") + ": " + this.getPlayerRelativeInfo(horse.getHorseJumpStrength(), 0.45d));
+            	
+            	final double horseJump = horse.getHorseJumpStrength();
+                info.add(I18n.format("tooltip.wawla.vanilla.jump", InfoProvider.round(horseJump, 4), this.getPlayerRelativeInfo(horseJump, 0.45d)));
             }
 
             if (speed) {
-                info.add(I18n.format("tooltip.wawla.vanilla.speed") + ": " + this.getPlayerRelativeInfo(horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue(), 0.1d));
+            	
+            	final double horseSpeed = horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
+                info.add(I18n.format("tooltip.wawla.vanilla.speed", InfoProvider.round(horseSpeed, 4), this.getPlayerRelativeInfo(horseSpeed, 0.1d)));
             }
         }
     }
 
-    public String getPlayerRelativeInfo (double horseStat, double playerStat) {
+    public double getPlayerRelativeInfo (double horseStat, double playerStat) {
 
-        return InfoProvider.round(horseStat / playerStat, 1) + "X";
+        return InfoProvider.round(horseStat / playerStat, 1);
     }
 }
