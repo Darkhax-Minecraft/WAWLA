@@ -24,7 +24,7 @@ public class PluginVillagerTypes extends InfoProvider {
         String career = "";
 
         if (data.entity instanceof EntityVillager) {
-            career = ((EntityVillager) data.entity).getProfessionForge().getRegistryName().getResourcePath();
+            career = ((EntityVillager) data.entity).getProfessionForge().getRegistryName().getPath();
         }
         else if (data.entity instanceof EntityZombieVillager) {
 
@@ -51,7 +51,7 @@ public class PluginVillagerTypes extends InfoProvider {
             final VillagerProfession type = zombie.getForgeProfession();
 
             if (type != null) {
-                tag.setString("WAWLAZombieType", type.getRegistryName().getResourcePath());
+                tag.setString("WAWLAZombieType", type.getRegistryName().getPath());
             }
         }
     }

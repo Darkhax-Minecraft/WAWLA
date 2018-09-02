@@ -124,7 +124,7 @@ public class PluginEnchantmentDescription extends InfoProvider {
     @SideOnly(Side.CLIENT)
     public static String getModName (IForgeRegistryEntry.Impl<?> registerable) {
 
-        final String modID = registerable.getRegistryName().getResourceDomain();
+        final String modID = registerable.getRegistryName().getNamespace();
         final ModContainer mod = Loader.instance().getIndexedModList().get(modID);
         return mod != null ? mod.getName() : modID;
     }
@@ -132,6 +132,6 @@ public class PluginEnchantmentDescription extends InfoProvider {
     @SideOnly(Side.CLIENT)
     public static String getTranslationKey (Enchantment enchant) {
 
-        return String.format("enchantment.%s.%s.desc", enchant.getRegistryName().getResourceDomain(), enchant.getRegistryName().getResourcePath());
+        return String.format("enchantment.%s.%s.desc", enchant.getRegistryName().getNamespace(), enchant.getRegistryName().getPath());
     }
 }
