@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TileProvider implements IWailaDataProvider {
-
+	
     @Override
     public ItemStack getWailaStack (IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
@@ -44,7 +44,7 @@ public class TileProvider implements IWailaDataProvider {
     @Override
     public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
-        final InfoAccess info = new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), accessor.getNBTData());
+        final InfoAccess info = getInfo(accessor);
 
         for (final InfoProvider provider : FeatureManager.tileProviders) {
             provider.addTileInfo(currenttip, info);
@@ -76,5 +76,24 @@ public class TileProvider implements IWailaDataProvider {
         final TileProvider provider = new TileProvider();
         register.registerBodyProvider(provider, Block.class);
         register.registerNBTProvider(provider, Block.class);
+    }
+    
+    private InfoAccess getInfo(IWailaDataAccessor accessor) {
+    	
+    	NBTTagCompound tag = new NBTTagCompound();
+    	
+    	if (accessor.getTileEntity() != null) {
+    		
+            for (final InfoProvider provider : FeatureManager.tileProviders) {
+            	
+                if (provider.requireTileSync(accessor.getWorld(), accessor.getTileEntity())) {
+                	
+                	tag = accessor.getNBTData();
+                	break;
+                }
+            }
+    	}
+        
+    	return new InfoAccess(accessor.getMOP(), accessor.getWorld(), accessor.getPlayer(), accessor.getStack(), accessor.getBlockState(), accessor.getPosition(), accessor.getSide(), tag);
     }
 }
