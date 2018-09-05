@@ -20,8 +20,8 @@ public class EntityProvider implements IWailaEntityProvider {
     @Override
     public Entity getWailaOverride (IWailaEntityAccessor accessor, IWailaConfigHandler config) {
 
-    	try {
-    		
+        try {
+
             InfoAccess info = new InfoAccess(accessor.getWorld(), accessor.getPlayer(), accessor.getEntity(), accessor.getNBTData());
 
             if (info.entity != null) {
@@ -33,13 +33,13 @@ public class EntityProvider implements IWailaEntityProvider {
             }
 
             return info.entity;
-    	}
-    	
-    	catch (Exception e){
-    		
-    		Wawla.LOG.trace("Could not process override for " + accessor.getEntity().getName(), e);
-    		return accessor.getEntity();
-    	}
+        }
+
+        catch (final Exception e) {
+
+            Wawla.LOG.trace("Could not process override for " + accessor.getEntity().getName(), e);
+            return accessor.getEntity();
+        }
     }
 
     @Override

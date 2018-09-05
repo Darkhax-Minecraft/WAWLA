@@ -39,7 +39,6 @@ public class PluginFluidDescription extends InfoProvider {
         if (showOwner && fluid != null) {
             info.add(I18n.format("tooltip.wawla.enchdesc.addedby") + ": " + ChatFormatting.BLUE + getModName(FluidRegistry.getDefaultFluidName(fluid.getFluid()).split(":")[0]));
         }
-
     }
 
     public static String getModName (String modID) {

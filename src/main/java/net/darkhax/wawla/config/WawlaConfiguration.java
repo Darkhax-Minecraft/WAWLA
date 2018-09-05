@@ -286,6 +286,6 @@ public class WawlaConfiguration {
 
     public interface Adapter<T extends Object> {
 
-        T read(String name, String category, String comment, Configuration config, T object);
+        T read (String name, String category, String comment, Configuration config, T object);
     }
 }

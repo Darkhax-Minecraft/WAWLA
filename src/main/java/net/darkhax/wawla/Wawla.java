@@ -85,10 +85,10 @@ public class Wawla {
             event.getLeft().add("[Wawla] Info Engine: " + Wawla.engine.getName());
         }
     }
-     
-   @EventHandler
-   public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-       
-       LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
-   }
+
+    @EventHandler
+    public void onFingerprintViolation (FMLFingerprintViolationEvent event) {
+
+        LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
+    }
 }
