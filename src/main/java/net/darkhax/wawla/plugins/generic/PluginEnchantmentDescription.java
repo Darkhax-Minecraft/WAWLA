@@ -32,11 +32,11 @@ public class PluginEnchantmentDescription extends InfoProvider {
     @Configurable(category = "enchdesc", description = "Should the mod which added the enchantment be shown?")
     public static boolean showOwner = true;
 
+    final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+    
     @Override
     @SideOnly(Side.CLIENT)
     public void addItemInfo (List<String> info, ItemStack stack, ITooltipFlag flag, EntityPlayer entityPlayer) {
-
-        final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
 
         if (stack.getItem() instanceof ItemEnchantedBook) {
             if (GameSettings.isKeyDown(keyBindSneak)) {
