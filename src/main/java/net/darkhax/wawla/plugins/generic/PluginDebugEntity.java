@@ -18,25 +18,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @WawlaFeature(description = "Shows debug entity information", name = "debugEntities", type = ProviderType.ENTITY)
 public class PluginDebugEntity extends InfoProvider {
 
-    final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
-
     @Override
     @SideOnly(Side.CLIENT)
     public void addEntityInfo (List<String> info, InfoAccess data) {
 
         if (data.player.isCreative() && Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
 
+            final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+            
             info.add("Class: " + data.entity.getClass());
             info.add("ID: " + EntityList.getKey(data.entity).toString());
 
-            if (GameSettings.isKeyDown(this.keyBindSneak)) {
+            if (GameSettings.isKeyDown(keyBindSneak)) {
 
                 info.add("NBT: " + data.tag.toString());
             }
 
             else {
 
-                info.add("Hold " + ChatFormatting.LIGHT_PURPLE + this.keyBindSneak.getDisplayName() + ChatFormatting.GRAY + " for NBT");
+                info.add("Hold " + ChatFormatting.LIGHT_PURPLE + keyBindSneak.getDisplayName() + ChatFormatting.GRAY + " for NBT");
             }
         }
     }
