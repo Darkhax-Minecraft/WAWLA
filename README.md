@@ -1,7 +1,7 @@
 # WAWLA [![](http://cf.way2muchnoise.eu/224712.svg)](https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at) [![](http://cf.way2muchnoise.eu/versions/224712.svg)](https://minecraft.curseforge.com/projects/wawla-what-are-we-looking-at)
 What Are We Looking At (WAWLA) is a Minecraft mod which helps provide in game documentation for vanilla and modded content. 
 
-[![Nodecraft](https://i.imgur.com/sz9PUmK.png)](https://nodecraft.com/r/darkhax)    
+[![Nodecraft](https://nodecraft.com/assets/images/logo-dark.png)](https://nodecraft.com/r/darkhax)    
 This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
 
 # Generic Entity Info
