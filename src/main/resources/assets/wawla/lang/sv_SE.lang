@@ -1,0 +1,109 @@
+#Wawla Language File
+tooltip.wawla.true=§aSant
+tooltip.wawla.false=§4Falskt
+tooltip.wawla.yes=§a✔
+tooltip.wawla.no=§4✖
+tooltip.wawla.item=Föremål
+tooltip.wawla.block=Block
+tooltip.wawla.shovel=Spade
+tooltip.wawla.pickaxe=Hacka
+tooltip.wawla.axe=Yxa
+tooltip.wawla.chisel=Mejsel
+tooltip.wawla.scoop=Skopa
+tooltip.wawla.crowbar=Kofot
+tooltip.wawla.sword=Svärd
+tooltip.wawla.mainhand=Primär hand
+tooltip.wawla.offhand=Sekundär hand
+tooltip.wawla.feet=Fötterna
+tooltip.wawla.legs=Benen
+tooltip.wawla.chest=Kroppen
+tooltip.wawla.head=Huvudet
+tooltip.wawla.star=★
+tooltip.wawla.name=Namn
+
+#Generic Tiles
+tooltip.wawla.generic.progression=Förlopp
+tooltip.wawla.generic.enchpower=Förtrollningskraft
+tooltip.wawla.generic.blastresist=Explosionsresistans
+tooltip.wawla.generic.hardness=Hårdhet
+tooltip.wawla.generic.harvestable=Kan skördas
+tooltip.wawla.generic.showtier=Nivå
+tooltip.wawla.generic.tooltype=Verktyg
+
+#Generic Entities
+tooltip.wawla.generic.armor=Rustning
+tooltip.wawla.generic.sitting=Sitter
+tooltip.wawla.generic.tamed=Tämjd
+tooltip.wawla.generic.breedingtime=Väntetid för parning
+tooltip.wawla.generic.growingage=Väntetid för uppväxt
+tooltip.wawla.generic.breedingitem=Kan paras
+tooltip.wawla.generic.temperature=Temperatur: %d K
+
+#Vanilla Tiles
+tooltip.wawla.vanilla.input=Inmatning
+tooltip.wawla.vanilla.fuel=Bränsle
+tooltip.wawla.vanilla.output=Utmatning
+tooltip.wawla.vanilla.burntime=Brinntid
+
+#Vanilla Entities
+tooltip.wawla.vanilla.jump=Hoppstyrka: %f (%dx)
+tooltip.wawla.vanilla.speed=Hastighet: %f (%dx)
+tooltip.wawla.vanilla.career=Karriär
+tooltip.wawla.vanilla.fuse=Stubin
+tooltip.wawla.vanilla.experience=Erfarenhet
+
+#Villager Types
+villager.wawla.zombie=Zombie
+villager.wawla.witch=Häxa
+
+#Vanilla Fixes
+entity.ItemFrame.name=Föremålsram
+
+#Enchantment Tooltip
+tooltip.wawla.enchdesc.name=Förtrollning
+tooltip.wawla.enchdesc.addedby=Lades till av
+tooltip.wawla.enchdesc.missing=Ingen beskrivning hittades. Fråga skaparen av %s att lägga till en. Lokaliseringsnyckeln är %s
+tooltip.wawla.enchdesc.activate=Håll ned %s%s%s för en beskrivning av förtrollningen.
+tooltip.wawla.enchPower=Förtrollningskraft
+
+#Vanilla Enchantment Descriptions
+enchantment.minecraft.protection.desc=Reducerar skada från de flesta källorna. 
+enchantment.minecraft.fire_protection.desc=Reducerar skada från eld. Reducerar även brinntid när du brinner.
+enchantment.minecraft.feather_falling.desc=Reducerar fallskada och skada från teleportering med enderpärlor.
+enchantment.minecraft.blast_protection.desc=Reducerar skada och knuffar från explosioner.
+enchantment.minecraft.projectile_protection.desc=Reducerar skada från projektiler, t.ex. pilar och eldklot.
+enchantment.minecraft.respiration.desc=Förlänger tiden spelaren kan vara under vatten. Förbättrar även synen under vatten.
+enchantment.minecraft.aqua_affinity.desc=Ökar brytningshastigheten under vatten. 
+enchantment.minecraft.thorns.desc=Orsakar skada mot fiender när de attackerar dig.
+enchantment.minecraft.sharpness.desc=Ökar föremålets skada.
+enchantment.minecraft.smite.desc=Ökar skada mot odöda monster, t.ex. zombier och skelett.
+enchantment.minecraft.bane_of_arthropods.desc=Ökar skada mot leddjur, t.ex. spindlar och silverfiskar.
+enchantment.minecraft.knockback.desc=Ökar knuffstyrkan för vapnet.
+enchantment.minecraft.fire_aspect.desc=Orsakar ytterligare eldskada när du attackerar ett monster.
+enchantment.minecraft.looting.desc=Får monster att släppa fler skatter när de dödas.
+enchantment.minecraft.efficiency.desc=Ökar verktygets brytningshastighet.
+enchantment.minecraft.silk_touch.desc=Gör det möjligt att plocka upp ömtåliga block, t.ex. glas.
+enchantment.minecraft.unbreaking.desc=Får verktyget att förlora sin hållbarhet långsammare.
+enchantment.minecraft.fortune.desc=Får vissa block att avge fler föremål, t.ex. kol- och diamantmalm.
+enchantment.minecraft.power.desc=Ökar skada för pilar som avfyras från pilbågen.
+enchantment.minecraft.punch.desc=Ökar knuffstyrkan för pilar som avfyras från denna pilbåge.
+enchantment.minecraft.flame.desc=Pilar som avfyras från pilbågen utdelar ytterligare eldskada. 
+enchantment.minecraft.infinity.desc=Gör det möjligt för pilbågen skjuta pilar helt gratis. Du måste ha minst en pil för att detta ska fungera.
+enchantment.minecraft.luck_of_the_sea.desc=Ökar chansen att få bra skatter när du fiskar.
+enchantment.minecraft.lure.desc=Minskar tiden som tar för fisk att nappa på kroken.
+enchantment.minecraft.depth_strider.desc=Ökar rörelsehastigheten under vatten.
+enchantment.minecraft.frost_walker.desc=Fryser vatten under spelaren till is.
+enchantment.minecraft.mending.desc=Reparerar hållbarheten för rustning och verktyg med erfarenhet.
+enchantment.minecraft.binding_curse.desc=Förhindrar det förtrollade föremålet att tas bort från en utrustningsplats.
+enchantment.minecraft.vanishing_curse.desc=Förstör det förtrollade föremålet om du dör med det i din utrustning.
+enchantment.minecraft.sweeping.desc=Ökar skada från svepande attacker.
+
+#Dragon Mounts
+tooltip.wawla.dragonmounts.start=Klicka för att börja kläcka!
+tooltip.wawla.dragonmounts.stage=Stadie
+tooltip.wawla.dragonmounts.stage.egg=Ägg
+tooltip.wawla.dragonmounts.stage.hatchling=Barn
+tooltip.wawla.dragonmounts.stage.juvenile=Ungdom
+tooltip.wawla.dragonmounts.stage.adult=Vuxen
+tooltip.wawla.dragonmounts.adulttime=Mogen
+tooltip.wawla.dragonmounts.nexttime=Nästa stadie
