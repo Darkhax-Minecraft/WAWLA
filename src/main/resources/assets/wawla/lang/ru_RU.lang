@@ -9,34 +9,34 @@ tooltip.wawla.shovel=Лопата
 tooltip.wawla.pickaxe=Кирка
 tooltip.wawla.axe=Топор
 tooltip.wawla.chisel=Стамеска
-tooltip.wawla.scoop=Совок
+tooltip.wawla.scoop=Сачок
 tooltip.wawla.crowbar=Лом
 tooltip.wawla.sword=Меч
-tooltip.wawla.mainhand=Основная рука
-tooltip.wawla.offhand=Левая рука
-tooltip.wawla.feet=Ботинки
-tooltip.wawla.legs=Поножи
+tooltip.wawla.mainhand=Ведущая рука
+tooltip.wawla.offhand=Неведущая рука
+tooltip.wawla.feet=Feet
+tooltip.wawla.legs=Legs
 tooltip.wawla.chest=Сундук
 tooltip.wawla.head=Голова
 tooltip.wawla.star=★
-tooltip.wawla.name=Название
+tooltip.wawla.name=Name
 
 #Generic Tiles
-tooltip.wawla.generic.progression=Прогресс
-tooltip.wawla.generic.enchpower=Сила зачарования
-tooltip.wawla.generic.blastresist=Сопротивление взрыва
+tooltip.wawla.generic.progression=Прогресс добычи
+tooltip.wawla.generic.enchpower=Усиление чар
+tooltip.wawla.generic.blastresist=Сопротивление взрыву
 tooltip.wawla.generic.hardness=Прочность
-tooltip.wawla.generic.harvestable=Урожайность
-tooltip.wawla.generic.showtier=Уровень
+tooltip.wawla.generic.harvestable=Можно добыть
+tooltip.wawla.generic.showtier=Уровень добычи
 tooltip.wawla.generic.tooltype=Инструмент
 
 #Generic Entities
-tooltip.wawla.generic.armor=Броня
+tooltip.wawla.generic.armor=Очки защиты
 tooltip.wawla.generic.sitting=Сидит
-tooltip.wawla.generic.tamed=Прирученный
-tooltip.wawla.generic.breedingtime=Время восста-ния размножения
-tooltip.wawla.generic.growingage=Время восста-ния роста
-tooltip.wawla.generic.breedingitem=Читабельный
+tooltip.wawla.generic.tamed=Приручен
+tooltip.wawla.generic.breedingtime=Время до след. размножения
+tooltip.wawla.generic.growingage=Зрелость
+tooltip.wawla.generic.breedingitem=Может размножаться
 tooltip.wawla.generic.temperature=Температура: %dK
 
 #Vanilla Tiles
@@ -46,10 +46,10 @@ tooltip.wawla.vanilla.output=Выход
 tooltip.wawla.vanilla.burntime=Время горения
 
 #Vanilla Entities
-tooltip.wawla.vanilla.jump=Прыжок: %f (%dX)
+tooltip.wawla.vanilla.jump=Высота прыжка: %f (%dX)
 tooltip.wawla.vanilla.speed=Скорость: %f (%dX)
 tooltip.wawla.vanilla.career=Профессия
-tooltip.wawla.vanilla.fuse=Плавка
+tooltip.wawla.vanilla.fuse=Время до взрыва
 tooltip.wawla.vanilla.experience=Опыт
 
 #Villager Types
@@ -57,53 +57,53 @@ villager.wawla.zombie=Зомби
 villager.wawla.witch=Ведьма
 
 #Vanilla Fixes
-entity.ItemFrame.name=Item Frame
+entity.ItemFrame.name=Рамка
 
 #Enchantment Tooltip
 tooltip.wawla.enchdesc.name=Зачарование
 tooltip.wawla.enchdesc.addedby=Добавлено
-tooltip.wawla.enchdesc.missing=Описание не найдено. Пожалуйста, задайте вопрос автору %s добавить его. Ключ локализации %s
-tooltip.wawla.enchdesc.activate=Нажмите %s%s%s для описания зачарования.
-tooltip.wawla.enchPower=Сила зачарования
+tooltip.wawla.enchdesc.missing=Описание не найдено. Пожалуйста, попросите автора %s добавить его. Ключ локализации %s
+tooltip.wawla.enchdesc.activate=Нажмите %s%s%s для просмотра описания зачарования.
+tooltip.wawla.enchPower=Усиление чар
 
 #Vanilla Enchantment Descriptions
 enchantment.minecraft.protection.desc=Уменьшает урон от большинства источников.
-enchantment.minecraft.fire_protection.desc=Уменьшает эффект огня. Также уменьшает время горения при огне.
-enchantment.minecraft.feather_falling.desc=Уменьшает урон от падения и урон от телепортации Жемчуга странника края.
-enchantment.minecraft.blast_protection.desc=Уменьшает урон от взрывов и отбрасывание от взрыва.
-enchantment.minecraft.projectile_protection.desc=Уменьшает урон от снарядов, а именно стрел и огненных шаров.
-enchantment.minecraft.respiration.desc=Продлевает продолжительность, которая игрок может провести под водой. Также улучшает обзор под водой.
-enchantment.minecraft.aqua_affinity.desc=Увеличивает скорость добычи под водой.
-enchantment.minecraft.thorns.desc=Причиняет урон врагам, когда они вас атакуют.
-enchantment.minecraft.sharpness.desc=Увеличивает урон предмета.
-enchantment.minecraft.smite.desc=Увеличивает урон в борьбе с нежитью, вроде зомби и скелеты.
-enchantment.minecraft.bane_of_arthropods.desc=Увеличивает урон в борьбе с членистоногими, например пауки и чешуйницы.
+enchantment.minecraft.fire_protection.desc=Уменьшает получение урона от огня. Уменьшает время горения игрока.
+enchantment.minecraft.feather_falling.desc=Уменьшает урон от падения и урон от телепортации с помощью Эндер-жемчуга.
+enchantment.minecraft.blast_protection.desc=Уменьшает получение урона от взрыва, а также уменьшит эффект откидывания при взрыве.
+enchantment.minecraft.projectile_protection.desc=Уменьшает урон от таких снарядов, как стрелы и огненные шары.
+enchantment.minecraft.respiration.desc=Увеличивает количество времени, которое игрок может провести под водой. Также улучшает зрение под водой.
+enchantment.minecraft.aqua_affinity.desc=Увеличивает скорость добычи под водой. 
+enchantment.minecraft.thorns.desc=Наносит урон врагам, когда они атакуют вас.
+enchantment.minecraft.sharpness.desc=Увеличивает урон предмету.
+enchantment.minecraft.smite.desc=Увеличивает урон против мобов нежити, таких как зомби и скелеты.
+enchantment.minecraft.bane_of_arthropods.desc=Увеличивает урон против членистоногих, таких как Пауки и Чешуйницы.
 enchantment.minecraft.knockback.desc=Увеличивает силу отбрасывания оружием.
-enchantment.minecraft.fire_aspect.desc=Наносит доп. огненный урон, при использовании атаки мобам.
-enchantment.minecraft.looting.desc=У мобов будет выпадать больше добычи после смерти.
-enchantment.minecraft.efficiency.desc=Увеличивает скорость добычи инструмента.
-enchantment.minecraft.silk_touch.desc=Позволяет собирать хрупкие блоки, а именно стекло.
-enchantment.minecraft.unbreaking.desc=Причиняет инструменту потерять прочность более медленными темпами.
-enchantment.minecraft.fortune.desc=Некоторые блоки, а именно уголь и алмазная руда, могут сбрасывать доп. предметы.
-enchantment.minecraft.power.desc=Увеличивает урон стрелами, выпущенными из лука.
-enchantment.minecraft.punch.desc=Увеличивает силу отбрасывания стрелами, выпущенными луком.
-enchantment.minecraft.flame.desc=Стрелы, выпущенные из лука, нанесут доп. урон огнём.  
-enchantment.minecraft.infinity.desc=Лук позволяет стрелять обычными стрелами бесконечно. Вы должны иметь хотя бы одну стрелу, для того чтобы это сработало.
+enchantment.minecraft.fire_aspect.desc=Наносит дополнительный урон огнем при нападении на моба.
+enchantment.minecraft.looting.desc=Увеличивает выпадение лута, при убийстве мобов.
+enchantment.minecraft.efficiency.desc=Увеличивает скорость копания инструмента
+enchantment.minecraft.silk_touch.desc=Позволяет собирать хрупкие блоки, такие как стекло.
+enchantment.minecraft.unbreaking.desc=Заставляет инструмент терять прочность с меньшей скоростью.
+enchantment.minecraft.fortune.desc=Увеличивает шанс выпадения большего количества ресурсов, например, с угля или алмазной руды.
+enchantment.minecraft.power.desc=Увеличивает урон стрел, выпущенных из лука.
+enchantment.minecraft.punch.desc=Увеличивает силу отталкивания стрел, выпущенных луком.
+enchantment.minecraft.flame.desc=Стрелы, выпущенные из лука, наносят дополнительный урон огнем. 
+enchantment.minecraft.infinity.desc=Позволяет луку стрелять бесконечно, не тратя стрелы. Но для стрельбы нужна хотя бы одна стрела.
 enchantment.minecraft.luck_of_the_sea.desc=Увеличивает шанс получить хорошую добычу во время рыбалки.
-enchantment.minecraft.lure.desc=Уменьшает кол-во времени, необходимое для рыбы, чтобы заглотить крючок.
+enchantment.minecraft.lure.desc=Сократит время ожидания во время рыбалки.
 enchantment.minecraft.depth_strider.desc=Увеличивает скорость передвижения под водой.
-enchantment.minecraft.frost_walker.desc=Замораживает воду под игроком в треснувший лёд.
-enchantment.minecraft.mending.desc=Ремонтирует прочность брони и инструментов с помощью опыта.
-enchantment.minecraft.binding_curse.desc=Предотвращает удаление зачарованного предмета из слота брони.
-enchantment.minecraft.vanishing_curse.desc=Уничтожает зачарованный предмет, если вы умрёте с ним в инвентаре.
-enchantment.minecraft.sweeping.desc=Увеличивает урон от быстрых атак.
+enchantment.minecraft.frost_walker.desc=Превращает воду в подмороженный лёд, что позволяет ходить по поверхности водоёма.
+enchantment.minecraft.mending.desc=Использует опыт для починки предмета в руках или в слотах брони.
+enchantment.minecraft.binding_curse.desc=Данный чар на предмете не позволит вам его выбросить или снять его со слота, выпадает из игрока только в случае его смерти.
+enchantment.minecraft.vanishing_curse.desc=Предмет с данным чаром самоуничтожится при смерти игрока, невозможно выбросить, это происходит только в случае смерти игрока.
+enchantment.minecraft.sweeping.desc=Увеличивает урон от стремительных атак.
 
 #Dragon Mounts
-tooltip.wawla.dragonmounts.start=Нажмите, чтобы начать наблюдение!
+tooltip.wawla.dragonmounts.start=Нажмите, чтобы начать инкубацию!
 tooltip.wawla.dragonmounts.stage=Стадия
 tooltip.wawla.dragonmounts.stage.egg=Яйцо
-tooltip.wawla.dragonmounts.stage.hatchling=Детёныш
-tooltip.wawla.dragonmounts.stage.juvenile=Молодой
-tooltip.wawla.dragonmounts.stage.adult=Совершеннолетний
-tooltip.wawla.dragonmounts.adulttime=Взрослый
+tooltip.wawla.dragonmounts.stage.hatchling=Вылупление
+tooltip.wawla.dragonmounts.stage.juvenile=Juvenile
+tooltip.wawla.dragonmounts.stage.adult=Adult
+tooltip.wawla.dragonmounts.adulttime=Adulthood
 tooltip.wawla.dragonmounts.nexttime=След. стадия
