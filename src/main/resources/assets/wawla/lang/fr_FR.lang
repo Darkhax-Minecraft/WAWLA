@@ -62,7 +62,7 @@ entity.ItemFrame.name=Cadre
 #Enchantment Tooltip
 tooltip.wawla.enchdesc.name=Enchantement
 tooltip.wawla.enchdesc.addedby=Ajouté par 
-tooltip.wawla.enchdesc.missing=Aucune description trouvée. Veuillez demander à l'auteur de of %s d'en ajouter une. La clé de localisation est %s
+tooltip.wawla.enchdesc.missing=Aucune description trouvée. Veuillez demander à l'auteur de %s d'en ajouter une. La clé de localisation est %s
 tooltip.wawla.enchdesc.activate=Presser %s%s%s pour afficher les descriptions d'enchantement.
 tooltip.wawla.enchPower=Pouvoir d'enchantement
 
