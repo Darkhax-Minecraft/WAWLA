@@ -16,7 +16,7 @@ tooltip.wawla.mainhand=Основная рука
 tooltip.wawla.offhand=Левая рука
 tooltip.wawla.feet=Ботинки
 tooltip.wawla.legs=Поножи
-tooltip.wawla.chest=Сундук
+tooltip.wawla.chest=Нагрудник
 tooltip.wawla.head=Голова
 tooltip.wawla.star=★
 tooltip.wawla.name=Название
@@ -36,7 +36,7 @@ tooltip.wawla.generic.sitting=Сидит
 tooltip.wawla.generic.tamed=Прирученный
 tooltip.wawla.generic.breedingtime=Время восста-ния размножения
 tooltip.wawla.generic.growingage=Время восста-ния роста
-tooltip.wawla.generic.breedingitem=Читабельный
+tooltip.wawla.generic.breedingitem=Размножаем
 tooltip.wawla.generic.temperature=Температура: %dK
 
 #Vanilla Tiles
