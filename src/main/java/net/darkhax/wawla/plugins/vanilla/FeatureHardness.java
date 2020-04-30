@@ -7,32 +7,39 @@ import mcp.mobius.waila.api.IDataAccessor;
 import mcp.mobius.waila.api.IPluginConfig;
 import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.Feature;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
-public class PluginBreakProgression extends Feature implements IComponentProvider {
+public class FeatureHardness extends Feature implements IComponentProvider {
     
-    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "break_progress");
+    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "hardness");
     
     @Override
     public void initialize (IRegistrar hwyla) {
         
-        hwyla.addConfig(ENABLED, true);
+        hwyla.addConfig(ENABLED, false);
         hwyla.registerComponentProvider(this, TooltipPosition.BODY, Block.class);
     }
     
     @Override
     public void appendBody (List<ITextComponent> info, IDataAccessor accessor, IPluginConfig config) {
         
-        final int progress = MathHelper.floor(Minecraft.getInstance().playerController.curBlockDamageMP * 100f);
-        
-        if (progress > 0) {
+        if (config.get(ENABLED)) {
             
-            info.add(this.getInfoComponent("progression", progress));
+            try {
+                
+                final float hardness = accessor.getBlockState().getBlockHardness(accessor.getWorld(), accessor.getPosition());
+                info.add(this.getInfoComponent("hardness", hardness));
+            }
+            
+            catch (final Exception e) {
+                
+                Wawla.LOG.error("Failed to get hardness for block {}.", accessor.getBlockState());
+                Wawla.LOG.catching(e);
+            }
         }
     }
 }

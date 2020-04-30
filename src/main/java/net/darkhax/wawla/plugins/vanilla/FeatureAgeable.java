@@ -21,7 +21,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class PluginAnimal extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
+public class FeatureAgeable extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
     
     private static final ResourceLocation BREEDING_COOLDOWN = new ResourceLocation("wawla", "breeding_cooldown");
     private static final ResourceLocation GROWING_COOLDOWN = new ResourceLocation("wawla", "growing_cooldown");

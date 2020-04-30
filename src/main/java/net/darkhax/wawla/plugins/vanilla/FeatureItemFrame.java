@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class PluginItemFrame extends Feature implements IEntityComponentProvider {
+public class FeatureItemFrame extends Feature implements IEntityComponentProvider {
     
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "frame_contents");
     

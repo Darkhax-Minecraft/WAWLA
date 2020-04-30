@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
-public class PluginArmorPoints extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
+public class FeatureArmorPoints extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
     
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "armor_points");
     

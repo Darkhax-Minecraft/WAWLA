@@ -14,7 +14,7 @@ import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class PluginHorse extends Feature implements IEntityComponentProvider {
+public class FeatureHorse extends Feature implements IEntityComponentProvider {
     
     private static final ResourceLocation SHOW_JUMP = new ResourceLocation("wawla", "horse_jump");
     private static final ResourceLocation SHOW_SPEED = new ResourceLocation("wawla", "horse_speed");

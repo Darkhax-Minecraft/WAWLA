@@ -21,7 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class PluginVillagerTypes extends Feature implements IEntityComponentProvider {
+public class FeatureVillagerProfession extends Feature implements IEntityComponentProvider {
     
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "villager_type");
     

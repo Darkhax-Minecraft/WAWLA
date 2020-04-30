@@ -13,9 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class PluginHardness extends Feature implements IComponentProvider {
+public class FeatureBlastResistance extends Feature implements IComponentProvider {
     
-    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "hardness");
+    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "blast_resistance");
     
     @Override
     public void initialize (IRegistrar hwyla) {
@@ -31,13 +31,13 @@ public class PluginHardness extends Feature implements IComponentProvider {
             
             try {
                 
-                final float hardness = accessor.getBlockState().getBlockHardness(accessor.getWorld(), accessor.getPosition());
-                info.add(this.getInfoComponent("hardness", hardness));
+                final float blastResistance = accessor.getBlockState().getExplosionResistance(accessor.getWorld(), accessor.getPosition(), null, null);
+                info.add(this.getInfoComponent("blastresist", blastResistance));
             }
             
             catch (final Exception e) {
                 
-                Wawla.LOG.error("Failed to get hardness for block {}.", accessor.getBlockState());
+                Wawla.LOG.error("Failed to get explosion resistance for block {}.", accessor.getBlockState());
                 Wawla.LOG.catching(e);
             }
         }

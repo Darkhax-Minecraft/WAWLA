@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class PluginSkulls extends Feature implements IComponentProvider {
+public class FeaturePlayerHead extends Feature implements IComponentProvider {
     
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "skull_owner");
     
