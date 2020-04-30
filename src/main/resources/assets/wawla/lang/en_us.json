@@ -1,0 +1,48 @@
+{ 
+  "_comment_": "Waila Config",
+  "config.waila.plugin_wawla": "Wawla",
+  "config.waila.plugin_wawla.growing_cooldown": "Growth Time",
+  "config.waila.plugin_wawla.breeding_cooldown": "Breeding Cooldown",
+  "config.waila.plugin_wawla.breeding_item": "Breeding Item",
+  "config.waila.plugin_wawla.armor_points": "Armor Points",
+  "config.waila.plugin_wawla.blast_resistance": "Blast Resistance",
+  "config.waila.plugin_wawla.break_progress": "Break Progress",
+  "config.waila.plugin_wawla.hardness": "Block Hardness",
+  "config.waila.plugin_wawla.horse_jump": "Horse Jump",
+  "config.waila.plugin_wawla.horse_speed": "Horse Speed",
+  "config.waila.plugin_wawla.frame_contents": "Item Frame Contents",
+  "config.waila.plugin_wawla.skull_owner": "Skull Owner",
+  "config.waila.plugin_wawla.villager_type": "Villager Profession",
+  
+  "_comment_": "Ageable Entities",
+  "info.wawla.growingage": "Growth Time: %s",
+  "info.wawla.breedingtime": "Breeding Cooldown: %s",
+  "info.wawla.breedingitem": "Breedable",
+  
+  "_comment_": "Armor Points",
+  "info.wawla.armor": "Armor: %d",
+  
+  "_comment_": "Blast Resist",
+  "info.wawla.blastresist": "Blast Resistance: %.2f",
+  
+  "_comment_": "Break Progression",
+  "info.wawla.progression": "Progression %d%%",
+  
+  "_comment_": "Block Hardness",
+  "info.wawla.hardness": "Hardness: %.2f",
+  
+  "_comment_": "Horses",
+  "info.wawla.jump": "Jump: %.4f",
+  "info.wawla.speed": "Speed: %.4f",
+  
+  "_comment_": "Item Frame",
+  "info.wawla.item": "Item: %s",
+  
+  "_comment_": "Player Skull",
+  "info.wawla.player": "Player: %s",
+  
+  "_comment_": "Villager Professions",
+  "info.wawla.profession": "Profession: %s",
+  "entity.minecraft.villager.wawla.witch": "Witch",
+  "entity.minecraft.villager.wawla.illager": "Illager"
+}

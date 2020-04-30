@@ -2,29 +2,47 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
-import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.plugins.InfoProvider;
-import net.darkhax.wawla.plugins.ProviderType;
-import net.darkhax.wawla.plugins.WawlaFeature;
-import net.minecraft.client.resources.I18n;
+import com.mojang.authlib.GameProfile;
+
+import mcp.mobius.waila.api.IComponentProvider;
+import mcp.mobius.waila.api.IDataAccessor;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.lib.Feature;
+import net.minecraft.block.SkullPlayerBlock;
+import net.minecraft.tileentity.SkullTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-@WawlaFeature(description = "Shows info about player heads", name = "skulls", type = ProviderType.BLOCK)
-public class PluginSkulls extends InfoProvider {
+public class PluginSkulls extends Feature implements IComponentProvider {
 
+    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "skull_owner");
+    
     @Override
-    public void addTileInfo (List<String> info, InfoAccess data) {
+    public void initialize (IRegistrar hwyla) {
 
-        final TileEntity tile = data.world.getTileEntity(data.pos);
-
-        if (tile instanceof TileEntitySkull) {
-
-            final TileEntitySkull skull = (TileEntitySkull) tile;
-
-            if (skull.getPlayerProfile() != null && skull.getPlayerProfile().getName() != null) {
-                info.add(I18n.format("tooltip.wawla.name") + ": " + skull.getPlayerProfile().getName());
-            }
-        }
+        hwyla.addConfig(ENABLED, true);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, SkullPlayerBlock.class);
     }
+    
+    @Override
+    public void appendBody (List<ITextComponent> info, IDataAccessor accessor, IPluginConfig config) {
+		
+	    if (config.get(ENABLED)) {
+	        
+	        final TileEntity tile = accessor.getTileEntity();
+	        
+	        if (tile instanceof SkullTileEntity) {
+	            
+	            final GameProfile profile = ((SkullTileEntity) tile).getPlayerProfile();
+	            
+	            if (profile != null) {
+	                
+	                this.addInfo(info, "player", profile.getName());
+	            }
+	        }
+	    }
+	}
 }

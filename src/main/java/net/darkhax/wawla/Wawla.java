@@ -1,94 +1,49 @@
 package net.darkhax.wawla;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.darkhax.wawla.config.WawlaConfiguration;
-import net.darkhax.wawla.engine.InfoEngine;
-import net.darkhax.wawla.engine.WailaEngine;
-import net.darkhax.wawla.plugins.FeatureManager;
-import net.darkhax.wawla.plugins.InfoProvider;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Loader;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.IWailaPlugin;
+import mcp.mobius.waila.api.WailaPlugin;
+import net.darkhax.wawla.lib.Feature;
+import net.darkhax.wawla.plugins.vanilla.PluginAnimal;
+import net.darkhax.wawla.plugins.vanilla.PluginArmorPoints;
+import net.darkhax.wawla.plugins.vanilla.PluginBlastResistance;
+import net.darkhax.wawla.plugins.vanilla.PluginBreakProgression;
+import net.darkhax.wawla.plugins.vanilla.PluginHardness;
+import net.darkhax.wawla.plugins.vanilla.PluginHorse;
+import net.darkhax.wawla.plugins.vanilla.PluginItemFrame;
+import net.darkhax.wawla.plugins.vanilla.PluginSkulls;
+import net.darkhax.wawla.plugins.vanilla.PluginVillagerTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = "wawla", name = "What are We Looking at", version = "@VERSION@", guiFactory = "", acceptableRemoteVersions = "*", certificateFingerprint = "@FINGERPRINT@")
-public class Wawla {
-
-    public static WawlaConfiguration config;
-
-    public static InfoEngine engine;
+@Mod("wawla")
+@WailaPlugin
+public class Wawla implements IWailaPlugin {
 
     public static final Logger LOG = LogManager.getLogger("WAWLA");
+    private List<Feature> features = NonNullList.create();
+    
+    public Wawla () {
 
-    @EventHandler
-    public void preInit (FMLPreInitializationEvent event) {
-
-        config = new WawlaConfiguration("wawla");
-
-        FeatureManager.init(event.getAsmData());
-
-        config.init(FeatureManager.classes);
-        config.sync();
-
-        MinecraftForge.EVENT_BUS.register(this);
-
-        if (Loader.isModLoaded("waila")) {
-
-            boolean isHwyla = false;
-
-            try {
-
-                Class.forName("mcp.mobius.waila.api.WailaPlugin");
-                isHwyla = true;
-            }
-            catch (final ClassNotFoundException e) {
-
-                isHwyla = false;
-            }
-
-            engine = new WailaEngine(isHwyla);
-        }
-
-        if (engine == null) {
-            LOG.warn("No info engine detected! No info will be displayed!");
-        }
+        features.add(new PluginAnimal());
+        features.add(new PluginArmorPoints());
+        features.add(new PluginBlastResistance());
+        features.add(new PluginBreakProgression());
+        features.add(new PluginHardness());
+        features.add(new PluginHorse());
+        features.add(new PluginItemFrame());
+        features.add(new PluginSkulls());
+        features.add(new PluginVillagerTypes());
     }
 
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void onItemTooltip (ItemTooltipEvent event) {
-
-        if (event.getEntityPlayer() != null && event.getEntityPlayer().world != null && event.getItemStack() != null) {
-            for (final InfoProvider provider : FeatureManager.itemProviders) {
-                provider.addItemInfo(event.getToolTip(), event.getItemStack(), event.getFlags(), event.getEntityPlayer());
-            }
-        }
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void onOverlayRendered (RenderGameOverlayEvent.Text event) {
-
-        final Minecraft mc = Minecraft.getMinecraft();
-
-        if (mc.gameSettings.showDebugInfo && event.getLeft() != null && Wawla.engine != null) {
-            event.getLeft().add("[Wawla] Info Engine: " + Wawla.engine.getName());
-        }
-    }
-
-    @EventHandler
-    public void onFingerprintViolation (FMLFingerprintViolationEvent event) {
-
-        LOG.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
+    @Override
+    public void register (IRegistrar hwyla) {
+        
+        features.forEach(f -> f.initialize(hwyla));
     }
 }

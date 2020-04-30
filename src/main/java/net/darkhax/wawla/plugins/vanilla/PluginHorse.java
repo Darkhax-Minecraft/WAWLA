@@ -2,47 +2,51 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
-import net.darkhax.wawla.config.Configurable;
-import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.plugins.InfoProvider;
-import net.darkhax.wawla.plugins.ProviderType;
-import net.darkhax.wawla.plugins.WawlaFeature;
-import net.minecraft.client.resources.I18n;
+import mcp.mobius.waila.api.IEntityAccessor;
+import mcp.mobius.waila.api.IEntityComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.lib.Feature;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.passive.AbstractHorse;
+import net.minecraft.entity.passive.horse.AbstractHorseEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-@WawlaFeature(description = "Shows info about horses", name = "horses", type = ProviderType.ENTITY)
-public class PluginHorse extends InfoProvider {
-
-    @Configurable(category = "horses", description = "Show the jump strength of the horse, relative ot the player.")
-    public static boolean jump = true;
-
-    @Configurable(category = "horses", description = "Show the speed of the horse, relative ot the player.")
-    public static boolean speed = true;
-
+public class PluginHorse extends Feature implements IEntityComponentProvider {
+    
+    private static final ResourceLocation SHOW_JUMP = new ResourceLocation("wawla", "horse_jump");
+    private static final ResourceLocation SHOW_SPEED = new ResourceLocation("wawla", "horse_speed");
+    
     @Override
-    public void addEntityInfo (List<String> info, InfoAccess data) {
+    public void initialize (IRegistrar hwyla) {
+        
+        hwyla.addConfig(SHOW_JUMP, true);
+        hwyla.addConfig(SHOW_SPEED, true);
+        
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, AbstractHorseEntity.class);
+    }
+    
+    @Override
+    public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
 
-        if (data.entity instanceof AbstractHorse) {
+        final Entity entity = accessor.getEntity();
+        
+        if (entity instanceof AbstractHorseEntity) {
 
-            final AbstractHorse horse = (AbstractHorse) data.entity;
+            final AbstractHorseEntity horse = (AbstractHorseEntity) entity;
 
-            if (jump) {
+            if (config.get(SHOW_JUMP)) {
 
-                final double horseJump = horse.getHorseJumpStrength();
-                info.add(I18n.format("tooltip.wawla.vanilla.jump", InfoProvider.round(horseJump, 4), this.getPlayerRelativeInfo(horseJump, 0.45d)));
+                this.addInfo(info, "jump", horse.getHorseJumpStrength());
             }
 
-            if (speed) {
+            if (config.get(SHOW_SPEED)) {
 
-                final double horseSpeed = horse.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
-                info.add(I18n.format("tooltip.wawla.vanilla.speed", InfoProvider.round(horseSpeed, 4), this.getPlayerRelativeInfo(horseSpeed, 0.1d)));
+                final double horseSpeed = horse.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue();
+                this.addInfo(info, "speed", horseSpeed);
             }
         }
-    }
-
-    public double getPlayerRelativeInfo (double horseStat, double playerStat) {
-
-        return InfoProvider.round(horseStat / playerStat, 1);
     }
 }

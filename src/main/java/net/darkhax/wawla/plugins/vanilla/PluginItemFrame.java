@@ -2,27 +2,45 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
-import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.plugins.InfoProvider;
-import net.darkhax.wawla.plugins.ProviderType;
-import net.darkhax.wawla.plugins.WawlaFeature;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.item.EntityItemFrame;
+import mcp.mobius.waila.api.IEntityAccessor;
+import mcp.mobius.waila.api.IEntityComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.lib.Feature;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-@WawlaFeature(description = "Shows info about item frames", name = "itemframes", type = ProviderType.ENTITY)
-public class PluginItemFrame extends InfoProvider {
-
+public class PluginItemFrame extends Feature implements IEntityComponentProvider {
+    
+    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "frame_contents");
+    
     @Override
-    public void addEntityInfo (List<String> info, InfoAccess data) {
-
-        if (data.entity instanceof EntityItemFrame) {
-
-            final ItemStack stack = ((EntityItemFrame) data.entity).getDisplayedItem();
-
-            if (!stack.isEmpty()) {
-                info.add(I18n.format("tooltip.wawla.item") + ": " + stack.getDisplayName());
-            }
-        }
+    public void initialize (IRegistrar hwyla) {
+        
+        hwyla.addConfig(ENABLED, true);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, ItemFrameEntity.class);
     }
+    
+    @Override
+    public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
+
+	    if (config.get(ENABLED)) {
+	        
+	        final Entity entity = accessor.getEntity();
+	        
+	        if (entity instanceof ItemFrameEntity) {
+	            
+	            final ItemStack heldItem = ((ItemFrameEntity) entity).getDisplayedItem();
+	            
+	            if (!heldItem.isEmpty()) {
+	                
+	                this.addInfo(info, "item", heldItem.getDisplayName());
+	            }
+	        }
+	    }
+	}
 }

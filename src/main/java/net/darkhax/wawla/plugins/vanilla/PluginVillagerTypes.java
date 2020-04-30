@@ -2,63 +2,94 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
-import net.darkhax.wawla.lib.InfoAccess;
-import net.darkhax.wawla.plugins.InfoProvider;
-import net.darkhax.wawla.plugins.ProviderType;
-import net.darkhax.wawla.plugins.WawlaFeature;
-import net.minecraft.client.resources.I18n;
+import javax.annotation.Nullable;
+
+import mcp.mobius.waila.api.IEntityAccessor;
+import mcp.mobius.waila.api.IEntityComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.lib.Feature;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.monster.EntityZombieVillager;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.merchant.villager.VillagerData;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.monster.AbstractIllagerEntity;
+import net.minecraft.entity.monster.WitchEntity;
+import net.minecraft.entity.monster.ZombieVillagerEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-@WawlaFeature(description = "Shows info about villager professions", name = "professions", type = ProviderType.ENTITY)
-public class PluginVillagerTypes extends InfoProvider {
-
+public class PluginVillagerTypes extends Feature implements IEntityComponentProvider {
+    
+    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "villager_type");
+    
     @Override
-    public void addEntityInfo (List<String> info, InfoAccess data) {
-
-        String career = "";
-
-        if (data.entity instanceof EntityVillager) {
-            career = ((EntityVillager) data.entity).getProfessionForge().getRegistryName().getPath();
-        }
-        else if (data.entity instanceof EntityZombieVillager) {
-
-            final String forgeCareer = data.tag.getString("WAWLAZombieType");
-
-            career = forgeCareer.isEmpty() ? I18n.format("villager.wawla.zombie") : forgeCareer;
-        }
-
-        else if (data.entity instanceof EntityWitch) {
-            career = I18n.format("villager.wawla.witch");
-        }
-
-        if (career != null && !career.isEmpty()) {
-            info.add(I18n.format("tooltip.wawla.vanilla.career") + ": " + career);
-        }
+    public void initialize (IRegistrar hwyla) {
+        
+        hwyla.addConfig(ENABLED, true);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, VillagerEntity.class);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, ZombieVillagerEntity.class);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, WitchEntity.class);
+        hwyla.registerComponentProvider(this, TooltipPosition.BODY, AbstractIllagerEntity.class);
     }
-
+    
     @Override
-    public void writeEntityNBT (World world, Entity entity, NBTTagCompound tag) {
-
-        if (entity instanceof EntityZombieVillager) {
-
-            final EntityZombieVillager zombie = (EntityZombieVillager) entity;
-            final VillagerProfession type = zombie.getForgeProfession();
-
-            if (type != null) {
-                tag.setString("WAWLAZombieType", type.getRegistryName().getPath());
+    public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
+        
+        if (config.get(ENABLED)) {
+            
+            final ITextComponent profession = getProfessionName(accessor.getEntity());
+            
+            if (profession != null) {
+                
+                this.addInfo(info, "profession", profession);
             }
         }
     }
-
-    @Override
-    public boolean requireEntitySync (World world, Entity entity) {
-
-        return entity instanceof EntityZombieVillager;
+    
+    @Nullable
+    private ITextComponent getProfessionName (Entity entity) {
+        
+        if (entity instanceof VillagerEntity) {
+            
+            return getProfessionName(((VillagerEntity) entity).getVillagerData());
+        }
+        
+        else if (entity instanceof ZombieVillagerEntity) {
+            
+            return getProfessionName(((ZombieVillagerEntity) entity).getVillagerData());
+        }
+        
+        else if (entity instanceof WitchEntity) {
+            
+            return getProfessionName("witch");
+        }
+        
+        else if (entity instanceof AbstractIllagerEntity) {
+            
+            return getProfessionName("illager");
+        }
+        
+        return null;
+    }
+    
+    @Nullable
+    private ITextComponent getProfessionName (VillagerData data) {
+        
+        if (data != null) {
+            
+            final ResourceLocation profName = data.getProfession().getRegistryName();
+            return new TranslationTextComponent(EntityType.VILLAGER.getTranslationKey() + '.' + (!"minecraft".equals(profName.getNamespace()) ? profName.getNamespace() + '.' : "") + profName.getPath());
+        }
+        
+        return null;
+    }
+    
+    @Nullable
+    private ITextComponent getProfessionName (String profession) {
+        
+        return new TranslationTextComponent(EntityType.VILLAGER.getTranslationKey() + ".wawla." + profession);
     }
 }

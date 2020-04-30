@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/Darkhax-Minecraft/Wawla/issues"
+
+[[mods]]
+modId="wawla"
+updateJSONURL="https://updates.blamejared.com/get?n=wawla&gv=1.15.2"
+version="${version}"
+displayName="${mod_name}"
+displayURL="${mod_download}"
+credits="${mod_credits}"
+authors="${mod_authors}"
+description='''
+${mod_description}
+'''
+
+[[dependencies.wawla]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31.1.41,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.wawla]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
