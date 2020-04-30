@@ -14,6 +14,8 @@
   "config.waila.plugin_wawla.skull_owner": "Skull Owner",
   "config.waila.plugin_wawla.villager_type": "Villager Profession",
   "config.waila.plugin_wawla.hide_trap_chest": "Hide Trap Chest",
+  "config.waila.plugin_wawla.table_ench_power": "Ench Table Power",
+  "config.waila.plugin_wawla.block_ench_power": "Block Ench Power",
   
   "_comment_": "Ageable Entities",
   "info.wawla.growingage": "Growth Time: %s",
