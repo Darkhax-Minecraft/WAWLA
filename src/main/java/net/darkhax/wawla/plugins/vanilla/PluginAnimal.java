@@ -12,7 +12,6 @@ import net.darkhax.wawla.lib.Feature;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -23,7 +22,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class PluginAnimal extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
-
+    
     private static final ResourceLocation BREEDING_COOLDOWN = new ResourceLocation("wawla", "breeding_cooldown");
     private static final ResourceLocation GROWING_COOLDOWN = new ResourceLocation("wawla", "growing_cooldown");
     private static final ResourceLocation BREEDING_ITEM = new ResourceLocation("wawla", "breeding_item");
@@ -47,10 +46,10 @@ public class PluginAnimal extends Feature implements IEntityComponentProvider, I
             tag.putInt("WawlaAnimalAge", ((AgeableEntity) target).getGrowingAge());
         }
     }
-
+    
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
-                
+        
         final int growingAge = accessor.getServerData().getInt("WawlaAnimalAge");
         
         if (growingAge < 0 && config.get(GROWING_COOLDOWN)) {

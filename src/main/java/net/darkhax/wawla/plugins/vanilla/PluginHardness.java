@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public class PluginHardness extends Feature implements IComponentProvider {
-
+    
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "hardness");
     
     @Override
@@ -31,11 +31,11 @@ public class PluginHardness extends Feature implements IComponentProvider {
             
             try {
                 
-                float hardness = accessor.getBlockState().getBlockHardness(accessor.getWorld(), accessor.getPosition());
+                final float hardness = accessor.getBlockState().getBlockHardness(accessor.getWorld(), accessor.getPosition());
                 info.add(this.getInfoComponent("hardness", hardness));
             }
             
-            catch (Exception e) {
+            catch (final Exception e) {
                 
                 Wawla.LOG.error("Failed to get hardness for block {}.", accessor.getBlockState());
                 Wawla.LOG.catching(e);

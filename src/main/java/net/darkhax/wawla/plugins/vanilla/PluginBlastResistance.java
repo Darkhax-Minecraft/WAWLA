@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public class PluginBlastResistance extends Feature implements IComponentProvider {
-
+    
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "blast_resistance");
     
     @Override
@@ -31,11 +31,11 @@ public class PluginBlastResistance extends Feature implements IComponentProvider
             
             try {
                 
-                float blastResistance = accessor.getBlockState().getExplosionResistance(accessor.getWorld(), accessor.getPosition(), null, null);
+                final float blastResistance = accessor.getBlockState().getExplosionResistance(accessor.getWorld(), accessor.getPosition(), null, null);
                 info.add(this.getInfoComponent("blastresist", blastResistance));
             }
             
-            catch (Exception e) {
+            catch (final Exception e) {
                 
                 Wawla.LOG.error("Failed to get explosion resistance for block {}.", accessor.getBlockState());
                 Wawla.LOG.catching(e);

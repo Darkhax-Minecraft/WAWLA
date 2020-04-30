@@ -30,20 +30,20 @@ public class PluginHorse extends Feature implements IEntityComponentProvider {
     
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
-
+        
         final Entity entity = accessor.getEntity();
         
         if (entity instanceof AbstractHorseEntity) {
-
+            
             final AbstractHorseEntity horse = (AbstractHorseEntity) entity;
-
+            
             if (config.get(SHOW_JUMP)) {
-
+                
                 this.addInfo(info, "jump", horse.getHorseJumpStrength());
             }
-
+            
             if (config.get(SHOW_SPEED)) {
-
+                
                 final double horseSpeed = horse.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue();
                 this.addInfo(info, "speed", horseSpeed);
             }

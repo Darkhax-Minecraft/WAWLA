@@ -24,26 +24,26 @@ import net.minecraftforge.fml.common.Mod;
 @Mod("wawla")
 @WailaPlugin
 public class Wawla implements IWailaPlugin {
-
-    public static final Logger LOG = LogManager.getLogger("WAWLA");
-    private List<Feature> features = NonNullList.create();
     
-    public Wawla () {
-
-        features.add(new PluginAnimal());
-        features.add(new PluginArmorPoints());
-        features.add(new PluginBlastResistance());
-        features.add(new PluginBreakProgression());
-        features.add(new PluginHardness());
-        features.add(new PluginHorse());
-        features.add(new PluginItemFrame());
-        features.add(new PluginSkulls());
-        features.add(new PluginVillagerTypes());
+    public static final Logger LOG = LogManager.getLogger("WAWLA");
+    private final List<Feature> features = NonNullList.create();
+    
+    public Wawla() {
+        
+        this.features.add(new PluginAnimal());
+        this.features.add(new PluginArmorPoints());
+        this.features.add(new PluginBlastResistance());
+        this.features.add(new PluginBreakProgression());
+        this.features.add(new PluginHardness());
+        this.features.add(new PluginHorse());
+        this.features.add(new PluginItemFrame());
+        this.features.add(new PluginSkulls());
+        this.features.add(new PluginVillagerTypes());
     }
-
+    
     @Override
     public void register (IRegistrar hwyla) {
         
-        features.forEach(f -> f.initialize(hwyla));
+        this.features.forEach(f -> f.initialize(hwyla));
     }
 }

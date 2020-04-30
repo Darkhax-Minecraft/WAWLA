@@ -18,7 +18,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
 public class PluginArmorPoints extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
-
+    
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "armor_points");
     
     @Override
@@ -28,7 +28,7 @@ public class PluginArmorPoints extends Feature implements IEntityComponentProvid
         hwyla.registerEntityDataProvider(this, LivingEntity.class);
         hwyla.registerComponentProvider(this, TooltipPosition.BODY, LivingEntity.class);
     }
-        
+    
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
         
@@ -42,10 +42,10 @@ public class PluginArmorPoints extends Feature implements IEntityComponentProvid
             }
         }
     }
-
+    
     @Override
     public void appendServerData (CompoundNBT nbt, ServerPlayerEntity player, World world, Entity target) {
-
+        
         if (target instanceof LivingEntity) {
             
             nbt.putInt("WawlaArmor", ((LivingEntity) target).getTotalArmorValue());

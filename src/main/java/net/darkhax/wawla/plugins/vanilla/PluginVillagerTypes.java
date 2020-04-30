@@ -40,7 +40,7 @@ public class PluginVillagerTypes extends Feature implements IEntityComponentProv
         
         if (config.get(ENABLED)) {
             
-            final ITextComponent profession = getProfessionName(accessor.getEntity());
+            final ITextComponent profession = this.getProfessionName(accessor.getEntity());
             
             if (profession != null) {
                 
@@ -54,22 +54,22 @@ public class PluginVillagerTypes extends Feature implements IEntityComponentProv
         
         if (entity instanceof VillagerEntity) {
             
-            return getProfessionName(((VillagerEntity) entity).getVillagerData());
+            return this.getProfessionName(((VillagerEntity) entity).getVillagerData());
         }
         
         else if (entity instanceof ZombieVillagerEntity) {
             
-            return getProfessionName(((ZombieVillagerEntity) entity).getVillagerData());
+            return this.getProfessionName(((ZombieVillagerEntity) entity).getVillagerData());
         }
         
         else if (entity instanceof WitchEntity) {
             
-            return getProfessionName("witch");
+            return this.getProfessionName("witch");
         }
         
         else if (entity instanceof AbstractIllagerEntity) {
             
-            return getProfessionName("illager");
+            return this.getProfessionName("illager");
         }
         
         return null;

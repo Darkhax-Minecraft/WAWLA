@@ -27,20 +27,20 @@ public class PluginItemFrame extends Feature implements IEntityComponentProvider
     
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
-
-	    if (config.get(ENABLED)) {
-	        
-	        final Entity entity = accessor.getEntity();
-	        
-	        if (entity instanceof ItemFrameEntity) {
-	            
-	            final ItemStack heldItem = ((ItemFrameEntity) entity).getDisplayedItem();
-	            
-	            if (!heldItem.isEmpty()) {
-	                
-	                this.addInfo(info, "item", heldItem.getDisplayName());
-	            }
-	        }
-	    }
-	}
+        
+        if (config.get(ENABLED)) {
+            
+            final Entity entity = accessor.getEntity();
+            
+            if (entity instanceof ItemFrameEntity) {
+                
+                final ItemStack heldItem = ((ItemFrameEntity) entity).getDisplayedItem();
+                
+                if (!heldItem.isEmpty()) {
+                    
+                    this.addInfo(info, "item", heldItem.getDisplayName());
+                }
+            }
+        }
+    }
 }

@@ -15,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
 public class PluginBreakProgression extends Feature implements IComponentProvider {
-
+    
     private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "break_progress");
     
     @Override
@@ -29,7 +29,7 @@ public class PluginBreakProgression extends Feature implements IComponentProvide
     public void appendBody (List<ITextComponent> info, IDataAccessor accessor, IPluginConfig config) {
         
         final int progress = MathHelper.floor(Minecraft.getInstance().playerController.curBlockDamageMP * 100f);
-
+        
         if (progress > 0) {
             
             info.add(this.getInfoComponent("progression", progress));
