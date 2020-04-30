@@ -27,3 +27,10 @@ ${mod_description}
     versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.wawla]]
+    modId="bookshelf"
+    mandatory=true
+    versionRange="[5.5.33,)"
+    ordering="AFTER"
+    side="BOTH"
