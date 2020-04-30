@@ -13,6 +13,7 @@ import net.darkhax.wawla.plugins.vanilla.FeatureAgeable;
 import net.darkhax.wawla.plugins.vanilla.FeatureArmorPoints;
 import net.darkhax.wawla.plugins.vanilla.FeatureBlastResistance;
 import net.darkhax.wawla.plugins.vanilla.FeatureBreakProgress;
+import net.darkhax.wawla.plugins.vanilla.FeatureEnchantmentPower;
 import net.darkhax.wawla.plugins.vanilla.FeatureHardness;
 import net.darkhax.wawla.plugins.vanilla.FeatureHiddenBlocks;
 import net.darkhax.wawla.plugins.vanilla.FeatureHorse;
@@ -41,6 +42,7 @@ public class Wawla implements IWailaPlugin {
         this.features.add(new FeaturePlayerHead());
         this.features.add(new FeatureVillagerProfession());
         this.features.add(new FeatureHiddenBlocks());
+        this.features.add(new FeatureEnchantmentPower());
     }
     
     @Override

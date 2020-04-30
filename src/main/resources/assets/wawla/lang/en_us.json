@@ -45,5 +45,8 @@
   "_comment_": "Villager Professions",
   "info.wawla.profession": "Profession: %s",
   "entity.minecraft.villager.wawla.witch": "Witch",
-  "entity.minecraft.villager.wawla.illager": "Illager"
+  "entity.minecraft.villager.wawla.illager": "Illager",
+  
+  "_comment_": "Enchantment Power",
+  "info.wawla.enchpower": "Enchant Power: %.2f"
 }
