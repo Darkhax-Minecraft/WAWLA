@@ -24,17 +24,17 @@
   "info.wawla.armor": "Armor: %d",
   
   "_comment_": "Blast Resist",
-  "info.wawla.blastresist": "Blast Resistance: %.2f",
+  "info.wawla.blastresist": "Blast Resistance: %s",
   
   "_comment_": "Break Progression",
   "info.wawla.progression": "Progression %d%%",
   
   "_comment_": "Block Hardness",
-  "info.wawla.hardness": "Hardness: %.2f",
+  "info.wawla.hardness": "Hardness: %s",
   
   "_comment_": "Horses",
-  "info.wawla.jump": "Jump: %.4f",
-  "info.wawla.speed": "Speed: %.4f",
+  "info.wawla.jump": "Jump: %s",
+  "info.wawla.speed": "Speed: %s",
   
   "_comment_": "Item Frame",
   "info.wawla.item": "Item: %s",
@@ -48,5 +48,5 @@
   "entity.minecraft.villager.wawla.illager": "Illager",
   
   "_comment_": "Enchantment Power",
-  "info.wawla.enchpower": "Enchant Power: %.2f"
+  "info.wawla.enchpower": "Enchant Power: %s"
 }

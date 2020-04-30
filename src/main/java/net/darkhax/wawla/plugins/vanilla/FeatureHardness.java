@@ -32,7 +32,7 @@ public class FeatureHardness extends Feature implements IComponentProvider {
             try {
                 
                 final float hardness = accessor.getBlockState().getBlockHardness(accessor.getWorld(), accessor.getPosition());
-                info.add(this.getInfoComponent("hardness", hardness));
+                info.add(this.getInfoComponent("hardness", Wawla.FORMAT.format(hardness)));
             }
             
             catch (final Exception e) {

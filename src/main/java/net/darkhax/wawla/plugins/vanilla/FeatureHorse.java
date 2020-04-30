@@ -1,5 +1,6 @@
 package net.darkhax.wawla.plugins.vanilla;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import mcp.mobius.waila.api.IEntityAccessor;
@@ -18,6 +19,8 @@ public class FeatureHorse extends Feature implements IEntityComponentProvider {
     
     private static final ResourceLocation SHOW_JUMP = new ResourceLocation("wawla", "horse_jump");
     private static final ResourceLocation SHOW_SPEED = new ResourceLocation("wawla", "horse_speed");
+    
+    private static final DecimalFormat FORMAT = new DecimalFormat("#.####");
     
     @Override
     public void initialize (IRegistrar hwyla) {
@@ -39,13 +42,13 @@ public class FeatureHorse extends Feature implements IEntityComponentProvider {
             
             if (config.get(SHOW_JUMP)) {
                 
-                this.addInfo(info, "jump", horse.getHorseJumpStrength());
+                this.addInfo(info, "jump", FORMAT.format(horse.getHorseJumpStrength()));
             }
             
             if (config.get(SHOW_SPEED)) {
                 
                 final double horseSpeed = horse.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue();
-                this.addInfo(info, "speed", horseSpeed);
+                this.addInfo(info, "speed", FORMAT.format(horseSpeed));
             }
         }
     }

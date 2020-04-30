@@ -7,6 +7,7 @@ import mcp.mobius.waila.api.IDataAccessor;
 import mcp.mobius.waila.api.IPluginConfig;
 import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.TooltipPosition;
+import net.darkhax.wawla.Wawla;
 import net.darkhax.wawla.lib.Feature;
 import net.minecraft.block.Block;
 import net.minecraft.block.EnchantingTableBlock;
@@ -38,7 +39,7 @@ public class FeatureEnchantmentPower extends Feature implements IComponentProvid
             
             if (power > 0f) {
                 
-                info.add(this.getInfoComponent("enchpower", power));
+                info.add(this.getInfoComponent("enchpower", Wawla.FORMAT.format(power)));
             }
         }
         
@@ -48,7 +49,7 @@ public class FeatureEnchantmentPower extends Feature implements IComponentProvid
             
             if (power > 0f) {
                 
-                info.add(this.getInfoComponent("enchpower", power));
+                info.add(this.getInfoComponent("enchpower", Wawla.FORMAT.format(power)));
             }
         }
     }

@@ -1,5 +1,6 @@
 package net.darkhax.wawla;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +29,8 @@ import net.minecraftforge.fml.common.Mod;
 public class Wawla implements IWailaPlugin {
     
     public static final Logger LOG = LogManager.getLogger("WAWLA");
+    public static final DecimalFormat FORMAT = new DecimalFormat("#.##");
+    
     private final List<Feature> features = NonNullList.create();
     
     public Wawla() {

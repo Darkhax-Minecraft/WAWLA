@@ -23,7 +23,7 @@ public class FeatureHiddenBlocks extends Feature implements IComponentProvider {
         hwyla.addSyncedConfig(HIDE_TRAP_CHEST, true);
         hwyla.registerStackProvider(this, TrappedChestBlock.class);
     }
-
+    
     @Override
     public ItemStack getStack (IDataAccessor accessor, IPluginConfig config) {
         
