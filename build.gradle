@@ -80,7 +80,7 @@ repositories {
 	
     maven { 
         name = "TehNut's Maven (HWYLA)"
-		url "https://tehnut.info/maven" 
+		url "https://maven.tehnut.info/" 
 	}
 }
 
