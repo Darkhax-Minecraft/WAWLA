@@ -50,26 +50,29 @@ public class FeatureAgeable extends Feature implements IEntityComponentProvider,
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
         
-        final int growingAge = accessor.getServerData().getInt("WawlaAnimalAge");
-        
-        if (growingAge < 0 && config.get(GROWING_COOLDOWN)) {
+        if (accessor.getServerData().contains("WawlaAnimalAge")) {
             
-            this.addInfo(info, "growingage", StringUtils.ticksToElapsedTime(Math.abs(growingAge)));
-        }
-        
-        else if (growingAge > 0 && config.get(BREEDING_COOLDOWN)) {
+            final int growingAge = accessor.getServerData().getInt("WawlaAnimalAge");
             
-            this.addInfo(info, "breedingtime", StringUtils.ticksToElapsedTime(growingAge));
-        }
-        
-        if (config.get(BREEDING_ITEM) && growingAge == 0 && accessor.getPlayer() != null && accessor.getEntity() instanceof AnimalEntity) {
-            
-            final ItemStack heldItem = accessor.getPlayer().getHeldItemMainhand();
-            final AnimalEntity animal = (AnimalEntity) accessor.getEntity();
-            
-            if (!heldItem.isEmpty() && !animal.isChild() && animal.isBreedingItem(heldItem)) {
+            if (growingAge < 0 && config.get(GROWING_COOLDOWN)) {
                 
-                info.add(this.getInfoComponent("breedingitem").applyTextStyle(TextFormatting.YELLOW));
+                this.addInfo(info, "growingage", StringUtils.ticksToElapsedTime(Math.abs(growingAge)));
+            }
+            
+            else if (growingAge > 0 && config.get(BREEDING_COOLDOWN)) {
+                
+                this.addInfo(info, "breedingtime", StringUtils.ticksToElapsedTime(growingAge));
+            }
+            
+            if (config.get(BREEDING_ITEM) && growingAge == 0 && accessor.getPlayer() != null && accessor.getEntity() instanceof AnimalEntity) {
+                
+                final ItemStack heldItem = accessor.getPlayer().getHeldItemMainhand();
+                final AnimalEntity animal = (AnimalEntity) accessor.getEntity();
+                
+                if (!heldItem.isEmpty() && !animal.isChild() && animal.isBreedingItem(heldItem)) {
+                    
+                    info.add(this.getInfoComponent("breedingitem").applyTextStyle(TextFormatting.YELLOW));
+                }
             }
         }
     }
