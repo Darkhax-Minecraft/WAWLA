@@ -10,7 +10,7 @@ import mcp.mobius.waila.api.IRegistrar;
 import mcp.mobius.waila.api.TooltipPosition;
 import net.darkhax.wawla.lib.Feature;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -47,7 +47,7 @@ public class FeatureHorse extends Feature implements IEntityComponentProvider {
             
             if (config.get(SHOW_SPEED)) {
                 
-                final double horseSpeed = horse.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue();
+                final double horseSpeed = horse.getAttribute(Attributes.MOVEMENT_SPEED).getValue();
                 this.addInfo(info, "speed", FORMAT.format(horseSpeed));
             }
         }

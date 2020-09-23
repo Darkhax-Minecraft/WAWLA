@@ -31,7 +31,7 @@ public class FeatureBlastResistance extends Feature implements IComponentProvide
             
             try {
                 
-                final float blastResistance = accessor.getBlockState().getExplosionResistance(accessor.getWorld(), accessor.getPosition(), null, null);
+                final float blastResistance = accessor.getBlockState().getExplosionResistance(accessor.getWorld(), accessor.getPosition(), null);
                 info.add(this.getInfoComponent("blastresist", Wawla.FORMAT.format(blastResistance)));
             }
             

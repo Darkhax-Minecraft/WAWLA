@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import mcp.mobius.waila.api.IRegistrar;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public abstract class Feature {
@@ -15,7 +16,7 @@ public abstract class Feature {
         info.add(this.getInfoComponent(key, args));
     }
     
-    public ITextComponent getInfoComponent (String key, Object... args) {
+    public TextComponent getInfoComponent (String key, Object... args) {
         
         return new TranslationTextComponent("info.wawla." + key, args);
     }

@@ -88,7 +88,7 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
 	
-	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.15.2:${bookshelf_version}")
+	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.1:${bookshelf_version}")
     compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
 }
 

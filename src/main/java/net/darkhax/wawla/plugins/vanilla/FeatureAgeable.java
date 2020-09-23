@@ -71,7 +71,7 @@ public class FeatureAgeable extends Feature implements IEntityComponentProvider,
                 
                 if (!heldItem.isEmpty() && !animal.isChild() && animal.isBreedingItem(heldItem)) {
                     
-                    info.add(this.getInfoComponent("breedingitem").applyTextStyle(TextFormatting.YELLOW));
+                    info.add(this.getInfoComponent("breedingitem").mergeStyle(TextFormatting.YELLOW));
                 }
             }
         }

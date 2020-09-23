@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/Wawla/issues"
 
 [[mods]]
 modId="wawla"
-updateJSONURL="https://updates.blamejared.com/get?n=wawla&gv=1.15.2"
+updateJSONURL="https://updates.blamejared.com/get?n=wawla&gv=1.16.1"
 version="${version}"
 displayName="${mod_name}"
 displayURL="${mod_download}"
@@ -17,21 +17,21 @@ ${mod_description}
 [[dependencies.wawla]]
     modId="forge"
     mandatory=true
-    versionRange="[31.1.41,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.wawla]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.1]"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.wawla]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[5.5.33,)"
+    versionRange="[6,)"
     ordering="AFTER"
     side="BOTH"
 	
