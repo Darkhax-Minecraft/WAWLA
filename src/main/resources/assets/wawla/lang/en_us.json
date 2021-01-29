@@ -19,6 +19,8 @@
   "config.waila.plugin_wawla.beehive_count": "Beehive Bee Count",
   "config.waila.plugin_wawla.beehive_smoked": "Beehive Smoked",
   "config.waila.plugin_wawla.beehive_honey": "Beehive Honey Level",
+  "config.waila.plugin_wawla.villager_tier": "Villager Tier",
+  "config.waila.plugin_wawla.villager_tier_progress": "Villager EXP",
   
   "_comment_": "Ageable Entities",
   "info.wawla.growingage": "Growth Time: %s",
@@ -48,9 +50,9 @@
   "info.wawla.player": "Player: %s",
   
   "_comment_": "Villager Professions",
-  "info.wawla.profession": "Profession: %s",
-  "entity.minecraft.villager.wawla.witch": "Witch",
-  "entity.minecraft.villager.wawla.illager": "Illager",
+  "info.wawla.profession": "%s %s",
+  "info.wawla.villager.name": "§f%s %s",
+  "info.wawla.villager.exp": "Exp: %d / %d",
   
   "_comment_": "Enchantment Power",
   "info.wawla.enchpower": "Enchant Power: %s",

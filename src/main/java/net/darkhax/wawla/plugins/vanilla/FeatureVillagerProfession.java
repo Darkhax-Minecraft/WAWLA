@@ -2,94 +2,110 @@ package net.darkhax.wawla.plugins.vanilla;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import mcp.mobius.waila.api.IEntityAccessor;
 import mcp.mobius.waila.api.IEntityComponentProvider;
 import mcp.mobius.waila.api.IPluginConfig;
 import mcp.mobius.waila.api.IRegistrar;
+import mcp.mobius.waila.api.IServerDataProvider;
 import mcp.mobius.waila.api.TooltipPosition;
 import net.darkhax.wawla.lib.Feature;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerData;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
-import net.minecraft.entity.monster.AbstractIllagerEntity;
-import net.minecraft.entity.monster.WitchEntity;
-import net.minecraft.entity.monster.ZombieVillagerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 
-public class FeatureVillagerProfession extends Feature implements IEntityComponentProvider {
+public class FeatureVillagerProfession extends Feature implements IEntityComponentProvider, IServerDataProvider<Entity> {
     
-    private static final ResourceLocation ENABLED = new ResourceLocation("wawla", "villager_type");
+    private static final ResourceLocation TIER = new ResourceLocation("wawla", "villager_tier");
+    private static final ResourceLocation TIER_PROGRESS = new ResourceLocation("wawla", "villager_tier_progress");
     
     @Override
     public void initialize (IRegistrar hwyla) {
         
-        hwyla.addConfig(ENABLED, true);
+        hwyla.addConfig(TIER, true);
+        hwyla.addConfig(TIER_PROGRESS, true);
+        
         hwyla.registerComponentProvider(this, TooltipPosition.BODY, VillagerEntity.class);
-        hwyla.registerComponentProvider(this, TooltipPosition.BODY, ZombieVillagerEntity.class);
-        hwyla.registerComponentProvider(this, TooltipPosition.BODY, WitchEntity.class);
-        hwyla.registerComponentProvider(this, TooltipPosition.BODY, AbstractIllagerEntity.class);
+        hwyla.registerComponentProvider(this, TooltipPosition.HEAD, VillagerEntity.class);
+        
+        hwyla.registerEntityDataProvider(this, VillagerEntity.class);
+    }
+    
+    @Override
+    public void appendServerData (CompoundNBT nbt, ServerPlayerEntity player, World world, Entity target) {
+        
+        if (target instanceof VillagerEntity) {
+            
+            final VillagerEntity villager = (VillagerEntity) target;
+            final CompoundNBT villagerData = new CompoundNBT();
+            final int level = villager.getVillagerData().getLevel();
+            
+            villagerData.putInt("level", level);
+            villagerData.putInt("curExp", villager.getXp());
+            villagerData.putInt("targetExp", VillagerData.getExperienceNext(level));
+            villagerData.putBoolean("hasTrades", !villager.getOffers().isEmpty());
+            nbt.put("WAWLAVillager", villagerData);
+        }
+    }
+    
+    @Override
+    public void appendHead (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
+        
+        if (accessor.getServerData().contains("WAWLAVillager") && accessor.getEntity() != null && !accessor.getEntity().hasCustomName()) {
+            
+            final CompoundNBT data = accessor.getServerData().getCompound("WAWLAVillager");
+            
+            if (data.getBoolean("hasTrades") && config.get(TIER)) {
+                
+                final int level = data.getInt("level");
+                
+                if (level > 0 && level < 5) {
+                    
+                    info.set(0, new TranslationTextComponent("info.wawla.villager.name", new TranslationTextComponent("merchant.level." + level), accessor.getEntity().getDisplayName()));
+                }
+            }
+        }
     }
     
     @Override
     public void appendBody (List<ITextComponent> info, IEntityAccessor accessor, IPluginConfig config) {
         
-        if (config.get(ENABLED)) {
+        if (accessor.getEntity() instanceof VillagerEntity && accessor.getServerData().contains("WAWLAVillager")) {
             
-            final ITextComponent profession = this.getProfessionName(accessor.getEntity());
+            final VillagerEntity villager = (VillagerEntity) accessor.getEntity();
+            final CompoundNBT data = accessor.getServerData().getCompound("WAWLAVillager");
             
-            if (profession != null) {
+            if (data.getBoolean("hasTrades")) {
                 
-                this.addInfo(info, "profession", profession);
+                if (config.get(TIER) && villager.hasCustomName()) {
+                    
+                    final int level = data.getInt("level");
+                    
+                    if (level > 0 && level < 5) {
+                        
+                        final ResourceLocation profId = villager.getVillagerData().getProfession().getRegistryName();
+                        final ITextComponent professionName = new TranslationTextComponent(villager.getType().getTranslationKey() + '.' + (!"minecraft".equals(profId.getNamespace()) ? profId.getNamespace() + '.' : "") + profId.getPath());
+                        
+                        info.add(new TranslationTextComponent("info.wawla.profession", new TranslationTextComponent("merchant.level." + level), professionName));
+                    }
+                }
+                
+                if (config.get(TIER_PROGRESS)) {
+                    
+                    final int curXp = data.getInt("curExp");
+                    final int targetXp = data.getInt("targetExp");
+                    
+                    if (targetXp > 0) {
+                        
+                        info.add(new TranslationTextComponent("info.wawla.villager.exp", curXp, targetXp));
+                    }
+                }
             }
         }
-    }
-    
-    @Nullable
-    private ITextComponent getProfessionName (Entity entity) {
-        
-        if (entity instanceof VillagerEntity) {
-            
-            return this.getProfessionName(((VillagerEntity) entity).getVillagerData());
-        }
-        
-        else if (entity instanceof ZombieVillagerEntity) {
-            
-            return this.getProfessionName(((ZombieVillagerEntity) entity).getVillagerData());
-        }
-        
-        else if (entity instanceof WitchEntity) {
-            
-            return this.getProfessionName("witch");
-        }
-        
-        else if (entity instanceof AbstractIllagerEntity) {
-            
-            return this.getProfessionName("illager");
-        }
-        
-        return null;
-    }
-    
-    @Nullable
-    private ITextComponent getProfessionName (VillagerData data) {
-        
-        if (data != null) {
-            
-            final ResourceLocation profName = data.getProfession().getRegistryName();
-            return new TranslationTextComponent(EntityType.VILLAGER.getTranslationKey() + '.' + (!"minecraft".equals(profName.getNamespace()) ? profName.getNamespace() + '.' : "") + profName.getPath());
-        }
-        
-        return null;
-    }
-    
-    @Nullable
-    private ITextComponent getProfessionName (String profession) {
-        
-        return new TranslationTextComponent(EntityType.VILLAGER.getTranslationKey() + ".wawla." + profession);
     }
 }
