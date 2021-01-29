@@ -16,6 +16,9 @@
   "config.waila.plugin_wawla.hide_trap_chest": "Hide Trap Chest",
   "config.waila.plugin_wawla.table_ench_power": "Ench Table Power",
   "config.waila.plugin_wawla.block_ench_power": "Block Ench Power",
+  "config.waila.plugin_wawla.beehive_count": "Beehive Bee Count",
+  "config.waila.plugin_wawla.beehive_smoked": "Beehive Smoked",
+  "config.waila.plugin_wawla.beehive_honey": "Beehive Honey Level",
   
   "_comment_": "Ageable Entities",
   "info.wawla.growingage": "Growth Time: %s",
@@ -50,5 +53,11 @@
   "entity.minecraft.villager.wawla.illager": "Illager",
   
   "_comment_": "Enchantment Power",
-  "info.wawla.enchpower": "Enchant Power: %s"
+  "info.wawla.enchpower": "Enchant Power: %s",
+  
+  "_comment_": "Bee Hive",
+  "info.wawla.beehive.empty": "Empty",
+  "info.wawla.beehive.count": "Bees: %d",
+  "info.wawla.beehive.honey": "Honey:§6 %d",
+  "info.wawla.beehive.smoked": "Smoked"
 }

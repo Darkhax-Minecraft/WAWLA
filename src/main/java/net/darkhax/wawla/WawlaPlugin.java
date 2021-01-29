@@ -8,6 +8,7 @@ import mcp.mobius.waila.api.WailaPlugin;
 import net.darkhax.wawla.lib.Feature;
 import net.darkhax.wawla.plugins.vanilla.FeatureAgeable;
 import net.darkhax.wawla.plugins.vanilla.FeatureArmorPoints;
+import net.darkhax.wawla.plugins.vanilla.FeatureBeeHive;
 import net.darkhax.wawla.plugins.vanilla.FeatureBlastResistance;
 import net.darkhax.wawla.plugins.vanilla.FeatureBreakProgress;
 import net.darkhax.wawla.plugins.vanilla.FeatureEnchantmentPower;
@@ -38,6 +39,7 @@ public class WawlaPlugin implements IWailaPlugin {
         this.features.add(new FeatureVillagerProfession());
         this.features.add(new FeatureHiddenBlocks());
         this.features.add(new FeatureEnchantmentPower());
+        this.features.add(new FeatureBeeHive());
         
         this.features.forEach(f -> f.initialize(hwyla));
     }
