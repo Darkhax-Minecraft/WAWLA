@@ -64,7 +64,7 @@ public class FeatureVillagerProfession extends Feature implements IEntityCompone
                 
                 final int level = data.getInt("level");
                 
-                if (level > 0 && level < 5) {
+                if (level > 0 && level <= 5) {
                     
                     info.set(0, new TranslationTextComponent("info.wawla.villager.name", new TranslationTextComponent("merchant.level." + level), accessor.getEntity().getDisplayName()));
                 }
@@ -86,7 +86,7 @@ public class FeatureVillagerProfession extends Feature implements IEntityCompone
                     
                     final int level = data.getInt("level");
                     
-                    if (level > 0 && level < 5) {
+                    if (level > 0 && level <= 5) {
                         
                         final ResourceLocation profId = villager.getVillagerData().getProfession().getRegistryName();
                         final ITextComponent professionName = new TranslationTextComponent(villager.getType().getTranslationKey() + '.' + (!"minecraft".equals(profId.getNamespace()) ? profId.getNamespace() + '.' : "") + profId.getPath());
