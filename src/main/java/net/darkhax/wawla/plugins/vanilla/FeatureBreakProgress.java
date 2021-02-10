@@ -28,11 +28,14 @@ public class FeatureBreakProgress extends Feature implements IComponentProvider 
     @Override
     public void appendBody (List<ITextComponent> info, IDataAccessor accessor, IPluginConfig config) {
         
-        final int progress = MathHelper.floor(Minecraft.getInstance().playerController.curBlockDamageMP * 100f);
-        
-        if (progress > 0) {
+        if (config.get(ENABLED)) {
             
-            info.add(this.getInfoComponent("progression", progress));
+            final int progress = MathHelper.floor(Minecraft.getInstance().playerController.curBlockDamageMP * 100f);
+            
+            if (progress > 0) {
+                
+                info.add(this.getInfoComponent("progression", progress));
+            }
         }
     }
 }
