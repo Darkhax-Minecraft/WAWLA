@@ -2,11 +2,15 @@ package net.darkhax.wawla;
 
 import java.text.DecimalFormat;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.FMLNetworkConstants;
 
 @Mod("wawla")
 public class Wawla {
@@ -15,6 +19,8 @@ public class Wawla {
     public static final DecimalFormat FORMAT = new DecimalFormat("#.##");
     
     public Wawla() {
+        
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of( () -> FMLNetworkConstants.IGNORESERVERONLY, (a, b) -> true));
         
         if (!ModList.get().isLoaded("waila")) {
             
