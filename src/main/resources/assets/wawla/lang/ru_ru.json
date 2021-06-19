@@ -1,0 +1,65 @@
+{ 
+  "_comment_": "Waila Config",
+  "config.waila.plugin_wawla": "Wawla",
+  "config.waila.plugin_wawla.growing_cooldown": "Время роста",
+  "config.waila.plugin_wawla.breeding_cooldown": "Откат размножения",
+  "config.waila.plugin_wawla.breeding_item": "Предмет размножения",
+  "config.waila.plugin_wawla.armor_points": "Единиц брони",
+  "config.waila.plugin_wawla.blast_resistance": "Взрывоустойчивость",
+  "config.waila.plugin_wawla.break_progress": "Прогресс ломания",
+  "config.waila.plugin_wawla.hardness": "Твёрдость блока",
+  "config.waila.plugin_wawla.horse_jump": "Прыжок лошади",
+  "config.waila.plugin_wawla.horse_speed": "Скорость лошади",
+  "config.waila.plugin_wawla.frame_contents": "Содержится в Рамке",
+  "config.waila.plugin_wawla.skull_owner": "Владелец черепа",
+  "config.waila.plugin_wawla.villager_type": "Профессия жителя",
+  "config.waila.plugin_wawla.hide_trap_chest": "Спрятанный сундук-ловушка",
+  "config.waila.plugin_wawla.table_ench_power": "Сила зачаровательного стола",
+  "config.waila.plugin_wawla.block_ench_power": "Сила зачарованного блока",
+  "config.waila.plugin_wawla.beehive_count": "Расчёт пчёл пчелиного улья",
+  "config.waila.plugin_wawla.beehive_smoked": "Дымный пчелиный улей",
+  "config.waila.plugin_wawla.beehive_honey": "Уровень пчелиного улья",
+  "config.waila.plugin_wawla.villager_tier": "Уровень жителя",
+  "config.waila.plugin_wawla.villager_tier_progress": "Опыт жителя",
+  
+  "_comment_": "Ageable Entities",
+  "info.wawla.growingage": "Время роста: %s",
+  "info.wawla.breedingtime": "Откат размножения: %s",
+  "info.wawla.breedingitem": "Размножаемый",
+  
+  "_comment_": "Armor Points",
+  "info.wawla.armor": "Броня: %d",
+  
+  "_comment_": "Blast Resist",
+  "info.wawla.blastresist": "Взрывоустойчивость: %s",
+  
+  "_comment_": "Break Progression",
+  "info.wawla.progression": "Прогресс %d%%",
+  
+  "_comment_": "Block Hardness",
+  "info.wawla.hardness": "Твёрдость: %s",
+  
+  "_comment_": "Horses",
+  "info.wawla.jump": "Прыжок: %s",
+  "info.wawla.speed": "Скорость: %s",
+  
+  "_comment_": "Item Frame",
+  "info.wawla.item": "Предмет: %s",
+  
+  "_comment_": "Player Skull",
+  "info.wawla.player": "Игрок: %s",
+  
+  "_comment_": "Villager Professions",
+  "info.wawla.profession": "%s %s",
+  "info.wawla.villager.name": "§f%s %s",
+  "info.wawla.villager.exp": "Опыт: %d / %d",
+  
+  "_comment_": "Enchantment Power",
+  "info.wawla.enchpower": "Сила чара: %s",
+  
+  "_comment_": "Bee Hive",
+  "info.wawla.beehive.empty": "Пусто",
+  "info.wawla.beehive.count": "Пчёл: %d",
+  "info.wawla.beehive.honey": "Мёд: §6 %d",
+  "info.wawla.beehive.smoked": "Дымный"
+}
