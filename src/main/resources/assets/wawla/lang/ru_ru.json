@@ -19,8 +19,8 @@
   "config.waila.plugin_wawla.beehive_count": "Кол-во пчёл в улье",
   "config.waila.plugin_wawla.beehive_smoked": "Задымление улья",
   "config.waila.plugin_wawla.beehive_honey": "Уровень улья",
-  "config.waila.plugin_wawla.villager_tier": "Уровень жителя",
-  "config.waila.plugin_wawla.villager_tier_progress": "Опыт жителя",
+  "config.waila.plugin_wawla.villager_tier": "Уровень крестьянина",
+  "config.waila.plugin_wawla.villager_tier_progress": "Опыт крестьянина",
   
   "_comment_": "Ageable Entities",
   "info.wawla.growingage": "Время роста: %s",
