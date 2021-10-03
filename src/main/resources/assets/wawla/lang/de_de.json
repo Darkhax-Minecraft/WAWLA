@@ -1,0 +1,65 @@
+{
+  "_comment_": "Waila Config",
+  "config.waila.plugin_wawla": "Wawla",
+  "config.waila.plugin_wawla.growing_cooldown": "Wachstumszeit",
+  "config.waila.plugin_wawla.breeding_cooldown": "Zucht-Abklingzeit",
+  "config.waila.plugin_wawla.breeding_item": "Zuchtgegenstand",
+  "config.waila.plugin_wawla.armor_points": "Rüstungspunkte",
+  "config.waila.plugin_wawla.blast_resistance": "Explosionswiderstand",
+  "config.waila.plugin_wawla.break_progress": "Abbaufortschritt",
+  "config.waila.plugin_wawla.hardness": "Blockhärte",
+  "config.waila.plugin_wawla.horse_jump": "Pferdesprung",
+  "config.waila.plugin_wawla.horse_speed": "Pferdegeschwindigkeit",
+  "config.waila.plugin_wawla.frame_contents": "Gegenstandsrahmeninhalt",
+  "config.waila.plugin_wawla.skull_owner": "Besitzer",
+  "config.waila.plugin_wawla.villager_type": "Dorfbewohnerberuf",
+  "config.waila.plugin_wawla.hide_trap_chest": "Redstone-Truhe verstecken",
+  "config.waila.plugin_wawla.table_ench_power": "Verzauberungstischstärke",
+  "config.waila.plugin_wawla.block_ench_power": "Blockverzauberungsstärke",
+  "config.waila.plugin_wawla.beehive_count": "Bienenstock Bienenanzahl",
+  "config.waila.plugin_wawla.beehive_smoked": "Bienenstock geräuchert",
+  "config.waila.plugin_wawla.beehive_honey": "Bienenstock Honiglevel",
+  "config.waila.plugin_wawla.villager_tier": "Dorfbewohner Stufe",
+  "config.waila.plugin_wawla.villager_tier_progress": "Dorfbewohner EXP",
+
+  "_comment_": "Ageable Entities",
+  "info.wawla.growingage": "Wachstumszeit: %s",
+  "info.wawla.breedingtime": "Zucht-Abklingzeit: %s",
+  "info.wawla.breedingitem": "Züchtbar",
+
+  "_comment_": "Armor Points",
+  "info.wawla.armor": "Rüstung: %d",
+
+  "_comment_": "Blast Resist",
+  "info.wawla.blastresist": "Explosionswiderstand: %s",
+
+  "_comment_": "Break Progression",
+  "info.wawla.progression": "Fortschritt %d%%",
+
+  "_comment_": "Block Hardness",
+  "info.wawla.hardness": "Härte: %s",
+
+  "_comment_": "Horses",
+  "info.wawla.jump": "Sprung: %s",
+  "info.wawla.speed": "Geschwindigkeit: %s",
+
+  "_comment_": "Item Frame",
+  "info.wawla.item": "Gegenstand: %s",
+
+  "_comment_": "Player Skull",
+  "info.wawla.player": "Spieler: %s",
+
+  "_comment_": "Villager Professions",
+  "info.wawla.profession": "%s %s",
+  "info.wawla.villager.name": "§f%s %s",
+  "info.wawla.villager.exp": "Exp: %d / %d",
+
+  "_comment_": "Enchantment Power",
+  "info.wawla.enchpower": "Verzauberungsstärke: %s",
+
+  "_comment_": "Bee Hive",
+  "info.wawla.beehive.empty": "Leer",
+  "info.wawla.beehive.count": "Bienen: %d",
+  "info.wawla.beehive.honey": "Honig:§6 %d",
+  "info.wawla.beehive.smoked": "Geräuchert"
+}
